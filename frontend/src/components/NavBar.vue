@@ -1,87 +1,143 @@
 <template>
-  <div class="item">
-    <i>
-      <slot name="icon"></slot>
-    </i>
-    <div class="details">
-      <h3>
-        <slot name="heading"></slot>
-      </h3>
-      <slot></slot>
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Almacenar</a>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li v-for="(link, index) in links" :key="index" class="nav-item">
+          <!-- Dropdown for Marketplace -->
+          <div v-if="link.text === 'Marketplace'" class="dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              {{ link.text }}
+            </a>
+            <ul class="dropdown-menu">
+              <!-- Dynamically render dropdown items based on link text -->
+              <li v-for="(item, idx) in DropdownItems.Marketplace" :key="idx">
+                <a class="dropdown-item" href="#">{{ item.label }}</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Regular links for other items -->
+          <a
+            v-else
+            class="nav-link"
+            aria-current="page"
+            :href="link.url"
+            :title="`${link.text} page`"
+            @click.prevent="handleOnclickEvent(link)"
+          >
+            {{ link.text }}
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li v-for="(link, index) in linksRight" :key="index" class="nav-item">          
+            <!-- Dropdown for My account -->
+          <div v-if="link.text === 'My account'" class="dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              {{ link.text }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <!-- Dynamically render dropdown items based on link text -->
+              <li v-for="(item, idx) in DropdownItems.Account" :key="idx">
+                <a class="dropdown-item" href="#">{{ item.label }}</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Regular links for other items -->
+          <a
+            v-else
+            class="nav-link"
+            aria-current="page"
+            :href="link.url"
+            :title="`${link.text} page`"
+            @click.prevent="handleOnclickEvent(link)"
+          >
+            {{ link.text }}
+          </a>
+        </li>
+      </ul>
     </div>
-  </div>
-</template>
-
-<style scoped>
-.item {
-  margin-top: 2rem;
-  display: flex;
-  position: relative;
-}
-
-.details {
-  flex: 1;
-  margin-left: 1rem;
-}
-
-i {
-  display: flex;
-  place-items: center;
-  place-content: center;
-  width: 32px;
-  height: 32px;
-
-  color: var(--color-text);
-}
-
-h3 {
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin-bottom: 0.4rem;
-  color: var(--color-heading);
-}
-
-@media (min-width: 1024px) {
-  .item {
-    margin-top: 0;
-    padding: 0.4rem 0 1rem calc(var(--section-gap) / 2);
-  }
-
-  i {
-    top: calc(50% - 25px);
-    left: -26px;
-    position: absolute;
-    border: 1px solid var(--color-border);
-    background: var(--color-background);
-    border-radius: 8px;
-    width: 50px;
-    height: 50px;
-  }
-
-  .item:before {
-    content: ' ';
-    border-left: 1px solid var(--color-border);
-    position: absolute;
-    left: 0;
-    bottom: calc(50% + 25px);
-    height: calc(50% - 25px);
-  }
-
-  .item:after {
-    content: ' ';
-    border-left: 1px solid var(--color-border);
-    position: absolute;
-    left: 0;
-    top: calc(50% + 25px);
-    height: calc(50% - 25px);
-  }
-
-  .item:first-of-type:before {
-    display: none;
-  }
-
-  .item:last-of-type:after {
-    display: none;
-  }
-}
-</style>
+  </template>
+  
+  <script>
+  export default {
+    data() {
+      return {
+        links: [
+          { 
+            text: "Home", 
+            url: "#",
+            title: "lqc's game shop",
+            banner: "A place where gamers can buy and sell their best items!"
+          },
+          { 
+            text: "Community", 
+            url: "#",
+            title: "Community page",
+            banner: "where users can view rate of each trader"
+          },
+          { 
+            text: "Marketplace", 
+            url: "#"
+          },
+          { 
+            text: "About us", 
+            url: "#",
+            title: "about page",
+            banner: "this is where the developer of this fking app can say something about them"
+          },
+          {
+            text: "Support", 
+            url: "#",
+            title: "Support page",
+            banner: "get suport from AI agent"
+          }
+        ],
+        linksRight: [
+          {
+            text: "Search", 
+            url: "#",
+            title: "search box",
+            banner: "search something here"
+          },
+          {
+            text: "My account", 
+            url: "#"
+          }
+        ],
+        DropdownItems: {
+          Marketplace: [
+            { label: "Merchandise" },
+            { label: "Sell my items" }
+          ],
+          Account: [
+            { label: "Profile" },
+            { label: "Notification" },
+            { label: "Transaction history" }
+          ]
+        }
+      };
+    },
+    methods: {
+      handleOnclickEvent(link) {
+        document.getElementById("title").innerText = link.title;
+        document.getElementById("banner").innerText = link.banner;
+      }
+    }
+  };
+  </script>
+  
+  <style scoped>
+  /* Add custom styles here if needed */
+  </style>

@@ -4,6 +4,10 @@ services:
     build: ./frontend
     depends_on:
       - backend
+    # remove volumes when it comes to product
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
     networks:
       - shop
 
