@@ -2,19 +2,19 @@ version: '3.8'
 services:
   frontend:
     build: ./frontend
-    ports:
-      - "8088:80"
     depends_on:
       - backend
+    networks:
+      - shop
 
   backend:
     build: ./backend
-    ports:
-      - "5000:5000"
     environment:
       - DATABASE_URL=postgresql://root:root@db:5432/shop
     depends_on:
       - db
+    networks:
+      - shop
 
   db:
     image: postgres:13
@@ -29,7 +29,13 @@ services:
   nginx:
     build: ./nginx
     ports:
-      - "80:80"
+      - "8088:80" 
     depends_on:
       - frontend
       - backend
+    networks:
+      - shop
+
+networks:
+  shop:
+    driver: bridge

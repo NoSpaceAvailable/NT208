@@ -8,7 +8,7 @@ db = SQLAlchemy(app)
 CORS(app)
 
 from .routes import auth, products, transactions, reputation
-app.register_blueprint(auth.bp)
-app.register_blueprint(products.bp)
-app.register_blueprint(transactions.bp)
-app.register_blueprint(reputation.bp)
+# app.register_blueprint(auth.bp)
+# app.register_blueprint(products.bp)
+# app.register_blueprint(transactions.bp)
+# app.register_blueprint(reputation.bp)
