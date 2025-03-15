@@ -60,9 +60,7 @@
     </div>
 
     <!-- Copyright Notice -->
-    <div class="text-center mt-4">
-      <p class="mb-0">&copy; 2025 Almacenar. All rights reserved.</p>
-    </div>
+    <p class="text-center mb-0">&copy; 2025 Almacenar. All rights reserved.</p>
   </div>
 </template>
 
