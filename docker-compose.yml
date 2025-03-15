@@ -14,7 +14,10 @@ services:
   backend:
     build: ./backend
     environment:
-      - DATABASE_URL=postgresql://root:root@db:5432/shop
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASS=root
+      - DB_NAME=shop
     depends_on:
       - db
     networks:
@@ -29,6 +32,8 @@ services:
     volumes:
       - ./db/data:/var/lib/postgresql/data
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - shop
 
   nginx:
     build: ./nginx
