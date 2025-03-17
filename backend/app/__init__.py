@@ -1,11 +1,9 @@
 from flask import Flask
 from flask_cors import CORS
-from .models.Database import Database
+from .global_config import app_config
 
 app = Flask(__name__)
-app.config.from_pyfile('config.py')
-db = Database()
-print(db.test())
+app.config.from_object(app_config)
 CORS(app)
 
 from .routes import auth, products, transactions, reputation, healthcheck
