@@ -2,8 +2,6 @@ version: '3.8'
 services:
   frontend:
     build: ./frontend
-    volumes:
-      - ./frontend:/app/frontend
     depends_on:
       - backend
     networks:
