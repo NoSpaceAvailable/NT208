@@ -39,5 +39,5 @@ class User(Base):
     def __repr__(self):
         return f"<User(id={self.id}, username='{self.username}', email='{self.email}', reputation={self.reputation})>"
     
-User.__table__.drop(engine)    
+User.__table__.drop(engine, checkfirst=True)    
 Base.metadata.create_all(engine)
