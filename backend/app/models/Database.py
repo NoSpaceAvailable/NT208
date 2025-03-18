@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import database_exists, create_database
 from sqlalchemy.exc import *
 from ..global_config import db_config
-from ..utils.logging import info, warn, error
+from ..utils.logging import info, error
 from time import sleep
 
 class Database():
