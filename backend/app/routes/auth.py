@@ -5,6 +5,7 @@ from ..services.mail_service import EmailService
 import secrets
 from concurrent.futures import ThreadPoolExecutor
 from cachetools import TTLCache
+from .. import limiter
 
 bp = Blueprint("auth", __name__, url_prefix="/api/auth")
 cache = TTLCache(maxsize=30, ttl=180)
@@ -14,6 +15,7 @@ VERIFICATION_CODE_MAX = 999999
 general_msg = "If your email is available, a 6-digit code will be sent to your email. The code will expire in 3 minutes."
 
 @bp.route("/register", methods=["POST"])
+@limiter.limit("1 per 3 minute")
 def register():
     try:
         username = request.json["username"]
@@ -41,6 +43,7 @@ def register():
     return jsonify({"status": general_msg})
 
 @bp.route("/verify", methods=["POST"])
+@limiter.limit("1 per 3 minute")
 def verify():
     try:
         email = request.json["email"]
@@ -62,6 +65,7 @@ def verify():
     return jsonify({"status": "Failed to verify"}), 401
 
 @bp.route("/login", methods=["POST"])
+@limiter.limit("10 per minute")
 def login():
     try:
         username = request.json["username"]
@@ -70,13 +74,13 @@ def login():
         return jsonify({"status": "Missing required fields"}), 400
 
     if check_user(username=username, password=password):
-        response = make_response(redirect("/"))
-        token = sign_token({"username": username})
+        response = make_response({"status": "ok"})
         response.set_cookie("session", 
-                            value=token,
-                            secure=False,
-                            httponly=True,
-                            samesite="Lax")
+                            sign_token({"user": username}), 
+                            samesite = "Lax",
+                            max_age = 3600,
+                            secure = False
+                        )
         return response
 
     return jsonify({"status": "Invalid credentials"}), 401

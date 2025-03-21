@@ -1,10 +1,18 @@
 from flask import Flask
 from flask_cors import CORS
 from .global_config import app_config
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 
 app = Flask(__name__)
 app.config.from_object(app_config)
 CORS(app)
+
+limiter = Limiter(
+    key_func=get_remote_address, 
+    app=app,
+    default_limits=['100 per minute']
+)
 
 from .routes import auth, products, transactions, reputation, healthcheck
 app.register_blueprint(auth.bp)
