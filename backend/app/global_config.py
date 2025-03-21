@@ -6,8 +6,8 @@ jwt_config = {
 }
 
 mail_service_config = {
-    'email': 'foo',
-    'key': 'bar'
+    'email': '',
+    'key': ''
 }
 
 db_config = {

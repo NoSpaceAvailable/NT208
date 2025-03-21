@@ -85,6 +85,13 @@ def login():
 
     return jsonify({"status": "Invalid credentials"}), 401
 
+@bp.route("/check", methods=["GET"])
+def checkAuth():
+    token = request.cookies.get("session")
+    if token and verify_token(token):
+        return { "status": "ok" }
+    return { "status": "unauthorized" }, 401
+
 @bp.route("/logout", methods=["GET"])
 def logout():
     response = make_response(redirect("/"))
