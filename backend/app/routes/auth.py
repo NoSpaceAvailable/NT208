@@ -15,7 +15,7 @@ VERIFICATION_CODE_MAX = 999999
 general_msg = "If your email is available, a 6-digit code will be sent to your email. The code will expire in 3 minutes."
 
 @bp.route("/register", methods=["POST"])
-@limiter.limit("1 per 3 minute")
+@limiter.limit("5 per 3 minute")
 def register():
     try:
         username = request.json["username"]
@@ -43,7 +43,7 @@ def register():
     return jsonify({"status": general_msg})
 
 @bp.route("/verify", methods=["POST"])
-@limiter.limit("1 per 3 minute")
+@limiter.limit("5 per 3 minute")
 def verify():
     try:
         email = request.json["email"]
