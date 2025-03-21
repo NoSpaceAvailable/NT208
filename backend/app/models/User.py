@@ -2,15 +2,10 @@ from sqlalchemy import BigInteger, Boolean, Column, \
                         Date, DateTime, Enum, Float, ForeignKey, \
                         Integer, String, Text, Time, UniqueConstraint, func, and_, or_
 from sqlalchemy.orm import relationship
-from sqlalchemy.ext.declarative import declarative_base
-from .Database import Database
+from . import BaseModel
 import bcrypt
 
-db = Database()
-engine = db._engine
-Base = declarative_base()
-
-class User(Base):
+class User(BaseModel):
 
     __tablename__ = 'users'
 
@@ -37,7 +32,7 @@ class User(Base):
         return bcrypt.checkpw(password.encode('utf-8'), self.password_hash.encode('utf-8'))
 
     def __repr__(self):
-        return f"<User(id={self.id}, username='{self.username}', email='{self.email}', reputation={self.reputation})>"
-    
-User.__table__.drop(engine, checkfirst=True)    
-Base.metadata.create_all(engine)
+        return f"<User(id={self.id}, \
+            username='{self.username}', \
+            email='{self.email}', \
+            reputation={self.reputation})>"

@@ -1,5 +1,5 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
+import App from './App.vue';
 import NavBar from './components/NavBar.vue';
 import Footer from './components/Footer.vue';
 import GoogleAuth from '@/config/google_oAuth.js';
@@ -17,7 +17,8 @@ const footer = createApp(Footer);
 app.mount('#app')
 nav.mount('nav')
 footer.mount('footer')
+import router from './router/router';
 
-app.config.devtools = false;
-nav.config.devtools = false;
-footer.config.devtools = false;
+createApp(NavBar).mount('#nav');
+createApp(App).use(router).mount('#app');
+createApp(Footer).mount('#footer');

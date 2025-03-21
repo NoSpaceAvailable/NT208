@@ -1,7 +1,9 @@
 Flask
 Flask-SQLAlchemy
+Flask-Limiter
 SQLAlchemy-Utils
 flask-cors
 psycopg2-binary
 pyjwt
 bcrypt
+cachetools

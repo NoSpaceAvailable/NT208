@@ -5,6 +5,11 @@ jwt_config = {
     'JWT_ALG': os.getenv('JWT_ALG', 'HS256')
 }
 
+mail_service_config = {
+    'email': 'foo',
+    'key': 'bar'
+}
+
 db_config = {
     'pguser': os.getenv('DB_USER', 'root'),
     'pgpassword': os.getenv('DB_PASS', 'root'),
