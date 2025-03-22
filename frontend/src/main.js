@@ -11,7 +11,7 @@ const gauthOption = {
 }
 
 const app = createApp(App);
-app.use(GoogleAuth, gauthOption);
+// app.use(GoogleAuth, gauthOption);
 const nav = createApp(NavBar);  
 const footer = createApp(Footer);
 app.mount('#app')
