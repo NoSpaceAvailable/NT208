@@ -1,68 +1,100 @@
 <template>
-    <div id="carousel-example" class="relative w-full">
-        <!-- Carousel wrapper -->
-        <div class="relative h-56 overflow-hidden sm:h-64 xl:h-80 2xl:h-96">
-            <!-- Item 1 -->
-            <div id="carousel-item-1"
-                :class="['carousel-item', 'absolute', 'inset-0', 'w-full', 'h-full', { 'active': currentIndex === 0 }]">
-                <img src="@/images/banner1.png" class="w-full h-full object-cover" alt="banner1" />
+    <div style="display: contents">
+        <div id="carousel-example" class="relative w-full">
+            <!-- Carousel wrapper -->
+            <div class="relative h-56 overflow-hidden sm:h-64 xl:h-80 2xl:h-96">
+                <!-- Item 1 -->
+                <div id="carousel-item-1"
+                    :class="['carousel-item', 'absolute', 'inset-0', 'w-full', 'h-full', { 'active': currentIndex === 0 }]">
+                    <img src="@/images/banner1.png" class="w-full h-full object-cover" alt="banner1" />
+                </div>
+                <!-- Item 2 -->
+                <div id="carousel-item-2"
+                    :class="['carousel-item', 'absolute', 'inset-0', 'w-full', 'h-full', { 'active': currentIndex === 1 }]">
+                    <img src="@/images/banner2.png" class="w-full h-full object-cover" alt="banner2" />
+                </div>
+                <!-- Item 3 -->
+                <div id="carousel-item-3"
+                    :class="['carousel-item', 'absolute', 'inset-0', 'w-full', 'h-full', { 'active': currentIndex === 2 }]">
+                    <img src="@/images/banner3.png" class="w-full h-full object-cover" alt="banner3" />
+                </div>
+                <!-- Item 4 -->
+                <div id="carousel-item-4"
+                    :class="['carousel-item', 'absolute', 'inset-0', 'w-full', 'h-full', { 'active': currentIndex === 3 }]">
+                    <img src="@/images/banner4.png" class="w-full h-full object-cover" alt="banner4" />
+                </div>
             </div>
-            <!-- Item 2 -->
-            <div id="carousel-item-2"
-                :class="['carousel-item', 'absolute', 'inset-0', 'w-full', 'h-full', { 'active': currentIndex === 1 }]">
-                <img src="@/images/banner2.png" class="w-full h-full object-cover" alt="banner2" />
+            <!-- Slider indicators -->
+            <div class="absolute bottom-5 left-1/2 z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse">
+                <button id="carousel-indicator-1" type="button"
+                    :class="['h-3', 'w-3', 'rounded-full', { 'bg-white': currentIndex === 0, 'bg-white/50': currentIndex !== 0 }]"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button id="carousel-indicator-2" type="button"
+                    :class="['h-3', 'w-3', 'rounded-full', { 'bg-white': currentIndex === 1, 'bg-white/50': currentIndex !== 1 }]"
+                    aria-current="false" aria-label="Slide 2"></button>
+                <button id="carousel-indicator-3" type="button"
+                    :class="['h-3', 'w-3', 'rounded-full', { 'bg-white': currentIndex === 2, 'bg-white/50': currentIndex !== 2 }]"
+                    aria-current="false" aria-label="Slide 3"></button>
+                <button id="carousel-indicator-4" type="button"
+                    :class="['h-3', 'w-3', 'rounded-full', { 'bg-white': currentIndex === 3, 'bg-white/50': currentIndex !== 3 }]"
+                    aria-current="false" aria-label="Slide 4"></button>
             </div>
-            <!-- Item 3 -->
-            <div id="carousel-item-3"
-                :class="['carousel-item', 'absolute', 'inset-0', 'w-full', 'h-full', { 'active': currentIndex === 2 }]">
-                <img src="@/images/banner3.png" class="w-full h-full object-cover" alt="banner3" />
+            <!-- Slider controls -->
+            <button id="data-carousel-prev" type="button"
+                class="group absolute left-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none opacity-0 hover:opacity-100">
+                <span class="inline-flex h-10 w-10 items-center justify-center bg-transparent">
+                    <svg class="h-6 w-6 text-white dark:text-gray-400 hover:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5 1 1 5l4 4" />
+                    </svg>
+                    <span class="hidden">Previous</span>
+                </span>
+            </button>
+            <button id="data-carousel-next" type="button"
+                class="group absolute right-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none opacity-0 hover:opacity-100">
+                <span class="inline-flex h-10 w-10 items-center justify-center bg-transparent">
+                    <svg class="h-6 w-6 text-white dark:text-gray-400 hover:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 9 4-4-4-4" />
+                    </svg>
+                    <span class="hidden">Next</span>
+                </span>
+            </button>
+        </div>
+
+        <div class="flex flex-1 w-full h-full">
+            <!-- First child div with 20% width -->
+            <div class="flex-1 flex flex-col m-4" style="flex-basis: 20%;">
+                <div class="flex-1">banner 1</div>
+                <div class="flex-1">banner 2</div>
             </div>
-            <!-- Item 4 -->
-            <div id="carousel-item-4"
-                :class="['carousel-item', 'absolute', 'inset-0', 'w-full', 'h-full', { 'active': currentIndex === 3 }]">
-                <img src="@/images/banner4.png" class="w-full h-full object-cover" alt="banner4" />
+            <!-- Second child div with 80% width -->
+            <div class="flex-1 flex flex-col m-4" style="flex-basis: 80%;">
+                <div class="flex-1 flex m-4">
+                    <div class="flex-1">1</div>
+                    <div class="flex-1">2</div>
+                    <div class="flex-1">3</div>
+                    <div class="flex-1">4</div>
+                    <div class="flex-1">5</div>
+                </div>
+                <div class="flex-1 flex m-4">
+                    <div class="flex-1">1</div>
+                    <div class="flex-1">2</div>
+                    <div class="flex-1">3</div>
+                    <div class="flex-1">4</div>
+                    <div class="flex-1">5</div>
+                </div>
+                <div class="flex-1 flex m-4">
+                    <div class="flex-1">1</div>
+                    <div class="flex-1">2</div>
+                    <div class="flex-1">3</div>
+                    <div class="flex-1">4</div>
+                    <div class="flex-1">5</div>
+                </div>
             </div>
         </div>
-        <!-- Slider indicators -->
-        <div class="absolute bottom-5 left-1/2 z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse">
-            <button id="carousel-indicator-1" type="button"
-                :class="['h-3', 'w-3', 'rounded-full', { 'bg-white': currentIndex === 0, 'bg-white/50': currentIndex !== 0 }]"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button id="carousel-indicator-2" type="button"
-                :class="['h-3', 'w-3', 'rounded-full', { 'bg-white': currentIndex === 1, 'bg-white/50': currentIndex !== 1 }]"
-                aria-current="false" aria-label="Slide 2"></button>
-            <button id="carousel-indicator-3" type="button"
-                :class="['h-3', 'w-3', 'rounded-full', { 'bg-white': currentIndex === 2, 'bg-white/50': currentIndex !== 2 }]"
-                aria-current="false" aria-label="Slide 3"></button>
-            <button id="carousel-indicator-4" type="button"
-                :class="['h-3', 'w-3', 'rounded-full', { 'bg-white': currentIndex === 3, 'bg-white/50': currentIndex !== 3 }]"
-                aria-current="false" aria-label="Slide 4"></button>
-        </div>
-        <!-- Slider controls -->
-        <button id="data-carousel-prev" type="button"
-            class="group absolute left-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none opacity-0 hover:opacity-100">
-            <span
-                class="inline-flex h-10 w-10 items-center justify-center bg-transparent">
-                <svg class="h-6 w-6 text-white dark:text-gray-400 hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                    fill="none" viewBox="0 0 6 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M5 1 1 5l4 4" />
-                </svg>
-                <span class="hidden">Previous</span>
-            </span>
-        </button>
-        <button id="data-carousel-next" type="button"
-            class="group absolute right-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none opacity-0 hover:opacity-100">
-            <span
-                class="inline-flex h-10 w-10 items-center justify-center bg-transparent">
-                <svg class="h-6 w-6 text-white dark:text-gray-400 hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                    fill="none" viewBox="0 0 6 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="m1 9 4-4-4-4" />
-                </svg>
-                <span class="hidden">Next</span>
-            </span>
-        </button>
     </div>
 </template>
 
