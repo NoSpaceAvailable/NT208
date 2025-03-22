@@ -84,7 +84,7 @@ export default {
         },
         {
           text: "Community",
-          url: "#",
+          url: "/community",
           title: "Community page",
           banner: "where users can view rate of each trader"
         },
@@ -94,13 +94,13 @@ export default {
         },
         {
           text: "About us",
-          url: "#",
+          url: "/about",
           title: "about page",
           banner: "this is where the developer of this fking app can say something about them"
         },
         {
           text: "Support",
-          url: "#",
+          url: "/support",
           title: "Support page",
           banner: "get support from AI agent"
         }
@@ -119,8 +119,8 @@ export default {
       ],
       DropdownItems: {
         Marketplace: [
-          { label: "Merchandise", url: "#" },
-          { label: "Sell my items", url: "#" }
+          { label: "Merchandise", url: "/merchandise" },
+          { label: "Sell my items", url: "/sell" }
         ],
         Account: [
           { label: "Profile", url: "#" },
