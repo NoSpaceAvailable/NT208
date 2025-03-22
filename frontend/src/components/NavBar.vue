@@ -1,61 +1,67 @@
 <template>
-  <div class="sticky mx-auto flex justify-between items-center p-4 bg-gray-100 shadow-md">
+  <div class="sticky mx-auto flex justify-between items-center p-4 bg-[#262423] shadow-md">
     <!-- Logo -->
-    <a class="text-xl font-bold" href="#">Almacenar</a>
+    <a class="text-xl font-bold text-[#f6f6f6]" href="/">Almacenar</a>
 
-    <!-- Left Links -->
-    <ul v-if="isAuthPage" class="flex space-x-4">
-      <li>
-        <a class="text-gray-700 hover:text-gray-900" href="/" title="Back to home page">
-          Back to home
-        </a>
-      </li>
-    </ul>
-
-    <ul v-else class="flex space-x-4">
-      <li v-for="(link, index) in links" :key="index" class="relative">
-        <!-- Dropdown for Marketplace -->
-        <div v-if="link.text === 'Marketplace'" class="relative">
-          <a class="text-gray-700 hover:text-gray-900 cursor-pointer" @click="toggleDropdown('marketplace')">
+    <!-- Center Links -->
+    <div class="flex-grow flex justify-center">
+      <ul class="flex space-x-4">
+        <li v-for="(link, index) in links" :key="index" class="relative">
+          <!-- Dropdown for Marketplace -->
+          <div v-if="link.text === 'Marketplace'" class="relative">
+            <a class="text-[#f6f6f6] hover:text-[#8FC773] cursor-pointer" @click="toggleDropdown('marketplace')">
+              {{ link.text }}
+            </a>
+            <ul v-if="activeDropdown === 'marketplace'" class="absolute bg-[#171615] shadow-lg mt-2 w-40">
+              <li v-for="(item, idx) in DropdownItems.Marketplace" :key="idx">
+                <a class="block px-4 py-2 bg-[#171615] text-[#f6f6f6] hover:text-[#8FC773]" href="#">{{ item.label }}</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Regular links for other items -->
+          <a v-else class="text-[#f6f6f6] hover:text-[#8FC773]" :href="link.url" :title="`${link.text} page`"
+            @click.prevent="handleOnclickEvent(link)">
             {{ link.text }}
           </a>
-          <ul v-if="activeDropdown === 'marketplace'" class="absolute bg-white shadow-lg mt-2 w-40">
-            <li v-for="(item, idx) in DropdownItems.Marketplace" :key="idx">
-              <a class="block px-4 py-2 text-gray-700 hover:bg-gray-200" href="#">{{ item.label }}</a>
-            </li>
-          </ul>
-        </div>
-        <!-- Regular links for other items -->
-        <a v-else class="text-gray-700 hover:text-gray-900" :href="link.url" :title="`${link.text} page`"
-          @click.prevent="handleOnclickEvent(link)">
-          {{ link.text }}
-        </a>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </div>
 
     <!-- Right Links -->
-    <ul v-if="isAuthPage" class="flex space-x-4"></ul>
-
-    <ul v-else class="flex space-x-4">
-      <li v-for="(link, index) in linksRight" :key="index" class="relative">
-        <!-- Dropdown for My account -->
-        <div v-if="link.text === 'My account'" class="relative">
-          <a class="text-gray-700 hover:text-gray-900 cursor-pointer" @click="toggleDropdown('account')">
+    <div>
+      <ul class="flex space-x-4 pl-4">
+        <li v-for="(link, index) in linksRight" :key="index" class="relative">
+          <!-- Dropdown for My account -->
+          <div v-if="link.text === 'My account'" class="relative">
+            <a class="text-[#f6f6f6] hover:text-[#8FC773] cursor-pointer" @click="toggleDropdown('account')">
+              {{ link.text }}
+            </a>
+            <ul v-if="activeDropdown === 'account'" class="absolute bg-white shadow-lg mt-2 w-40 right-0">
+              <!-- Display login/register for unauthenticated users -->
+              <template v-if="!isAuthenticated">
+                <li>
+                  <a class="block px-4 py-2 bg-[#171615] text-[#f6f6f6] hover:text-[#8FC773]" href="/auth#login">Login</a>
+                </li>
+                <li>
+                  <a class="block px-4 py-2 bg-[#171615] text-[#f6f6f6] hover:text-[#8FC773]" href="/auth#register">Register</a>
+                </li>
+              </template>
+              <!-- Display account options for authenticated users -->
+              <template v-else>
+                <li v-for="(item, idx) in DropdownItems.Account" :key="idx">
+                  <a class="block px-4 py-2 bg-[#171615] text-[#f6f6f6] hover:text-[#8FC773]" href="#">{{ item.label }}</a>
+                </li>
+              </template>
+            </ul>
+          </div>
+          <!-- Regular links for other items -->
+          <a v-else class="text-[#f6f6f6] hover:text-[#8FC773]" :href="link.url" :title="`${link.text} page`"
+            @click.prevent="handleOnclickEvent(link)">
             {{ link.text }}
           </a>
-          <ul v-if="activeDropdown === 'account'" class="absolute bg-white shadow-lg mt-2 w-40 right-0">
-            <li v-for="(item, idx) in DropdownItems.Account" :key="idx">
-              <a class="block px-4 py-2 text-gray-700 hover:bg-gray-200" href="#">{{ item.label }}</a>
-            </li>
-          </ul>
-        </div>
-        <!-- Regular links for other items -->
-        <a v-else class="text-gray-700 hover:text-gray-900" :href="link.url" :title="`${link.text} page`"
-          @click.prevent="handleOnclickEvent(link)">
-          {{ link.text }}
-        </a>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -116,7 +122,8 @@ export default {
           { label: "Transaction history" }
         ]
       },
-      activeDropdown: null // Tracks which dropdown is active
+      activeDropdown: null, // Tracks which dropdown is active
+      isAuthenticated: false
     };
   },
   computed: {
@@ -143,7 +150,22 @@ export default {
         this.activeDropdown = null;
         document.removeEventListener("click", this.closeDropdown);
       }
+    },
+    async checkAuthStatus() {
+      try {
+        const response = await fetch("/api/auth/check", {
+          method: "GET",
+          credentials: "include" // Include cookies in the request
+        });
+        const data = await response.json();
+        this.isAuthenticated = data.status === "ok";
+      } catch (error) {
+        console.error("Error checking authentication status:", error);
+      }
     }
+  },
+  async created() {
+    await this.checkAuthStatus(); // Check authentication status when the component is created
   },
   beforeDestroy() {
     document.removeEventListener("click", this.closeDropdown);

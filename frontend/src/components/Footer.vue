@@ -46,10 +46,10 @@
 </template>
 
 <script>
+import IconInstagram from './icons/IconInstagram.vue';
 import IconFacebook from './icons/IconFacebook.vue';
 import IconDiscord from './icons/IconDiscord.vue';
 import IconTiktok from './icons/IconTiktok.vue';
-import IconInstagram from './icons/IconInstagram.vue';
 import IconX from './icons/IconX.vue';
 
 export default {
