@@ -1,7 +1,6 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router/router';
-import vue3GoogleLogin from 'vue3-google-login';
 import NavBar from './components/NavBar.vue';
 import Footer from './components/Footer.vue';
 import vue3GoogleLogin from 'vue3-google-login';
