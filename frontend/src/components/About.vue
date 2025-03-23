@@ -1,5 +1,7 @@
 <template>
     <div style="display: contents">
-        About
+        <div class="flex flex-grow items-center justify-center relative z-10">
+            About us
+        </div>
     </div>
 </template>

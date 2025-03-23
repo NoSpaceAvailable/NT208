@@ -9,13 +9,17 @@ class User(BaseModel):
 
     __tablename__ = 'users'
 
+    auth_methods = ['email', 'google']
+
     id = Column(Integer, primary_key=True, autoincrement=True)
+    auth_method = Column(String(32), nullable=False)
     username = Column(String(32), unique=True, nullable=False)
     email = Column(String(128), unique=True, nullable=False)
     password_hash = Column(String(128), nullable=False)
     reputation = Column(Integer, default=0)
 
-    def __init__(self, username, email, password, reputation=0):
+    def __init__(self, username, email, password, auth_method = auth_methods[0], reputation=0):
+        self.auth_method = auth_method
         self.username = username
         self.email = email
         self.set_password(password)

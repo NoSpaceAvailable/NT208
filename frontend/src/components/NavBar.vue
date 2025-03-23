@@ -125,7 +125,8 @@ export default {
         Account: [
           { label: "Profile", url: "#" },
           { label: "Notification", url: "#" },
-          { label: "Transaction history", url: "#" }
+          { label: "Transaction history", url: "#" },
+          { label: "Logout", url: "/api/auth/logout" }
         ]
       },
       activeDropdown: null, // Tracks which dropdown is active

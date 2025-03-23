@@ -1,5 +1,7 @@
 <template>
     <div style="display: contents">
-        Support
+        <div class="flex flex-grow items-center justify-center relative z-10">
+            Support
+        </div>
     </div>
 </template>
