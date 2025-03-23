@@ -62,6 +62,13 @@
         {{ isRegisterPage ? 'Register' : 'Login' }}
       </button>
 
+      <!-- Login with Google button -->
+      <div id="google-login">
+        <GoogleLogin :callback="googleLoginCallback"
+        class="w-full px-4 py-2 bg-red-600 text-white rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 disabled:opacity-50 disabled:cursor-not-allowed" 
+        prompt auto-login/>
+      </div>
+
       <!-- Toggle Between Login and Register -->
       <p class="text-center text-sm text-gray-600">
         <span v-if="isRegisterPage">Already have an account? </span>
@@ -89,11 +96,15 @@
 </template>
 
 <script>
+import { GoogleLogin, decodeCredential } from 'vue3-google-login';
 import VerifyPage from './VerifyPage.vue';
 
 export default {
   name: 'AuthPage',
-  components: { VerifyPage },
+  components: { 
+    VerifyPage,
+    GoogleLogin
+  },
   data() {
     return {
       formData: {
@@ -114,6 +125,14 @@ export default {
     }
   },
   methods: {
+    googleLoginCallback(response) {
+      console.log("Google login response:", response);
+      const profile = decodeCredential(response.credential);
+      console.log("Google profile:", profile);
+      // Save profile to local storage
+      localStorage.setItem('user', JSON.stringify(profile));
+      this.$router.push('/');
+    },
     async submitForm() {
       if (this.isRegisterPage && this.passwordMismatch) {
         alert('Passwords do not match!');
