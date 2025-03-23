@@ -7,11 +7,6 @@
 
 <script>
 export default {
-    data() {
-        return {
-            title: "lqc's game shop",
-            banner: "A place where gamers can buy and sell their best items!"
-        };
-    }
+
 };
 </script>

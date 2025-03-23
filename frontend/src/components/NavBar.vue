@@ -12,15 +12,17 @@
             <a class="text-[#f6f6f6] hover:text-[#8FC773] cursor-pointer" @click="toggleDropdown('marketplace')">
               {{ link.text }}
             </a>
-            <ul v-if="activeDropdown === 'marketplace'" class="absolute bg-[#171615] shadow-lg mt-2 w-40">
+            <ul v-if="activeDropdown === 'marketplace'" class="absolute bg-[#171615] shadow-lg mt-2 w-40"
+              @click="handleDropdownClick">
               <li v-for="(item, idx) in DropdownItems.Marketplace" :key="idx">
-                <a class="block px-4 py-2 bg-[#171615] text-[#f6f6f6] hover:text-[#8FC773]" href="#">{{ item.label }}</a>
+                <a class="block px-4 py-2 bg-[#171615] text-[#f6f6f6] hover:text-[#8FC773]" :href="item.url">{{
+                  item.label }}</a>
               </li>
             </ul>
           </div>
           <!-- Regular links for other items -->
           <a v-else class="text-[#f6f6f6] hover:text-[#8FC773]" :href="link.url" :title="`${link.text} page`"
-            @click.prevent="handleOnclickEvent(link)">
+            @click="handleOnclickEvent(link)">
             {{ link.text }}
           </a>
         </li>
@@ -36,27 +38,31 @@
             <a class="text-[#f6f6f6] hover:text-[#8FC773] cursor-pointer" @click="toggleDropdown('account')">
               {{ link.text }}
             </a>
-            <ul v-if="activeDropdown === 'account'" class="absolute bg-white shadow-lg mt-2 w-40 right-0">
+            <ul v-if="activeDropdown === 'account'" class="absolute bg-white shadow-lg mt-2 w-40 right-0"
+              @click="handleDropdownClick">
               <!-- Display login/register for unauthenticated users -->
               <template v-if="!isAuthenticated">
                 <li>
-                  <a class="block px-4 py-2 bg-[#171615] text-[#f6f6f6] hover:text-[#8FC773]" href="/auth#login">Login</a>
+                  <a class="block px-4 py-2 bg-[#171615] text-[#f6f6f6] hover:text-[#8FC773]"
+                    href="/auth#login">Login</a>
                 </li>
                 <li>
-                  <a class="block px-4 py-2 bg-[#171615] text-[#f6f6f6] hover:text-[#8FC773]" href="/auth#register">Register</a>
+                  <a class="block px-4 py-2 bg-[#171615] text-[#f6f6f6] hover:text-[#8FC773]"
+                    href="/auth#register">Register</a>
                 </li>
               </template>
               <!-- Display account options for authenticated users -->
               <template v-else>
                 <li v-for="(item, idx) in DropdownItems.Account" :key="idx">
-                  <a class="block px-4 py-2 bg-[#171615] text-[#f6f6f6] hover:text-[#8FC773]" href="#">{{ item.label }}</a>
+                  <a class="block px-4 py-2 bg-[#171615] text-[#f6f6f6] hover:text-[#8FC773]" href="#">{{ item.label
+                  }}</a>
                 </li>
               </template>
             </ul>
           </div>
           <!-- Regular links for other items -->
           <a v-else class="text-[#f6f6f6] hover:text-[#8FC773]" :href="link.url" :title="`${link.text} page`"
-            @click.prevent="handleOnclickEvent(link)">
+            @click="handleOnclickEvent(link)">
             {{ link.text }}
           </a>
         </li>
@@ -72,13 +78,13 @@ export default {
       links: [
         {
           text: "Home",
-          url: "#",
+          url: "/",
           title: "lqc's game shop",
           banner: "A place where gamers can buy and sell their best items!"
         },
         {
           text: "Community",
-          url: "#",
+          url: "/community",
           title: "Community page",
           banner: "where users can view rate of each trader"
         },
@@ -88,13 +94,13 @@ export default {
         },
         {
           text: "About us",
-          url: "#",
+          url: "/about",
           title: "about page",
           banner: "this is where the developer of this fking app can say something about them"
         },
         {
           text: "Support",
-          url: "#",
+          url: "/support",
           title: "Support page",
           banner: "get support from AI agent"
         }
@@ -113,13 +119,13 @@ export default {
       ],
       DropdownItems: {
         Marketplace: [
-          { label: "Merchandise" },
-          { label: "Sell my items" }
+          { label: "Merchandise", url: "/merchandise" },
+          { label: "Sell my items", url: "/sell" }
         ],
         Account: [
-          { label: "Profile" },
-          { label: "Notification" },
-          { label: "Transaction history" }
+          { label: "Profile", url: "#" },
+          { label: "Notification", url: "#" },
+          { label: "Transaction history", url: "#" }
         ]
       },
       activeDropdown: null, // Tracks which dropdown is active
@@ -133,8 +139,7 @@ export default {
   },
   methods: {
     handleOnclickEvent(link) {
-      document.getElementById("title").innerText = link.title;
-      document.getElementById("banner").innerText = link.banner;
+      window.location.href = link.url;
     },
     toggleDropdown(dropdown) {
       // Toggle the dropdown
@@ -151,11 +156,15 @@ export default {
         document.removeEventListener("click", this.closeDropdown);
       }
     },
+    handleDropdownClick(event) {
+      // Stop event propagation to prevent the dropdown from closing
+      event.stopPropagation();
+    },
     async checkAuthStatus() {
       try {
         const response = await fetch("/api/auth/check", {
           method: "GET",
-          credentials: "include" // Include cookies in the request
+          credentials: "include"
         });
         const data = await response.json();
         this.isAuthenticated = data.status === "ok";
