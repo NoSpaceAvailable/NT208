@@ -1,5 +1,7 @@
 <template>
     <div style="display: contents">
-        Community
+        <div class="flex flex-grow items-center justify-center relative z-10">
+            Community
+        </div>
     </div>
 </template>

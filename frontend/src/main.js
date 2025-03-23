@@ -4,6 +4,7 @@ import router from './router/router';
 import vue3GoogleLogin from 'vue3-google-login';
 import NavBar from './components/NavBar.vue';
 import Footer from './components/Footer.vue';
+import vue3GoogleLogin from 'vue3-google-login';
 
 const gauthOption = {
   clientId: '718649155809-pvn7nnt5m98em3h2svvgidkvteh6pkik.apps.googleusercontent.com',

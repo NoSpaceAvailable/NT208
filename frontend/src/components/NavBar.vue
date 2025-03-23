@@ -3,8 +3,17 @@
     <!-- Logo -->
     <a class="text-xl font-bold text-[#f6f6f6]" href="/">Almacenar</a>
 
+    <!-- Hamburger Icon for Mobile -->
+    <div class="md:hidden">
+      <button @click="toggleMobileMenu" class="text-[#f6f6f6] focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+
     <!-- Center Links -->
-    <div class="flex-grow flex justify-center">
+    <div class="hidden md:flex md:flex-grow md:justify-center">
       <ul class="flex space-x-4">
         <li v-for="(link, index) in links" :key="index" class="relative">
           <!-- Dropdown for Marketplace -->
@@ -30,7 +39,7 @@
     </div>
 
     <!-- Right Links -->
-    <div>
+    <div class="hidden md:flex">
       <ul class="flex space-x-4 pl-4">
         <li v-for="(link, index) in linksRight" :key="index" class="relative">
           <!-- Dropdown for My account -->
@@ -39,6 +48,66 @@
               {{ link.text }}
             </a>
             <ul v-if="activeDropdown === 'account'" class="absolute bg-white shadow-lg mt-2 w-40 right-0"
+              @click="handleDropdownClick">
+              <!-- Display login/register for unauthenticated users -->
+              <template v-if="!isAuthenticated">
+                <li>
+                  <a class="block px-4 py-2 bg-[#171615] text-[#f6f6f6] hover:text-[#8FC773]"
+                    href="/auth#login">Login</a>
+                </li>
+                <li>
+                  <a class="block px-4 py-2 bg-[#171615] text-[#f6f6f6] hover:text-[#8FC773]"
+                    href="/auth#register">Register</a>
+                </li>
+              </template>
+              <!-- Display account options for authenticated users -->
+              <template v-else>
+                <li v-for="(item, idx) in DropdownItems.Account" :key="idx">
+                  <a class="block px-4 py-2 bg-[#171615] text-[#f6f6f6] hover:text-[#8FC773]" href="#">{{ item.label
+                  }}</a>
+                </li>
+              </template>
+            </ul>
+          </div>
+          <!-- Regular links for other items -->
+          <a v-else class="text-[#f6f6f6] hover:text-[#8FC773]" :href="link.url" :title="`${link.text} page`"
+            @click="handleOnclickEvent(link)">
+            {{ link.text }}
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div v-if="isMobileMenuOpen" class="md:hidden absolute top-16 right-0 bg-[#262423] w-full shadow-md">
+      <ul class="flex flex-col space-y-4 p-4">
+        <li v-for="(link, index) in links" :key="index" class="relative">
+          <!-- Dropdown for Marketplace -->
+          <div v-if="link.text === 'Marketplace'" class="relative">
+            <a class="text-[#f6f6f6] hover:text-[#8FC773] cursor-pointer" @click="toggleDropdown('marketplace')">
+              {{ link.text }}
+            </a>
+            <ul v-if="activeDropdown === 'marketplace'" class="bg-[#171615] shadow-lg mt-2 w-40"
+              @click="handleDropdownClick">
+              <li v-for="(item, idx) in DropdownItems.Marketplace" :key="idx">
+                <a class="block px-4 py-2 bg-[#171615] text-[#f6f6f6] hover:text-[#8FC773]" :href="item.url">{{
+                  item.label }}</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Regular links for other items -->
+          <a v-else class="text-[#f6f6f6] hover:text-[#8FC773]" :href="link.url" :title="`${link.text} page`"
+            @click="handleOnclickEvent(link)">
+            {{ link.text }}
+          </a>
+        </li>
+        <li v-for="(link, index) in linksRight" :key="index" class="relative">
+          <!-- Dropdown for My account -->
+          <div v-if="link.text === 'My account'" class="relative">
+            <a class="text-[#f6f6f6] hover:text-[#8FC773] cursor-pointer" @click="toggleDropdown('account')">
+              {{ link.text }}
+            </a>
+            <ul v-if="activeDropdown === 'account'" class="bg-white shadow-lg mt-2 w-40 right-0"
               @click="handleDropdownClick">
               <!-- Display login/register for unauthenticated users -->
               <template v-if="!isAuthenticated">
@@ -125,11 +194,13 @@ export default {
         Account: [
           { label: "Profile", url: "#" },
           { label: "Notification", url: "#" },
-          { label: "Transaction history", url: "#" }
+          { label: "Transaction history", url: "#" },
+          { label: "Logout", url: "/api/auth/logout" }
         ]
       },
       activeDropdown: null, // Tracks which dropdown is active
-      isAuthenticated: false
+      isAuthenticated: false,
+      isMobileMenuOpen: false // Tracks if the mobile menu is open
     };
   },
   computed: {
@@ -171,6 +242,9 @@ export default {
       } catch (error) {
         console.error("Error checking authentication status:", error);
       }
+    },
+    toggleMobileMenu() {
+      this.isMobileMenuOpen = !this.isMobileMenuOpen;
     }
   },
   async created() {
@@ -181,3 +255,17 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+/* Hide mobile menu by default on larger screens */
+@media (min-width: 768px) {
+  .md\\:hidden {
+    display: none;
+  }
+}
+
+/* Show mobile menu when isMobileMenuOpen is true */
+.absolute {
+  display: block;
+}
+</style>

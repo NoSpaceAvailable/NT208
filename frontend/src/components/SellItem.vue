@@ -1,5 +1,7 @@
 <template>
     <div style="display: contents">
-        Sell my item
+        <div class="flex flex-grow items-center justify-center relative z-10">
+            Sell your items
+        </div>
     </div>
 </template>
