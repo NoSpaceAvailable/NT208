@@ -2,19 +2,23 @@ version: '3.8'
 services:
   frontend:
     build: ./frontend
-    ports:
-      - "8088:80"
     depends_on:
       - backend
+    networks:
+      - shop
 
   backend:
     build: ./backend
-    ports:
-      - "5000:5000"
     environment:
-      - DATABASE_URL=postgresql://root:root@db:5432/shop
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASS=root
+      - DB_NAME=shop
+      - DB_PORT=5432
     depends_on:
       - db
+    networks:
+      - shop
 
   db:
     image: postgres:13
@@ -24,12 +28,19 @@ services:
       - POSTGRES_DB=shop
     volumes:
       - ./db/data:/var/lib/postgresql/data
-      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - shop
 
   nginx:
     build: ./nginx
     ports:
-      - "80:80"
+      - "8088:80" 
     depends_on:
       - frontend
       - backend
+    networks:
+      - shop
+
+networks:
+  shop:
+    driver: bridge
