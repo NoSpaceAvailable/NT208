@@ -150,14 +150,10 @@
             <div v-if="showChat"
                 class="fixed bottom-16 right-4 z-50 bg-[#111111] rounded-xl shadow-lg w-80 h-96 flex flex-col">
                 <div class="bg-[#111111]/90 text-[#8FC773] px-4 py-2 rounded-t-xl flex justify-between items-center">
-                    <span class="font-bold text-lg">ChatBot</span>
+                    <span class="font-bold text-lg">Online support</span>
                     <button @click="closeChat" class="text-[#8FC773] font-bold text-xl">X</button>
                 </div>
-                <div class="flex-1 p-4 overflow-y-auto">
-                    <!-- Chat Messages -->
-                    <p class="text-gray-300 text-sm">Hello! How can I help you today?</p>
-                </div>
-                <div class="flex-1 p-4 overflow-y-auto">
+                <div id="chatbox" class="flex-1 p-4 overflow-y-auto">
                     <!-- Chat Messages -->
                     <div v-for="(msg, index) in messages" :key="index" class="mb-4">
                         <!-- User Message -->
@@ -195,12 +191,12 @@
 
 <script>
 export default {
-    name: "HelpCenterPage",
+    name: "SupportPage",
     data() {
         return {
             showChat: false,
             message: "",
-            messages: [] // Array to store chat messages
+            messages: []
         };
     },
     methods: {
@@ -213,10 +209,23 @@ export default {
         sendMessage() {
             if (this.message.trim() !== "") {
                 this.messages.push({ sender: "user", text: this.message.trim() });
-                this.messages.push({ sender: "bot", text: "I don't know" });
+                this.$nextTick(() => {
+                    const chatbox = document.getElementById("chatbox");
+                    chatbox.scrollTop = chatbox.scrollHeight;
+                });
+                setTimeout(() => {
+                    this.messages.push({ sender: "bot", text: "I don't know" });
+                    this.$nextTick(() => {
+                        const chatbox = document.getElementById("chatbox");
+                        chatbox.scrollTop = chatbox.scrollHeight;
+                    });
+                }, 1000);
                 this.message = "";
             }
         }
+    },
+    mounted() {
+        this.messages.push({ sender: "bot", text: "Hello! How can I help you today?" });
     }
 };
 </script>
