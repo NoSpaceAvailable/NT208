@@ -1,4 +1,4 @@
-import jwt
+from sqlalchemy import or_
 import os
 import random
 from .. models.User import User
@@ -25,5 +25,5 @@ def check_user(username, password):
     return False
     
 def user_exist(username, email):
-    return session.query(User).filter(User.username == username, User.email == email).all()
+    return session.query(User).filter(or_(User.username == username, User.email == email)).all()
 

@@ -123,15 +123,17 @@
               <!-- Display account options for authenticated users -->
               <template v-else>
                 <li v-for="(item, idx) in DropdownItems.Account" :key="idx">
-                  <a class="block px-4 py-2 bg-[#171615] text-[#f6f6f6] hover:text-[#8FC773]" href="#">{{ item.label
-                  }}</a>
+                  <a class="block px-4 py-2 bg-[#171615] text-[#f6f6f6] hover:text-[#8FC773]" 
+                  :href="item.url"
+                  @click.prevent="handleOnclickEvent(item)">
+                  {{ item.label }}</a>
                 </li>
               </template>
             </ul>
           </div>
           <!-- Regular links for other items -->
           <a v-else class="text-[#f6f6f6] hover:text-[#8FC773]" :href="link.url" :title="`${link.text} page`"
-            @click="handleOnclickEvent(link)">
+            @click.prevent="handleOnclickEvent(link)">
             {{ link.text }}
           </a>
         </li>

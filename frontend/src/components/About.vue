@@ -46,7 +46,7 @@
 
                 <div class="mt-6 text-center">
                     <a href="/"
-                        class="bg-[#8FC773] text-[#f6f6f6] px-6 py-2 rounded-lg font-medium hover:bg-[#f6f6f6] hover:text-[#8FC773]">
+                        class="bg-[#8FC773] text-[#000000] px-6 py-2 rounded-lg font-medium hover:bg-[#8FC773] hover:text-[#ffffff]">
                         Start shopping now!
                     </a>
                 </div>

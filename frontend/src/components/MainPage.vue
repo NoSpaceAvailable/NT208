@@ -63,35 +63,59 @@
                 </span>
             </button>
         </div>
+        <!-- Main Content Section -->
+        <div class="flex flex-1 w-full h-full bg-[url(/src/images/navi.png)] bg-cover bg-center">
+            <!-- News Section (20% width) -->
+            <div class="flex-1 flex flex-col m-8" style="flex-basis: 20%;">
+                <!-- News Header -->
+                <div class="text-center mb-6">
+                    <h1 class="text-3xl font-bold text-[#8FC773]">Latest news</h1>
+                    <p class="text-[#8FC773]">Stay updated with the most recent CS:GO news and updates.</p>
+                </div>
 
-        <div class="flex flex-1 w-full h-full">
-            <!-- First child div with 20% width -->
-            <div class="flex-1 flex flex-col m-4" style="flex-basis: 20%;">
-                <div class="flex-1">banner 1</div>
-                <div class="flex-1">banner 2</div>
+                <!-- News Cards -->
+                <div class="flex-1 space-y-6">
+                    <div
+                        class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                        <a href="https://www.counter-strike.net/newsentry/529833471389991079" target="_blank">
+                            <img src="@/images/news1.jpg" class="w-full h-48 object-cover" alt="news1" />
+                            <div class="p-4">
+                                <h2 class="text-xl font-semibold mb-2">Champions of Shanghai</h2>
+                                <p class="text-gray-600">The Perfect World Shanghai Grand Final was one to remember.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div
+                        class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                        <a href="https://www.counter-strike.net/newsentry/520830071182721028" target="_blank">
+                            <img src="@/images/news2.png" class="w-full h-48 object-cover" alt="news2" />
+                            <div class="p-4">
+                                <h2 class="text-xl font-semibold mb-2">Season's Greetings</h2>
+                                <p class="text-gray-600">Welcome to Premier Season Two.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <!-- Second child div with 80% width -->
+
+            <!-- Items Section (80% width) -->
             <div class="flex-1 flex flex-col m-4" style="flex-basis: 80%;">
-                <div class="flex-1 flex m-4">
-                    <div class="flex-1">1</div>
-                    <div class="flex-1">2</div>
-                    <div class="flex-1">3</div>
-                    <div class="flex-1">4</div>
-                    <div class="flex-1">5</div>
-                </div>
-                <div class="flex-1 flex m-4">
-                    <div class="flex-1">1</div>
-                    <div class="flex-1">2</div>
-                    <div class="flex-1">3</div>
-                    <div class="flex-1">4</div>
-                    <div class="flex-1">5</div>
-                </div>
-                <div class="flex-1 flex m-4">
-                    <div class="flex-1">1</div>
-                    <div class="flex-1">2</div>
-                    <div class="flex-1">3</div>
-                    <div class="flex-1">4</div>
-                    <div class="flex-1">5</div>
+                <!-- Items Grid -->
+                <div class="grid grid-cols-5 m-1">
+                    <!-- Item Cards -->
+                    <div v-for="(item, index) in items" :key="index"
+                        class="mr-1 mb-8 bg-[#000000] rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 opacity-90">
+                        <img :src="item.image" class="w-full h-42 object-cover p-6" :alt="item.name" />
+                        <div class="p-4">
+                            <h2 class="text-xl font-semibold mb-2 text-[#8FC773]">{{ item.name }}</h2>
+                            <p class="text-[#8FC773]">{{ item.description }}</p>
+                            <p class="text-lg font-bold mt-2 text-[#8FC773]">${{ item.price }}</p>
+                            <button
+                                class="mt-4 w-full text-[#f6f6f6] hover:text-[#8FC773] bg-[#313131] py-2 rounded-lg transition-colors duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -105,6 +129,68 @@ export default {
         return {
             currentIndex: 0,
             totalItems: 4, // Number of carousel items
+            items: [
+                {
+                    image: "/src/images/items/gun_14.webp",
+                    name: "Gun 14",
+                    description: "A powerful and reliable weapon.",
+                    price: 299.99
+                },
+                {
+                    image: "/src/images/items/gun_15.webp",
+                    name: "Gun 15",
+                    description: "Perfect for close-range combat.",
+                    price: 349.99
+                },
+                {
+                    image: "/src/images/items/gun_16.webp",
+                    name: "Gun 16",
+                    description: "High precision and accuracy.",
+                    price: 399.99
+                },
+                {
+                    image: "/src/images/items/gun_17.webp",
+                    name: "Gun 17",
+                    description: "Lightweight and easy to handle.",
+                    price: 249.99
+                },
+                {
+                    image: "/src/images/items/gun_18.webp",
+                    name: "Gun 18",
+                    description: "Ideal for long-range engagements.",
+                    price: 449.99
+                },
+                {
+                    image: "/src/images/items/knife_gloves_65.webp",
+                    name: "Knife Gloves 65",
+                    description: "Stylish and deadly. Suite for ADP",
+                    price: 199.99
+                },
+                {
+                    image: "/src/images/items/knife_gloves_67.webp",
+                    name: "Knife Gloves 67",
+                    description: "Durable and comfortable.",
+                    price: 179.99
+                },
+                {
+                    image: "/src/images/items/knife_gloves_68.webp",
+                    name: "Knife Gloves 68",
+                    description: "Perfect for stealth missions.",
+                    price: 219.99
+                },
+                {
+                    image: "/src/images/items/knife_gloves_69.webp",
+                    name: "Knife Gloves 69",
+                    description: "Enhanced grip and control.",
+                    price: 239.99
+                },
+                {
+                    image: "/src/images/items/knife_gloves_70.webp",
+                    name: "Knife Gloves 70",
+                    description: "Premium design and quality.",
+                    price: 259.99
+                }
+            ]
         };
     },
     mounted() {
@@ -158,5 +244,11 @@ export default {
 
 .carousel-item.active {
     opacity: 1;
+}
+
+/* Card Hover Effect */
+.bg-white:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
 }
 </style>

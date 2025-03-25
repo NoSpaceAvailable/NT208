@@ -206,6 +206,22 @@ export default {
         closeChat() {
             this.showChat = false;
         },
+        async ask_bot(message) {
+            const response = await fetch("/api/bot/ask", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ question: message })
+            });
+            if (!response.ok) {
+                return {
+                    "status": "error", 
+                    "bot_answer": "Sorry, I am unable to process your request at the moment."
+                };
+            }
+            return response.json();
+        },
         sendMessage() {
             if (this.message.trim() !== "") {
                 this.messages.push({ sender: "user", text: this.message.trim() });
@@ -213,13 +229,14 @@ export default {
                     const chatbox = document.getElementById("chatbox");
                     chatbox.scrollTop = chatbox.scrollHeight;
                 });
-                setTimeout(() => {
-                    this.messages.push({ sender: "bot", text: "I don't know" });
+
+                this.ask_bot(this.message.trim()).then(response => {
+                    this.messages.push({ sender: "bot", text: response.bot_answer });
                     this.$nextTick(() => {
                         const chatbox = document.getElementById("chatbox");
                         chatbox.scrollTop = chatbox.scrollHeight;
                     });
-                }, 1000);
+                });
                 this.message = "";
             }
         }

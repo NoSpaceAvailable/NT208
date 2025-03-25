@@ -6,6 +6,8 @@ import secrets
 from concurrent.futures import ThreadPoolExecutor
 from cachetools import TTLCache
 from .. import limiter
+from datetime import timezone, datetime
+from .. global_config import jwt_config
 
 bp = Blueprint("auth", __name__, url_prefix="/api/auth")
 cache = TTLCache(maxsize=30, ttl=180)
@@ -25,7 +27,7 @@ def register():
         return jsonify({"status": "Missing required fields"}), 400
 
     if user_exist(username=username, email=email) or cache.get(email):
-        return jsonify({"status": general_msg})
+        return jsonify({"status": general_msg}), 403
 
     verification_code = f"{secrets.randbelow(1000000):06d}"
 
@@ -76,9 +78,11 @@ def login():
     if check_user(username=username, password=password):
         response = make_response({"status": "ok"})
         response.set_cookie("session", 
-                            sign_token({"user": username}), 
+                            sign_token({
+                                "user": username,
+                            }), 
                             samesite = "Lax",
-                            max_age = 3600,
+                            max_age = 600,
                             secure = False
                         )
         return response

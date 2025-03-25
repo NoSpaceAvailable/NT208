@@ -2,7 +2,8 @@ import os
 
 jwt_config = {
     'JWT_SECRET': os.getenv('JWT_SECRET', os.urandom(16).hex()),
-    'JWT_ALG': os.getenv('JWT_ALG', 'HS256')
+    'JWT_ALG': os.getenv('JWT_ALG', 'HS256'),
+    "JWT_EXP_DELTA_SECONDS": 3600
 }
 
 mail_service_config = {
@@ -23,4 +24,8 @@ db_config = {
 app_config = {
     'JSONIFY_PRETTYPRINT_REGULAR': False,
     'JSON_SORT_KEYS': False
+}
+
+gemini_config = {
+    'API_KEY': os.getenv('GEMINI_API_KEY', 'foo')
 }
