@@ -6,22 +6,22 @@
                 <!-- Item 1 -->
                 <div id="carousel-item-1"
                     :class="['carousel-item', 'absolute', 'inset-0', 'w-full', 'h-full', { 'active': currentIndex === 0 }]">
-                    <img src="@/images/banner1.png" class="w-full h-full object-cover" alt="banner1" />
+                    <img src="@/images/banner1.png" class="w-full h-full object-cover object-center" alt="banner1" />
                 </div>
                 <!-- Item 2 -->
                 <div id="carousel-item-2"
                     :class="['carousel-item', 'absolute', 'inset-0', 'w-full', 'h-full', { 'active': currentIndex === 1 }]">
-                    <img src="@/images/banner2.png" class="w-full h-full object-cover" alt="banner2" />
+                    <img src="@/images/banner2.png" class="w-full h-full object-cover object-center" alt="banner2" />
                 </div>
                 <!-- Item 3 -->
                 <div id="carousel-item-3"
                     :class="['carousel-item', 'absolute', 'inset-0', 'w-full', 'h-full', { 'active': currentIndex === 2 }]">
-                    <img src="@/images/banner3.png" class="w-full h-full object-cover" alt="banner3" />
+                    <img src="@/images/banner3.png" class="w-full h-full object-cover object-center" alt="banner3" />
                 </div>
                 <!-- Item 4 -->
                 <div id="carousel-item-4"
                     :class="['carousel-item', 'absolute', 'inset-0', 'w-full', 'h-full', { 'active': currentIndex === 3 }]">
-                    <img src="@/images/banner4.png" class="w-full h-full object-cover" alt="banner4" />
+                    <img src="@/images/banner4.png" class="w-full h-full object-cover object-center" alt="banner4" />
                 </div>
             </div>
             <!-- Slider indicators -->
@@ -64,7 +64,7 @@
             </button>
         </div>
         <!-- Main Content Section -->
-        <div class="flex flex-1 w-full h-full bg-[url(/src/images/navi.png)] bg-cover bg-center">
+        <div class="flex flex-1 w-full h-full bg-[url(/src/images/shop_wallpaper.png)] bg-cover bg-center">
             <!-- News Section (20% width) -->
             <div class="flex-1 flex flex-col m-8" style="flex-basis: 20%;">
                 <!-- News Header -->
@@ -76,7 +76,7 @@
                 <!-- News Cards -->
                 <div class="flex-1 space-y-6">
                     <div
-                        class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                        class="bg-white shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
                         <a href="https://www.counter-strike.net/newsentry/529833471389991079" target="_blank">
                             <img src="@/images/news1.jpg" class="w-full h-48 object-cover" alt="news1" />
                             <div class="p-4">
@@ -86,7 +86,7 @@
                         </a>
                     </div>
                     <div
-                        class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                        class="bg-white shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
                         <a href="https://www.counter-strike.net/newsentry/520830071182721028" target="_blank">
                             <img src="@/images/news2.png" class="w-full h-48 object-cover" alt="news2" />
                             <div class="p-4">
@@ -104,7 +104,7 @@
                 <div class="grid grid-cols-5 m-1">
                     <!-- Item Cards -->
                     <div v-for="(item, index) in items" :key="index"
-                        class="mr-1 mb-8 bg-[#000000] rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 opacity-90">
+                        class="mr-1 mb-8 bg-[#000000] shadow-md overflow-hidden hover:scale-110 duration-300 opacity-80">
                         <img :src="item.image" class="w-full h-42 object-cover p-6" :alt="item.name" />
                         <div class="p-4">
                             <h2 class="text-xl font-semibold mb-2 text-[#8FC773]">{{ item.name }}</h2>

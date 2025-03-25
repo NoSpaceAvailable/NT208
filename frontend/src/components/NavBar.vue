@@ -178,12 +178,6 @@ export default {
       ],
       linksRight: [
         {
-          text: "Search",
-          url: "#",
-          title: "search box",
-          banner: "search something here"
-        },
-        {
           text: "My account",
           url: "#"
         }
