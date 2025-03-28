@@ -15,6 +15,9 @@ class User(BaseModel):
     password_hash = Column(String(128), nullable=False)
     reputation = Column(Integer, default=0)
 
+    wallet = relationship("Wallet", uselist=False, back_populates="owner")
+    profile = relationship("UserProfile", uselist=False, back_populates="user")
+
     def __init__(self, username, email, password, reputation=0):
         self.username = username
         self.email = email

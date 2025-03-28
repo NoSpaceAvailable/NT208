@@ -23,7 +23,8 @@ db_config = {
 
 app_config = {
     'JSONIFY_PRETTYPRINT_REGULAR': False,
-    'JSON_SORT_KEYS': False
+    'JSON_SORT_KEYS': False,
+    'DEBUG': False
 }
 
 gemini_config = {

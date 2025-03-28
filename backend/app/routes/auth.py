@@ -13,7 +13,7 @@ bp = Blueprint("auth", __name__, url_prefix="/api/auth")
 cache = TTLCache(maxsize=30, ttl=180)
 executor = ThreadPoolExecutor(max_workers=5)
 
-VERIFICATION_CODE_MAX = 999999
+VERIFICATION_CODE_MAX_UPBOUND = 1000000
 general_msg = "If your email is available, a 6-digit code will be sent to your email. The code will expire in 3 minutes."
 
 @bp.route("/register", methods=["POST"])
@@ -29,7 +29,7 @@ def register():
     if user_exist(username=username, email=email) or cache.get(email):
         return jsonify({"status": general_msg}), 403
 
-    verification_code = f"{secrets.randbelow(1000000):06d}"
+    verification_code = f"{secrets.randbelow(VERIFICATION_CODE_MAX_UPBOUND):06d}"
 
     cache[email] = { 
         'code': verification_code, 
@@ -79,7 +79,8 @@ def login():
         response = make_response({"status": "ok"})
         response.set_cookie("session", 
                             sign_token({
-                                "user": username,
+                                "username": username,
+                                "user_id": get_user_id(username),
                             }), 
                             samesite = "Lax",
                             max_age = 600,
@@ -90,7 +91,7 @@ def login():
     return jsonify({"status": "Invalid credentials"}), 401
 
 @bp.route("/check", methods=["GET"])
-def checkAuth():
+def check_auth():
     token = request.cookies.get("session")
     if token and verify_token(token):
         return { "status": "ok" }
@@ -104,5 +105,5 @@ def logout():
 
 @bp.route("/reset", methods=["POST"])
 def reset():
-    # Implement password reset logic here
+    # TODO: Implement password reset logic here
     return jsonify({"status": "ok"})
