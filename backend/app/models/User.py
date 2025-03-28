@@ -16,7 +16,7 @@ class User(BaseModel):
     reputation = Column(Integer, default=0)
 
     wallet = relationship("Wallet", uselist=False, back_populates="owner")
-    profile = relationship("UserProfile", uselist=False, back_populates="user")
+    profile = relationship("UserProfile", uselist=False, back_populates="user", foreign_keys="UserProfile.user_id")
 
     def __init__(self, username, email, password, reputation=0):
         self.username = username

@@ -29,3 +29,4 @@ def create():
     if TransactionService.safe_create_wallet(session, user_id, username):
         return {"status": "ok"}
     return {"status": "failed"}, 500
+

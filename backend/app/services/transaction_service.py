@@ -1,7 +1,7 @@
-from sqlalchemy import select, update
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
-from .. models import Wallet, UserProfile
+from .. models import Wallet
 from hashlib import sha256
 from .. utils.logging import info, error
 

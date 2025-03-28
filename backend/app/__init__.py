@@ -14,10 +14,11 @@ limiter = Limiter(
     default_limits=['100 per minute']
 )
 
-from .routes import auth, products, transactions, reputation, healthcheck, bot
+from .routes import auth, products, transactions, reputation, healthcheck, bot, profile
 app.register_blueprint(bot.bp)
 app.register_blueprint(auth.bp)
+app.register_blueprint(profile.bp)
 app.register_blueprint(products.bp)
-app.register_blueprint(transactions.bp)
 app.register_blueprint(reputation.bp)
 app.register_blueprint(healthcheck.bp)
+app.register_blueprint(transactions.bp)

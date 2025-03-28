@@ -8,6 +8,7 @@ import Support from '@/components/Support.vue';
 import Merchandise from '@/components/Merchandise.vue';
 import SellItem from '@/components/SellItem.vue';
 import VerifyPage from '@/components/VerifyPage.vue';
+import ProfilePage from '@/components/ProfilePage.vue';
 
 const routes = [
     { path: '/', component: MainPage },
@@ -16,6 +17,7 @@ const routes = [
     { path: '/sell', component: SellItem },
     { path: '/support', component: Support },
     { path: '/verify', component: VerifyPage },
+    { path: '/profile', component: ProfilePage },
     { path: '/community', component: Community },
     { path: '/merchandise', component: Merchandise },
     { path: '/:pathMatch(.*)', component: NotFound },

@@ -195,14 +195,14 @@ export default {
             ],
             DropdownItems: {
                 Marketplace: [
-                    { label: "Merchandise", url: "/merchandise" },
-                    { label: "Sell my items", url: "/sell" }
+                    { label: "Merchandise",         url: "/merchandise" },
+                    { label: "Sell my items",       url: "/sell" }
                 ],
                 Account: [
-                    { label: "Profile", url: "#" },
-                    { label: "Notification", url: "#" },
-                    { label: "Transaction history", url: "#" },
-                    { label: "Logout", url: "/api/auth/logout" }
+                    { label: "Profile",             url: "/profile" },
+                    { label: "Notification",        url: "/notification" },
+                    { label: "Transaction history", url: "/history" },
+                    { label: "Logout",              url: "/api/auth/logout" }
                 ]
             },
             activeDropdown: null, // Tracks which dropdown is active

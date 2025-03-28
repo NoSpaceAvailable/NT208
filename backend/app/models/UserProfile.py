@@ -10,35 +10,24 @@ class UserProfile(BaseModel):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     user_id = Column(Integer, ForeignKey('users.id'), nullable=False, unique=True)
+    username = Column(String(32), ForeignKey('users.username'), nullable=False, unique=True)
+    profile_name = Column(String(32), nullable=False, unique=True)
     bio = Column(Text, nullable=True)
     location = Column(String(128), nullable=True)
     birthdate = Column(Date, nullable=False)
     joined_at = Column(DateTime, server_default=func.now())
-    wallet_address = Column(String(64), ForeignKey('wallets.wallet_address'), nullable=False, unique=True)
+    wallet_address = Column(String(64), ForeignKey('wallets.wallet_address'), unique=True)
 
-    user = relationship("User", back_populates="profile")
+    user = relationship("User", back_populates="profile", foreign_keys=user_id)
 
-    def __init__(self, user_id, bio, location, birthdate, wallet_address):
+    def __init__(self, user_id, username, profile_name, bio, location, birthdate, wallet_address):
         self.user_id = user_id
+        self.username = username
+        self.profile_name = profile_name
         self.bio = bio
         self.location = location
         self.birthdate = birthdate
         self.wallet_address = wallet_address
-
-    def update(self, bio, location, birthdate, wallet_address):
-        self.bio = bio
-        self.location = location
-        self.birthdate = birthdate
-        self.wallet_address = wallet_address
-
-    def get_profile(self):
-        return {
-            "bio": self.bio,
-            "location": self.location,
-            "birthdate": self.birthdate,
-            "joined_at": self.joined_at,
-            "wallet_address": self.wallet_address
-        }
 
     def __repr__(self):
         return f"<UserProfile(id={self.id}, \
