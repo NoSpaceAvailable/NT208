@@ -1,5 +1,6 @@
 from flask import Blueprint, request, make_response, redirect, jsonify
 from ..services.auth_service import *
+from .. services.user_service import UserService
 from ..utils.cookie import *
 from ..services.mail_service import EmailService
 import secrets
@@ -80,7 +81,7 @@ def login():
         response.set_cookie("session", 
                             sign_token({
                                 "username": username,
-                                "user_id": get_user_id(username),
+                                "user_id": UserService.get_user_id(session=session, username=username),
                             }), 
                             samesite = "Lax",
                             max_age = 600,

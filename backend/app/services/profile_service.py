@@ -6,6 +6,12 @@ from .. services.user_service import UserService
 from hashlib import sha256
 
 class ProfileService:
+
+    @staticmethod
+    def sanitizer(value: str, type: str) -> bool:
+        """Sanitize the input value based on the type."""
+        pass
+
     @staticmethod
     def safe_get_profile(session: Session, user_id: int) -> UserProfile | None:
         profile = session.execute(
@@ -20,7 +26,7 @@ class ProfileService:
     
     @staticmethod
     def safe_create_profile(session: Session, user_id: int, profile: dict) -> bool:
-        for attr in ['profile_name', 'bio', 'location', 'birthdate']:
+        for attr in ['profile_name', 'full_name', 'bio', 'country', 'city', 'birthdate']:
             if attr not in profile:
                 error(f"Missing {attr} in profile creation.", __name__)
                 return False
@@ -33,8 +39,9 @@ class ProfileService:
                 user_id=user_id,
                 username=username,
                 profile_name=profile['profile_name'],
-                bio=profile['bio'],
-                location=profile['location'],
+                full_name=profile['full_name'],
+                bio=profile['bio'] if 'bio' in profile else '',
+                location=profile['city'] + ', ' + profile['country'],
                 birthdate=profile['birthdate'],
                 wallet_address=address
             )
@@ -54,6 +61,7 @@ class ProfileService:
             return False
         try:
             profile.profile_name = new_profile.get('username', profile.username)
+            profile.full_name = new_profile.get('full_name', profile.full_name)
             profile.bio = new_profile.get('bio', profile.bio)
             profile.location = new_profile.get('location', profile.location)
             profile.birthdate = new_profile.get('birthdate', profile.birthdate)
@@ -73,6 +81,7 @@ class ProfileService:
             return None
         return {
             'profile_name': profile.profile_name,
+            'full_name': profile.full_name,
             'bio': profile.bio,
             'location': profile.location,
             'birthdate': profile.birthdate,

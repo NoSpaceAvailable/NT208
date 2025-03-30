@@ -26,6 +26,3 @@ def check_user(username, password):
     
 def user_exist(username, email):
     return session.query(User).filter(or_(User.username == username, User.email == email)).all()
-
-def get_user_id(username):
-    return session.query(User).filter(User.username == username).first().id

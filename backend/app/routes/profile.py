@@ -39,7 +39,7 @@ def create():
     profile = request.json
     if ProfileService.safe_create_profile(session, user_id, profile):
         return { "status": "ok" }, 200
-    return { "status": "error" }, 500
+    return { "status": "error", "msg": "please submit enough and valid infomation!" }, 500
     
 @bp.route('/fetch', methods=['GET'])
 def profile():

@@ -200,8 +200,10 @@ export default {
                 ],
                 Account: [
                     { label: "Profile",             url: "/profile" },
+                    { label: "Inventory",           url: "/inventory" },
                     { label: "Notification",        url: "/notification" },
-                    { label: "Transaction history", url: "/history" },
+                    { label: "Payment",             url: "/payment" },
+                    { label: "Payment history",     url: "/history" },
                     { label: "Logout",              url: "/api/auth/logout" }
                 ]
             },

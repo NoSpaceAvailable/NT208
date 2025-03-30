@@ -11,7 +11,7 @@ class Wallet(BaseModel):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
     wallet_address = Column(String(64), nullable=False, unique=True)
-    balance = Column(Numeric(12, 2), default=0, nullable=False)
+    balance = Column(Numeric(20, 2), default=0, nullable=False)
     
     owner = relationship("User", back_populates="wallet")
 

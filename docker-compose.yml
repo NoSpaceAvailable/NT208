@@ -4,6 +4,8 @@ services:
     build: ./frontend
     depends_on:
       - backend
+    volumes:
+      - ./frontend:/app/frontend
     networks:
       - shop
 

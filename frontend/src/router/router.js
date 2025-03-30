@@ -9,6 +9,8 @@ import Merchandise from '@/components/Merchandise.vue';
 import SellItem from '@/components/SellItem.vue';
 import VerifyPage from '@/components/VerifyPage.vue';
 import ProfilePage from '@/components/ProfilePage.vue';
+import Inventory from '@/components/Inventory.vue';
+import Payment from '@/components/PaymentPage.vue';
 
 const routes = [
     { path: '/', component: MainPage },
@@ -16,9 +18,11 @@ const routes = [
     { path: '/auth', component: AuthPage },
     { path: '/sell', component: SellItem },
     { path: '/support', component: Support },
+    { path: '/payment', component: Payment },
     { path: '/verify', component: VerifyPage },
     { path: '/profile', component: ProfilePage },
     { path: '/community', component: Community },
+    { path: '/inventory', component: Inventory },
     { path: '/merchandise', component: Merchandise },
     { path: '/:pathMatch(.*)', component: NotFound },
 ];
