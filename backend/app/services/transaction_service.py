@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
 from .. models import Wallet
 from .. services.user_service import UserService
+from .. services.history_service import HistoryService
 from hashlib import sha256
 from .. utils.logging import info, error
 
@@ -49,7 +50,6 @@ class TransactionService:
         try:
             wallet = TransactionService._get_locked_wallet(session, wallet_address)
             wallet.balance += amount
-            session.commit()
             info(f"Added {amount} to wallet {wallet_address}. New balance: {wallet.balance}", __name__)
         except Exception as e:
             error(f"Failed to add to {wallet_address}, reason: {str(e)}", __name__)
@@ -66,7 +66,6 @@ class TransactionService:
             if wallet.balance < amount:
                 raise ValueError(f"Insufficient funds. Balance: {wallet.balance}, Attempted: {amount}")
             wallet.balance -= amount
-            session.commit()
             info(f"Subtracted {amount} from {wallet_address}. New balance: {wallet.balance}", __name__)
         except Exception as e:
             error(f"Failed to subtract from {wallet_address}, reason: {str(e)}", __name__)
@@ -80,7 +79,7 @@ class TransactionService:
             error("Amount must be positive", __name__)
             return False
         
-        sender_address = UserService.get_wallet_address(session, sender_id)
+        sender_address = UserService.get_wallet_address(session=session, user_id=sender_id)
         if not sender_address:
             error(f"Sender wallet address not found for user {sender_id}", __name__)
             return False

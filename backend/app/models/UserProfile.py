@@ -29,6 +29,7 @@ class UserProfile(BaseModel):
     wallet_address = Column(String(64), ForeignKey('wallets.wallet_address'), unique=True)
 
     user = relationship("User", back_populates="profile", foreign_keys=user_id)
+    sent_transactions = relationship("History", foreign_keys="History.sender_id", back_populates="sender")
 
     def __init__(self, user_id, username, profile_name, full_name, bio, location, birthdate, wallet_address):
         self.user_id = user_id

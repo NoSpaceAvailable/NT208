@@ -81,11 +81,12 @@ def login():
         response.set_cookie("session", 
                             sign_token({
                                 "username": username,
-                                "user_id": UserService.get_user_id(session=session, username=username),
+                                "user_id": UserService.get_user_id(session, username),
                             }), 
                             samesite = "Lax",
                             max_age = 600,
-                            secure = False
+                            secure = False,
+                            httponly = True,
                         )
         return response
 

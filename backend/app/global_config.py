@@ -1,4 +1,5 @@
 import os
+import random
 
 jwt_config = {
     'JWT_SECRET': os.getenv('JWT_SECRET', os.urandom(16).hex()),
@@ -25,6 +26,10 @@ app_config = {
     'JSONIFY_PRETTYPRINT_REGULAR': False,
     'JSON_SORT_KEYS': False,
     'DEBUG': False
+}
+
+history_config = {
+    'TRANSACTION_SALT': random.randbytes(4)
 }
 
 gemini_config = {

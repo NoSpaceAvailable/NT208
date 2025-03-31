@@ -2,6 +2,7 @@ from flask import Blueprint, request
 from .. services.transaction_service import *
 from .. services.transaction_service import TransactionService
 from .. services.user_service import UserService
+from .. services.history_service import HistoryService
 from .. utils.cookie import verify_token
 from .. models.Database import Database
 import jwt
@@ -76,16 +77,27 @@ def pay():
     
     _session = request.cookies.get('session')
     payload = get_payload(_session)
-    sender_username = payload.get('username')
-    sender_id = UserService.get_user_id(session, sender_username)
+    sender_id = payload.get('user_id')
     
     if TransactionService.safe_transaction(
         session=session,
         sender_id=sender_id,
         receiver_address=_to,
         amount=_amount
-    ) == True:
+    ):
         return {"status": "ok"}
+    return {"status": "failed"}, 500
+
+@bp.route('/history', methods=['GET'])
+def get_history():
+    _session = request.cookies.get('session')
+    payload = get_payload(_session)
+    username = payload.get('username')
+    if not username:
+        return {"status": "unauthorized"}, 401
+    
+    if history := HistoryService.safe_get_history_record(session=session, username=username):
+        return {"status": "ok", "history": history}
     return {"status": "failed"}, 500
 
 

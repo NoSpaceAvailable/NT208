@@ -1,6 +1,6 @@
 from sqlalchemy import select
 from sqlalchemy.orm import Session
-from .. models import User, Wallet
+from .. models import UserProfile, Wallet, User
 from .. utils.logging import info, error
 
 class UserService:
@@ -17,17 +17,23 @@ class UserService:
         return user
     
     @staticmethod
-    def get_user_id(session: Session, username: str):
-        return session.query(User).filter(User.username == username).first().id
+    def get_user_id(session: Session, username_or_waller_addr: str):
+        if len(username_or_waller_addr) == 64:
+            return session.query(UserProfile).filter(UserProfile.wallet_address == username_or_waller_addr).first().user_id
+        return session.query(User).filter(User.username == username_or_waller_addr).first().id
     
     @staticmethod
-    def get_wallet_address(session: Session, user_id: int) -> str:
-        address = session.execute(
-            select(Wallet.wallet_address)
-            .filter(Wallet.user_id == user_id)
-            .with_for_update()
-        ).scalar_one_or_none()
-        if not address:
-            error(f"Wallet address for user {user_id} not found.", __name__)
-            return None
-        return address
+    def get_wallet_address(session: Session, user_id: int | str) -> str:
+        if isinstance(user_id, int):
+            address = session.execute(
+                select(Wallet.wallet_address)
+                .filter(Wallet.user_id == user_id)
+                .with_for_update()
+            ).scalar_one_or_none()
+            if not address:
+                error(f"Wallet address for user {user_id} not found.", __name__)
+                return None
+            return address
+        else:
+            _user_id = UserService.get_user_id(session, user_id)
+            return UserService.get_wallet_address(session, _user_id)

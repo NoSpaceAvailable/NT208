@@ -11,6 +11,7 @@ import VerifyPage from '@/components/VerifyPage.vue';
 import ProfilePage from '@/components/ProfilePage.vue';
 import Inventory from '@/components/Inventory.vue';
 import Payment from '@/components/PaymentPage.vue';
+import HistoryPage from '@/components/HistoryPage.vue';
 
 const routes = [
     { path: '/', component: MainPage },
@@ -20,6 +21,7 @@ const routes = [
     { path: '/support', component: Support },
     { path: '/payment', component: Payment },
     { path: '/verify', component: VerifyPage },
+    { path: '/history', component: HistoryPage },
     { path: '/profile', component: ProfilePage },
     { path: '/community', component: Community },
     { path: '/inventory', component: Inventory },
