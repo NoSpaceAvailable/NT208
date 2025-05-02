@@ -8,9 +8,9 @@ JWT_SECRET = os.getenv('JWT_SECRET', random.randbytes(32).hex())
 JWT_ALGORITHM = os.getenv('JWT_ALGORITHM', 'HS256')
 session = Database.get_session()
 
-def create_user(username, email, password):
+def create_user(username, email, password, is_oauth2 = False):
     try:    
-        new_user = User(username=username, email=email, password=password)
+        new_user = User(username=username, email=email, password=password, is_oauth2=is_oauth2)
         session.add(new_user)
         session.commit()
         return True

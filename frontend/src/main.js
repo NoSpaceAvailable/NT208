@@ -7,9 +7,7 @@ import vue3GoogleLogin from 'vue3-google-login';
 import router from './router/router';
 
 const gauthOption = {
-    clientId: '718649155809-pvn7nnt5m98em3h2svvgidkvteh6pkik.apps.googleusercontent.com',
-    scope: 'profile email',
-    prompt: 'select_account'
+    clientId: '957032210822-4v67c9lvii451v6i4djg4qr098h8vsqd.apps.googleusercontent.com',
 };
 
 createApp(NavBar).mount('#nav');

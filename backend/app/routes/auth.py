@@ -7,8 +7,8 @@ import secrets
 from concurrent.futures import ThreadPoolExecutor
 from cachetools import TTLCache
 from .. import limiter
-from datetime import timezone, datetime
-from .. global_config import jwt_config
+from .. global_config import oauth2_config
+import httpx
 
 bp = Blueprint("auth", __name__, url_prefix="/api/auth")
 cache = TTLCache(maxsize=30, ttl=180)
@@ -73,7 +73,7 @@ def login():
     try:
         username = request.json["username"]
         password = request.json["password"]
-    except KeyError:
+    except Exception:
         return jsonify({"status": "Missing required fields"}), 400
 
     if check_user(username=username, password=password):
@@ -91,6 +91,54 @@ def login():
         return response
 
     return jsonify({"status": "Invalid credentials"}), 401
+
+@bp.route("/google", methods=["POST"])
+@limiter.limit("5 per 3 minute")
+def handle_oauth2():
+    try:
+        code = request.json["code"]
+        client_id = oauth2_config["client_id"]
+        client_secret = oauth2_config["client_secret"]
+        grant_type = oauth2_config["grant_type"]
+        res = httpx.post(
+            "https://oauth2.googleapis.com/token",
+            data = {
+                "code": code,
+                "client_id": client_id,
+                "client_secret": client_secret,
+                "grant_type": grant_type,
+                "redirect_uri": "http://localhost:8088"
+            }
+        )
+        if res.status_code == 200:
+            access_token = res.json().get("access_token")
+            user_info = httpx.get(
+                "https://www.googleapis.com/oauth2/v2/userinfo",
+                headers = {
+                    "Authorization": f"Bearer {access_token}"
+                }
+            )
+            if user_info.status_code == 200:
+                user_info = user_info.json()
+                email = user_info.get("email")
+                username = user_info.get("name")
+                if not user_exist(username=username, email=email):
+                    create_user(username=username, password=None, email=email, is_oauth2=True)
+                response = make_response({"status": "ok"})
+                response.set_cookie("session", 
+                                    sign_token({
+                                        "username": username,
+                                        "user_id": UserService.get_user_id(session, username),
+                                    }), 
+                                    samesite = "Lax",
+                                    max_age = 600,
+                                    secure = False,
+                                    httponly = True,
+                                )
+                return response
+        return jsonify({"status": "Failed to get user info"}), 401
+    except Exception:
+        return jsonify({"status": "Missing required fields"}), 400
 
 @bp.route("/check", methods=["GET"])
 def check_auth():

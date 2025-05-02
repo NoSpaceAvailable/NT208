@@ -12,6 +12,12 @@ mail_service_config = {
     'key': 'xhef avfg bzye riun'
 }
 
+oauth2_config = {
+    'client_id': os.getenv('OAUTH2_CLIENT_ID', '957032210822-4v67c9lvii451v6i4djg4qr098h8vsqd.apps.googleusercontent.com'),
+    'client_secret': os.getenv('OAUTH2_CLIENT_SECRET', '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'),
+    'grant_type': os.getenv('OAUTH2_GRANT_TYPE', 'authorization_code')
+}
+
 db_config = {
     'pguser': os.getenv('DB_USER', 'root'),
     'pgpassword': os.getenv('DB_PASS', 'root'),
@@ -33,5 +39,5 @@ history_config = {
 }
 
 gemini_config = {
-    'API_KEY': os.getenv('GEMINI_API_KEY', 'foo')
+    'API_KEY': os.getenv('GEMINI_API_KEY', 'AIzaSyBVPmhhWu6ViWJBacgSSzgmPgUScKGxdWg')
 }
