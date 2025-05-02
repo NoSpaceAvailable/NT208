@@ -202,6 +202,7 @@ export default {
                     { label: "Profile",             url: "/profile" },
                     { label: "Inventory",           url: "/inventory" },
                     { label: "Notification",        url: "/notification" },
+                    { label: "Add money",           url: "/add" },
                     { label: "Payment",             url: "/payment" },
                     { label: "Payment history",     url: "/history" },
                     { label: "Logout",              url: "/api/auth/logout" }

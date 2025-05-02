@@ -12,6 +12,7 @@ import ProfilePage from '@/components/ProfilePage.vue';
 import Inventory from '@/components/Inventory.vue';
 import Payment from '@/components/PaymentPage.vue';
 import HistoryPage from '@/components/HistoryPage.vue';
+import AddMoneyPage from '@/components/AddMoneyPage.vue';
 
 const routes = [
     { path: '/', component: MainPage },
@@ -20,6 +21,7 @@ const routes = [
     { path: '/sell', component: SellItem },
     { path: '/support', component: Support },
     { path: '/payment', component: Payment },
+    { path: '/add', component: AddMoneyPage },
     { path: '/verify', component: VerifyPage },
     { path: '/history', component: HistoryPage },
     { path: '/profile', component: ProfilePage },

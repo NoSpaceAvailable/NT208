@@ -8,21 +8,23 @@ from . import BaseModel
 from hashlib import sha256
 
 def generate_transaction_hash(
-    sender_id: int,
-    receiver_id: int,
+    sender_hash: str,
+    receiver_hash: str,
     amount: float,
     timestamp: str,
     salt: bytes = history_config['TRANSACTION_SALT'],
 ) -> str:
-    if sender_id <= 0 or receiver_id <= 0:
-        raise ValueError("User IDs must be positive integers")
+    if len(sender_hash) != 64 or len(receiver_hash) != 64:
+        raise ValueError("Sender and receiver hashes must be 64 characters long")
+    if not isinstance(sender_hash, str) or not isinstance(receiver_hash, str):
+        raise ValueError("Sender and receiver hashes must be strings")
     if amount < 0:
         raise ValueError("Amount must be non-negative")
     if not isinstance(salt, bytes) or len(salt) != 4:
         raise ValueError("Salt must be 4 bytes")
     
     rounded_amount = round(amount, 2)
-    transaction_string = f"{sender_id}{receiver_id}{rounded_amount:.2f}{timestamp}".encode("utf-8")
+    transaction_string = f"{sender_hash}{receiver_hash}{rounded_amount:.2f}{timestamp}".encode("utf-8")
     
     return sha256(transaction_string + salt).hexdigest()
 
@@ -36,34 +38,33 @@ class History(BaseModel):
     __tablename__ = 'history'
 
     id = Column(Integer, primary_key=True)
-    sender_id = Column(Integer, ForeignKey('user_profiles.user_id'), nullable=False)
-    receiver_id = Column(Integer, ForeignKey('user_profiles.user_id'), nullable=False)
+    sender_address = Column(String(64), nullable=False)
+    receiver_address = Column(String(64), nullable=False)
     amount = Column(Numeric(20, 2), nullable=False)
     timestamp = Column(String(24), default=get_current_time(), nullable=False)
     transaction_hash = Column(String(64), nullable=False, unique=True)
-    reversed_hash = Column(String(64), nullable=True, unique=True)
 
-    sender = relationship("UserProfile", foreign_keys=sender_id, back_populates="sent_transactions")
-
-    def __init__(self, sender_id, receiver_id, amount):
-        self.sender_id = sender_id
-        self.receiver_id = receiver_id
+    def __init__(self, sender_address, receiver_address, amount):
+        self.sender_address = sender_address
+        self.receiver_address = receiver_address
         self.amount = amount
         self.timestamp = get_current_time()
-        self.transaction_hash = generate_transaction_hash(sender_id, receiver_id, amount, self.timestamp)
-        self.reversed_hash = generate_transaction_hash(receiver_id, sender_id, amount, self.timestamp)
-
-    def get_hash(self):
-        return self.transaction_hash
+        self.transaction_hash = generate_transaction_hash(sender_address, receiver_address, amount, self.timestamp)
     
-    def get_reversed_hash(self):
-        return self.reversed_hash
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'sender_address': self.sender_address,
+            'receiver_address': self.receiver_address,
+            'amount': float(self.amount),
+            'timestamp': self.timestamp,
+            'transaction_hash': self.transaction_hash
+        }
     
     def __repr__(self):
         return f"<History(id={self.id}, \
-            sender_id={self.sender_id}, \
-            receiver_id={self.receiver_id}, \
+            sender_address={self.sender_address}, \
+            receiver_address={self.receiver_address}, \
             amount={self.amount}, \
             timestamp='{self.timestamp}', \
-            transaction_hash='{self.transaction_hash}', \
-            reversed_hash='{self.reversed_hash}')>"
+            transaction_hash='{self.transaction_hash}')>"

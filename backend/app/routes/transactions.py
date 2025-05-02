@@ -5,10 +5,12 @@ from .. services.user_service import UserService
 from .. services.history_service import HistoryService
 from .. utils.cookie import verify_token
 from .. models.Database import Database
+from ..utils.momo.momo import Momo
 import jwt
 
 bp = Blueprint('transactions', __name__, url_prefix='/api/transaction')
 session = Database.get_session()
+momo = Momo()
 
 def get_payload(token: str):
     return jwt.decode(
@@ -28,8 +30,6 @@ def create():
     payload = get_payload(_session)
     user_id = payload.get('user_id')
     username = payload.get('username')
-    if not user_id or not username:
-        return {"status": "unauthorized"}, 401
     
     if address := TransactionService.safe_create_wallet(session, user_id, username):
         return {"status": "ok", "address": address}
@@ -40,10 +40,9 @@ def get_balance():
     _session = request.cookies.get('session')
     payload = get_payload(_session)
     username = payload.get('username')
-    if not username:
-        return {"status": "unauthorized"}, 401
     
-    if balance := TransactionService.safe_get_balance(session, username):
+    balance = TransactionService.safe_get_balance(session, username)
+    if balance != None:
         return {"status": "ok", "balance": balance}
     return {"status": "failed"}, 500
 
@@ -55,15 +54,11 @@ def add():
 
     if not _address or not _amount or _amount <= 0:
         return {"status": "failed"}, 500
-    
     try:
-        TransactionService.safe_add(
-            session=session,
-            wallet_address=_address,
-            amount=_amount
-        )
-        return {"status": "ok"}
-    except Exception as e:
+        pay_url = momo.create_payment_url(amount=int(_amount), wallet_address=_address, message="Top up request for wallet " + _address)
+        return {"status": "ok", "pay_url": pay_url}
+    except Exception as e: 
+        print(e, flush=True)
         return {"status": "failed"}, 500
 
 @bp.route('/pay', methods=['POST'])
@@ -93,11 +88,20 @@ def get_history():
     _session = request.cookies.get('session')
     payload = get_payload(_session)
     username = payload.get('username')
-    if not username:
-        return {"status": "unauthorized"}, 401
     
-    if history := HistoryService.safe_get_history_record(session=session, username=username):
+    if history := HistoryService.safe_get_history_records(session=session, username=username):
         return {"status": "ok", "history": history}
     return {"status": "failed"}, 500
+
+@bp.route('/create')
+def create_payment():
+    return "Hehe"
+
+@bp.route('/confirm', methods=['GET'])
+def confirm():
+    Momo()
+    return {"status": "ok", "username": "x"}
+    
+    
 
 

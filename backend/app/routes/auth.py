@@ -81,7 +81,7 @@ def login():
         response.set_cookie("session", 
                             sign_token({
                                 "username": username,
-                                "user_id": UserService.get_user_id(session, username),
+                                "user_id": UserService.get_user_id(session, username)
                             }), 
                             samesite = "Lax",
                             max_age = 600,
@@ -131,7 +131,7 @@ def handle_oauth2():
                                         "user_id": UserService.get_user_id(session, username),
                                     }), 
                                     samesite = "Lax",
-                                    max_age = 600,
+                                    max_age = 3600,
                                     secure = False,
                                     httponly = True,
                                 )

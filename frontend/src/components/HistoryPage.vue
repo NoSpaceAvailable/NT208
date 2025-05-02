@@ -41,12 +41,12 @@
                                 class="grid grid-cols-12 gap-4 p-3 border-b border-[#222] last:border-0 hover:bg-[#222]/50 cursor-pointer transition-colors"
                                 @click="openTransactionDetails(transaction)">
                                 <div class="col-span-3 text-left font-mono text-sm truncate">
-                                    {{ transaction.from === wallet_address ? 'You' : shortenAddress(transaction.from) }}
+                                    {{ transaction.sender_address === wallet_address ? 'You' : shortenAddress(transaction.sender_address) }}
                                 </div>
                                 <div class="col-span-3 text-left font-mono text-sm truncate">
-                                    {{ transaction.to === wallet_address ? 'You' : shortenAddress(transaction.to) }}
+                                    {{ transaction.receiver_address === wallet_address ? 'You' : shortenAddress(transaction.receiver_address) }}
                                 </div>
-                                <div class="col-span-3 text-right font-mono text-[#8FC773]">{{ transaction.amount }}
+                                <div class="col-span-3 text-right font-mono text-[#8FC773]">{{ transaction.amount }} VND
                                 </div>
                                 <div class="col-span-3 text-right text-sm text-white">{{ formatDate(transaction.date)
                                 }}</div>
@@ -78,10 +78,10 @@
                             <p class="text-sm text-white">From</p>
                             <div class="flex items-center gap-2">
                                 <p class="font-mono break-all text-[#8FC773]">
-                                    {{ selectedTransaction.from === wallet_address ? 'You' : selectedTransaction.from }}
+                                    {{ selectedTransaction.sender_address === wallet_address ? 'You' : selectedTransaction.sender_address }}
                                 </p>
-                                <button v-if="selectedTransaction.from !== wallet_address"
-                                    @click.stop="copyHash(selectedTransaction.from, 2)"
+                                <button v-if="selectedTransaction.sender_address !== wallet_address"
+                                    @click.stop="copyHash(selectedTransaction.sender_address, 2)"
                                     class="ml-1 text-gray-400 hover:text-white transition-colors"
                                     :title="isCopiedFrom ? 'Copied!' : 'Copy'">
                                     <svg v-if="!isCopiedFrom" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
@@ -103,10 +103,10 @@
                             <p class="text-sm text-white">To</p>
                             <div class="flex items-center gap-2">
                                 <p class="font-mono break-all text-[#8FC773]">
-                                    {{ selectedTransaction.to === wallet_address ? 'You' : selectedTransaction.to }}
+                                    {{ selectedTransaction.receiver_address === wallet_address ? 'You' : selectedTransaction.receiver_address }}
                                 </p>
-                                <button v-if="selectedTransaction.to !== wallet_address"
-                                    @click.stop="copyHash(selectedTransaction.to, 3)"
+                                <button v-if="selectedTransaction.receiver_address !== wallet_address"
+                                    @click.stop="copyHash(selectedTransaction.receiver_address, 3)"
                                     class="ml-1 text-gray-400 hover:text-white transition-colors"
                                     :title="isCopiedTo ? 'Copied!' : 'Copy'">
                                     <svg v-if="!isCopiedTo" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
@@ -127,7 +127,7 @@
                     <div class="grid grid-cols-2 gap-4">
                         <div>
                             <p class="text-sm text-white">Amount</p>
-                            <p class="text-[#8FC773] font-mono">{{ selectedTransaction.amount }}</p>
+                            <p class="text-[#8FC773] font-mono">{{ selectedTransaction.amount }} VND</p>
                         </div>
                         <div>
                             <p class="text-sm text-white">Date</p>
@@ -135,11 +135,11 @@
                         </div>
                     </div>
 
-                    <div v-if="selectedTransaction.hash" class="pt-4 border-t border-[#333]">
-                        <p class="text-sm text-white">Transaction Hash</p>
+                    <div v-if="selectedTransaction.transaction_hash" class="pt-4 border-t border-[#333]">
+                        <p class="text-sm text-white">Transaction hash</p>
                         <p class="font-mono break-all text-[#8FC773] flex items-center">
-                            {{ selectedTransaction.hash }}
-                            <button @click.stop="copyHash(selectedTransaction.hash, 4)"
+                            {{ selectedTransaction.transaction_hash }}
+                            <button @click.stop="copyHash(selectedTransaction.transaction_hash, 4)"
                                 class="ml-1 text-gray-400 hover:text-white transition-colors"
                                 :title="isCopiedHash ? 'Copied!' : 'Copy'">
                                 <svg v-if="!isCopiedHash" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
@@ -170,94 +170,18 @@ export default {
             isCopiedTo: false,
             isCopiedHash: false,
             copyTimeout: null,
-            wallet_address: '8030eea8fda72f1af131f8fbdffd008620ba8fab82c0588fd29978f9d42f720b',
+            wallet_address: null,
             selectedTransaction: null,
-            transactions: [
-                {
-                    from: '8030eea8fda72f1af131f8fbdffd008620ba8fab82c0588fd29978f9d42f720b',
-                    to: '7838befc82ea4b8cbbdd34cd2dc8a530e8a94d70f57cc9c01319e7c7bbe80b49',
-                    amount: '1.25 ETH',
-                    date: '2023-05-15T14:30:00Z',
-                    hash: '4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6'
-                },
-                {
-                    from: '75c4a4ebc94abe331c8d7f5be7968c7b2d5cec35875db907028bd35cead92083',
-                    to: '8030eea8fda72f1af131f8fbdffd008620ba8fab82c0588fd29978f9d42f720b',
-                    amount: '0.75 ETH',
-                    date: '2023-05-14T09:15:00Z',
-                    hash: '1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2'
-                },
-                {
-                    from: '75c4a4ebc94abe331c8d7f5be7968c7b2d5cec35875db907028bd35cead92083',
-                    to: '8030eea8fda72f1af131f8fbdffd008620ba8fab82c0588fd29978f9d42f720b',
-                    amount: '0.75 ETH',
-                    date: '2023-05-14T09:15:00Z',
-                    hash: '4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6'
-                },
-                {
-                    from: '3e0ef42395f9f8be8b4f2c5a334d0768f3656314827beefca6cc94f0a2ff821f',
-                    to: '8030eea8fda72f1af131f8fbdffd008620ba8fab82c0588fd29978f9d42f720b',
-                    amount: '2.50 ETH',
-                    date: '2023-05-14T09:15:00Z',
-                    hash: '4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6'
-                },
-                {
-                    from: 'cf7eed1de65471d09b65f0b68914ab6ec95c62984eac374d95c2eb21dd8b5970',
-                    to: '8030eea8fda72f1af131f8fbdffd008620ba8fab82c0588fd29978f9d42f720b',
-                    amount: '0.10 ETH',
-                    date: '2023-05-14T09:15:00Z',
-                    hash: '4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6'
-                },
-                {
-                    from: 'cf7eed1de65471d09b65f0b68914ab6ec95c62984eac374d95c2eb21dd8b5970',
-                    to: '8030eea8fda72f1af131f8fbdffd008620ba8fab82c0588fd29978f9d42f720b',
-                    amount: '0.10 ETH',
-                    date: '2023-05-14T09:15:00Z',
-                    hash: '4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6'
-                },
-                {
-                    from: 'cf7eed1de65471d09b65f0b68914ab6ec95c62984eac374d95c2eb21dd8b5970',
-                    to: '8030eea8fda72f1af131f8fbdffd008620ba8fab82c0588fd29978f9d42f720b',
-                    amount: '0.10 ETH',
-                    date: '2023-05-14T09:15:00Z',
-                    hash: '4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6'
-                },
-                {
-                    from: 'cf7eed1de65471d09b65f0b68914ab6ec95c62984eac374d95c2eb21dd8b5970',
-                    to: '8030eea8fda72f1af131f8fbdffd008620ba8fab82c0588fd29978f9d42f720b',
-                    amount: '0.10 ETH',
-                    date: '2023-05-14T09:15:00Z',
-                    hash: '4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6'
-                },
-                {
-                    from: 'cf7eed1de65471d09b65f0b68914ab6ec95c62984eac374d95c2eb21dd8b5970',
-                    to: '8030eea8fda72f1af131f8fbdffd008620ba8fab82c0588fd29978f9d42f720b',
-                    amount: '0.10 ETH',
-                    date: '2023-05-14T09:15:00Z',
-                    hash: '4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6'
-                },
-                {
-                    from: 'cf7eed1de65471d09b65f0b68914ab6ec95c62984eac374d95c2eb21dd8b5970',
-                    to: '8030eea8fda72f1af131f8fbdffd008620ba8fab82c0588fd29978f9d42f720b',
-                    amount: '0.10 ETH',
-                    date: '2023-05-14T09:15:00Z',
-                    hash: '4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6'
-                },
-                {
-                    from: 'cf7eed1de65471d09b65f0b68914ab6ec95c62984eac374d95c2eb21dd8b5970',
-                    to: '8030eea8fda72f1af131f8fbdffd008620ba8fab82c0588fd29978f9d42f720b',
-                    amount: '0.10 ETH',
-                    date: '2023-05-14T09:15:00Z',
-                    hash: '4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6'
-                },
-                {
-                    from: 'cf7eed1de65471d09b65f0b68914ab6ec95c62984eac374d95c2eb21dd8b5970',
-                    to: '8030eea8fda72f1af131f8fbdffd008620ba8fab82c0588fd29978f9d42f720b',
-                    amount: '0.10 ETH',
-                    date: '2023-05-14T09:15:00Z',
-                    hash: '4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6'
-                }
-            ]
+            // Sample transaction data
+            // {
+            //     from: '8030eea8fda72f1af131f8fbdffd008620ba8fab82c0588fd29978f9d42f720b',
+            //     to: '7838befc82ea4b8cbbdd34cd2dc8a530e8a94d70f57cc9c01319e7c7bbe80b49',
+            //     amount: '1.25 ETH',
+            //     date: '2023-05-15T14:30:00Z',
+            //     hash: '4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6'
+            // }
+
+            transactions: []
         }
     },
     methods: {
@@ -324,7 +248,41 @@ export default {
             this.isCopiedFrom = false;
             this.isCopiedTo = false;
             this.isCopiedHash = false;
+        },
+        getTransactions() {
+            fetch('/api/transaction/history', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include'
+            }).then((res) => {
+                return res.json();
+            }).then((data) => {
+                this.transactions = data.history;
+            }).catch((err) => {
+                console.error('Error fetching transaction history:', err);
+            })
+        },
+        getWalletAddress() {
+            fetch('/api/profile/fetch', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include'
+            }).then((data) => {
+                return data.json();
+            }).then((data) => {
+                this.wallet_address = data.profile.wallet_address;
+            }).catch((err) => {
+                console.error('Error fetching wallet address:', err);
+            })
         }
+    },
+    mounted() {
+        this.getWalletAddress();
+        this.getTransactions();
     }
 }
 </script>

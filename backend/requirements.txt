@@ -8,3 +8,4 @@ pyjwt
 bcrypt
 cachetools
 google-genai
+httpx
