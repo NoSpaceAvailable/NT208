@@ -174,8 +174,14 @@
 </template>
 
 <script>
+import { useNotification } from '../services/notificationService';
+
 export default {
     name: 'ProfilePage',
+    setup() {
+        const { showNotification } = useNotification();
+        return { showNotification };
+    },
     data() {
         return {
             wallet_address: null,
@@ -206,13 +212,16 @@ export default {
                         this.wallet_address = data.address;
                     } else {
                         this.wallet_error = 'Failed to create wallet';
+                        this.showNotification('Failed to create wallet', { type: 'error' });
                     }
                 } else {
                     this.wallet_error = 'Failed to create wallet';
+                    this.showNotification('Failed to create wallet', { type: 'error' });
                 }
             } catch (err) {
                 console.error('Error creating wallet:', err);
                 this.wallet_error = 'An error occurred while creating wallet';
+                this.showNotification('An error occurred while creating wallet', { type: 'error' });
             }
         },
 
@@ -222,6 +231,11 @@ export default {
                     method: 'GET',
                     credentials: 'include'
                 });
+
+                if (response.status === 401) {
+                    this.$router.push('/auth#login');
+                    return;
+                }
 
                 if (response.ok) {
                     const data = await response.json();
@@ -253,9 +267,15 @@ export default {
 
                 if (response.ok) {
                     location.reload();
+                } else {
+                    this.showNotification('Failed to create profile', { 
+                        type: 'error',
+                        description: 'Try to change your profile name. If the problem persists, please contact the support.'
+                    });
                 }
             } catch (err) {
                 console.error('Error creating profile:', err);
+                this.showNotification('An error occurred while creating profile', { type: 'error' });
             }
         }
     },

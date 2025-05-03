@@ -15,8 +15,8 @@ class TransactionService:
     
     @staticmethod
     def safe_create_wallet(session: Session, user_id: int, username: str) -> str | bool:
+        address = TransactionService.generate_wallet_address(username)
         try:
-            address = TransactionService.generate_wallet_address(username)
             wallet = Wallet(
                 user_id=user_id, 
                 wallet_address=address
@@ -28,8 +28,11 @@ class TransactionService:
         except SQLAlchemyError as e:
             error(f"Failed to create wallet for {username}: {str(e)}", __name__)
             session.rollback()
+            return address
+        except Exception as e:
+            error(f"Failed to create wallet for {username}: {str(e)}", __name__)
+            session.rollback()
             return False
-        
     @staticmethod
     def _get_locked_wallet(session: Session, wallet_address: str) -> Wallet:
         """Internal method to get wallet with lock."""

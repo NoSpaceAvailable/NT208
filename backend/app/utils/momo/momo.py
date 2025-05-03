@@ -9,10 +9,10 @@ def generate_transaction_hash(
     amount: int,
     salt: bytes = momo_config['transaction_salt'],
 ) -> str:
-    if len(wallet_address) != 64:
-        raise ValueError("Address must be 64 characters long")
     if not isinstance(wallet_address, str):
         raise ValueError("Sender and receiver hashes must be strings")
+    if len(wallet_address) != 64:
+        raise ValueError("Address must be 64 characters long")
     if amount < 0:
         raise ValueError("Amount must be non-negative")
     if not isinstance(salt, bytes) or len(salt) != 4:
@@ -79,7 +79,7 @@ class Momo:
             json = data,
         )
 
-        if response.status_code == 200:
-            return response.json().get('payUrl')
-        else:
+        if response.status_code != 200:
             raise Exception(f"Failed to create MoMo payment URL: {response.text}")
+            
+        return response.json().get('payUrl')

@@ -57,6 +57,14 @@ export default {
                     credentials: 'include'
                 });
 
+                if (response.status === 401) {
+                    this.$router.push('/auth#login');
+                    return;
+                } else if (response.status === 404) {
+                    this.$router.push('/profile');
+                    return;
+                }
+
                 if (response.ok) {
                     const data = await response.json();
                     if (data) {

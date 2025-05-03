@@ -93,3 +93,9 @@ Project structure
     ├── Dockerfile                  # Docker configuration for Nginx
     └── nginx.conf                  # Nginx configuration file for routing and SSL
 ```
+
+Credit card for testing:
+- Card number: 5200 0000 0000 1096
+- Expiration date: 05/55
+- CVV: 333
+- Name: Nguyen Van A

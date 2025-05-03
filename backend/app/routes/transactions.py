@@ -1,11 +1,10 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, redirect  
 from .. services.transaction_service import *
 from .. services.transaction_service import TransactionService
-from .. services.user_service import UserService
 from .. services.history_service import HistoryService
 from .. utils.cookie import verify_token
 from .. models.Database import Database
-from ..utils.momo.momo import Momo
+from .. utils.momo.momo import Momo, generate_transaction_hash
 import jwt
 
 bp = Blueprint('transactions', __name__, url_prefix='/api/transaction')
@@ -55,7 +54,11 @@ def add():
     if not _address or not _amount or _amount <= 0:
         return {"status": "failed"}, 500
     try:
-        pay_url = momo.create_payment_url(amount=int(_amount), wallet_address=_address, message="Top up request for wallet " + _address)
+        pay_url = momo.create_payment_url(
+            amount=int(_amount), 
+            wallet_address=_address,
+            message="To: " + _address
+        )
         return {"status": "ok", "pay_url": pay_url}
     except Exception as e: 
         print(e, flush=True)
@@ -93,15 +96,33 @@ def get_history():
         return {"status": "ok", "history": history}
     return {"status": "failed"}, 500
 
-@bp.route('/create')
-def create_payment():
-    return "Hehe"
-
 @bp.route('/confirm', methods=['GET'])
 def confirm():
-    Momo()
-    return {"status": "ok", "username": "x"}
-    
-    
+    # TODO: Prevent reuse old transaction hash, add input sanitization
+    data = request.args
+    order_id = data.get('orderId')
+    amount = data.get('amount')
+    order_info = data.get('orderInfo')
+    message = data.get('message')
 
-
+    if message != "Thành công.":
+        return {"status": "failed"}, 500
+    
+    try:
+        target_wallet = order_info.split("To: ")[1]
+        transaction_hash = generate_transaction_hash(
+            wallet_address=target_wallet,
+            amount=int(amount)
+        )
+        if transaction_hash == order_id:
+            TransactionService.safe_add(
+                session=session,
+                wallet_address=target_wallet,
+                amount=int(amount)
+            )
+            return redirect('/add')
+        else:
+            return {"status": "failed"}, 500
+    except Exception as e:
+        print(e, flush=True)
+        return {"status": "failed"}, 500

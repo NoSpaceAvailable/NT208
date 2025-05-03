@@ -162,6 +162,7 @@
 </template>
 
 <script>
+
 export default {
     data() {
         return {
@@ -172,15 +173,6 @@ export default {
             copyTimeout: null,
             wallet_address: null,
             selectedTransaction: null,
-            // Sample transaction data
-            // {
-            //     from: '8030eea8fda72f1af131f8fbdffd008620ba8fab82c0588fd29978f9d42f720b',
-            //     to: '7838befc82ea4b8cbbdd34cd2dc8a530e8a94d70f57cc9c01319e7c7bbe80b49',
-            //     amount: '1.25 ETH',
-            //     date: '2023-05-15T14:30:00Z',
-            //     hash: '4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6'
-            // }
-
             transactions: []
         }
     },
@@ -252,9 +244,6 @@ export default {
         getTransactions() {
             fetch('/api/transaction/history', {
                 method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
                 credentials: 'include'
             }).then((res) => {
                 return res.json();
@@ -267,11 +256,15 @@ export default {
         getWalletAddress() {
             fetch('/api/profile/fetch', {
                 method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
                 credentials: 'include'
             }).then((data) => {
+                if (data.status === 401) {
+                    this.$router.push('/auth#login');
+                    return;
+                } else if (data.status === 404) {
+                    this.$router.push('/profile');
+                    return;
+                }
                 return data.json();
             }).then((data) => {
                 this.wallet_address = data.profile.wallet_address;
