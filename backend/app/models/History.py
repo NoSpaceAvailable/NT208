@@ -6,11 +6,13 @@ from datetime import datetime, timezone
 from .. global_config import history_config
 from . import BaseModel
 from hashlib import sha256
+from .enumtypes.HistoryStatus import HistoryStatus
+from .enumtypes.HistoryType import HistoryType
 
 def generate_transaction_hash(
     sender_hash: str,
     receiver_hash: str,
-    amount: float,
+    amount: int,
     timestamp: str,
     salt: bytes = history_config['TRANSACTION_SALT'],
 ) -> str:
@@ -23,8 +25,7 @@ def generate_transaction_hash(
     if not isinstance(salt, bytes) or len(salt) != 4:
         raise ValueError("Salt must be 4 bytes")
     
-    rounded_amount = round(amount, 2)
-    transaction_string = f"{sender_hash}{receiver_hash}{rounded_amount:.2f}{timestamp}".encode("utf-8")
+    transaction_string = f"{sender_hash}{receiver_hash}{amount}{timestamp}".encode("utf-8")
     
     return sha256(transaction_string + salt).hexdigest()
 
@@ -40,26 +41,45 @@ class History(BaseModel):
     id = Column(Integer, primary_key=True)
     sender_address = Column(String(64), nullable=False)
     receiver_address = Column(String(64), nullable=False)
-    amount = Column(Numeric(20, 2), nullable=False)
+    amount = Column(Integer, nullable=False)
     timestamp = Column(String(24), default=get_current_time(), nullable=False)
     transaction_hash = Column(String(64), nullable=False, unique=True)
+    message = Column(String(128), nullable=True)    # message from sender to receiver
+    status = Column(String(16), nullable=False)
+    transaction_type = Column(String(16), nullable=False)
 
-    def __init__(self, sender_address, receiver_address, amount):
+    def __init__(self, sender_address, receiver_address, amount, timestamp, message, status, transaction_type):
         self.sender_address = sender_address
         self.receiver_address = receiver_address
         self.amount = amount
-        self.timestamp = get_current_time()
-        self.transaction_hash = generate_transaction_hash(sender_address, receiver_address, amount, self.timestamp)
-    
+        self.timestamp = timestamp
+        self.transaction_hash = generate_transaction_hash(
+            sender_hash=sender_address,
+            receiver_hash=receiver_address,
+            amount=amount,
+            timestamp=timestamp
+        )
+        self.message = message
+        self.status = status
+        self.transaction_type = transaction_type
+        
     def to_dict(self):
         return {
             'id': self.id,
             'sender_address': self.sender_address,
             'receiver_address': self.receiver_address,
-            'amount': float(self.amount),
+            'amount': int(self.amount),
             'timestamp': self.timestamp,
-            'transaction_hash': self.transaction_hash
+            'transaction_hash': self.transaction_hash,
+            'message': self.message,
+            'status': self.status,
+            'type': self.transaction_type
         }
+    
+    def set_status(self, status):
+        if status not in HistoryStatus:
+            raise ValueError("Invalid status")
+        self.status = status
     
     def __repr__(self):
         return f"<History(id={self.id}, \
@@ -67,4 +87,7 @@ class History(BaseModel):
             receiver_address={self.receiver_address}, \
             amount={self.amount}, \
             timestamp='{self.timestamp}', \
-            transaction_hash='{self.transaction_hash}')>"
+            transaction_hash='{self.transaction_hash}', \
+            message='{self.message}', \
+            status='{self.status}', \
+            type='{self.transaction_type}')>"

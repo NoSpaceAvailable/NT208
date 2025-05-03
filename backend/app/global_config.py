@@ -46,5 +46,4 @@ momo_config = {
     "redirect_url": os.getenv('MOMO_REDIRECT_URL', 'http://localhost:8088/api/transaction/confirm'),
     "ipn_url": os.getenv('MOMO_IPN_URL', 'http://localhost:8088/api/transaction/confirm'),
     "endpoint": os.getenv('MOMO_ENDPOINT', 'https://test-payment.momo.vn/v2/gateway/api/create'),
-    "transaction_salt": os.getenv('MOMO_TRANSACTION_SALT', random.randbytes(4))
 }

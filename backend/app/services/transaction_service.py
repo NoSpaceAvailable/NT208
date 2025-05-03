@@ -47,7 +47,7 @@ class TransactionService:
         return wallet
 
     @staticmethod
-    def safe_add(session: Session, wallet_address: str, amount: float) -> None:
+    def safe_add(session: Session, wallet_address: str, amount: int) -> None:
         if amount <= 0:
             raise ValueError("Amount must be positive!")
             
@@ -61,7 +61,7 @@ class TransactionService:
             raise
         
     @staticmethod
-    def safe_sub(session: Session, wallet_address: str, amount: float) -> None:
+    def safe_sub(session: Session, wallet_address: str, amount: int) -> None:
         if amount <= 0:
             raise ValueError("Amount must be positive")
             
@@ -77,7 +77,7 @@ class TransactionService:
             raise
         
     @staticmethod
-    def safe_transaction(session: Session, sender_id: int, receiver_address: str, amount: float) -> bool:
+    def safe_transaction(session: Session, sender_id: int, receiver_address: str, amount: int) -> bool:
 
         if amount <= 0:
             error("Amount must be positive", __name__)
@@ -104,7 +104,7 @@ class TransactionService:
             return False
         
     @staticmethod
-    def safe_get_balance(session: Session, username: str) -> float | None:
+    def safe_get_balance(session: Session, username: str) -> int | None:
 
         wallet_address = sha256(username.encode()).hexdigest()
         try:

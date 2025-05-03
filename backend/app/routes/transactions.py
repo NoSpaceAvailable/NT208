@@ -4,9 +4,11 @@ from .. services.transaction_service import TransactionService
 from .. services.history_service import HistoryService
 from .. utils.cookie import verify_token
 from .. models.Database import Database
+from .. models.enumtypes.HistoryStatus import HistoryStatus
+from .. models.enumtypes.HistoryType import HistoryType
 from .. utils.momo.momo import Momo, generate_transaction_hash
+from base64 import b64decode
 import jwt
-
 bp = Blueprint('transactions', __name__, url_prefix='/api/transaction')
 session = Database.get_session()
 momo = Momo()
@@ -98,12 +100,13 @@ def get_history():
 
 @bp.route('/confirm', methods=['GET'])
 def confirm():
-    # TODO: Prevent reuse old transaction hash, add input sanitization
+    # TODO: Prevent reuse old transaction hash, add timestamp to the transaction hash
     data = request.args
     order_id = data.get('orderId')
     amount = data.get('amount')
     order_info = data.get('orderInfo')
     message = data.get('message')
+    timestamp_base64 = data.get('extraData')
 
     if message != "Thành công.":
         return {"status": "failed"}, 500
@@ -111,18 +114,34 @@ def confirm():
     try:
         target_wallet = order_info.split("To: ")[1]
         transaction_hash = generate_transaction_hash(
-            wallet_address=target_wallet,
-            amount=int(amount)
+            sender_hash=target_wallet,
+            receiver_hash=target_wallet,
+            amount=int(amount),
+            timestamp=b64decode(timestamp_base64).decode('utf-8')
         )
         if transaction_hash == order_id:
-            TransactionService.safe_add(
-                session=session,
-                wallet_address=target_wallet,
-                amount=int(amount)
-            )
-            return redirect('/add')
+            record = HistoryService.select_one_by_transaction_hash(session=session, transaction_hash=transaction_hash)
+            if record == None:
+                TransactionService.safe_add(
+                    session=session,
+                    wallet_address=target_wallet,
+                    amount=int(amount)
+                )
+                HistoryService.safe_create_transaction_history(
+                    session=session,
+                    sender_address=target_wallet,
+                    receiver_address=target_wallet,
+                    amount=int(amount),
+                    timestamp=b64decode(timestamp_base64).decode('utf-8'),
+                    message="To: " + target_wallet,
+                    status=HistoryStatus.COMPLETED,
+                    transaction_type=HistoryType.TOPUP
+                )
+                return redirect('/add')
+            else:
+                return {"status": "failed"}, 500
         else:
             return {"status": "failed"}, 500
     except Exception as e:
-        print(e, flush=True)
+        print("Error:", e, flush=True)
         return {"status": "failed"}, 500

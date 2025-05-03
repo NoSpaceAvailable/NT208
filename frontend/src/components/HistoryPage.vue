@@ -30,25 +30,31 @@
                     <div class="bg-[#131313]/85 rounded-xl shadow-sm p-6">
                         <!-- Table headers -->
                         <div class="grid grid-cols-12 gap-4 text-white font-medium pb-2 border-b border-[#333]">
-                            <div class="col-span-3 text-left">From</div>
-                            <div class="col-span-3 text-left">To</div>
-                            <div class="col-span-3 text-right">Amount</div>
-                            <div class="col-span-3 text-right">Date</div>
+                            <div class="col-span-2 text-left">From</div>
+                            <div class="col-span-2 text-left">To</div>
+                            <div class="col-span-2 text-right">Amount</div>
+                            <div class="col-span-2 text-right">Type</div>
+                            <div class="col-span-2 text-right">Status</div>
+                            <div class="col-span-2 text-right">Date</div>
                         </div>
                         <!-- Scrollable list -->
                         <ul class="max-h-96 overflow-y-auto text-white">
                             <li v-for="(transaction, index) in transactions" :key="index"
                                 class="grid grid-cols-12 gap-4 p-3 border-b border-[#222] last:border-0 hover:bg-[#222]/50 cursor-pointer transition-colors"
                                 @click="openTransactionDetails(transaction)">
-                                <div class="col-span-3 text-left font-mono text-sm truncate">
+                                <div class="col-span-2 text-left font-mono text-sm truncate">
                                     {{ transaction.sender_address === wallet_address ? 'You' : shortenAddress(transaction.sender_address) }}
                                 </div>
-                                <div class="col-span-3 text-left font-mono text-sm truncate">
+                                <div class="col-span-2 text-left font-mono text-sm truncate">
                                     {{ transaction.receiver_address === wallet_address ? 'You' : shortenAddress(transaction.receiver_address) }}
                                 </div>
-                                <div class="col-span-3 text-right font-mono text-[#8FC773]">{{ transaction.amount }} VND
+                                <div class="col-span-2 text-right font-mono text-[#8FC773]">{{ transaction.amount }} VND
                                 </div>
-                                <div class="col-span-3 text-right text-sm text-white">{{ formatDate(transaction.date)
+                                <div class="col-span-2 text-right text-sm text-white">{{ transaction.type }}</div>
+                                <div class="col-span-2 text-right text-sm text-white">
+                                    <span :class="getStatusClass(transaction.status)">{{ transaction.status }}</span>
+                                </div>
+                                <div class="col-span-2 text-right text-sm text-white">{{ formatDate(transaction.timestamp)
                                 }}</div>
                             </li>
                         </ul>
@@ -130,9 +136,27 @@
                             <p class="text-[#8FC773] font-mono">{{ selectedTransaction.amount }} VND</p>
                         </div>
                         <div>
-                            <p class="text-sm text-white">Date</p>
-                            <p class="text-[#8FC773]">{{ formatDateLong(selectedTransaction.date) }}</p>
+                            <p class="text-sm text-white">Type</p>
+                            <p class="text-[#8FC773]">{{ selectedTransaction.type }}</p>
                         </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-sm text-white">Status</p>
+                            <p class="text-[#8FC773]">
+                                <span :class="getStatusClass(selectedTransaction.status)">{{ selectedTransaction.status }}</span>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-white">Date</p>
+                            <p class="text-[#8FC773]">{{ formatDateLong(selectedTransaction.timestamp) }}</p>
+                        </div>
+                    </div>
+
+                    <div v-if="selectedTransaction.message" class="pt-4">
+                        <p class="text-sm text-white">Message</p>
+                        <p class="text-[#8FC773] break-all">{{ selectedTransaction.message }}</p>
                     </div>
 
                     <div v-if="selectedTransaction.transaction_hash" class="pt-4 border-t border-[#333]">
@@ -271,6 +295,20 @@ export default {
             }).catch((err) => {
                 console.error('Error fetching wallet address:', err);
             })
+        },
+        getStatusClass(status) {
+            // Implement your logic to determine the status class based on the status
+            // For example, you can use a switch statement or a mapping function
+            switch (status) {
+                case 'completed':
+                    return 'text-green-500';
+                case 'pending':
+                    return 'text-yellow-500';
+                case 'failed':
+                    return 'text-red-500';
+                default:
+                    return 'text-gray-500';
+            }
         }
     },
     mounted() {

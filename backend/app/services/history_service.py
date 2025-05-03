@@ -5,12 +5,14 @@ from ..models.Wallet import Wallet
 from ..models.User import User
 from .. utils.logging import info, error
 from .. global_config import history_config
+from ..models.enumtypes.HistoryStatus import HistoryStatus
+from ..models.enumtypes.HistoryType import HistoryType
 from hashlib import sha256
 
 def generate_transaction_hash(
     sender_hash: str,
     receiver_hash: str,
-    amount: float,
+    amount: int,
     timestamp: str,
     salt: bytes = history_config['TRANSACTION_SALT'],
 ) -> str:
@@ -23,15 +25,28 @@ def generate_transaction_hash(
     if not isinstance(salt, bytes) or len(salt) != 4:
         raise ValueError("Salt must be 4 bytes")
     
-    rounded_amount = round(amount, 2)
-    transaction_string = f"{sender_hash}{receiver_hash}{rounded_amount:.2f}{timestamp}".encode("utf-8")
+    transaction_string = f"{sender_hash}{receiver_hash}{amount}{timestamp}".encode("utf-8")
     
     return sha256(transaction_string + salt).hexdigest()
 
 class HistoryService:
 
     @staticmethod
-    def safe_create_transaction_history(session: Session, sender_address: str, receiver_address: str, amount: float):
+    def select_one_by_transaction_hash(session: Session, transaction_hash: str) -> History | None:
+        return session.execute(
+            select(History)
+            .filter(History.transaction_hash == transaction_hash)
+        ).scalar_one_or_none()
+
+    @staticmethod
+    def safe_create_transaction_history(session: Session, 
+                                        sender_address: str, 
+                                        receiver_address: str, 
+                                        amount: int, 
+                                        timestamp: str,
+                                        message: str, 
+                                        status: HistoryStatus, 
+                                        transaction_type: HistoryType):
         """
         Create two transaction history records in the database.
         """
@@ -39,10 +54,11 @@ class HistoryService:
             error("Invalid amount")
             return False
         try:
-            transaction = History(sender_address, receiver_address, amount)
+            transaction = History(sender_address, receiver_address, amount, timestamp, message, status, transaction_type)
             info(f"Creating transaction history: {transaction}")
             session.add(transaction)
             info(f"Transaction history added")
+            session.commit()
             return True
         except Exception as e:
             session.rollback()
@@ -52,7 +68,7 @@ class HistoryService:
     @staticmethod
     def safe_get_history_records(session: Session, username: str) -> History:
         """
-        Retrieve a transaction history record by its hash.
+        Retrieve a transaction history record by username.
         """
         _hash = session.execute(
             select(Wallet)
@@ -65,6 +81,7 @@ class HistoryService:
                 )
             ).with_for_update()
         ).scalar_one_or_none().wallet_address
+        print(_hash, flush=True)
         try:
             records = session.execute(
                 select(History)
@@ -76,6 +93,7 @@ class HistoryService:
                 .with_for_update()
             ).all()
             records = [record[0].to_dict() for record in records]
+            print(records, flush=True)
             if records:
                 info(f"Transaction history retrieved: {records}")
                 return records
