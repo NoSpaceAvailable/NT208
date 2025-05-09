@@ -1,0 +1,5910 @@
+{
+    "MP5-SD": {
+        "1": {
+            "Statics": {
+                "type": "dynamic",
+                "min_price": "0,22 €",
+                "max_price": "5,36 €"
+            },
+            "Liquidation": {
+                "type": "dynamic",
+                "min_price": "0,15 €",
+                "max_price": "1,82 €"
+            },
+            "Necro Jr.": {
+                "type": "dynamic",
+                "min_price": "0,16 €",
+                "max_price": "1,23 €"
+            },
+            "Condition Zero": {
+                "type": "dynamic",
+                "min_price": "0,68 €",
+                "max_price": "4,52 €"
+            },
+            "Desert Strike": {
+                "type": "dynamic",
+                "min_price": "0,14 €",
+                "max_price": "1,50 €"
+            },
+            "Acid Wash": {
+                "type": "dynamic",
+                "min_price": "1,36 €",
+                "max_price": "5,98 €"
+            }
+        },
+        "2": {
+            "Kitbash": {
+                "type": "dynamic",
+                "min_price": "0,70 €",
+                "max_price": "3,98 €"
+            },
+            "Agent": {
+                "type": "dynamic",
+                "min_price": "2,10 €",
+                "max_price": "14,94 €"
+            },
+            "Gauss": {
+                "type": "dynamic",
+                "min_price": "0,70 €",
+                "max_price": "4,34 €"
+            }
+        },
+        "3": {
+            "Phosphor": {
+                "type": "dynamic",
+                "min_price": "8,32 €",
+                "max_price": "22,38 €"
+            }
+        }
+    },
+    "SCAR-20": {
+        "1": {
+            "Trail Blazer": {
+                "type": "dynamic",
+                "min_price": "0,22 €",
+                "max_price": "1,82 €"
+            },
+            "Fragments": {
+                "type": "dynamic",
+                "min_price": "0,15 €",
+                "max_price": "1,07 €"
+            },
+            "Poultrygeist": {
+                "type": "dynamic",
+                "min_price": "0,17 €",
+                "max_price": "0,87 €"
+            },
+            "Assault": {
+                "type": "dynamic",
+                "min_price": "0,21 €",
+                "max_price": "1,03 €"
+            },
+            "Torn": {
+                "type": "dynamic",
+                "min_price": "1,46 €",
+                "max_price": "4,01 €"
+            },
+            "Jungle Slipstream": {
+                "type": "dynamic",
+                "min_price": "0,21 €",
+                "max_price": "1,04 €"
+            },
+            "Blueprint": {
+                "type": "dynamic",
+                "min_price": "0,39 €",
+                "max_price": "1,56 €"
+            },
+            "Outbreak": {
+                "type": "dynamic",
+                "min_price": "0,53 €",
+                "max_price": "2,10 €"
+            },
+            "Green Marine": {
+                "type": "dynamic",
+                "min_price": "0,44 €",
+                "max_price": "2,03 €"
+            },
+            "Grotto": {
+                "type": "dynamic",
+                "min_price": "0,85 €",
+                "max_price": "2,22 €"
+            },
+            "Crimson Web": {
+                "type": "dynamic",
+                "min_price": "4,80 €",
+                "max_price": "77,20 €"
+            }
+        },
+        "2": {
+            "Enforcer": {
+                "type": "dynamic",
+                "min_price": "0,86 €",
+                "max_price": "6,76 €"
+            },
+            "Powercore": {
+                "type": "dynamic",
+                "min_price": "0,87 €",
+                "max_price": "6,51 €"
+            }
+        },
+        "3": {
+            "Bloodsport": {
+                "type": "dynamic",
+                "min_price": "6,12 €",
+                "max_price": "22,52 €"
+            },
+            "Cardiac": {
+                "type": "dynamic",
+                "min_price": "10,27 €",
+                "max_price": "73,58 €"
+            },
+            "Cyrex": {
+                "type": "dynamic",
+                "min_price": "54,57 €",
+                "max_price": "129,00 €"
+            }
+        }
+    },
+    "USP-S": {
+        "1": {
+            "27": {
+                "type": "dynamic",
+                "min_price": "0,16 €",
+                "max_price": "1,05 €"
+            },
+            "Black Lotus": {
+                "type": "dynamic",
+                "min_price": "1,60 €",
+                "max_price": "10,98 €"
+            },
+            "Blueprint": {
+                "type": "dynamic",
+                "min_price": "5,00 €",
+                "max_price": "35,00 €"
+            },
+            "Lead Conduit": {
+                "type": "dynamic",
+                "min_price": "1,04 €",
+                "max_price": "6,88 €"
+            },
+            "Torque": {
+                "type": "dynamic",
+                "min_price": "1,15 €",
+                "max_price": "2,69 €"
+            },
+            "Blood Tiger": {
+                "type": "dynamic",
+                "min_price": "3,81 €",
+                "max_price": "8,98 €"
+            },
+            "Stainless": {
+                "type": "dynamic",
+                "min_price": "6,41 €",
+                "max_price": "32,48 €"
+            }
+        },
+        "3": {
+            "Jawbreaker": {
+                "type": "dynamic",
+                "min_price": "9,29 €",
+                "max_price": "28,33 €"
+            },
+            "Monster Mashup": {
+                "type": "dynamic",
+                "min_price": "26,79 €",
+                "max_price": "62,94 €"
+            },
+            "Cortex": {
+                "type": "dynamic",
+                "min_price": "3,17 €",
+                "max_price": "14,16 €"
+            },
+            "Caiman": {
+                "type": "dynamic",
+                "min_price": "60,73 €",
+                "max_price": "78,67 €"
+            },
+            "Serum": {
+                "type": "dynamic",
+                "min_price": "42,98 €",
+                "max_price": "67,77 €"
+            }
+        },
+        "4": {
+            "Printstream": {
+                "type": "dynamic",
+                "min_price": "36,15 €",
+                "max_price": "170,28 €"
+            },
+            "The Traitor": {
+                "type": "dynamic",
+                "min_price": "15,06 €",
+                "max_price": "68,96 €"
+            },
+            "Neo-Noir": {
+                "type": "dynamic",
+                "min_price": "21,31 €",
+                "max_price": "43,19 €"
+            },
+            "Kill Confirmed": {
+                "type": "dynamic",
+                "min_price": "67,88 €",
+                "max_price": "225,91 €"
+            }
+        },
+        "2": {
+            "Ticket to Hell": {
+                "type": "dynamic",
+                "min_price": "0,40 €",
+                "max_price": "2,46 €"
+            },
+            "Flashback": {
+                "type": "dynamic",
+                "min_price": "0,85 €",
+                "max_price": "1,98 €"
+            },
+            "Cyrex": {
+                "type": "dynamic",
+                "min_price": "1,39 €",
+                "max_price": "4,83 €"
+            },
+            "Guardian": {
+                "type": "dynamic",
+                "min_price": "5,26 €",
+                "max_price": "12,54 €"
+            },
+            "Overgrowth": {
+                "type": "dynamic",
+                "min_price": "28,49 €",
+                "max_price": "83,45 €"
+            },
+            "Dark Water": {
+                "type": "dynamic",
+                "min_price": "93,93 €",
+                "max_price": "112,45 €"
+            }
+        }
+    },
+    "R8 Revolver": {
+        "1": {
+            "Tango": {
+                "type": "dynamic",
+                "min_price": "0,13 €",
+                "max_price": "0,94 €"
+            },
+            "Junk Yard": {
+                "type": "dynamic",
+                "min_price": "0,53 €",
+                "max_price": "2,76 €"
+            },
+            "Bone Forged": {
+                "type": "dynamic",
+                "min_price": "0,18 €",
+                "max_price": "1,17 €"
+            },
+            "Memento": {
+                "type": "dynamic",
+                "min_price": "1,26 €",
+                "max_price": "9,60 €"
+            },
+            "Survivalist": {
+                "type": "dynamic",
+                "min_price": "0,42 €",
+                "max_price": "1,57 €"
+            },
+            "Grip": {
+                "type": "dynamic",
+                "min_price": "0,17 €",
+                "max_price": "1,93 €"
+            },
+            "Crimson Web": {
+                "type": "dynamic",
+                "min_price": "0,43 €",
+                "max_price": "34,14 €"
+            }
+        },
+        "2": {
+            "Banana Cannon": {
+                "type": "dynamic",
+                "min_price": "0,40 €",
+                "max_price": "2,46 €"
+            },
+            "Crazy 8": {
+                "type": "dynamic",
+                "min_price": "0,96 €",
+                "max_price": "7,89 €"
+            },
+            "Reboot": {
+                "type": "dynamic",
+                "min_price": "1,43 €",
+                "max_price": "20,37 €"
+            }
+        },
+        "3": {
+            "Skull Crusher": {
+                "type": "dynamic",
+                "min_price": "3,54 €",
+                "max_price": "4,48 €"
+            },
+            "Llama Cannon": {
+                "type": "dynamic",
+                "min_price": "3,56 €",
+                "max_price": "16,10 €"
+            }
+        },
+        "4": {
+            "Fade": {
+                "type": "dynamic",
+                "min_price": "42,51 €",
+                "max_price": "132,06 €"
+            }
+        }
+    },
+    "AUG": {
+        "1": {
+            "Luxe Trim": {
+                "type": "dynamic",
+                "min_price": "0,29 €",
+                "max_price": "2,99 €"
+            },
+            "Plague": {
+                "type": "dynamic",
+                "min_price": "1,31 €",
+                "max_price": "6,83 €"
+            },
+            "Tom Cat": {
+                "type": "dynamic",
+                "min_price": "0,19 €",
+                "max_price": "1,85 €"
+            },
+            "Amber Slipstream": {
+                "type": "dynamic",
+                "min_price": "0,44 €",
+                "max_price": "1,75 €"
+            },
+            "Triqua": {
+                "type": "dynamic",
+                "min_price": "0,18 €",
+                "max_price": "3,03 €"
+            },
+            "Ricochet": {
+                "type": "dynamic",
+                "min_price": "0,43 €",
+                "max_price": "2,72 €"
+            },
+            "Wings": {
+                "type": "dynamic",
+                "min_price": "31,54 €",
+                "max_price": "31,71 €"
+            }
+        },
+        "3": {
+            "Death by Puppy": {
+                "type": "dynamic",
+                "min_price": "12,31 €",
+                "max_price": "28,61 €"
+            },
+            "Momentum": {
+                "type": "dynamic",
+                "min_price": "3,92 €",
+                "max_price": "92,00 €"
+            },
+            "Stymphalian": {
+                "type": "dynamic",
+                "min_price": "2,98 €",
+                "max_price": "16,23 €"
+            },
+            "Syd Mead": {
+                "type": "dynamic",
+                "min_price": "4,50 €",
+                "max_price": "27,05 €"
+            },
+            "Fleet Flock": {
+                "type": "dynamic",
+                "min_price": "4,85 €",
+                "max_price": "32,84 €"
+            },
+            "Bengal Tiger": {
+                "type": "dynamic",
+                "min_price": "16,19 €",
+                "max_price": "100,00 €"
+            }
+        },
+        "2": {
+            "Arctic Wolf": {
+                "type": "dynamic",
+                "min_price": "6,27 €",
+                "max_price": "28,16 €"
+            },
+            "Aristocrat": {
+                "type": "dynamic",
+                "min_price": "1,75 €",
+                "max_price": "8,25 €"
+            },
+            "Torque": {
+                "type": "dynamic",
+                "min_price": "13,05 €",
+                "max_price": "18,66 €"
+            }
+        },
+        "4": {
+            "Chameleon": {
+                "type": "dynamic",
+                "min_price": "12,30 €",
+                "max_price": "21,69 €"
+            }
+        }
+    },
+    "Desert Eagle": {
+        "1": {
+            "Calligraffiti": {
+                "type": "dynamic",
+                "min_price": "0,67 €",
+                "max_price": "11,53 €"
+            },
+            "Blue Ply": {
+                "type": "dynamic",
+                "min_price": "1,09 €",
+                "max_price": "11,54 €"
+            },
+            "Oxide Blaze": {
+                "type": "dynamic",
+                "min_price": "1,30 €",
+                "max_price": "3,66 €"
+            },
+            "Corinthian": {
+                "type": "dynamic",
+                "min_price": "2,43 €",
+                "max_price": "5,66 €"
+            },
+            "Bronze Deco": {
+                "type": "dynamic",
+                "min_price": "0,82 €",
+                "max_price": "5,92 €"
+            }
+        },
+        "4": {
+            "Ocean Drive": {
+                "type": "dynamic",
+                "min_price": "57,24 €",
+                "max_price": "502,66 €"
+            },
+            "Printstream": {
+                "type": "dynamic",
+                "min_price": "73,67 €",
+                "max_price": "247,51 €"
+            },
+            "Code Red": {
+                "type": "dynamic",
+                "min_price": "63,25 €",
+                "max_price": "236,69 €"
+            },
+            "Golden Koi": {
+                "type": "dynamic",
+                "min_price": "135,92 €",
+                "max_price": "219,68 €"
+            }
+        },
+        "2": {
+            "Trigger Discipline": {
+                "type": "dynamic",
+                "min_price": "2,44 €",
+                "max_price": "16,60 €"
+            },
+            "Light Rail": {
+                "type": "dynamic",
+                "min_price": "4,07 €",
+                "max_price": "21,65 €"
+            },
+            "Directive": {
+                "type": "dynamic",
+                "min_price": "2,48 €",
+                "max_price": "60,70 €"
+            },
+            "Naga": {
+                "type": "dynamic",
+                "min_price": "6,52 €",
+                "max_price": "24,26 €"
+            },
+            "Crimson Web": {
+                "type": "dynamic",
+                "min_price": "24,03 €",
+                "max_price": "566,58 €"
+            },
+            "Heirloom": {
+                "type": "dynamic",
+                "min_price": "16,96 €",
+                "max_price": "58,41 €"
+            }
+        },
+        "3": {
+            "Mecha Industries": {
+                "type": "dynamic",
+                "min_price": "15,08 €",
+                "max_price": "34,31 €"
+            },
+            "Kumicho Dragon": {
+                "type": "dynamic",
+                "min_price": "21,78 €",
+                "max_price": "46,11 €"
+            },
+            "Conspiracy": {
+                "type": "dynamic",
+                "min_price": "25,51 €",
+                "max_price": "37,95 €"
+            },
+            "Cobalt Disruption": {
+                "type": "dynamic",
+                "min_price": "136,44 €",
+                "max_price": "282,79 €"
+            },
+            "Hypnotic": {
+                "type": "dynamic",
+                "min_price": "158,51 €",
+                "max_price": "159,77 €"
+            }
+        }
+    },
+    "M249": {
+        "1": {
+            "Hypnosis": {
+                "type": "dynamic",
+                "min_price": "0,22 €",
+                "max_price": "1,82 €"
+            },
+            "O.S.I.P.R.": {
+                "type": "dynamic",
+                "min_price": "0,57 €",
+                "max_price": "2,11 €"
+            },
+            "Deep Relief": {
+                "type": "dynamic",
+                "min_price": "0,72 €",
+                "max_price": "5,43 €"
+            },
+            "Warbird": {
+                "type": "dynamic",
+                "min_price": "1,01 €",
+                "max_price": "2,04 €"
+            },
+            "Spectre": {
+                "type": "dynamic",
+                "min_price": "0,24 €",
+                "max_price": "1,31 €"
+            },
+            "System Lock": {
+                "type": "dynamic",
+                "min_price": "0,66 €",
+                "max_price": "2,51 €"
+            },
+            "Magma": {
+                "type": "dynamic",
+                "min_price": "1,67 €",
+                "max_price": "3,15 €"
+            }
+        },
+        "2": {
+            "Downtown": {
+                "type": "dynamic",
+                "min_price": "0,91 €",
+                "max_price": "4,64 €"
+            },
+            "Aztec": {
+                "type": "dynamic",
+                "min_price": "0,55 €",
+                "max_price": "2,35 €"
+            },
+            "Emerald Poison Dart": {
+                "type": "dynamic",
+                "min_price": "3,58 €",
+                "max_price": "7,76 €"
+            },
+            "Nebula Crusader": {
+                "type": "dynamic",
+                "min_price": "3,09 €",
+                "max_price": "16,63 €"
+            }
+        }
+    },
+    "M4A4": {
+        "2": {
+            "Turbine": {
+                "type": "dynamic",
+                "min_price": "2,57 €",
+                "max_price": "28,50 €"
+            },
+            "Etch Lord": {
+                "type": "dynamic",
+                "min_price": "2,31 €",
+                "max_price": "11,21 €"
+            },
+            "Spider Lily": {
+                "type": "dynamic",
+                "min_price": "15,46 €",
+                "max_price": "89,75 €"
+            },
+            "Evil Daimyo": {
+                "type": "dynamic",
+                "min_price": "7,23 €",
+                "max_price": "20,66 €"
+            },
+            "Griffin": {
+                "type": "dynamic",
+                "min_price": "7,93 €",
+                "max_price": "23,02 €"
+            },
+            "Zirka": {
+                "type": "dynamic",
+                "min_price": "42,68 €",
+                "max_price": "142,18 €"
+            }
+        },
+        "4": {
+            "Temukau": {
+                "type": "dynamic",
+                "min_price": "32,81 €",
+                "max_price": "309,67 €"
+            },
+            "In Living Color": {
+                "type": "dynamic",
+                "min_price": "20,18 €",
+                "max_price": "124,44 €"
+            },
+            "The Emperor": {
+                "type": "dynamic",
+                "min_price": "48,09 €",
+                "max_price": "380,00 €"
+            },
+            "Neo-Noir": {
+                "type": "dynamic",
+                "min_price": "23,15 €",
+                "max_price": "144,93 €"
+            },
+            "Buzz Kill": {
+                "type": "dynamic",
+                "min_price": "39,81 €",
+                "max_price": "134,83 €"
+            },
+            "The Battlestar": {
+                "type": "dynamic",
+                "min_price": "23,26 €",
+                "max_price": "50,01 €"
+            },
+            "Royal Paladin": {
+                "type": "dynamic",
+                "min_price": "33,12 €",
+                "max_price": "361,93 €"
+            },
+            "Bullet Rain": {
+                "type": "dynamic",
+                "min_price": "23,46 €",
+                "max_price": "111,85 €"
+            },
+            "Desert-Strike": {
+                "type": "dynamic",
+                "min_price": "18,20 €",
+                "max_price": "44,18 €"
+            },
+            "Asiimov": {
+                "type": "dynamic",
+                "min_price": "210,74 €",
+                "max_price": "623,52 €"
+            },
+            "X-Ray": {
+                "type": "dynamic",
+                "min_price": "63,03 €",
+                "max_price": "133,67 €"
+            }
+        },
+        "1": {
+            "Poly Mag": {
+                "type": "dynamic",
+                "min_price": "0,24 €",
+                "max_price": "2,88 €"
+            },
+            "Magnesium": {
+                "type": "dynamic",
+                "min_price": "1,04 €",
+                "max_price": "14,79 €"
+            },
+            "Faded Zebra": {
+                "type": "dynamic",
+                "min_price": "4,83 €",
+                "max_price": "105,94 €"
+            }
+        },
+        "3": {
+            "Cyber Security": {
+                "type": "dynamic",
+                "min_price": "38,40 €",
+                "max_price": "131,80 €"
+            },
+            "Tooth Fairy": {
+                "type": "dynamic",
+                "min_price": "6,70 €",
+                "max_price": "25,08 €"
+            },
+            "Hellfire": {
+                "type": "dynamic",
+                "min_price": "97,80 €",
+                "max_price": "207,00 €"
+            },
+            "Desolate Space": {
+                "type": "dynamic",
+                "min_price": "20,18 €",
+                "max_price": "116,64 €"
+            },
+            "龍王 (Dragon King)": {
+                "type": "dynamic",
+                "min_price": "12,53 €",
+                "max_price": "42,89 €"
+            }
+        }
+    },
+    "MAC-10": {
+        "2": {
+            "Saibā Oni": {
+                "type": "dynamic",
+                "min_price": "2,33 €",
+                "max_price": "10,31 €"
+            },
+            "Sakkaku": {
+                "type": "dynamic",
+                "min_price": "0,70 €",
+                "max_price": "3,57 €"
+            },
+            "Button Masher": {
+                "type": "dynamic",
+                "min_price": "0,63 €",
+                "max_price": "4,97 €"
+            },
+            "Allure": {
+                "type": "dynamic",
+                "min_price": "0,73 €",
+                "max_price": "5,79 €"
+            },
+            "Pipe Down": {
+                "type": "dynamic",
+                "min_price": "1,05 €",
+                "max_price": "9,75 €"
+            },
+            "Last Dive": {
+                "type": "dynamic",
+                "min_price": "3,38 €",
+                "max_price": "7,73 €"
+            },
+            "Malachite": {
+                "type": "dynamic",
+                "min_price": "4,48 €",
+                "max_price": "13,33 €"
+            },
+            "Tatter": {
+                "type": "dynamic",
+                "min_price": "10,37 €",
+                "max_price": "21,33 €"
+            },
+            "Heat": {
+                "type": "dynamic",
+                "min_price": "6,32 €",
+                "max_price": "32,73 €"
+            },
+            "Graven": {
+                "type": "dynamic",
+                "min_price": "39,69 €",
+                "max_price": "126,02 €"
+            }
+        },
+        "1": {
+            "Light Box": {
+                "type": "dynamic",
+                "min_price": "0,22 €",
+                "max_price": "3,99 €"
+            },
+            "Monkeyflage": {
+                "type": "dynamic",
+                "min_price": "0,15 €",
+                "max_price": "1,32 €"
+            },
+            "Ensnared": {
+                "type": "dynamic",
+                "min_price": "0,17 €",
+                "max_price": "1,51 €"
+            },
+            "Classic Crate": {
+                "type": "dynamic",
+                "min_price": "0,21 €",
+                "max_price": "2,13 €"
+            },
+            "Whitefish": {
+                "type": "dynamic",
+                "min_price": "0,39 €",
+                "max_price": "3,18 €"
+            },
+            "Oceanic": {
+                "type": "dynamic",
+                "min_price": "0,22 €",
+                "max_price": "1,37 €"
+            },
+            "Aloha": {
+                "type": "dynamic",
+                "min_price": "6,01 €",
+                "max_price": "8,93 €"
+            },
+            "Carnivore": {
+                "type": "dynamic",
+                "min_price": "0,35 €",
+                "max_price": "3,98 €"
+            },
+            "Lapis Gator": {
+                "type": "dynamic",
+                "min_price": "1,20 €",
+                "max_price": "3,76 €"
+            },
+            "Rangeen": {
+                "type": "dynamic",
+                "min_price": "0,61 €",
+                "max_price": "2,09 €"
+            },
+            "Ultraviolet": {
+                "type": "dynamic",
+                "min_price": "2,98 €",
+                "max_price": "93,67 €"
+            }
+        },
+        "3": {
+            "Toybox": {
+                "type": "dynamic",
+                "min_price": "20,05 €",
+                "max_price": "59,83 €"
+            },
+            "Disco Tech": {
+                "type": "dynamic",
+                "min_price": "6,31 €",
+                "max_price": "49,00 €"
+            }
+        },
+        "4": {
+            "Stalker": {
+                "type": "dynamic",
+                "min_price": "54,47 €",
+                "max_price": "454,48 €"
+            },
+            "Neon Rider": {
+                "type": "dynamic",
+                "min_price": "31,56 €",
+                "max_price": "57,89 €"
+            }
+        }
+    },
+    "P90": {
+        "2": {
+            "Randy Rush": {
+                "type": "dynamic",
+                "min_price": "1,68 €",
+                "max_price": "8,58 €"
+            },
+            "Neoqueen": {
+                "type": "dynamic",
+                "min_price": "0,89 €",
+                "max_price": "4,05 €"
+            },
+            "Vent Rush": {
+                "type": "dynamic",
+                "min_price": "1,18 €",
+                "max_price": "4,73 €"
+            },
+            "Death Grip": {
+                "type": "dynamic",
+                "min_price": "11,74 €",
+                "max_price": "34,11 €"
+            },
+            "Chopper": {
+                "type": "dynamic",
+                "min_price": "2,11 €",
+                "max_price": "8,99 €"
+            },
+            "Virus": {
+                "type": "dynamic",
+                "min_price": "4,39 €",
+                "max_price": "19,58 €"
+            },
+            "Blind Spot": {
+                "type": "dynamic",
+                "min_price": "13,04 €",
+                "max_price": "20,25 €"
+            }
+        },
+        "1": {
+            "Cocoa Rampage": {
+                "type": "dynamic",
+                "min_price": "0,69 €",
+                "max_price": "3,38 €"
+            },
+            "Freight": {
+                "type": "dynamic",
+                "min_price": "0,14 €",
+                "max_price": "1,12 €"
+            },
+            "Off World": {
+                "type": "dynamic",
+                "min_price": "0,40 €",
+                "max_price": "2,65 €"
+            },
+            "Traction": {
+                "type": "dynamic",
+                "min_price": "0,48 €",
+                "max_price": "7,33 €"
+            },
+            "Grim": {
+                "type": "dynamic",
+                "min_price": "0,33 €",
+                "max_price": "3,13 €"
+            },
+            "Elite Build": {
+                "type": "dynamic",
+                "min_price": "0,36 €",
+                "max_price": "5,95 €"
+            },
+            "Module": {
+                "type": "dynamic",
+                "min_price": "3,11 €",
+                "max_price": "5,10 €"
+            }
+        },
+        "3": {
+            "Nostalgia": {
+                "type": "dynamic",
+                "min_price": "11,14 €",
+                "max_price": "28,31 €"
+            },
+            "Shallow Grave": {
+                "type": "dynamic",
+                "min_price": "10,73 €",
+                "max_price": "25,06 €"
+            },
+            "Shapewood": {
+                "type": "dynamic",
+                "min_price": "4,95 €",
+                "max_price": "30,22 €"
+            },
+            "Trigon": {
+                "type": "dynamic",
+                "min_price": "10,78 €",
+                "max_price": "12,39 €"
+            },
+            "Cold Blooded": {
+                "type": "dynamic",
+                "min_price": "95,08 €",
+                "max_price": "97,75 €"
+            },
+            "Emerald Dragon": {
+                "type": "dynamic",
+                "min_price": "115,00 €",
+                "max_price": "298,76 €"
+            }
+        },
+        "4": {
+            "Asiimov": {
+                "type": "dynamic",
+                "min_price": "29,14 €",
+                "max_price": "199,00 €"
+            },
+            "Death by Kitty": {
+                "type": "dynamic",
+                "min_price": "128,28 €",
+                "max_price": "310,76 €"
+            }
+        }
+    },
+    "Dual Berettas": {
+        "2": {
+            "Hydro Strike": {
+                "type": "dynamic",
+                "min_price": "1,77 €",
+                "max_price": "9,19 €"
+            },
+            "Flora Carnivora": {
+                "type": "dynamic",
+                "min_price": "0,95 €",
+                "max_price": "7,11 €"
+            },
+            "Dezastre": {
+                "type": "dynamic",
+                "min_price": "4,19 €",
+                "max_price": "10,59 €"
+            },
+            "Royal Consorts": {
+                "type": "dynamic",
+                "min_price": "1,10 €",
+                "max_price": "24,88 €"
+            },
+            "Urban Shock": {
+                "type": "dynamic",
+                "min_price": "5,14 €",
+                "max_price": "11,09 €"
+            },
+            "Marina": {
+                "type": "dynamic",
+                "min_price": "10,76 €",
+                "max_price": "63,53 €"
+            },
+            "Hemoglobin": {
+                "type": "dynamic",
+                "min_price": "20,87 €",
+                "max_price": "32,70 €"
+            }
+        },
+        "1": {
+            "Hideout": {
+                "type": "dynamic",
+                "min_price": "0,24 €",
+                "max_price": "1,04 €"
+            },
+            "Tread": {
+                "type": "dynamic",
+                "min_price": "0,92 €",
+                "max_price": "5,32 €"
+            },
+            "Elite 1.6": {
+                "type": "dynamic",
+                "min_price": "0,28 €",
+                "max_price": "1,65 €"
+            },
+            "Balance": {
+                "type": "dynamic",
+                "min_price": "1,25 €",
+                "max_price": "18,27 €"
+            },
+            "Shred": {
+                "type": "dynamic",
+                "min_price": "0,63 €",
+                "max_price": "1,87 €"
+            },
+            "Ventilators": {
+                "type": "dynamic",
+                "min_price": "0,33 €",
+                "max_price": "1,44 €"
+            },
+            "Cartel": {
+                "type": "dynamic",
+                "min_price": "0,74 €",
+                "max_price": "8,83 €"
+            },
+            "Dualing Dragons": {
+                "type": "dynamic",
+                "min_price": "0,23 €",
+                "max_price": "2,41 €"
+            },
+            "Panther": {
+                "type": "dynamic",
+                "min_price": "3,82 €",
+                "max_price": "8,39 €"
+            },
+            "Black Limba": {
+                "type": "dynamic",
+                "min_price": "6,34 €",
+                "max_price": "59,01 €"
+            }
+        },
+        "3": {
+            "Melondrama": {
+                "type": "dynamic",
+                "min_price": "2,63 €",
+                "max_price": "21,40 €"
+            },
+            "Cobra Strike": {
+                "type": "dynamic",
+                "min_price": "69,18 €",
+                "max_price": "164,67 €"
+            }
+        }
+    },
+    "SSG 08": {
+        "2": {
+            "Rapid Transit": {
+                "type": "dynamic",
+                "min_price": "2,00 €",
+                "max_price": "15,59 €"
+            },
+            "Parallax": {
+                "type": "dynamic",
+                "min_price": "5,48 €",
+                "max_price": "23,58 €"
+            },
+            "Fever Dream": {
+                "type": "dynamic",
+                "min_price": "2,33 €",
+                "max_price": "11,52 €"
+            },
+            "Death's Head": {
+                "type": "dynamic",
+                "min_price": "22,88 €",
+                "max_price": "26,17 €"
+            },
+            "Ghost Crusader": {
+                "type": "dynamic",
+                "min_price": "2,18 €",
+                "max_price": "20,22 €"
+            }
+        },
+        "1": {
+            "Dezastre": {
+                "type": "dynamic",
+                "min_price": "0,09 €",
+                "max_price": "0,52 €"
+            },
+            "Mainframe 001": {
+                "type": "dynamic",
+                "min_price": "0,15 €",
+                "max_price": "1,83 €"
+            },
+            "Necropos": {
+                "type": "dynamic",
+                "min_price": "0,97 €",
+                "max_price": "9,72 €"
+            },
+            "Dark Water": {
+                "type": "dynamic",
+                "min_price": "4,94 €",
+                "max_price": "5,90 €"
+            },
+            "Abyss": {
+                "type": "dynamic",
+                "min_price": "0,93 €",
+                "max_price": "17,31 €"
+            },
+            "Slashed": {
+                "type": "dynamic",
+                "min_price": "3,34 €",
+                "max_price": "3,41 €"
+            }
+        },
+        "3": {
+            "Turbo Peek": {
+                "type": "dynamic",
+                "min_price": "22,52 €",
+                "max_price": "82,22 €"
+            },
+            "Bloodshot": {
+                "type": "dynamic",
+                "min_price": "29,16 €",
+                "max_price": "239,46 €"
+            },
+            "Big Iron": {
+                "type": "dynamic",
+                "min_price": "21,55 €",
+                "max_price": "67,83 €"
+            }
+        },
+        "4": {
+            "Dragonfire": {
+                "type": "dynamic",
+                "min_price": "18,06 €",
+                "max_price": "32,40 €"
+            },
+            "Blood in the Water": {
+                "type": "dynamic",
+                "min_price": "156,40 €",
+                "max_price": "480,38 €"
+            }
+        }
+    },
+    "UMP-45": {
+        "3": {
+            "Neo-Noir": {
+                "type": "dynamic",
+                "min_price": "7,58 €",
+                "max_price": "22,01 €"
+            },
+            "Wild Child": {
+                "type": "dynamic",
+                "min_price": "1,62 €",
+                "max_price": "16,92 €"
+            },
+            "Momentum": {
+                "type": "dynamic",
+                "min_price": "4,30 €",
+                "max_price": "10,59 €"
+            },
+            "Primal Saber": {
+                "type": "dynamic",
+                "min_price": "2,91 €",
+                "max_price": "13,16 €"
+            }
+        },
+        "1": {
+            "Motorized": {
+                "type": "dynamic",
+                "min_price": "0,10 €",
+                "max_price": "0,37 €"
+            },
+            "Roadblock": {
+                "type": "dynamic",
+                "min_price": "0,07 €",
+                "max_price": "0,33 €"
+            },
+            "Oscillator": {
+                "type": "dynamic",
+                "min_price": "0,23 €",
+                "max_price": "0,60 €"
+            },
+            "Metal Flowers": {
+                "type": "dynamic",
+                "min_price": "3,54 €",
+                "max_price": "3,90 €"
+            },
+            "Briefing": {
+                "type": "dynamic",
+                "min_price": "0,11 €",
+                "max_price": "12,76 €"
+            },
+            "Riot": {
+                "type": "dynamic",
+                "min_price": "0,44 €",
+                "max_price": "0,67 €"
+            },
+            "Delusion": {
+                "type": "dynamic",
+                "min_price": "0,72 €",
+                "max_price": "2,38 €"
+            },
+            "Labyrinth": {
+                "type": "dynamic",
+                "min_price": "0,16 €",
+                "max_price": "0,73 €"
+            },
+            "Corporal": {
+                "type": "dynamic",
+                "min_price": "0,51 €",
+                "max_price": "1,26 €"
+            },
+            "Bone Pile": {
+                "type": "dynamic",
+                "min_price": "8,29 €",
+                "max_price": "16,97 €"
+            }
+        },
+        "2": {
+            "Gold Bismuth": {
+                "type": "dynamic",
+                "min_price": "4,90 €",
+                "max_price": "15,41 €"
+            },
+            "Plastique": {
+                "type": "dynamic",
+                "min_price": "0,66 €",
+                "max_price": "2,19 €"
+            },
+            "Moonrise": {
+                "type": "dynamic",
+                "min_price": "0,46 €",
+                "max_price": "1,83 €"
+            },
+            "Arctic Wolf": {
+                "type": "dynamic",
+                "min_price": "0,39 €",
+                "max_price": "1,88 €"
+            },
+            "Exposure": {
+                "type": "dynamic",
+                "min_price": "0,58 €",
+                "max_price": "2,45 €"
+            },
+            "Scaffold": {
+                "type": "dynamic",
+                "min_price": "1,74 €",
+                "max_price": "4,01 €"
+            },
+            "Grand Prix": {
+                "type": "dynamic",
+                "min_price": "0,66 €",
+                "max_price": "0,66 €"
+            }
+        }
+    },
+    "P250": {
+        "3": {
+            "Epicenter": {
+                "type": "dynamic",
+                "min_price": "10,70 €",
+                "max_price": "37,28 €"
+            },
+            "Visions": {
+                "type": "dynamic",
+                "min_price": "5,68 €",
+                "max_price": "26,71 €"
+            },
+            "Asiimov": {
+                "type": "dynamic",
+                "min_price": "15,46 €",
+                "max_price": "80,01 €"
+            },
+            "Muertos": {
+                "type": "dynamic",
+                "min_price": "16,34 €",
+                "max_price": "38,25 €"
+            },
+            "Cartel": {
+                "type": "dynamic",
+                "min_price": "16,58 €",
+                "max_price": "112,00 €"
+            },
+            "Undertow": {
+                "type": "dynamic",
+                "min_price": "51,17 €",
+                "max_price": "71,42 €"
+            },
+            "Mehndi": {
+                "type": "dynamic",
+                "min_price": "34,05 €",
+                "max_price": "84,99 €"
+            }
+        },
+        "1": {
+            "Re.built": {
+                "type": "dynamic",
+                "min_price": "0,15 €",
+                "max_price": "1,12 €"
+            },
+            "Contaminant": {
+                "type": "dynamic",
+                "min_price": "0,81 €",
+                "max_price": "3,42 €"
+            },
+            "Cassette": {
+                "type": "dynamic",
+                "min_price": "0,15 €",
+                "max_price": "0,86 €"
+            },
+            "Verdigris": {
+                "type": "dynamic",
+                "min_price": "0,45 €",
+                "max_price": "2,34 €"
+            },
+            "Ripple": {
+                "type": "dynamic",
+                "min_price": "0,37 €",
+                "max_price": "1,28 €"
+            },
+            "Iron Clad": {
+                "type": "dynamic",
+                "min_price": "0,35 €",
+                "max_price": "7,11 €"
+            },
+            "Valence": {
+                "type": "dynamic",
+                "min_price": "0,40 €",
+                "max_price": "4,43 €"
+            },
+            "Steel Disruption": {
+                "type": "dynamic",
+                "min_price": "10,14 €",
+                "max_price": "11,84 €"
+            },
+            "Hive": {
+                "type": "dynamic",
+                "min_price": "6,69 €",
+                "max_price": "49,00 €"
+            }
+        },
+        "2": {
+            "Cyber Shell": {
+                "type": "dynamic",
+                "min_price": "0,75 €",
+                "max_price": "5,10 €"
+            },
+            "Inferno": {
+                "type": "dynamic",
+                "min_price": "1,50 €",
+                "max_price": "6,10 €"
+            },
+            "Nevermore": {
+                "type": "dynamic",
+                "min_price": "2,19 €",
+                "max_price": "5,72 €"
+            },
+            "Red Rock": {
+                "type": "dynamic",
+                "min_price": "11,72 €",
+                "max_price": "28,48 €"
+            },
+            "Wingshot": {
+                "type": "dynamic",
+                "min_price": "3,62 €",
+                "max_price": "15,98 €"
+            },
+            "Supernova": {
+                "type": "dynamic",
+                "min_price": "3,63 €",
+                "max_price": "6,78 €"
+            },
+            "Splash": {
+                "type": "dynamic",
+                "min_price": "39,70 €",
+                "max_price": "80,00 €"
+            }
+        },
+        "4": {
+            "See Ya Later": {
+                "type": "dynamic",
+                "min_price": "12,64 €",
+                "max_price": "53,27 €"
+            }
+        }
+    },
+    "AK-47": {
+        "3": {
+            "The Outsiders": {
+                "type": "dynamic",
+                "min_price": "28,56 €",
+                "max_price": "167,75 €"
+            },
+            "Ice Coaled": {
+                "type": "dynamic",
+                "min_price": "14,96 €",
+                "max_price": "57,53 €"
+            },
+            "Phantom Disruptor": {
+                "type": "dynamic",
+                "min_price": "16,68 €",
+                "max_price": "43,49 €"
+            },
+            "Point Disarray": {
+                "type": "dynamic",
+                "min_price": "44,46 €",
+                "max_price": "143,35 €"
+            },
+            "Frontside Misty": {
+                "type": "dynamic",
+                "min_price": "45,00 €",
+                "max_price": "207,09 €"
+            },
+            "Cartel": {
+                "type": "dynamic",
+                "min_price": "59,64 €",
+                "max_price": "132,82 €"
+            },
+            "Redline": {
+                "type": "dynamic",
+                "min_price": "68,13 €",
+                "max_price": "414,83 €"
+            },
+            "Red Laminate": {
+                "type": "dynamic",
+                "min_price": "162,49 €",
+                "max_price": "1.270,62 €"
+            },
+            "Case Hardened": {
+                "type": "dynamic",
+                "min_price": "400,20 €",
+                "max_price": "1.066,21 €"
+            }
+        },
+        "4": {
+            "Inheritance": {
+                "type": "dynamic",
+                "min_price": "148,01 €",
+                "max_price": "636,83 €"
+            },
+            "Head Shot": {
+                "type": "dynamic",
+                "min_price": "25,94 €",
+                "max_price": "222,61 €"
+            },
+            "Nightwish": {
+                "type": "dynamic",
+                "min_price": "23,88 €",
+                "max_price": "173,31 €"
+            },
+            "Leet Museo": {
+                "type": "dynamic",
+                "min_price": "91,98 €",
+                "max_price": "266,30 €"
+            },
+            "Legion of Anubis": {
+                "type": "dynamic",
+                "min_price": "24,81 €",
+                "max_price": "72,41 €"
+            },
+            "Asiimov": {
+                "type": "dynamic",
+                "min_price": "88,93 €",
+                "max_price": "533,92 €"
+            },
+            "Neon Rider": {
+                "type": "dynamic",
+                "min_price": "124,98 €",
+                "max_price": "428,18 €"
+            },
+            "The Empress": {
+                "type": "dynamic",
+                "min_price": "97,92 €",
+                "max_price": "493,64 €"
+            },
+            "Bloodsport": {
+                "type": "dynamic",
+                "min_price": "256,25 €",
+                "max_price": "501,17 €"
+            },
+            "Neon Revolution": {
+                "type": "dynamic",
+                "min_price": "67,99 €",
+                "max_price": "265,21 €"
+            },
+            "Fuel Injector": {
+                "type": "dynamic",
+                "min_price": "246,19 €",
+                "max_price": "1.101,55 €"
+            },
+            "Aquamarine Revenge": {
+                "type": "dynamic",
+                "min_price": "85,12 €",
+                "max_price": "342,33 €"
+            },
+            "Wasteland Rebel": {
+                "type": "dynamic",
+                "min_price": "115,14 €",
+                "max_price": "850,01 €"
+            },
+            "Jaguar": {
+                "type": "dynamic",
+                "min_price": "127,96 €",
+                "max_price": "650,93 €"
+            },
+            "Vulcan": {
+                "type": "dynamic",
+                "min_price": "255,89 €",
+                "max_price": "1.517,53 €"
+            },
+            "Fire Serpent": {
+                "type": "dynamic",
+                "min_price": "893,18 €",
+                "max_price": "1.800,01 €"
+            }
+        },
+        "2": {
+            "Slate": {
+                "type": "dynamic",
+                "min_price": "16,49 €",
+                "max_price": "67,36 €"
+            },
+            "Rat Rod": {
+                "type": "dynamic",
+                "min_price": "15,37 €",
+                "max_price": "51,98 €"
+            },
+            "Orbit Mk01": {
+                "type": "dynamic",
+                "min_price": "67,20 €",
+                "max_price": "137,99 €"
+            },
+            "Blue Laminate": {
+                "type": "dynamic",
+                "min_price": "51,20 €",
+                "max_price": "98,55 €"
+            }
+        },
+        "1": {
+            "Uncharted": {
+                "type": "dynamic",
+                "min_price": "3,46 €",
+                "max_price": "7,96 €"
+            },
+            "Elite Build": {
+                "type": "dynamic",
+                "min_price": "5,96 €",
+                "max_price": "41,05 €"
+            }
+        }
+    },
+    "Glock-18": {
+        "4": {
+            "Gold Toof": {
+                "type": "dynamic",
+                "min_price": "15,72 €",
+                "max_price": "77,16 €"
+            },
+            "Neo-Noir": {
+                "type": "dynamic",
+                "min_price": "49,50 €",
+                "max_price": "239,00 €"
+            },
+            "Bullet Queen": {
+                "type": "dynamic",
+                "min_price": "23,02 €",
+                "max_price": "158,98 €"
+            },
+            "Wasteland Rebel": {
+                "type": "dynamic",
+                "min_price": "23,19 €",
+                "max_price": "41,46 €"
+            }
+        },
+        "2": {
+            "Block-18": {
+                "type": "dynamic",
+                "min_price": "2,90 €",
+                "max_price": "8,99 €"
+            },
+            "Umbral Rabbit": {
+                "type": "dynamic",
+                "min_price": "1,14 €",
+                "max_price": "7,41 €"
+            },
+            "Moonrise": {
+                "type": "dynamic",
+                "min_price": "1,62 €",
+                "max_price": "9,60 €"
+            },
+            "Weasel": {
+                "type": "dynamic",
+                "min_price": "1,56 €",
+                "max_price": "16,28 €"
+            },
+            "Royal Legion": {
+                "type": "dynamic",
+                "min_price": "6,94 €",
+                "max_price": "49,32 €"
+            },
+            "Grinder": {
+                "type": "dynamic",
+                "min_price": "7,69 €",
+                "max_price": "12,08 €"
+            },
+            "Steel Disruption": {
+                "type": "dynamic",
+                "min_price": "13,24 €",
+                "max_price": "15,91 €"
+            },
+            "Dragon Tattoo": {
+                "type": "dynamic",
+                "min_price": "112,01 €",
+                "max_price": "117,00 €"
+            }
+        },
+        "1": {
+            "Winterized": {
+                "type": "dynamic",
+                "min_price": "0,20 €",
+                "max_price": "2,41 €"
+            },
+            "Clear Polymer": {
+                "type": "dynamic",
+                "min_price": "0,75 €",
+                "max_price": "7,18 €"
+            },
+            "Sacrifice": {
+                "type": "dynamic",
+                "min_price": "0,74 €",
+                "max_price": "7,89 €"
+            },
+            "Oxide Blaze": {
+                "type": "dynamic",
+                "min_price": "0,37 €",
+                "max_price": "2,65 €"
+            },
+            "Warhawk": {
+                "type": "dynamic",
+                "min_price": "0,33 €",
+                "max_price": "1,61 €"
+            },
+            "Off World": {
+                "type": "dynamic",
+                "min_price": "0,63 €",
+                "max_price": "6,51 €"
+            },
+            "Ironwork": {
+                "type": "dynamic",
+                "min_price": "0,68 €",
+                "max_price": "10,29 €"
+            },
+            "Wraiths": {
+                "type": "dynamic",
+                "min_price": "1,13 €",
+                "max_price": "8,66 €"
+            },
+            "Bunsen Burner": {
+                "type": "dynamic",
+                "min_price": "1,54 €",
+                "max_price": "10,68 €"
+            },
+            "Catacombs": {
+                "type": "dynamic",
+                "min_price": "1,48 €",
+                "max_price": "4,80 €"
+            },
+            "Blue Fissure": {
+                "type": "dynamic",
+                "min_price": "5,92 €",
+                "max_price": "76,54 €"
+            }
+        },
+        "3": {
+            "Snack Attack": {
+                "type": "dynamic",
+                "min_price": "14,26 €",
+                "max_price": "97,98 €"
+            },
+            "Vogue": {
+                "type": "dynamic",
+                "min_price": "7,32 €",
+                "max_price": "29,09 €"
+            },
+            "Water Elemental": {
+                "type": "dynamic",
+                "min_price": "24,07 €",
+                "max_price": "72,82 €"
+            }
+        }
+    },
+    "M4A1-S": {
+        "4": {
+            "Vaporwave": {
+                "type": "dynamic",
+                "min_price": "138,38 €",
+                "max_price": "453,20 €"
+            },
+            "Printstream": {
+                "type": "dynamic",
+                "min_price": "281,19 €",
+                "max_price": "1.114,26 €"
+            },
+            "Player Two": {
+                "type": "dynamic",
+                "min_price": "54,93 €",
+                "max_price": "302,06 €"
+            },
+            "Mecha Industries": {
+                "type": "dynamic",
+                "min_price": "75,72 €",
+                "max_price": "222,01 €"
+            },
+            "Chantico's Fire": {
+                "type": "dynamic",
+                "min_price": "64,33 €",
+                "max_price": "353,13 €"
+            },
+            "Golden Coil": {
+                "type": "dynamic",
+                "min_price": "49,71 €",
+                "max_price": "217,76 €"
+            },
+            "Hyper Beast": {
+                "type": "dynamic",
+                "min_price": "60,78 €",
+                "max_price": "472,93 €"
+            },
+            "Cyrex": {
+                "type": "dynamic",
+                "min_price": "65,18 €",
+                "max_price": "170,00 €"
+            }
+        },
+        "3": {
+            "Black Lotus": {
+                "type": "dynamic",
+                "min_price": "30,28 €",
+                "max_price": "78,92 €"
+            },
+            "Nightmare": {
+                "type": "dynamic",
+                "min_price": "23,83 €",
+                "max_price": "123,50 €"
+            },
+            "Leaded Glass": {
+                "type": "dynamic",
+                "min_price": "17,25 €",
+                "max_price": "47,40 €"
+            },
+            "Decimator": {
+                "type": "dynamic",
+                "min_price": "35,37 €",
+                "max_price": "111,37 €"
+            },
+            "Atomic Alloy": {
+                "type": "dynamic",
+                "min_price": "62,66 €",
+                "max_price": "184,86 €"
+            },
+            "Guardian": {
+                "type": "dynamic",
+                "min_price": "39,82 €",
+                "max_price": "111,01 €"
+            }
+        },
+        "2": {
+            "Emphorosaur-S": {
+                "type": "dynamic",
+                "min_price": "2,66 €",
+                "max_price": "13,60 €"
+            },
+            "Night Terror": {
+                "type": "dynamic",
+                "min_price": "3,08 €",
+                "max_price": "8,94 €"
+            },
+            "Flashback": {
+                "type": "dynamic",
+                "min_price": "4,53 €",
+                "max_price": "19,37 €"
+            },
+            "Basilisk": {
+                "type": "dynamic",
+                "min_price": "8,23 €",
+                "max_price": "17,02 €"
+            },
+            "Bright Water": {
+                "type": "dynamic",
+                "min_price": "87,27 €",
+                "max_price": "96,34 €"
+            },
+            "Dark Water": {
+                "type": "dynamic",
+                "min_price": "149,43 €",
+                "max_price": "185,00 €"
+            }
+        },
+        "1": {
+            "Briefing": {
+                "type": "dynamic",
+                "min_price": "12,53 €",
+                "max_price": "55,87 €"
+            },
+            "Blood Tiger": {
+                "type": "dynamic",
+                "min_price": "22,86 €",
+                "max_price": "24,91 €"
+            }
+        }
+    },
+    "★ Kukri Knife": {
+        "5": {
+            "Blue Steel": {
+                "type": "dynamic",
+                "min_price": "267,99 €",
+                "max_price": "457,89 €"
+            },
+            "Boreal Forest": {
+                "type": "dynamic",
+                "min_price": "175,67 €",
+                "max_price": "274,44 €"
+            },
+            "Case Hardened": {
+                "type": "dynamic",
+                "min_price": "261,46 €",
+                "max_price": "864,25 €"
+            },
+            "Crimson Web": {
+                "type": "dynamic",
+                "min_price": "254,02 €",
+                "max_price": "1.329,10 €"
+            },
+            "Fade": {
+                "type": "dynamic",
+                "min_price": "748,11 €",
+                "max_price": "755,32 €"
+            },
+            "Forest DDPAT": {
+                "type": "dynamic",
+                "min_price": "171,00 €",
+                "max_price": "286,17 €"
+            },
+            "Night Stripe": {
+                "type": "dynamic",
+                "min_price": "186,26 €",
+                "max_price": "357,10 €"
+            },
+            "Safari Mesh": {
+                "type": "dynamic",
+                "min_price": "169,00 €",
+                "max_price": "224,54 €"
+            },
+            "Scorched": {
+                "type": "dynamic",
+                "min_price": "171,83 €",
+                "max_price": "294,69 €"
+            },
+            "Slaughter": {
+                "type": "dynamic",
+                "min_price": "448,80 €",
+                "max_price": "560,24 €"
+            },
+            "Stained": {
+                "type": "dynamic",
+                "min_price": "224,34 €",
+                "max_price": "350,02 €"
+            },
+            "Urban Masked": {
+                "type": "dynamic",
+                "min_price": "194,53 €",
+                "max_price": "420,69 €"
+            }
+        }
+    },
+    "XM1014": {
+        "1": {
+            "Irezumi": {
+                "type": "dynamic",
+                "min_price": "0,10 €",
+                "max_price": "0,38 €"
+            },
+            "Watchdog": {
+                "type": "dynamic",
+                "min_price": "1,26 €",
+                "max_price": "6,45 €"
+            },
+            "Oxide Blaze": {
+                "type": "dynamic",
+                "min_price": "0,08 €",
+                "max_price": "0,35 €"
+            },
+            "Slipstream": {
+                "type": "dynamic",
+                "min_price": "0,14 €",
+                "max_price": "0,46 €"
+            },
+            "Scumbria": {
+                "type": "dynamic",
+                "min_price": "0,28 €",
+                "max_price": "1,31 €"
+            },
+            "Quicksilver": {
+                "type": "dynamic",
+                "min_price": "0,34 €",
+                "max_price": "0,73 €"
+            },
+            "Red Python": {
+                "type": "dynamic",
+                "min_price": "2,18 €",
+                "max_price": "3,73 €"
+            }
+        },
+        "2": {
+            "Zombie Offensive": {
+                "type": "dynamic",
+                "min_price": "0,40 €",
+                "max_price": "1,66 €"
+            },
+            "Ziggy": {
+                "type": "dynamic",
+                "min_price": "0,59 €",
+                "max_price": "2,00 €"
+            },
+            "Seasons": {
+                "type": "dynamic",
+                "min_price": "1,86 €",
+                "max_price": "3,79 €"
+            },
+            "Black Tie": {
+                "type": "dynamic",
+                "min_price": "0,39 €",
+                "max_price": "3,50 €"
+            },
+            "Teclu Burner": {
+                "type": "dynamic",
+                "min_price": "1,04 €",
+                "max_price": "3,66 €"
+            },
+            "Heaven Guard": {
+                "type": "dynamic",
+                "min_price": "8,94 €",
+                "max_price": "14,08 €"
+            }
+        },
+        "3": {
+            "XOXO": {
+                "type": "dynamic",
+                "min_price": "1,82 €",
+                "max_price": "10,77 €"
+            },
+            "Entombed": {
+                "type": "dynamic",
+                "min_price": "3,52 €",
+                "max_price": "10,73 €"
+            },
+            "Incinegator": {
+                "type": "dynamic",
+                "min_price": "1,65 €",
+                "max_price": "17,37 €"
+            },
+            "Tranquility": {
+                "type": "dynamic",
+                "min_price": "9,27 €",
+                "max_price": "23,08 €"
+            }
+        }
+    },
+    "Tec-9": {
+        "1": {
+            "Slag": {
+                "type": "dynamic",
+                "min_price": "0,09 €",
+                "max_price": "0,47 €"
+            },
+            "Rebel": {
+                "type": "dynamic",
+                "min_price": "0,07 €",
+                "max_price": "0,36 €"
+            },
+            "Flash Out": {
+                "type": "dynamic",
+                "min_price": "0,17 €",
+                "max_price": "0,54 €"
+            },
+            "Fubar": {
+                "type": "dynamic",
+                "min_price": "0,10 €",
+                "max_price": "1,08 €"
+            },
+            "Snek-9": {
+                "type": "dynamic",
+                "min_price": "0,21 €",
+                "max_price": "1,53 €"
+            },
+            "Cracked Opal": {
+                "type": "dynamic",
+                "min_price": "0,09 €",
+                "max_price": "0,82 €"
+            },
+            "Cut Out": {
+                "type": "dynamic",
+                "min_price": "3,71 €",
+                "max_price": "11,39 €"
+            },
+            "Ice Cap": {
+                "type": "dynamic",
+                "min_price": "0,26 €",
+                "max_price": "1,11 €"
+            },
+            "Jambiya": {
+                "type": "dynamic",
+                "min_price": "0,56 €",
+                "max_price": "2,24 €"
+            },
+            "Isaac": {
+                "type": "dynamic",
+                "min_price": "2,75 €",
+                "max_price": "19,46 €"
+            },
+            "Sandstorm": {
+                "type": "dynamic",
+                "min_price": "0,58 €",
+                "max_price": "2,75 €"
+            },
+            "Blue Titanium": {
+                "type": "dynamic",
+                "min_price": "5,54 €",
+                "max_price": "5,54 €"
+            }
+        },
+        "2": {
+            "Brother": {
+                "type": "dynamic",
+                "min_price": "0,40 €",
+                "max_price": "1,99 €"
+            },
+            "Bamboozle": {
+                "type": "dynamic",
+                "min_price": "0,56 €",
+                "max_price": "2,84 €"
+            },
+            "Re-Entry": {
+                "type": "dynamic",
+                "min_price": "0,58 €",
+                "max_price": "2,49 €"
+            },
+            "Avalanche": {
+                "type": "dynamic",
+                "min_price": "1,45 €",
+                "max_price": "7,92 €"
+            },
+            "Titanium Bit": {
+                "type": "dynamic",
+                "min_price": "7,23 €",
+                "max_price": "7,79 €"
+            }
+        },
+        "3": {
+            "Decimator": {
+                "type": "dynamic",
+                "min_price": "16,37 €",
+                "max_price": "74,40 €"
+            },
+            "Fuel Injector": {
+                "type": "dynamic",
+                "min_price": "4,24 €",
+                "max_price": "24,27 €"
+            }
+        }
+    },
+    "Nova": {
+        "1": {
+            "Dark Sigil": {
+                "type": "dynamic",
+                "min_price": "0,26 €",
+                "max_price": "1,06 €"
+            },
+            "Windblown": {
+                "type": "dynamic",
+                "min_price": "0,53 €",
+                "max_price": "2,24 €"
+            },
+            "Plume": {
+                "type": "dynamic",
+                "min_price": "1,11 €",
+                "max_price": "5,62 €"
+            },
+            "Wood Fired": {
+                "type": "dynamic",
+                "min_price": "0,22 €",
+                "max_price": "1,35 €"
+            },
+            "Exo": {
+                "type": "dynamic",
+                "min_price": "0,39 €",
+                "max_price": "1,41 €"
+            },
+            "Ranger": {
+                "type": "dynamic",
+                "min_price": "0,39 €",
+                "max_price": "2,67 €"
+            },
+            "Ghost Camo": {
+                "type": "dynamic",
+                "min_price": "6,78 €",
+                "max_price": "10,81 €"
+            },
+            "Tempest": {
+                "type": "dynamic",
+                "min_price": "7,28 €",
+                "max_price": "37,32 €"
+            }
+        },
+        "2": {
+            "Clear Polymer": {
+                "type": "dynamic",
+                "min_price": "4,39 €",
+                "max_price": "20,13 €"
+            },
+            "Toy Soldier": {
+                "type": "dynamic",
+                "min_price": "1,79 €",
+                "max_price": "13,92 €"
+            },
+            "Wild Six": {
+                "type": "dynamic",
+                "min_price": "0,85 €",
+                "max_price": "3,91 €"
+            },
+            "Gila": {
+                "type": "dynamic",
+                "min_price": "1,34 €",
+                "max_price": "4,74 €"
+            },
+            "Koi": {
+                "type": "dynamic",
+                "min_price": "5,16 €",
+                "max_price": "6,86 €"
+            },
+            "Rising Skull": {
+                "type": "dynamic",
+                "min_price": "5,42 €",
+                "max_price": "9,72 €"
+            },
+            "Graphite": {
+                "type": "dynamic",
+                "min_price": "34,38 €",
+                "max_price": "40,07 €"
+            }
+        },
+        "3": {
+            "Hyper Beast": {
+                "type": "dynamic",
+                "min_price": "29,68 €",
+                "max_price": "93,75 €"
+            },
+            "Bloomstick": {
+                "type": "dynamic",
+                "min_price": "17,93 €",
+                "max_price": "241,00 €"
+            },
+            "Antique": {
+                "type": "dynamic",
+                "min_price": "24,78 €",
+                "max_price": "28,60 €"
+            }
+        }
+    },
+    "Sawed-Off": {
+        "2": {
+            "Analog Input": {
+                "type": "dynamic",
+                "min_price": "2,11 €",
+                "max_price": "6,72 €"
+            },
+            "Apocalypto": {
+                "type": "dynamic",
+                "min_price": "1,10 €",
+                "max_price": "8,60 €"
+            },
+            "Limelight": {
+                "type": "dynamic",
+                "min_price": "1,44 €",
+                "max_price": "7,27 €"
+            },
+            "Serenity": {
+                "type": "dynamic",
+                "min_price": "4,80 €",
+                "max_price": "8,05 €"
+            },
+            "Highwayman": {
+                "type": "dynamic",
+                "min_price": "2,59 €",
+                "max_price": "11,76 €"
+            },
+            "Orange DDPAT": {
+                "type": "dynamic",
+                "min_price": "17,40 €",
+                "max_price": "200,00 €"
+            }
+        },
+        "3": {
+            "Kiss♥Love": {
+                "type": "dynamic",
+                "min_price": "5,71 €",
+                "max_price": "35,27 €"
+            },
+            "Devourer": {
+                "type": "dynamic",
+                "min_price": "9,75 €",
+                "max_price": "34,50 €"
+            },
+            "Wasteland Princess": {
+                "type": "dynamic",
+                "min_price": "5,87 €",
+                "max_price": "18,82 €"
+            }
+        },
+        "1": {
+            "Spirit Board": {
+                "type": "dynamic",
+                "min_price": "0,15 €",
+                "max_price": "1,00 €"
+            },
+            "Black Sand": {
+                "type": "dynamic",
+                "min_price": "0,22 €",
+                "max_price": "1,17 €"
+            },
+            "Morris": {
+                "type": "dynamic",
+                "min_price": "0,16 €",
+                "max_price": "1,13 €"
+            },
+            "Zander": {
+                "type": "dynamic",
+                "min_price": "0,29 €",
+                "max_price": "3,13 €"
+            },
+            "Fubar": {
+                "type": "dynamic",
+                "min_price": "0,14 €",
+                "max_price": "10,06 €"
+            },
+            "Yorick": {
+                "type": "dynamic",
+                "min_price": "0,35 €",
+                "max_price": "2,82 €"
+            },
+            "Origami": {
+                "type": "dynamic",
+                "min_price": "0,37 €",
+                "max_price": "1,16 €"
+            }
+        },
+        "4": {
+            "The Kraken": {
+                "type": "dynamic",
+                "min_price": "16,86 €",
+                "max_price": "55,10 €"
+            }
+        }
+    },
+    "Five-SeveN": {
+        "2": {
+            "Hybrid": {
+                "type": "dynamic",
+                "min_price": "2,09 €",
+                "max_price": "7,66 €"
+            },
+            "Boost Protocol": {
+                "type": "dynamic",
+                "min_price": "8,89 €",
+                "max_price": "19,06 €"
+            },
+            "Buddy": {
+                "type": "dynamic",
+                "min_price": "2,39 €",
+                "max_price": "6,21 €"
+            },
+            "Triumvirate": {
+                "type": "dynamic",
+                "min_price": "5,98 €",
+                "max_price": "17,44 €"
+            },
+            "Retrobution": {
+                "type": "dynamic",
+                "min_price": "3,67 €",
+                "max_price": "13,90 €"
+            },
+            "Copper Galaxy": {
+                "type": "dynamic",
+                "min_price": "18,13 €",
+                "max_price": "35,64 €"
+            },
+            "Case Hardened": {
+                "type": "dynamic",
+                "min_price": "22,58 €",
+                "max_price": "117,73 €"
+            }
+        },
+        "1": {
+            "Scrawl": {
+                "type": "dynamic",
+                "min_price": "0,18 €",
+                "max_price": "2,17 €"
+            },
+            "Flame Test": {
+                "type": "dynamic",
+                "min_price": "0,20 €",
+                "max_price": "1,27 €"
+            },
+            "Capillary": {
+                "type": "dynamic",
+                "min_price": "0,45 €",
+                "max_price": "1,99 €"
+            },
+            "Scumbria": {
+                "type": "dynamic",
+                "min_price": "0,20 €",
+                "max_price": "2,61 €"
+            },
+            "Violent Daimyo": {
+                "type": "dynamic",
+                "min_price": "0,92 €",
+                "max_price": "3,85 €"
+            },
+            "Urban Hazard": {
+                "type": "dynamic",
+                "min_price": "4,63 €",
+                "max_price": "7,75 €"
+            },
+            "Kami": {
+                "type": "dynamic",
+                "min_price": "2,78 €",
+                "max_price": "5,54 €"
+            },
+            "Nightshade": {
+                "type": "dynamic",
+                "min_price": "6,41 €",
+                "max_price": "9,01 €"
+            }
+        },
+        "3": {
+            "Fairy Tale": {
+                "type": "dynamic",
+                "min_price": "32,44 €",
+                "max_price": "154,02 €"
+            },
+            "Monkey Business": {
+                "type": "dynamic",
+                "min_price": "7,86 €",
+                "max_price": "44,01 €"
+            },
+            "Fowl Play": {
+                "type": "dynamic",
+                "min_price": "3,31 €",
+                "max_price": "10,06 €"
+            }
+        },
+        "4": {
+            "Angry Mob": {
+                "type": "dynamic",
+                "min_price": "13,18 €",
+                "max_price": "50,51 €"
+            },
+            "Hyper Beast": {
+                "type": "dynamic",
+                "min_price": "119,10 €",
+                "max_price": "393,48 €"
+            }
+        }
+    },
+    "MP7": {
+        "2": {
+            "Just Smile": {
+                "type": "dynamic",
+                "min_price": "2,20 €",
+                "max_price": "7,88 €"
+            },
+            "Neon Ply": {
+                "type": "dynamic",
+                "min_price": "3,70 €",
+                "max_price": "18,66 €"
+            },
+            "Powercore": {
+                "type": "dynamic",
+                "min_price": "1,66 €",
+                "max_price": "9,66 €"
+            },
+            "Impire": {
+                "type": "dynamic",
+                "min_price": "5,57 €",
+                "max_price": "11,82 €"
+            },
+            "Special Delivery": {
+                "type": "dynamic",
+                "min_price": "3,60 €",
+                "max_price": "10,95 €"
+            },
+            "Ocean Foam": {
+                "type": "dynamic",
+                "min_price": "14,20 €",
+                "max_price": "20,04 €"
+            }
+        },
+        "3": {
+            "Abyssal Apparition": {
+                "type": "dynamic",
+                "min_price": "2,61 €",
+                "max_price": "20,52 €"
+            },
+            "Nemesis": {
+                "type": "dynamic",
+                "min_price": "14,02 €",
+                "max_price": "41,53 €"
+            }
+        },
+        "1": {
+            "Guerrilla": {
+                "type": "dynamic",
+                "min_price": "0,94 €",
+                "max_price": "7,36 €"
+            },
+            "Mischief": {
+                "type": "dynamic",
+                "min_price": "0,18 €",
+                "max_price": "1,56 €"
+            },
+            "Akoben": {
+                "type": "dynamic",
+                "min_price": "0,32 €",
+                "max_price": "1,29 €"
+            },
+            "Cirrus": {
+                "type": "dynamic",
+                "min_price": "0,57 €",
+                "max_price": "3,72 €"
+            },
+            "Armor Core": {
+                "type": "dynamic",
+                "min_price": "0,43 €",
+                "max_price": "1,22 €"
+            },
+            "Urban Hazard": {
+                "type": "dynamic",
+                "min_price": "0,38 €",
+                "max_price": "1,16 €"
+            },
+            "Skulls": {
+                "type": "dynamic",
+                "min_price": "30,77 €",
+                "max_price": "31,95 €"
+            }
+        },
+        "4": {
+            "Bloodsport": {
+                "type": "dynamic",
+                "min_price": "6,63 €",
+                "max_price": "23,87 €"
+            }
+        }
+    },
+    "Zeus x27": {
+        "3": {
+            "Olympus": {
+                "type": "dynamic",
+                "min_price": "8,46 €",
+                "max_price": "21,78 €"
+            }
+        }
+    },
+    "AWP": {
+        "4": {
+            "Chrome Cannon": {
+                "type": "dynamic",
+                "min_price": "57,97 €",
+                "max_price": "325,14 €"
+            },
+            "Chromatic Aberration": {
+                "type": "dynamic",
+                "min_price": "25,34 €",
+                "max_price": "67,72 €"
+            },
+            "Wildfire": {
+                "type": "dynamic",
+                "min_price": "89,17 €",
+                "max_price": "395,01 €"
+            },
+            "Containment Breach": {
+                "type": "dynamic",
+                "min_price": "143,44 €",
+                "max_price": "949,99 €"
+            },
+            "Neo-Noir": {
+                "type": "dynamic",
+                "min_price": "68,88 €",
+                "max_price": "129,24 €"
+            },
+            "Oni Taiji": {
+                "type": "dynamic",
+                "min_price": "313,71 €",
+                "max_price": "1.240,00 €"
+            },
+            "Hyper Beast": {
+                "type": "dynamic",
+                "min_price": "80,23 €",
+                "max_price": "270,14 €"
+            },
+            "Man-o'-war": {
+                "type": "dynamic",
+                "min_price": "50,01 €",
+                "max_price": "54,28 €"
+            },
+            "Asiimov": {
+                "type": "dynamic",
+                "min_price": "180,06 €",
+                "max_price": "340,36 €"
+            },
+            "Lightning Strike": {
+                "type": "dynamic",
+                "min_price": "875,00 €",
+                "max_price": "1.133,12 €"
+            }
+        },
+        "3": {
+            "Duality": {
+                "type": "dynamic",
+                "min_price": "7,98 €",
+                "max_price": "40,35 €"
+            },
+            "Mortis": {
+                "type": "dynamic",
+                "min_price": "8,33 €",
+                "max_price": "25,12 €"
+            },
+            "Fever Dream": {
+                "type": "dynamic",
+                "min_price": "27,59 €",
+                "max_price": "49,19 €"
+            },
+            "Elite Build": {
+                "type": "dynamic",
+                "min_price": "32,16 €",
+                "max_price": "94,46 €"
+            },
+            "Corticera": {
+                "type": "dynamic",
+                "min_price": "48,83 €",
+                "max_price": "122,13 €"
+            },
+            "Redline": {
+                "type": "dynamic",
+                "min_price": "107,99 €",
+                "max_price": "422,37 €"
+            },
+            "Electric Hive": {
+                "type": "dynamic",
+                "min_price": "87,14 €",
+                "max_price": "136,82 €"
+            },
+            "Graphite": {
+                "type": "dynamic",
+                "min_price": "418,11 €",
+                "max_price": "517,49 €"
+            },
+            "BOOM": {
+                "type": "dynamic",
+                "min_price": "162,39 €",
+                "max_price": "487,57 €"
+            }
+        },
+        "2": {
+            "Exoskeleton": {
+                "type": "dynamic",
+                "min_price": "11,09 €",
+                "max_price": "49,36 €"
+            },
+            "Atheris": {
+                "type": "dynamic",
+                "min_price": "10,35 €",
+                "max_price": "53,57 €"
+            },
+            "PAW": {
+                "type": "dynamic",
+                "min_price": "7,09 €",
+                "max_price": "17,96 €"
+            },
+            "Phobos": {
+                "type": "dynamic",
+                "min_price": "6,40 €",
+                "max_price": "17,06 €"
+            },
+            "Worm God": {
+                "type": "dynamic",
+                "min_price": "2,31 €",
+                "max_price": "4,25 €"
+            }
+        },
+        "1": {
+            "Capillary": {
+                "type": "dynamic",
+                "min_price": "2,18 €",
+                "max_price": "13,90 €"
+            }
+        }
+    },
+    "MAG-7": {
+        "1": {
+            "Insomnia": {
+                "type": "dynamic",
+                "min_price": "0,15 €",
+                "max_price": "1,36 €"
+            },
+            "Foresight": {
+                "type": "dynamic",
+                "min_price": "0,16 €",
+                "max_price": "0,89 €"
+            },
+            "Popdog": {
+                "type": "dynamic",
+                "min_price": "0,25 €",
+                "max_price": "1,25 €"
+            },
+            "Hard Water": {
+                "type": "dynamic",
+                "min_price": "6,22 €",
+                "max_price": "8,66 €"
+            },
+            "Sonar": {
+                "type": "dynamic",
+                "min_price": "0,34 €",
+                "max_price": "1,57 €"
+            },
+            "Cobalt Core": {
+                "type": "dynamic",
+                "min_price": "0,53 €",
+                "max_price": "2,22 €"
+            },
+            "Firestarter": {
+                "type": "dynamic",
+                "min_price": "1,51 €",
+                "max_price": "16,10 €"
+            },
+            "Heaven Guard": {
+                "type": "dynamic",
+                "min_price": "1,20 €",
+                "max_price": "3,79 €"
+            },
+            "Memento": {
+                "type": "dynamic",
+                "min_price": "5,77 €",
+                "max_price": "10,10 €"
+            }
+        },
+        "2": {
+            "BI83 Spectrum": {
+                "type": "dynamic",
+                "min_price": "2,49 €",
+                "max_price": "9,40 €"
+            },
+            "Monster Call": {
+                "type": "dynamic",
+                "min_price": "0,40 €",
+                "max_price": "2,23 €"
+            },
+            "SWAG-7": {
+                "type": "dynamic",
+                "min_price": "0,87 €",
+                "max_price": "6,43 €"
+            },
+            "Petroglyph": {
+                "type": "dynamic",
+                "min_price": "1,34 €",
+                "max_price": "5,23 €"
+            },
+            "Praetorian": {
+                "type": "dynamic",
+                "min_price": "6,36 €",
+                "max_price": "10,64 €"
+            },
+            "Heat": {
+                "type": "dynamic",
+                "min_price": "1,37 €",
+                "max_price": "13,79 €"
+            }
+        },
+        "3": {
+            "Justice": {
+                "type": "dynamic",
+                "min_price": "4,79 €",
+                "max_price": "50,51 €"
+            }
+        }
+    },
+    "MP9": {
+        "1": {
+            "Featherweight": {
+                "type": "dynamic",
+                "min_price": "0,16 €",
+                "max_price": "2,21 €"
+            },
+            "Modest Threat": {
+                "type": "dynamic",
+                "min_price": "0,34 €",
+                "max_price": "1,94 €"
+            },
+            "Capillary": {
+                "type": "dynamic",
+                "min_price": "0,79 €",
+                "max_price": "3,46 €"
+            },
+            "Black Sand": {
+                "type": "dynamic",
+                "min_price": "0,16 €",
+                "max_price": "1,82 €"
+            },
+            "Sand Scale": {
+                "type": "dynamic",
+                "min_price": "0,53 €",
+                "max_price": "1,48 €"
+            },
+            "Bioleak": {
+                "type": "dynamic",
+                "min_price": "0,62 €",
+                "max_price": "2,38 €"
+            },
+            "Deadly Poison": {
+                "type": "dynamic",
+                "min_price": "1,42 €",
+                "max_price": "9,53 €"
+            },
+            "Dart": {
+                "type": "dynamic",
+                "min_price": "2,07 €",
+                "max_price": "3,92 €"
+            }
+        },
+        "4": {
+            "Starlight Protector": {
+                "type": "dynamic",
+                "min_price": "10,31 €",
+                "max_price": "68,87 €"
+            }
+        },
+        "2": {
+            "Mount Fuji": {
+                "type": "dynamic",
+                "min_price": "9,49 €",
+                "max_price": "49,87 €"
+            },
+            "Goo": {
+                "type": "dynamic",
+                "min_price": "0,94 €",
+                "max_price": "2,62 €"
+            },
+            "Ruby Poison Dart": {
+                "type": "dynamic",
+                "min_price": "4,12 €",
+                "max_price": "11,25 €"
+            },
+            "Rose Iron": {
+                "type": "dynamic",
+                "min_price": "21,37 €",
+                "max_price": "24,04 €"
+            },
+            "Hypnotic": {
+                "type": "dynamic",
+                "min_price": "53,63 €",
+                "max_price": "65,61 €"
+            }
+        },
+        "3": {
+            "Food Chain": {
+                "type": "dynamic",
+                "min_price": "6,17 €",
+                "max_price": "39,79 €"
+            },
+            "Hydra": {
+                "type": "dynamic",
+                "min_price": "13,59 €",
+                "max_price": "134,98 €"
+            },
+            "Airlock": {
+                "type": "dynamic",
+                "min_price": "7,08 €",
+                "max_price": "39,64 €"
+            }
+        }
+    },
+    "SG 553": {
+        "1": {
+            "Cyberforce": {
+                "type": "dynamic",
+                "min_price": "0,16 €",
+                "max_price": "1,58 €"
+            },
+            "Heavy Metal": {
+                "type": "dynamic",
+                "min_price": "0,19 €",
+                "max_price": "0,78 €"
+            },
+            "Ol' Rusty": {
+                "type": "dynamic",
+                "min_price": "0,15 €",
+                "max_price": "0,98 €"
+            },
+            "Danger Close": {
+                "type": "dynamic",
+                "min_price": "0,21 €",
+                "max_price": "1,23 €"
+            },
+            "Aloha": {
+                "type": "dynamic",
+                "min_price": "0,17 €",
+                "max_price": "0,89 €"
+            },
+            "Aerial": {
+                "type": "dynamic",
+                "min_price": "0,34 €",
+                "max_price": "1,90 €"
+            },
+            "Atlas": {
+                "type": "dynamic",
+                "min_price": "0,22 €",
+                "max_price": "1,84 €"
+            },
+            "Wave Spray": {
+                "type": "dynamic",
+                "min_price": "5,75 €",
+                "max_price": "63,46 €"
+            },
+            "Ultraviolet": {
+                "type": "dynamic",
+                "min_price": "23,72 €",
+                "max_price": "112,04 €"
+            }
+        },
+        "2": {
+            "Dragon Tech": {
+                "type": "dynamic",
+                "min_price": "0,45 €",
+                "max_price": "2,01 €"
+            },
+            "Darkwing": {
+                "type": "dynamic",
+                "min_price": "1,24 €",
+                "max_price": "9,41 €"
+            },
+            "Phantom": {
+                "type": "dynamic",
+                "min_price": "1,22 €",
+                "max_price": "4,27 €"
+            },
+            "Triarch": {
+                "type": "dynamic",
+                "min_price": "0,89 €",
+                "max_price": "7,12 €"
+            },
+            "Tiger Moth": {
+                "type": "dynamic",
+                "min_price": "1,90 €",
+                "max_price": "11,60 €"
+            },
+            "Pulse": {
+                "type": "dynamic",
+                "min_price": "10,02 €",
+                "max_price": "16,97 €"
+            }
+        },
+        "3": {
+            "Colony IV": {
+                "type": "dynamic",
+                "min_price": "16,87 €",
+                "max_price": "126,17 €"
+            },
+            "Cyrex": {
+                "type": "dynamic",
+                "min_price": "9,95 €",
+                "max_price": "61,83 €"
+            }
+        }
+    },
+    "P2000": {
+        "3": {
+            "Wicked Sick": {
+                "type": "dynamic",
+                "min_price": "3,32 €",
+                "max_price": "29,28 €"
+            },
+            "Imperial Dragon": {
+                "type": "dynamic",
+                "min_price": "4,12 €",
+                "max_price": "12,89 €"
+            },
+            "Corticera": {
+                "type": "dynamic",
+                "min_price": "22,03 €",
+                "max_price": "32,47 €"
+            },
+            "Ocean Foam": {
+                "type": "dynamic",
+                "min_price": "305,64 €",
+                "max_price": "367,02 €"
+            }
+        },
+        "1": {
+            "Lifted Spirits": {
+                "type": "dynamic",
+                "min_price": "0,16 €",
+                "max_price": "1,00 €"
+            },
+            "Gnarled": {
+                "type": "dynamic",
+                "min_price": "0,14 €",
+                "max_price": "1,28 €"
+            },
+            "Urban Hazard": {
+                "type": "dynamic",
+                "min_price": "0,14 €",
+                "max_price": "1,25 €"
+            },
+            "Turf": {
+                "type": "dynamic",
+                "min_price": "0,40 €",
+                "max_price": "5,57 €"
+            },
+            "Oceanic": {
+                "type": "dynamic",
+                "min_price": "0,27 €",
+                "max_price": "1,66 €"
+            },
+            "Imperial": {
+                "type": "dynamic",
+                "min_price": "1,20 €",
+                "max_price": "11,71 €"
+            },
+            "Ivory": {
+                "type": "dynamic",
+                "min_price": "0,32 €",
+                "max_price": "4,70 €"
+            },
+            "Pulse": {
+                "type": "dynamic",
+                "min_price": "2,27 €",
+                "max_price": "5,65 €"
+            },
+            "Red FragCam": {
+                "type": "dynamic",
+                "min_price": "2,67 €",
+                "max_price": "5,92 €"
+            }
+        },
+        "2": {
+            "Acid Etched": {
+                "type": "dynamic",
+                "min_price": "1,13 €",
+                "max_price": "9,07 €"
+            },
+            "Obsidian": {
+                "type": "dynamic",
+                "min_price": "5,92 €",
+                "max_price": "25,72 €"
+            },
+            "Woodsman": {
+                "type": "dynamic",
+                "min_price": "12,66 €",
+                "max_price": "35,52 €"
+            },
+            "Handgun": {
+                "type": "dynamic",
+                "min_price": "1,49 €",
+                "max_price": "20,71 €"
+            }
+        },
+        "4": {
+            "Fire Elemental": {
+                "type": "dynamic",
+                "min_price": "55,71 €",
+                "max_price": "269,00 €"
+            }
+        }
+    },
+    "★ Driver Gloves": {
+        "5": {
+            "Imperial Plaid": {
+                "type": "dynamic",
+                "min_price": "350,00 €",
+                "max_price": "1.601,77 €"
+            },
+            "King Snake": {
+                "type": "dynamic",
+                "min_price": "268,60 €",
+                "max_price": "1.354,16 €"
+            },
+            "Overtake": {
+                "type": "dynamic",
+                "min_price": "110,00 €",
+                "max_price": "676,89 €"
+            },
+            "Racing Green": {
+                "type": "dynamic",
+                "min_price": "80,24 €",
+                "max_price": "458,00 €"
+            },
+            "Black Tie": {
+                "type": "dynamic",
+                "min_price": "228,24 €",
+                "max_price": "1.782,50 €"
+            },
+            "Queen Jaguar": {
+                "type": "dynamic",
+                "min_price": "124,86 €",
+                "max_price": "549,99 €"
+            },
+            "Rezan the Red": {
+                "type": "dynamic",
+                "min_price": "154,04 €",
+                "max_price": "1.178,25 €"
+            },
+            "Snow Leopard": {
+                "type": "dynamic",
+                "min_price": "423,76 €",
+                "max_price": "1.799,99 €"
+            },
+            "Convoy": {
+                "type": "dynamic",
+                "min_price": "116,36 €",
+                "max_price": "301,64 €"
+            },
+            "Crimson Weave": {
+                "type": "dynamic",
+                "min_price": "247,57 €",
+                "max_price": "775,00 €"
+            },
+            "Diamondback": {
+                "type": "dynamic",
+                "min_price": "165,40 €",
+                "max_price": "1.629,46 €"
+            },
+            "Lunar Weave": {
+                "type": "dynamic",
+                "min_price": "158,01 €",
+                "max_price": "1.289,93 €"
+            }
+        }
+    },
+    "★ Hand Wraps": {
+        "5": {
+            "Arboreal": {
+                "type": "dynamic",
+                "min_price": "114,12 €",
+                "max_price": "356,66 €"
+            },
+            "Cobalt Skulls": {
+                "type": "dynamic",
+                "min_price": "418,43 €",
+                "max_price": "1.534,49 €"
+            },
+            "Duct Tape": {
+                "type": "dynamic",
+                "min_price": "128,54 €",
+                "max_price": "482,11 €"
+            },
+            "Overprint": {
+                "type": "dynamic",
+                "min_price": "192,76 €",
+                "max_price": "899,73 €"
+            },
+            "CAUTION!": {
+                "type": "dynamic",
+                "min_price": "268,51 €",
+                "max_price": "1.202,08 €"
+            },
+            "Constrictor": {
+                "type": "dynamic",
+                "min_price": "130,03 €",
+                "max_price": "460,00 €"
+            },
+            "Desert Shamagh": {
+                "type": "dynamic",
+                "min_price": "101,67 €",
+                "max_price": "521,40 €"
+            },
+            "Giraffe": {
+                "type": "dynamic",
+                "min_price": "124,47 €",
+                "max_price": "843,87 €"
+            },
+            "Badlands": {
+                "type": "dynamic",
+                "min_price": "155,27 €",
+                "max_price": "500,01 €"
+            },
+            "Leather": {
+                "type": "dynamic",
+                "min_price": "183,80 €",
+                "max_price": "701,96 €"
+            },
+            "Slaughter": {
+                "type": "dynamic",
+                "min_price": "308,74 €",
+                "max_price": "976,23 €"
+            },
+            "Spruce DDPAT": {
+                "type": "dynamic",
+                "min_price": "170,93 €",
+                "max_price": "569,68 €"
+            }
+        }
+    },
+    "★ Hydra Gloves": {
+        "5": {
+            "Case Hardened": {
+                "type": "dynamic",
+                "min_price": "165,11 €",
+                "max_price": "816,07 €"
+            },
+            "Emerald": {
+                "type": "dynamic",
+                "min_price": "101,98 €",
+                "max_price": "550,01 €"
+            },
+            "Mangrove": {
+                "type": "dynamic",
+                "min_price": "86,33 €",
+                "max_price": "1.012,54 €"
+            },
+            "Rattler": {
+                "type": "dynamic",
+                "min_price": "71,31 €",
+                "max_price": "263,37 €"
+            }
+        }
+    },
+    "★ Moto Gloves": {
+        "5": {
+            "Polygon": {
+                "type": "dynamic",
+                "min_price": "187,22 €",
+                "max_price": "1.581,74 €"
+            },
+            "POW!": {
+                "type": "dynamic",
+                "min_price": "185,12 €",
+                "max_price": "1.629,97 €"
+            },
+            "Transport": {
+                "type": "dynamic",
+                "min_price": "110,48 €",
+                "max_price": "480,55 €"
+            },
+            "Turtle": {
+                "type": "dynamic",
+                "min_price": "169,00 €",
+                "max_price": "1.027,59 €"
+            },
+            "3rd Commando Company": {
+                "type": "dynamic",
+                "min_price": "113,84 €",
+                "max_price": "382,23 €"
+            },
+            "Blood Pressure": {
+                "type": "dynamic",
+                "min_price": "180,88 €",
+                "max_price": "1.118,86 €"
+            },
+            "Finish Line": {
+                "type": "dynamic",
+                "min_price": "158,51 €",
+                "max_price": "1.483,18 €"
+            },
+            "Smoke Out": {
+                "type": "dynamic",
+                "min_price": "178,58 €",
+                "max_price": "1.168,36 €"
+            },
+            "Boom!": {
+                "type": "dynamic",
+                "min_price": "173,25 €",
+                "max_price": "1.190,75 €"
+            },
+            "Cool Mint": {
+                "type": "dynamic",
+                "min_price": "306,22 €",
+                "max_price": "1.601,68 €"
+            },
+            "Eclipse": {
+                "type": "dynamic",
+                "min_price": "165,36 €",
+                "max_price": "951,07 €"
+            },
+            "Spearmint": {
+                "type": "dynamic",
+                "min_price": "194,76 €",
+                "max_price": "1.800,00 €"
+            }
+        }
+    },
+    "★ Specialist Gloves": {
+        "5": {
+            "Buckshot": {
+                "type": "dynamic",
+                "min_price": "131,45 €",
+                "max_price": "488,77 €"
+            },
+            "Crimson Web": {
+                "type": "dynamic",
+                "min_price": "226,75 €",
+                "max_price": "1.936,76 €"
+            },
+            "Fade": {
+                "type": "dynamic",
+                "min_price": "252,85 €",
+                "max_price": "1.800,00 €"
+            },
+            "Mogul": {
+                "type": "dynamic",
+                "min_price": "225,11 €",
+                "max_price": "1.160,00 €"
+            },
+            "Field Agent": {
+                "type": "dynamic",
+                "min_price": "209,93 €",
+                "max_price": "1.552,01 €"
+            },
+            "Lt. Commander": {
+                "type": "dynamic",
+                "min_price": "193,16 €",
+                "max_price": "1.790,00 €"
+            },
+            "Marble Fade": {
+                "type": "dynamic",
+                "min_price": "248,88 €",
+                "max_price": "1.017,51 €"
+            },
+            "Tiger Strike": {
+                "type": "dynamic",
+                "min_price": "281,66 €",
+                "max_price": "1.725,00 €"
+            },
+            "Crimson Kimono": {
+                "type": "dynamic",
+                "min_price": "1.263,46 €",
+                "max_price": "1.950,95 €"
+            },
+            "Emerald Web": {
+                "type": "dynamic",
+                "min_price": "479,86 €",
+                "max_price": "1.799,02 €"
+            },
+            "Forest DDPAT": {
+                "type": "dynamic",
+                "min_price": "163,22 €",
+                "max_price": "792,84 €"
+            },
+            "Foundation": {
+                "type": "dynamic",
+                "min_price": "215,82 €",
+                "max_price": "1.767,02 €"
+            }
+        }
+    },
+    "★ Sport Gloves": {
+        "5": {
+            "Amphibious": {
+                "type": "dynamic",
+                "min_price": "643,39 €",
+                "max_price": "1.747,21 €"
+            },
+            "Bronze Morph": {
+                "type": "dynamic",
+                "min_price": "204,87 €",
+                "max_price": "974,28 €"
+            },
+            "Omega": {
+                "type": "dynamic",
+                "min_price": "348,50 €",
+                "max_price": "1.734,91 €"
+            },
+            "Vice": {
+                "type": "dynamic",
+                "min_price": "794,06 €",
+                "max_price": "1.799,01 €"
+            },
+            "Big Game": {
+                "type": "dynamic",
+                "min_price": "252,43 €",
+                "max_price": "800,00 €"
+            },
+            "Nocts": {
+                "type": "dynamic",
+                "min_price": "531,60 €",
+                "max_price": "1.254,22 €"
+            },
+            "Scarlet Shamagh": {
+                "type": "dynamic",
+                "min_price": "336,58 €",
+                "max_price": "1.485,70 €"
+            },
+            "Slingshot": {
+                "type": "dynamic",
+                "min_price": "434,22 €",
+                "max_price": "1.799,75 €"
+            },
+            "Arid": {
+                "type": "dynamic",
+                "min_price": "520,40 €",
+                "max_price": "1.498,05 €"
+            },
+            "Hedge Maze": {
+                "type": "dynamic",
+                "min_price": "507,34 €",
+                "max_price": "1.963,39 €"
+            },
+            "Pandora's Box": {
+                "type": "dynamic",
+                "min_price": "1.547,97 €",
+                "max_price": "1.895,92 €"
+            },
+            "Superconductor": {
+                "type": "dynamic",
+                "min_price": "1.282,42 €",
+                "max_price": "2.007,48 €"
+            }
+        }
+    },
+    "Negev": {
+        "1": {
+            "Drop Me": {
+                "type": "dynamic",
+                "min_price": "0,15 €",
+                "max_price": "1,15 €"
+            },
+            "Ultralight": {
+                "type": "dynamic",
+                "min_price": "0,14 €",
+                "max_price": "0,88 €"
+            },
+            "Prototype": {
+                "type": "dynamic",
+                "min_price": "0,15 €",
+                "max_price": "1,53 €"
+            },
+            "Dazzle": {
+                "type": "dynamic",
+                "min_price": "0,43 €",
+                "max_price": "4,08 €"
+            },
+            "Man-o'-war": {
+                "type": "dynamic",
+                "min_price": "0,21 €",
+                "max_price": "0,22 €"
+            },
+            "Bratatat": {
+                "type": "dynamic",
+                "min_price": "2,32 €",
+                "max_price": "39,03 €"
+            },
+            "Desert-Strike": {
+                "type": "dynamic",
+                "min_price": "0,42 €",
+                "max_price": "1,26 €"
+            },
+            "Terrain": {
+                "type": "dynamic",
+                "min_price": "1,18 €",
+                "max_price": "2,36 €"
+            }
+        },
+        "2": {
+            "dev_texture": {
+                "type": "dynamic",
+                "min_price": "0,72 €",
+                "max_price": "4,19 €"
+            },
+            "Lionfish": {
+                "type": "dynamic",
+                "min_price": "0,75 €",
+                "max_price": "4,48 €"
+            },
+            "Power Loader": {
+                "type": "dynamic",
+                "min_price": "2,73 €",
+                "max_price": "41,42 €"
+            },
+            "Loudmouth": {
+                "type": "dynamic",
+                "min_price": "1,73 €",
+                "max_price": "49,00 €"
+            }
+        }
+    },
+    "FAMAS": {
+        "1": {
+            "Meow 36": {
+                "type": "dynamic",
+                "min_price": "0,16 €",
+                "max_price": "1,94 €"
+            },
+            "Decommissioned": {
+                "type": "dynamic",
+                "min_price": "0,37 €",
+                "max_price": "4,50 €"
+            },
+            "Crypsis": {
+                "type": "dynamic",
+                "min_price": "0,49 €",
+                "max_price": "2,10 €"
+            },
+            "Macabre": {
+                "type": "dynamic",
+                "min_price": "5,43 €",
+                "max_price": "9,90 €"
+            },
+            "Survivor Z": {
+                "type": "dynamic",
+                "min_price": "1,03 €",
+                "max_price": "3,31 €"
+            },
+            "Hexane": {
+                "type": "dynamic",
+                "min_price": "6,69 €",
+                "max_price": "12,01 €"
+            },
+            "Doomkitty": {
+                "type": "dynamic",
+                "min_price": "5,31 €",
+                "max_price": "5,95 €"
+            }
+        },
+        "3": {
+            "Rapid Eye Movement": {
+                "type": "dynamic",
+                "min_price": "2,57 €",
+                "max_price": "17,36 €"
+            },
+            "Eye of Athena": {
+                "type": "dynamic",
+                "min_price": "11,07 €",
+                "max_price": "43,77 €"
+            },
+            "Mecha Industries": {
+                "type": "dynamic",
+                "min_price": "13,30 €",
+                "max_price": "35,80 €"
+            },
+            "Djinn": {
+                "type": "dynamic",
+                "min_price": "6,72 €",
+                "max_price": "44,78 €"
+            },
+            "Afterimage": {
+                "type": "dynamic",
+                "min_price": "25,48 €",
+                "max_price": "75,75 €"
+            }
+        },
+        "2": {
+            "ZX Spectron": {
+                "type": "dynamic",
+                "min_price": "5,05 €",
+                "max_price": "31,36 €"
+            },
+            "Valence": {
+                "type": "dynamic",
+                "min_price": "6,51 €",
+                "max_price": "28,17 €"
+            },
+            "Neural Net": {
+                "type": "dynamic",
+                "min_price": "2,44 €",
+                "max_price": "7,55 €"
+            },
+            "Sergeant": {
+                "type": "dynamic",
+                "min_price": "6,06 €",
+                "max_price": "32,47 €"
+            },
+            "Pulse": {
+                "type": "dynamic",
+                "min_price": "16,18 €",
+                "max_price": "25,50 €"
+            }
+        },
+        "4": {
+            "Commemoration": {
+                "type": "dynamic",
+                "min_price": "31,07 €",
+                "max_price": "69,26 €"
+            },
+            "Roll Cage": {
+                "type": "dynamic",
+                "min_price": "10,20 €",
+                "max_price": "95,13 €"
+            }
+        }
+    },
+    "Galil AR": {
+        "1": {
+            "Destroyer": {
+                "type": "dynamic",
+                "min_price": "0,19 €",
+                "max_price": "1,01 €"
+            },
+            "Vandal": {
+                "type": "dynamic",
+                "min_price": "0,93 €",
+                "max_price": "7,42 €"
+            },
+            "Akoben": {
+                "type": "dynamic",
+                "min_price": "0,47 €",
+                "max_price": "2,62 €"
+            },
+            "Black Sand": {
+                "type": "dynamic",
+                "min_price": "0,40 €",
+                "max_price": "4,15 €"
+            },
+            "Rocket Pop": {
+                "type": "dynamic",
+                "min_price": "1,68 €",
+                "max_price": "18,40 €"
+            },
+            "Kami": {
+                "type": "dynamic",
+                "min_price": "2,13 €",
+                "max_price": "8,55 €"
+            },
+            "Sandstorm": {
+                "type": "dynamic",
+                "min_price": "2,16 €",
+                "max_price": "7,44 €"
+            },
+            "Blue Titanium": {
+                "type": "dynamic",
+                "min_price": "13,56 €",
+                "max_price": "13,56 €"
+            },
+            "Shattered": {
+                "type": "dynamic",
+                "min_price": "8,40 €",
+                "max_price": "62,10 €"
+            }
+        },
+        "3": {
+            "Chromatic Aberration": {
+                "type": "dynamic",
+                "min_price": "6,02 €",
+                "max_price": "42,85 €"
+            },
+            "Sugar Rush": {
+                "type": "dynamic",
+                "min_price": "76,21 €",
+                "max_price": "189,45 €"
+            },
+            "Eco": {
+                "type": "dynamic",
+                "min_price": "11,60 €",
+                "max_price": "160,62 €"
+            }
+        },
+        "2": {
+            "Connexion": {
+                "type": "dynamic",
+                "min_price": "0,87 €",
+                "max_price": "4,37 €"
+            },
+            "Signal": {
+                "type": "dynamic",
+                "min_price": "1,77 €",
+                "max_price": "5,46 €"
+            },
+            "Crimson Tsunami": {
+                "type": "dynamic",
+                "min_price": "3,93 €",
+                "max_price": "12,72 €"
+            },
+            "Firefight": {
+                "type": "dynamic",
+                "min_price": "1,27 €",
+                "max_price": "13,16 €"
+            },
+            "Stone Cold": {
+                "type": "dynamic",
+                "min_price": "4,87 €",
+                "max_price": "35,85 €"
+            },
+            "Orange DDPAT": {
+                "type": "dynamic",
+                "min_price": "15,99 €",
+                "max_price": "317,78 €"
+            }
+        },
+        "4": {
+            "Chatterbox": {
+                "type": "dynamic",
+                "min_price": "51,53 €",
+                "max_price": "249,00 €"
+            }
+        }
+    },
+    "★ Broken Fang Gloves": {
+        "5": {
+            "Jade": {
+                "type": "dynamic",
+                "min_price": "167,00 €",
+                "max_price": "1.119,83 €"
+            },
+            "Needle Point": {
+                "type": "dynamic",
+                "min_price": "120,03 €",
+                "max_price": "316,25 €"
+            },
+            "Unhinged": {
+                "type": "dynamic",
+                "min_price": "109,88 €",
+                "max_price": "510,00 €"
+            },
+            "Yellow-banded": {
+                "type": "dynamic",
+                "min_price": "116,37 €",
+                "max_price": "541,31 €"
+            }
+        }
+    },
+    "PP-Bizon": {
+        "2": {
+            "Space Cat": {
+                "type": "dynamic",
+                "min_price": "0,58 €",
+                "max_price": "3,42 €"
+            },
+            "Embargo": {
+                "type": "dynamic",
+                "min_price": "1,64 €",
+                "max_price": "12,00 €"
+            },
+            "Fuel Rod": {
+                "type": "dynamic",
+                "min_price": "1,77 €",
+                "max_price": "9,56 €"
+            },
+            "Blue Streak": {
+                "type": "dynamic",
+                "min_price": "5,58 €",
+                "max_price": "41,55 €"
+            },
+            "Osiris": {
+                "type": "dynamic",
+                "min_price": "2,11 €",
+                "max_price": "5,69 €"
+            },
+            "Antique": {
+                "type": "dynamic",
+                "min_price": "13,79 €",
+                "max_price": "23,20 €"
+            }
+        },
+        "1": {
+            "Lumen": {
+                "type": "dynamic",
+                "min_price": "1,19 €",
+                "max_price": "7,15 €"
+            },
+            "Runic": {
+                "type": "dynamic",
+                "min_price": "0,14 €",
+                "max_price": "1,49 €"
+            },
+            "Night Riot": {
+                "type": "dynamic",
+                "min_price": "0,14 €",
+                "max_price": "1,00 €"
+            },
+            "Jungle Slipstream": {
+                "type": "dynamic",
+                "min_price": "0,40 €",
+                "max_price": "1,60 €"
+            },
+            "Harvester": {
+                "type": "dynamic",
+                "min_price": "0,27 €",
+                "max_price": "3,20 €"
+            },
+            "Photic Zone": {
+                "type": "dynamic",
+                "min_price": "0,66 €",
+                "max_price": "6,26 €"
+            },
+            "Cobalt Halftone": {
+                "type": "dynamic",
+                "min_price": "1,76 €",
+                "max_price": "4,55 €"
+            },
+            "Water Sigil": {
+                "type": "dynamic",
+                "min_price": "2,52 €",
+                "max_price": "9,04 €"
+            }
+        },
+        "3": {
+            "High Roller": {
+                "type": "dynamic",
+                "min_price": "7,77 €",
+                "max_price": "57,32 €"
+            }
+        },
+        "4": {
+            "Judgement of Anubis": {
+                "type": "dynamic",
+                "min_price": "16,82 €",
+                "max_price": "47,81 €"
+            }
+        }
+    },
+    "G3SG1": {
+        "2": {
+            "Dream Glade": {
+                "type": "dynamic",
+                "min_price": "0,58 €",
+                "max_price": "4,39 €"
+            },
+            "Scavenger": {
+                "type": "dynamic",
+                "min_price": "0,56 €",
+                "max_price": "1,87 €"
+            },
+            "High Seas": {
+                "type": "dynamic",
+                "min_price": "1,79 €",
+                "max_price": "10,05 €"
+            },
+            "Stinger": {
+                "type": "dynamic",
+                "min_price": "1,11 €",
+                "max_price": "4,44 €"
+            }
+        },
+        "1": {
+            "Keeping Tabs": {
+                "type": "dynamic",
+                "min_price": "0,93 €",
+                "max_price": "6,52 €"
+            },
+            "Digital Mesh": {
+                "type": "dynamic",
+                "min_price": "0,71 €",
+                "max_price": "3,76 €"
+            },
+            "Black Sand": {
+                "type": "dynamic",
+                "min_price": "1,26 €",
+                "max_price": "5,41 €"
+            },
+            "Hunter": {
+                "type": "dynamic",
+                "min_price": "0,18 €",
+                "max_price": "2,07 €"
+            },
+            "Ventilator": {
+                "type": "dynamic",
+                "min_price": "0,21 €",
+                "max_price": "1,08 €"
+            },
+            "Orange Crash": {
+                "type": "dynamic",
+                "min_price": "0,22 €",
+                "max_price": "1,25 €"
+            },
+            "Murky": {
+                "type": "dynamic",
+                "min_price": "1,70 €",
+                "max_price": "2,92 €"
+            },
+            "Azure Zebra": {
+                "type": "dynamic",
+                "min_price": "7,98 €",
+                "max_price": "54,31 €"
+            },
+            "Demeter": {
+                "type": "dynamic",
+                "min_price": "6,50 €",
+                "max_price": "44,30 €"
+            }
+        },
+        "3": {
+            "The Executioner": {
+                "type": "dynamic",
+                "min_price": "4,75 €",
+                "max_price": "68,03 €"
+            },
+            "Flux": {
+                "type": "dynamic",
+                "min_price": "16,09 €",
+                "max_price": "86,81 €"
+            }
+        }
+    },
+    "★ Bowie Knife": {
+        "5": {
+            "Autotronic": {
+                "type": "dynamic",
+                "min_price": "228,09 €",
+                "max_price": "400,44 €"
+            },
+            "Black Laminate": {
+                "type": "dynamic",
+                "min_price": "181,93 €",
+                "max_price": "215,33 €"
+            },
+            "Bright Water": {
+                "type": "dynamic",
+                "min_price": "164,54 €",
+                "max_price": "217,29 €"
+            },
+            "Freehand": {
+                "type": "dynamic",
+                "min_price": "149,50 €",
+                "max_price": "260,71 €"
+            },
+            "Gamma Doppler": {
+                "type": "dynamic",
+                "min_price": "0,00 €",
+                "max_price": "0,00 €"
+            },
+            "Lore": {
+                "type": "dynamic",
+                "min_price": "214,32 €",
+                "max_price": "554,45 €"
+            },
+            "Damascus Steel": {
+                "type": "dynamic",
+                "min_price": "193,23 €",
+                "max_price": "243,41 €"
+            },
+            "Doppler": {
+                "type": "dynamic",
+                "min_price": "0,00 €",
+                "max_price": "0,00 €"
+            },
+            "Marble Fade": {
+                "type": "dynamic",
+                "min_price": "459,36 €",
+                "max_price": "474,09 €"
+            },
+            "Rust Coat": {
+                "type": "dynamic",
+                "min_price": "164,74 €",
+                "max_price": "183,06 €"
+            },
+            "Tiger Tooth": {
+                "type": "dynamic",
+                "min_price": "338,16 €",
+                "max_price": "361,88 €"
+            },
+            "Ultraviolet": {
+                "type": "dynamic",
+                "min_price": "162,24 €",
+                "max_price": "340,00 €"
+            },
+            "Blue Steel": {
+                "type": "dynamic",
+                "min_price": "193,90 €",
+                "max_price": "387,70 €"
+            },
+            "Boreal Forest": {
+                "type": "dynamic",
+                "min_price": "150,35 €",
+                "max_price": "233,00 €"
+            },
+            "Case Hardened": {
+                "type": "dynamic",
+                "min_price": "272,49 €",
+                "max_price": "600,00 €"
+            },
+            "Crimson Web": {
+                "type": "dynamic",
+                "min_price": "223,00 €",
+                "max_price": "1.296,05 €"
+            },
+            "Fade": {
+                "type": "dynamic",
+                "min_price": "470,00 €",
+                "max_price": "550,00 €"
+            },
+            "Forest DDPAT": {
+                "type": "dynamic",
+                "min_price": "177,26 €",
+                "max_price": "237,93 €"
+            },
+            "Night": {
+                "type": "dynamic",
+                "min_price": "180,27 €",
+                "max_price": "349,91 €"
+            },
+            "Safari Mesh": {
+                "type": "dynamic",
+                "min_price": "164,23 €",
+                "max_price": "702,24 €"
+            },
+            "Scorched": {
+                "type": "dynamic",
+                "min_price": "154,77 €",
+                "max_price": "206,80 €"
+            },
+            "Slaughter": {
+                "type": "dynamic",
+                "min_price": "375,81 €",
+                "max_price": "432,73 €"
+            },
+            "Stained": {
+                "type": "dynamic",
+                "min_price": "184,79 €",
+                "max_price": "263,23 €"
+            },
+            "Urban Masked": {
+                "type": "dynamic",
+                "min_price": "159,69 €",
+                "max_price": "218,63 €"
+            }
+        }
+    },
+    "★ Butterfly Knife": {
+        "5": {
+            "Autotronic": {
+                "type": "dynamic",
+                "min_price": "1.610,00 €",
+                "max_price": "1.937,43 €"
+            },
+            "Black Laminate": {
+                "type": "dynamic",
+                "min_price": "1.254,66 €",
+                "max_price": "1.501,54 €"
+            },
+            "Bright Water": {
+                "type": "dynamic",
+                "min_price": "967,99 €",
+                "max_price": "1.389,39 €"
+            },
+            "Freehand": {
+                "type": "dynamic",
+                "min_price": "984,98 €",
+                "max_price": "1.766,49 €"
+            },
+            "Gamma Doppler": {
+                "type": "dynamic",
+                "min_price": "0,00 €",
+                "max_price": "0,00 €"
+            },
+            "Lore": {
+                "type": "dynamic",
+                "min_price": "1.330,00 €",
+                "max_price": "1.762,50 €"
+            },
+            "Damascus Steel": {
+                "type": "dynamic",
+                "min_price": "1.156,00 €",
+                "max_price": "1.786,14 €"
+            },
+            "Doppler": {
+                "type": "dynamic",
+                "min_price": "0,00 €",
+                "max_price": "0,00 €"
+            },
+            "Marble Fade": {
+                "type": "dynamic",
+                "min_price": "1.800,00 €",
+                "max_price": "1.837,05 €"
+            },
+            "Rust Coat": {
+                "type": "dynamic",
+                "min_price": "1.190,34 €",
+                "max_price": "1.253,47 €"
+            },
+            "Tiger Tooth": {
+                "type": "dynamic",
+                "min_price": "23,12 €",
+                "max_price": "1.927,23 €"
+            },
+            "Ultraviolet": {
+                "type": "dynamic",
+                "min_price": "923,68 €",
+                "max_price": "1.815,67 €"
+            },
+            "Blue Steel": {
+                "type": "dynamic",
+                "min_price": "1.476,41 €",
+                "max_price": "1.638,01 €"
+            },
+            "Boreal Forest": {
+                "type": "dynamic",
+                "min_price": "911,99 €",
+                "max_price": "1.204,76 €"
+            },
+            "Case Hardened": {
+                "type": "dynamic",
+                "min_price": "1.423,76 €",
+                "max_price": "1.924,34 €"
+            },
+            "Crimson Web": {
+                "type": "dynamic",
+                "min_price": "726,01 €",
+                "max_price": "1.782,50 €"
+            },
+            "Fade": {
+                "type": "dynamic",
+                "min_price": "0,03 €",
+                "max_price": "1.800,00 €"
+            },
+            "Forest DDPAT": {
+                "type": "dynamic",
+                "min_price": "3,92 €",
+                "max_price": "1.113,91 €"
+            },
+            "Night": {
+                "type": "dynamic",
+                "min_price": "995,63 €",
+                "max_price": "1.679,85 €"
+            },
+            "Safari Mesh": {
+                "type": "dynamic",
+                "min_price": "0,03 €",
+                "max_price": "1.057,21 €"
+            },
+            "Scorched": {
+                "type": "dynamic",
+                "min_price": "839,51 €",
+                "max_price": "1.167,95 €"
+            },
+            "Slaughter": {
+                "type": "dynamic",
+                "min_price": "1.580,22 €",
+                "max_price": "1.948,64 €"
+            },
+            "Stained": {
+                "type": "dynamic",
+                "min_price": "1.217,26 €",
+                "max_price": "1.800,00 €"
+            },
+            "Urban Masked": {
+                "type": "dynamic",
+                "min_price": "1.026,53 €",
+                "max_price": "1.380,23 €"
+            }
+        }
+    },
+    "★ Falchion Knife": {
+        "5": {
+            "Autotronic": {
+                "type": "dynamic",
+                "min_price": "203,01 €",
+                "max_price": "398,23 €"
+            },
+            "Black Laminate": {
+                "type": "dynamic",
+                "min_price": "178,07 €",
+                "max_price": "269,23 €"
+            },
+            "Bright Water": {
+                "type": "dynamic",
+                "min_price": "181,32 €",
+                "max_price": "221,45 €"
+            },
+            "Freehand": {
+                "type": "dynamic",
+                "min_price": "194,62 €",
+                "max_price": "266,69 €"
+            },
+            "Gamma Doppler": {
+                "type": "dynamic",
+                "min_price": "0,00 €",
+                "max_price": "0,00 €"
+            },
+            "Lore": {
+                "type": "dynamic",
+                "min_price": "222,77 €",
+                "max_price": "364,90 €"
+            },
+            "Damascus Steel": {
+                "type": "dynamic",
+                "min_price": "175,02 €",
+                "max_price": "279,29 €"
+            },
+            "Doppler": {
+                "type": "dynamic",
+                "min_price": "0,00 €",
+                "max_price": "0,00 €"
+            },
+            "Marble Fade": {
+                "type": "dynamic",
+                "min_price": "444,62 €",
+                "max_price": "473,74 €"
+            },
+            "Rust Coat": {
+                "type": "dynamic",
+                "min_price": "165,77 €",
+                "max_price": "197,19 €"
+            },
+            "Tiger Tooth": {
+                "type": "dynamic",
+                "min_price": "356,76 €",
+                "max_price": "362,52 €"
+            },
+            "Ultraviolet": {
+                "type": "dynamic",
+                "min_price": "177,16 €",
+                "max_price": "430,92 €"
+            },
+            "Blue Steel": {
+                "type": "dynamic",
+                "min_price": "239,25 €",
+                "max_price": "370,93 €"
+            },
+            "Boreal Forest": {
+                "type": "dynamic",
+                "min_price": "138,92 €",
+                "max_price": "231,24 €"
+            },
+            "Case Hardened": {
+                "type": "dynamic",
+                "min_price": "253,69 €",
+                "max_price": "632,50 €"
+            },
+            "Crimson Web": {
+                "type": "dynamic",
+                "min_price": "212,37 €",
+                "max_price": "1.318,53 €"
+            },
+            "Fade": {
+                "type": "dynamic",
+                "min_price": "538,87 €",
+                "max_price": "551,84 €"
+            },
+            "Forest DDPAT": {
+                "type": "dynamic",
+                "min_price": "160,31 €",
+                "max_price": "211,19 €"
+            },
+            "Night": {
+                "type": "dynamic",
+                "min_price": "157,79 €",
+                "max_price": "523,45 €"
+            },
+            "Safari Mesh": {
+                "type": "dynamic",
+                "min_price": "150,35 €",
+                "max_price": "199,01 €"
+            },
+            "Scorched": {
+                "type": "dynamic",
+                "min_price": "173,15 €",
+                "max_price": "215,44 €"
+            },
+            "Slaughter": {
+                "type": "dynamic",
+                "min_price": "327,64 €",
+                "max_price": "485,00 €"
+            },
+            "Stained": {
+                "type": "dynamic",
+                "min_price": "180,06 €",
+                "max_price": "268,76 €"
+            },
+            "Urban Masked": {
+                "type": "dynamic",
+                "min_price": "166,80 €",
+                "max_price": "214,77 €"
+            }
+        }
+    },
+    "★ Huntsman Knife": {
+        "5": {
+            "Autotronic": {
+                "type": "dynamic",
+                "min_price": "240,01 €",
+                "max_price": "463,23 €"
+            },
+            "Black Laminate": {
+                "type": "dynamic",
+                "min_price": "198,36 €",
+                "max_price": "379,50 €"
+            },
+            "Bright Water": {
+                "type": "dynamic",
+                "min_price": "176,06 €",
+                "max_price": "242,01 €"
+            },
+            "Freehand": {
+                "type": "dynamic",
+                "min_price": "180,36 €",
+                "max_price": "240,14 €"
+            },
+            "Gamma Doppler": {
+                "type": "dynamic",
+                "min_price": "0,00 €",
+                "max_price": "0,00 €"
+            },
+            "Lore": {
+                "type": "dynamic",
+                "min_price": "218,50 €",
+                "max_price": "405,43 €"
+            },
+            "Damascus Steel": {
+                "type": "dynamic",
+                "min_price": "216,42 €",
+                "max_price": "287,37 €"
+            },
+            "Doppler": {
+                "type": "dynamic",
+                "min_price": "0,00 €",
+                "max_price": "0,00 €"
+            },
+            "Marble Fade": {
+                "type": "dynamic",
+                "min_price": "423,99 €",
+                "max_price": "497,74 €"
+            },
+            "Rust Coat": {
+                "type": "dynamic",
+                "min_price": "168,81 €",
+                "max_price": "180,56 €"
+            },
+            "Tiger Tooth": {
+                "type": "dynamic",
+                "min_price": "383,38 €",
+                "max_price": "403,86 €"
+            },
+            "Ultraviolet": {
+                "type": "dynamic",
+                "min_price": "181,36 €",
+                "max_price": "537,46 €"
+            },
+            "Blue Steel": {
+                "type": "dynamic",
+                "min_price": "230,00 €",
+                "max_price": "435,70 €"
+            },
+            "Boreal Forest": {
+                "type": "dynamic",
+                "min_price": "166,95 €",
+                "max_price": "360,00 €"
+            },
+            "Case Hardened": {
+                "type": "dynamic",
+                "min_price": "278,29 €",
+                "max_price": "472,62 €"
+            },
+            "Crimson Web": {
+                "type": "dynamic",
+                "min_price": "192,97 €",
+                "max_price": "1.123,50 €"
+            },
+            "Fade": {
+                "type": "dynamic",
+                "min_price": "527,00 €",
+                "max_price": "669,42 €"
+            },
+            "Forest DDPAT": {
+                "type": "dynamic",
+                "min_price": "156,39 €",
+                "max_price": "308,25 €"
+            },
+            "Night": {
+                "type": "dynamic",
+                "min_price": "186,11 €",
+                "max_price": "814,84 €"
+            },
+            "Safari Mesh": {
+                "type": "dynamic",
+                "min_price": "165,08 €",
+                "max_price": "207,44 €"
+            },
+            "Scorched": {
+                "type": "dynamic",
+                "min_price": "178,42 €",
+                "max_price": "260,79 €"
+            },
+            "Slaughter": {
+                "type": "dynamic",
+                "min_price": "337,51 €",
+                "max_price": "626,71 €"
+            },
+            "Stained": {
+                "type": "dynamic",
+                "min_price": "186,27 €",
+                "max_price": "320,01 €"
+            },
+            "Urban Masked": {
+                "type": "dynamic",
+                "min_price": "159,16 €",
+                "max_price": "289,81 €"
+            }
+        }
+    },
+    "★ Shadow Daggers": {
+        "5": {
+            "Autotronic": {
+                "type": "dynamic",
+                "min_price": "150,74 €",
+                "max_price": "234,62 €"
+            },
+            "Black Laminate": {
+                "type": "dynamic",
+                "min_price": "138,74 €",
+                "max_price": "150,00 €"
+            },
+            "Bright Water": {
+                "type": "dynamic",
+                "min_price": "129,55 €",
+                "max_price": "150,00 €"
+            },
+            "Freehand": {
+                "type": "dynamic",
+                "min_price": "152,13 €",
+                "max_price": "177,14 €"
+            },
+            "Gamma Doppler": {
+                "type": "dynamic",
+                "min_price": "0,00 €",
+                "max_price": "0,00 €"
+            },
+            "Lore": {
+                "type": "dynamic",
+                "min_price": "163,78 €",
+                "max_price": "306,58 €"
+            },
+            "Damascus Steel": {
+                "type": "dynamic",
+                "min_price": "119,66 €",
+                "max_price": "170,77 €"
+            },
+            "Doppler": {
+                "type": "dynamic",
+                "min_price": "0,00 €",
+                "max_price": "0,00 €"
+            },
+            "Marble Fade": {
+                "type": "dynamic",
+                "min_price": "237,02 €",
+                "max_price": "252,19 €"
+            },
+            "Rust Coat": {
+                "type": "dynamic",
+                "min_price": "131,27 €",
+                "max_price": "134,87 €"
+            },
+            "Tiger Tooth": {
+                "type": "dynamic",
+                "min_price": "203,51 €",
+                "max_price": "206,70 €"
+            },
+            "Ultraviolet": {
+                "type": "dynamic",
+                "min_price": "148,20 €",
+                "max_price": "209,08 €"
+            },
+            "Blue Steel": {
+                "type": "dynamic",
+                "min_price": "144,00 €",
+                "max_price": "218,44 €"
+            },
+            "Boreal Forest": {
+                "type": "dynamic",
+                "min_price": "128,81 €",
+                "max_price": "164,67 €"
+            },
+            "Case Hardened": {
+                "type": "dynamic",
+                "min_price": "180,26 €",
+                "max_price": "356,80 €"
+            },
+            "Crimson Web": {
+                "type": "dynamic",
+                "min_price": "159,48 €",
+                "max_price": "437,65 €"
+            },
+            "Fade": {
+                "type": "dynamic",
+                "min_price": "316,05 €",
+                "max_price": "337,00 €"
+            },
+            "Forest DDPAT": {
+                "type": "dynamic",
+                "min_price": "117,42 €",
+                "max_price": "179,90 €"
+            },
+            "Night": {
+                "type": "dynamic",
+                "min_price": "129,31 €",
+                "max_price": "199,90 €"
+            },
+            "Safari Mesh": {
+                "type": "dynamic",
+                "min_price": "117,12 €",
+                "max_price": "139,35 €"
+            },
+            "Scorched": {
+                "type": "dynamic",
+                "min_price": "133,99 €",
+                "max_price": "159,68 €"
+            },
+            "Slaughter": {
+                "type": "dynamic",
+                "min_price": "183,24 €",
+                "max_price": "220,00 €"
+            },
+            "Stained": {
+                "type": "dynamic",
+                "min_price": "142,73 €",
+                "max_price": "170,09 €"
+            },
+            "Urban Masked": {
+                "type": "dynamic",
+                "min_price": "118,33 €",
+                "max_price": "169,74 €"
+            }
+        }
+    },
+    "CZ75-Auto": {
+        "1": {
+            "Circaetus": {
+                "type": "dynamic",
+                "min_price": "0,50 €",
+                "max_price": "2,38 €"
+            },
+            "Vendetta": {
+                "type": "dynamic",
+                "min_price": "0,81 €",
+                "max_price": "4,70 €"
+            },
+            "Distressed": {
+                "type": "dynamic",
+                "min_price": "0,14 €",
+                "max_price": "1,50 €"
+            },
+            "Polymer": {
+                "type": "dynamic",
+                "min_price": "0,43 €",
+                "max_price": "1,32 €"
+            },
+            "Imprint": {
+                "type": "dynamic",
+                "min_price": "0,22 €",
+                "max_price": "2,90 €"
+            },
+            "Hexane": {
+                "type": "dynamic",
+                "min_price": "3,76 €",
+                "max_price": "13,20 €"
+            },
+            "Twist": {
+                "type": "dynamic",
+                "min_price": "2,05 €",
+                "max_price": "17,32 €"
+            },
+            "Crimson Web": {
+                "type": "dynamic",
+                "min_price": "1,91 €",
+                "max_price": "59,55 €"
+            }
+        },
+        "2": {
+            "Eco": {
+                "type": "dynamic",
+                "min_price": "2,09 €",
+                "max_price": "12,99 €"
+            },
+            "Tacticat": {
+                "type": "dynamic",
+                "min_price": "1,23 €",
+                "max_price": "6,69 €"
+            },
+            "Red Astor": {
+                "type": "dynamic",
+                "min_price": "0,96 €",
+                "max_price": "5,58 €"
+            },
+            "Pole Position": {
+                "type": "dynamic",
+                "min_price": "1,14 €",
+                "max_price": "7,90 €"
+            },
+            "Tigris": {
+                "type": "dynamic",
+                "min_price": "1,88 €",
+                "max_price": "13,73 €"
+            },
+            "Tread Plate": {
+                "type": "dynamic",
+                "min_price": "9,83 €",
+                "max_price": "16,59 €"
+            }
+        },
+        "3": {
+            "Xiangliu": {
+                "type": "dynamic",
+                "min_price": "19,07 €",
+                "max_price": "44,06 €"
+            },
+            "Yellow Jacket": {
+                "type": "dynamic",
+                "min_price": "3,99 €",
+                "max_price": "16,99 €"
+            },
+            "The Fuschia Is Now": {
+                "type": "dynamic",
+                "min_price": "24,12 €",
+                "max_price": "64,08 €"
+            }
+        },
+        "4": {
+            "Victoria": {
+                "type": "dynamic",
+                "min_price": "30,81 €",
+                "max_price": "112,07 €"
+            }
+        }
+    },
+    "★ Nomad Knife": {
+        "5": {
+            "Blue Steel": {
+                "type": "dynamic",
+                "min_price": "353,31 €",
+                "max_price": "484,29 €"
+            },
+            "Boreal Forest": {
+                "type": "dynamic",
+                "min_price": "183,96 €",
+                "max_price": "272,68 €"
+            },
+            "Case Hardened": {
+                "type": "dynamic",
+                "min_price": "359,83 €",
+                "max_price": "689,93 €"
+            },
+            "Crimson Web": {
+                "type": "dynamic",
+                "min_price": "310,17 €",
+                "max_price": "1.817,40 €"
+            },
+            "Fade": {
+                "type": "dynamic",
+                "min_price": "980,56 €",
+                "max_price": "1.115,10 €"
+            },
+            "Forest DDPAT": {
+                "type": "dynamic",
+                "min_price": "190,66 €",
+                "max_price": "269,00 €"
+            },
+            "Night Stripe": {
+                "type": "dynamic",
+                "min_price": "215,23 €",
+                "max_price": "338,48 €"
+            },
+            "Safari Mesh": {
+                "type": "dynamic",
+                "min_price": "163,60 €",
+                "max_price": "348,87 €"
+            },
+            "Scorched": {
+                "type": "dynamic",
+                "min_price": "208,65 €",
+                "max_price": "297,20 €"
+            },
+            "Slaughter": {
+                "type": "dynamic",
+                "min_price": "547,09 €",
+                "max_price": "660,22 €"
+            },
+            "Stained": {
+                "type": "dynamic",
+                "min_price": "264,82 €",
+                "max_price": "460,00 €"
+            },
+            "Urban Masked": {
+                "type": "dynamic",
+                "min_price": "204,89 €",
+                "max_price": "363,80 €"
+            }
+        }
+    },
+    "★ Paracord Knife": {
+        "5": {
+            "Blue Steel": {
+                "type": "dynamic",
+                "min_price": "194,51 €",
+                "max_price": "374,00 €"
+            },
+            "Boreal Forest": {
+                "type": "dynamic",
+                "min_price": "151,44 €",
+                "max_price": "255,65 €"
+            },
+            "Case Hardened": {
+                "type": "dynamic",
+                "min_price": "232,13 €",
+                "max_price": "563,31 €"
+            },
+            "Crimson Web": {
+                "type": "dynamic",
+                "min_price": "196,31 €",
+                "max_price": "1.634,65 €"
+            },
+            "Fade": {
+                "type": "dynamic",
+                "min_price": "450,29 €",
+                "max_price": "557,75 €"
+            },
+            "Forest DDPAT": {
+                "type": "dynamic",
+                "min_price": "146,08 €",
+                "max_price": "173,74 €"
+            },
+            "Night Stripe": {
+                "type": "dynamic",
+                "min_price": "155,38 €",
+                "max_price": "489,96 €"
+            },
+            "Safari Mesh": {
+                "type": "dynamic",
+                "min_price": "140,08 €",
+                "max_price": "174,89 €"
+            },
+            "Scorched": {
+                "type": "dynamic",
+                "min_price": "153,36 €",
+                "max_price": "324,74 €"
+            },
+            "Slaughter": {
+                "type": "dynamic",
+                "min_price": "336,04 €",
+                "max_price": "407,09 €"
+            },
+            "Stained": {
+                "type": "dynamic",
+                "min_price": "167,02 €",
+                "max_price": "259,60 €"
+            },
+            "Urban Masked": {
+                "type": "dynamic",
+                "min_price": "152,08 €",
+                "max_price": "265,09 €"
+            }
+        }
+    },
+    "★ Skeleton Knife": {
+        "5": {
+            "Blue Steel": {
+                "type": "dynamic",
+                "min_price": "517,91 €",
+                "max_price": "959,00 €"
+            },
+            "Boreal Forest": {
+                "type": "dynamic",
+                "min_price": "254,97 €",
+                "max_price": "424,37 €"
+            },
+            "Case Hardened": {
+                "type": "dynamic",
+                "min_price": "608,43 €",
+                "max_price": "863,12 €"
+            },
+            "Crimson Web": {
+                "type": "dynamic",
+                "min_price": "480,42 €",
+                "max_price": "833,39 €"
+            },
+            "Fade": {
+                "type": "dynamic",
+                "min_price": "1.473,95 €",
+                "max_price": "1.761,48 €"
+            },
+            "Forest DDPAT": {
+                "type": "dynamic",
+                "min_price": "252,50 €",
+                "max_price": "470,73 €"
+            },
+            "Night Stripe": {
+                "type": "dynamic",
+                "min_price": "336,75 €",
+                "max_price": "709,00 €"
+            },
+            "Safari Mesh": {
+                "type": "dynamic",
+                "min_price": "244,88 €",
+                "max_price": "400,00 €"
+            },
+            "Scorched": {
+                "type": "dynamic",
+                "min_price": "268,50 €",
+                "max_price": "472,08 €"
+            },
+            "Slaughter": {
+                "type": "dynamic",
+                "min_price": "923,43 €",
+                "max_price": "1.200,00 €"
+            },
+            "Stained": {
+                "type": "dynamic",
+                "min_price": "230,00 €",
+                "max_price": "667,28 €"
+            },
+            "Urban Masked": {
+                "type": "dynamic",
+                "min_price": "261,37 €",
+                "max_price": "444,18 €"
+            }
+        }
+    },
+    "★ Survival Knife": {
+        "5": {
+            "Blue Steel": {
+                "type": "dynamic",
+                "min_price": "199,35 €",
+                "max_price": "289,49 €"
+            },
+            "Boreal Forest": {
+                "type": "dynamic",
+                "min_price": "141,25 €",
+                "max_price": "177,82 €"
+            },
+            "Case Hardened": {
+                "type": "dynamic",
+                "min_price": "213,22 €",
+                "max_price": "326,00 €"
+            },
+            "Crimson Web": {
+                "type": "dynamic",
+                "min_price": "233,91 €",
+                "max_price": "1.977,93 €"
+            },
+            "Fade": {
+                "type": "dynamic",
+                "min_price": "410,92 €",
+                "max_price": "463,32 €"
+            },
+            "Forest DDPAT": {
+                "type": "dynamic",
+                "min_price": "148,60 €",
+                "max_price": "175,40 €"
+            },
+            "Night Stripe": {
+                "type": "dynamic",
+                "min_price": "161,89 €",
+                "max_price": "231,01 €"
+            },
+            "Safari Mesh": {
+                "type": "dynamic",
+                "min_price": "154,02 €",
+                "max_price": "173,18 €"
+            },
+            "Scorched": {
+                "type": "dynamic",
+                "min_price": "159,23 €",
+                "max_price": "187,16 €"
+            },
+            "Slaughter": {
+                "type": "dynamic",
+                "min_price": "314,94 €",
+                "max_price": "336,14 €"
+            },
+            "Stained": {
+                "type": "dynamic",
+                "min_price": "171,84 €",
+                "max_price": "256,10 €"
+            },
+            "Urban Masked": {
+                "type": "dynamic",
+                "min_price": "161,70 €",
+                "max_price": "289,84 €"
+            }
+        }
+    },
+    "★ Navaja Knife": {
+        "5": {
+            "Damascus Steel": {
+                "type": "dynamic",
+                "min_price": "139,99 €",
+                "max_price": "166,82 €"
+            },
+            "Doppler": {
+                "type": "dynamic",
+                "min_price": "0,00 €",
+                "max_price": "0,00 €"
+            },
+            "Marble Fade": {
+                "type": "dynamic",
+                "min_price": "237,59 €",
+                "max_price": "246,30 €"
+            },
+            "Rust Coat": {
+                "type": "dynamic",
+                "min_price": "131,57 €",
+                "max_price": "156,95 €"
+            },
+            "Tiger Tooth": {
+                "type": "dynamic",
+                "min_price": "196,59 €",
+                "max_price": "210,70 €"
+            },
+            "Ultraviolet": {
+                "type": "dynamic",
+                "min_price": "131,52 €",
+                "max_price": "225,53 €"
+            },
+            "Blue Steel": {
+                "type": "dynamic",
+                "min_price": "150,21 €",
+                "max_price": "230,00 €"
+            },
+            "Boreal Forest": {
+                "type": "dynamic",
+                "min_price": "121,70 €",
+                "max_price": "156,06 €"
+            },
+            "Case Hardened": {
+                "type": "dynamic",
+                "min_price": "172,31 €",
+                "max_price": "348,01 €"
+            },
+            "Crimson Web": {
+                "type": "dynamic",
+                "min_price": "142,17 €",
+                "max_price": "407,00 €"
+            },
+            "Fade": {
+                "type": "dynamic",
+                "min_price": "240,63 €",
+                "max_price": "292,77 €"
+            },
+            "Forest DDPAT": {
+                "type": "dynamic",
+                "min_price": "121,08 €",
+                "max_price": "135,31 €"
+            },
+            "Night Stripe": {
+                "type": "dynamic",
+                "min_price": "130,62 €",
+                "max_price": "190,28 €"
+            },
+            "Safari Mesh": {
+                "type": "dynamic",
+                "min_price": "118,50 €",
+                "max_price": "164,51 €"
+            },
+            "Scorched": {
+                "type": "dynamic",
+                "min_price": "129,31 €",
+                "max_price": "183,38 €"
+            },
+            "Slaughter": {
+                "type": "dynamic",
+                "min_price": "174,13 €",
+                "max_price": "219,89 €"
+            },
+            "Stained": {
+                "type": "dynamic",
+                "min_price": "123,47 €",
+                "max_price": "153,00 €"
+            },
+            "Urban Masked": {
+                "type": "dynamic",
+                "min_price": "130,98 €",
+                "max_price": "155,48 €"
+            }
+        }
+    },
+    "★ Stiletto Knife": {
+        "5": {
+            "Damascus Steel": {
+                "type": "dynamic",
+                "min_price": "320,47 €",
+                "max_price": "549,47 €"
+            },
+            "Doppler": {
+                "type": "dynamic",
+                "min_price": "0,00 €",
+                "max_price": "0,00 €"
+            },
+            "Marble Fade": {
+                "type": "dynamic",
+                "min_price": "758,02 €",
+                "max_price": "1.629,80 €"
+            },
+            "Rust Coat": {
+                "type": "dynamic",
+                "min_price": "381,85 €",
+                "max_price": "433,68 €"
+            },
+            "Tiger Tooth": {
+                "type": "dynamic",
+                "min_price": "594,29 €",
+                "max_price": "705,83 €"
+            },
+            "Ultraviolet": {
+                "type": "dynamic",
+                "min_price": "345,00 €",
+                "max_price": "767,19 €"
+            },
+            "Blue Steel": {
+                "type": "dynamic",
+                "min_price": "421,23 €",
+                "max_price": "749,19 €"
+            },
+            "Boreal Forest": {
+                "type": "dynamic",
+                "min_price": "247,11 €",
+                "max_price": "334,94 €"
+            },
+            "Case Hardened": {
+                "type": "dynamic",
+                "min_price": "415,95 €",
+                "max_price": "683,01 €"
+            },
+            "Crimson Web": {
+                "type": "dynamic",
+                "min_price": "421,85 €",
+                "max_price": "1.201,00 €"
+            },
+            "Fade": {
+                "type": "dynamic",
+                "min_price": "957,39 €",
+                "max_price": "1.134,97 €"
+            },
+            "Forest DDPAT": {
+                "type": "dynamic",
+                "min_price": "232,87 €",
+                "max_price": "390,00 €"
+            },
+            "Night Stripe": {
+                "type": "dynamic",
+                "min_price": "240,77 €",
+                "max_price": "400,00 €"
+            },
+            "Safari Mesh": {
+                "type": "dynamic",
+                "min_price": "278,87 €",
+                "max_price": "308,00 €"
+            },
+            "Scorched": {
+                "type": "dynamic",
+                "min_price": "324,99 €",
+                "max_price": "500,01 €"
+            },
+            "Slaughter": {
+                "type": "dynamic",
+                "min_price": "709,64 €",
+                "max_price": "959,67 €"
+            },
+            "Stained": {
+                "type": "dynamic",
+                "min_price": "356,50 €",
+                "max_price": "431,56 €"
+            },
+            "Urban Masked": {
+                "type": "dynamic",
+                "min_price": "298,61 €",
+                "max_price": "488,43 €"
+            }
+        }
+    },
+    "★ Talon Knife": {
+        "5": {
+            "Damascus Steel": {
+                "type": "dynamic",
+                "min_price": "621,90 €",
+                "max_price": "769,01 €"
+            },
+            "Doppler": {
+                "type": "dynamic",
+                "min_price": "0,00 €",
+                "max_price": "0,00 €"
+            },
+            "Marble Fade": {
+                "type": "dynamic",
+                "min_price": "1.199,00 €",
+                "max_price": "1.279,68 €"
+            },
+            "Rust Coat": {
+                "type": "dynamic",
+                "min_price": "352,64 €",
+                "max_price": "569,64 €"
+            },
+            "Tiger Tooth": {
+                "type": "dynamic",
+                "min_price": "970,81 €",
+                "max_price": "1.015,43 €"
+            },
+            "Ultraviolet": {
+                "type": "dynamic",
+                "min_price": "556,81 €",
+                "max_price": "936,71 €"
+            },
+            "Blue Steel": {
+                "type": "dynamic",
+                "min_price": "663,57 €",
+                "max_price": "879,02 €"
+            },
+            "Boreal Forest": {
+                "type": "dynamic",
+                "min_price": "367,51 €",
+                "max_price": "495,80 €"
+            },
+            "Case Hardened": {
+                "type": "dynamic",
+                "min_price": "671,48 €",
+                "max_price": "1.000,02 €"
+            },
+            "Crimson Web": {
+                "type": "dynamic",
+                "min_price": "496,52 €",
+                "max_price": "1.181,91 €"
+            },
+            "Fade": {
+                "type": "dynamic",
+                "min_price": "1.460,78 €",
+                "max_price": "1.516,85 €"
+            },
+            "Forest DDPAT": {
+                "type": "dynamic",
+                "min_price": "344,26 €",
+                "max_price": "585,14 €"
+            },
+            "Night Stripe": {
+                "type": "dynamic",
+                "min_price": "448,50 €",
+                "max_price": "691,30 €"
+            },
+            "Safari Mesh": {
+                "type": "dynamic",
+                "min_price": "324,24 €",
+                "max_price": "471,71 €"
+            },
+            "Scorched": {
+                "type": "dynamic",
+                "min_price": "422,29 €",
+                "max_price": "650,00 €"
+            },
+            "Slaughter": {
+                "type": "dynamic",
+                "min_price": "943,00 €",
+                "max_price": "1.431,80 €"
+            },
+            "Stained": {
+                "type": "dynamic",
+                "min_price": "383,26 €",
+                "max_price": "1.067,40 €"
+            },
+            "Urban Masked": {
+                "type": "dynamic",
+                "min_price": "456,70 €",
+                "max_price": "590,52 €"
+            }
+        }
+    },
+    "★ Ursus Knife": {
+        "5": {
+            "Damascus Steel": {
+                "type": "dynamic",
+                "min_price": "185,38 €",
+                "max_price": "300,00 €"
+            },
+            "Doppler": {
+                "type": "dynamic",
+                "min_price": "0,00 €",
+                "max_price": "0,00 €"
+            },
+            "Marble Fade": {
+                "type": "dynamic",
+                "min_price": "418,64 €",
+                "max_price": "485,11 €"
+            },
+            "Rust Coat": {
+                "type": "dynamic",
+                "min_price": "192,68 €",
+                "max_price": "195,08 €"
+            },
+            "Tiger Tooth": {
+                "type": "dynamic",
+                "min_price": "453,88 €",
+                "max_price": "493,52 €"
+            },
+            "Ultraviolet": {
+                "type": "dynamic",
+                "min_price": "206,36 €",
+                "max_price": "482,16 €"
+            },
+            "Blue Steel": {
+                "type": "dynamic",
+                "min_price": "212,79 €",
+                "max_price": "289,80 €"
+            },
+            "Boreal Forest": {
+                "type": "dynamic",
+                "min_price": "162,32 €",
+                "max_price": "200,26 €"
+            },
+            "Case Hardened": {
+                "type": "dynamic",
+                "min_price": "260,77 €",
+                "max_price": "432,33 €"
+            },
+            "Crimson Web": {
+                "type": "dynamic",
+                "min_price": "250,09 €",
+                "max_price": "1.482,70 €"
+            },
+            "Fade": {
+                "type": "dynamic",
+                "min_price": "606,30 €",
+                "max_price": "621,07 €"
+            },
+            "Forest DDPAT": {
+                "type": "dynamic",
+                "min_price": "177,23 €",
+                "max_price": "249,90 €"
+            },
+            "Night Stripe": {
+                "type": "dynamic",
+                "min_price": "160,09 €",
+                "max_price": "290,42 €"
+            },
+            "Safari Mesh": {
+                "type": "dynamic",
+                "min_price": "153,74 €",
+                "max_price": "183,08 €"
+            },
+            "Scorched": {
+                "type": "dynamic",
+                "min_price": "149,50 €",
+                "max_price": "279,88 €"
+            },
+            "Slaughter": {
+                "type": "dynamic",
+                "min_price": "402,41 €",
+                "max_price": "483,79 €"
+            },
+            "Stained": {
+                "type": "dynamic",
+                "min_price": "208,06 €",
+                "max_price": "330,78 €"
+            },
+            "Urban Masked": {
+                "type": "dynamic",
+                "min_price": "165,87 €",
+                "max_price": "283,00 €"
+            }
+        }
+    },
+    "★ Classic Knife": {
+        "5": {
+            "Blue Steel": {
+                "type": "dynamic",
+                "min_price": "267,28 €",
+                "max_price": "388,30 €"
+            },
+            "Boreal Forest": {
+                "type": "dynamic",
+                "min_price": "189,95 €",
+                "max_price": "378,12 €"
+            },
+            "Case Hardened": {
+                "type": "dynamic",
+                "min_price": "283,38 €",
+                "max_price": "626,65 €"
+            },
+            "Crimson Web": {
+                "type": "dynamic",
+                "min_price": "312,00 €",
+                "max_price": "1.800,00 €"
+            },
+            "Fade": {
+                "type": "dynamic",
+                "min_price": "671,14 €",
+                "max_price": "752,49 €"
+            },
+            "Forest DDPAT": {
+                "type": "dynamic",
+                "min_price": "174,40 €",
+                "max_price": "242,30 €"
+            },
+            "Night Stripe": {
+                "type": "dynamic",
+                "min_price": "200,80 €",
+                "max_price": "315,00 €"
+            },
+            "Safari Mesh": {
+                "type": "dynamic",
+                "min_price": "162,85 €",
+                "max_price": "319,33 €"
+            },
+            "Scorched": {
+                "type": "dynamic",
+                "min_price": "188,04 €",
+                "max_price": "255,85 €"
+            },
+            "Slaughter": {
+                "type": "dynamic",
+                "min_price": "387,40 €",
+                "max_price": "497,53 €"
+            },
+            "Stained": {
+                "type": "dynamic",
+                "min_price": "187,52 €",
+                "max_price": "302,86 €"
+            },
+            "Urban Masked": {
+                "type": "dynamic",
+                "min_price": "194,69 €",
+                "max_price": "520,01 €"
+            }
+        }
+    },
+    "★ Bloodhound Gloves": {
+        "5": {
+            "Bronzed": {
+                "type": "dynamic",
+                "min_price": "113,78 €",
+                "max_price": "327,69 €"
+            },
+            "Charred": {
+                "type": "dynamic",
+                "min_price": "147,55 €",
+                "max_price": "903,45 €"
+            },
+            "Guerrilla": {
+                "type": "dynamic",
+                "min_price": "111,67 €",
+                "max_price": "853,44 €"
+            },
+            "Snakebite": {
+                "type": "dynamic",
+                "min_price": "127,03 €",
+                "max_price": "974,79 €"
+            }
+        }
+    },
+    "★ Bayonet": {
+        "5": {
+            "Autotronic": {
+                "type": "dynamic",
+                "min_price": "484,12 €",
+                "max_price": "1.630,03 €"
+            },
+            "Black Laminate": {
+                "type": "dynamic",
+                "min_price": "374,18 €",
+                "max_price": "699,77 €"
+            },
+            "Bright Water": {
+                "type": "dynamic",
+                "min_price": "261,41 €",
+                "max_price": "484,49 €"
+            },
+            "Freehand": {
+                "type": "dynamic",
+                "min_price": "316,92 €",
+                "max_price": "480,25 €"
+            },
+            "Gamma Doppler": {
+                "type": "dynamic",
+                "min_price": "0,00 €",
+                "max_price": "0,00 €"
+            },
+            "Lore": {
+                "type": "dynamic",
+                "min_price": "454,08 €",
+                "max_price": "1.003,35 €"
+            },
+            "Damascus Steel": {
+                "type": "dynamic",
+                "min_price": "373,82 €",
+                "max_price": "496,63 €"
+            },
+            "Doppler": {
+                "type": "dynamic",
+                "min_price": "0,00 €",
+                "max_price": "0,00 €"
+            },
+            "Marble Fade": {
+                "type": "dynamic",
+                "min_price": "800,45 €",
+                "max_price": "920,00 €"
+            },
+            "Rust Coat": {
+                "type": "dynamic",
+                "min_price": "337,11 €",
+                "max_price": "371,31 €"
+            },
+            "Tiger Tooth": {
+                "type": "dynamic",
+                "min_price": "724,50 €",
+                "max_price": "734,12 €"
+            },
+            "Ultraviolet": {
+                "type": "dynamic",
+                "min_price": "0,03 €",
+                "max_price": "691,91 €"
+            },
+            "Blue Steel": {
+                "type": "dynamic",
+                "min_price": "379,91 €",
+                "max_price": "708,46 €"
+            },
+            "Boreal Forest": {
+                "type": "dynamic",
+                "min_price": "248,76 €",
+                "max_price": "364,98 €"
+            },
+            "Case Hardened": {
+                "type": "dynamic",
+                "min_price": "400,29 €",
+                "max_price": "864,36 €"
+            },
+            "Crimson Web": {
+                "type": "dynamic",
+                "min_price": "353,29 €",
+                "max_price": "1.798,33 €"
+            },
+            "Fade": {
+                "type": "dynamic",
+                "min_price": "948,58 €",
+                "max_price": "982,19 €"
+            },
+            "Forest DDPAT": {
+                "type": "dynamic",
+                "min_price": "230,82 €",
+                "max_price": "311,73 €"
+            },
+            "Night": {
+                "type": "dynamic",
+                "min_price": "323,53 €",
+                "max_price": "1.073,30 €"
+            },
+            "Safari Mesh": {
+                "type": "dynamic",
+                "min_price": "217,35 €",
+                "max_price": "348,14 €"
+            },
+            "Scorched": {
+                "type": "dynamic",
+                "min_price": "249,89 €",
+                "max_price": "388,04 €"
+            },
+            "Slaughter": {
+                "type": "dynamic",
+                "min_price": "519,59 €",
+                "max_price": "1.028,45 €"
+            },
+            "Stained": {
+                "type": "dynamic",
+                "min_price": "343,71 €",
+                "max_price": "492,84 €"
+            },
+            "Urban Masked": {
+                "type": "dynamic",
+                "min_price": "281,77 €",
+                "max_price": "632,50 €"
+            }
+        }
+    },
+    "★ Flip Knife": {
+        "5": {
+            "Autotronic": {
+                "type": "dynamic",
+                "min_price": "339,84 €",
+                "max_price": "590,01 €"
+            },
+            "Black Laminate": {
+                "type": "dynamic",
+                "min_price": "266,51 €",
+                "max_price": "369,56 €"
+            },
+            "Bright Water": {
+                "type": "dynamic",
+                "min_price": "259,22 €",
+                "max_price": "362,25 €"
+            },
+            "Freehand": {
+                "type": "dynamic",
+                "min_price": "282,93 €",
+                "max_price": "396,43 €"
+            },
+            "Gamma Doppler": {
+                "type": "dynamic",
+                "min_price": "0,00 €",
+                "max_price": "0,00 €"
+            },
+            "Lore": {
+                "type": "dynamic",
+                "min_price": "317,62 €",
+                "max_price": "624,54 €"
+            },
+            "Damascus Steel": {
+                "type": "dynamic",
+                "min_price": "286,00 €",
+                "max_price": "348,22 €"
+            },
+            "Doppler": {
+                "type": "dynamic",
+                "min_price": "0,00 €",
+                "max_price": "0,00 €"
+            },
+            "Marble Fade": {
+                "type": "dynamic",
+                "min_price": "571,06 €",
+                "max_price": "687,57 €"
+            },
+            "Rust Coat": {
+                "type": "dynamic",
+                "min_price": "231,47 €",
+                "max_price": "260,89 €"
+            },
+            "Tiger Tooth": {
+                "type": "dynamic",
+                "min_price": "529,31 €",
+                "max_price": "601,79 €"
+            },
+            "Ultraviolet": {
+                "type": "dynamic",
+                "min_price": "248,24 €",
+                "max_price": "478,92 €"
+            },
+            "Blue Steel": {
+                "type": "dynamic",
+                "min_price": "288,58 €",
+                "max_price": "460,00 €"
+            },
+            "Boreal Forest": {
+                "type": "dynamic",
+                "min_price": "174,22 €",
+                "max_price": "376,67 €"
+            },
+            "Case Hardened": {
+                "type": "dynamic",
+                "min_price": "314,88 €",
+                "max_price": "471,96 €"
+            },
+            "Crimson Web": {
+                "type": "dynamic",
+                "min_price": "327,03 €",
+                "max_price": "1.510,50 €"
+            },
+            "Fade": {
+                "type": "dynamic",
+                "min_price": "760,75 €",
+                "max_price": "917,54 €"
+            },
+            "Forest DDPAT": {
+                "type": "dynamic",
+                "min_price": "207,61 €",
+                "max_price": "264,87 €"
+            },
+            "Night": {
+                "type": "dynamic",
+                "min_price": "218,09 €",
+                "max_price": "499,90 €"
+            },
+            "Safari Mesh": {
+                "type": "dynamic",
+                "min_price": "187,60 €",
+                "max_price": "420,69 €"
+            },
+            "Scorched": {
+                "type": "dynamic",
+                "min_price": "176,17 €",
+                "max_price": "346,36 €"
+            },
+            "Slaughter": {
+                "type": "dynamic",
+                "min_price": "576,88 €",
+                "max_price": "648,96 €"
+            },
+            "Stained": {
+                "type": "dynamic",
+                "min_price": "213,68 €",
+                "max_price": "316,66 €"
+            },
+            "Urban Masked": {
+                "type": "dynamic",
+                "min_price": "181,05 €",
+                "max_price": "244,79 €"
+            }
+        }
+    },
+    "★ Gut Knife": {
+        "5": {
+            "Autotronic": {
+                "type": "dynamic",
+                "min_price": "227,63 €",
+                "max_price": "346,27 €"
+            },
+            "Black Laminate": {
+                "type": "dynamic",
+                "min_price": "163,05 €",
+                "max_price": "179,00 €"
+            },
+            "Bright Water": {
+                "type": "dynamic",
+                "min_price": "159,47 €",
+                "max_price": "204,37 €"
+            },
+            "Freehand": {
+                "type": "dynamic",
+                "min_price": "162,78 €",
+                "max_price": "220,96 €"
+            },
+            "Gamma Doppler": {
+                "type": "dynamic",
+                "min_price": "0,00 €",
+                "max_price": "0,00 €"
+            },
+            "Lore": {
+                "type": "dynamic",
+                "min_price": "184,04 €",
+                "max_price": "285,00 €"
+            },
+            "Damascus Steel": {
+                "type": "dynamic",
+                "min_price": "159,20 €",
+                "max_price": "190,65 €"
+            },
+            "Doppler": {
+                "type": "dynamic",
+                "min_price": "0,00 €",
+                "max_price": "0,00 €"
+            },
+            "Marble Fade": {
+                "type": "dynamic",
+                "min_price": "291,10 €",
+                "max_price": "297,29 €"
+            },
+            "Rust Coat": {
+                "type": "dynamic",
+                "min_price": "150,14 €",
+                "max_price": "161,12 €"
+            },
+            "Tiger Tooth": {
+                "type": "dynamic",
+                "min_price": "254,74 €",
+                "max_price": "260,68 €"
+            },
+            "Ultraviolet": {
+                "type": "dynamic",
+                "min_price": "149,47 €",
+                "max_price": "214,10 €"
+            },
+            "Blue Steel": {
+                "type": "dynamic",
+                "min_price": "156,08 €",
+                "max_price": "243,58 €"
+            },
+            "Boreal Forest": {
+                "type": "dynamic",
+                "min_price": "138,00 €",
+                "max_price": "199,90 €"
+            },
+            "Case Hardened": {
+                "type": "dynamic",
+                "min_price": "190,00 €",
+                "max_price": "328,00 €"
+            },
+            "Crimson Web": {
+                "type": "dynamic",
+                "min_price": "150,95 €",
+                "max_price": "508,50 €"
+            },
+            "Fade": {
+                "type": "dynamic",
+                "min_price": "310,21 €",
+                "max_price": "340,18 €"
+            },
+            "Forest DDPAT": {
+                "type": "dynamic",
+                "min_price": "136,88 €",
+                "max_price": "175,88 €"
+            },
+            "Night": {
+                "type": "dynamic",
+                "min_price": "152,45 €",
+                "max_price": "329,77 €"
+            },
+            "Safari Mesh": {
+                "type": "dynamic",
+                "min_price": "129,11 €",
+                "max_price": "154,19 €"
+            },
+            "Scorched": {
+                "type": "dynamic",
+                "min_price": "143,98 €",
+                "max_price": "169,45 €"
+            },
+            "Slaughter": {
+                "type": "dynamic",
+                "min_price": "211,00 €",
+                "max_price": "300,88 €"
+            },
+            "Stained": {
+                "type": "dynamic",
+                "min_price": "149,32 €",
+                "max_price": "202,97 €"
+            },
+            "Urban Masked": {
+                "type": "dynamic",
+                "min_price": "130,22 €",
+                "max_price": "176,24 €"
+            }
+        }
+    },
+    "★ Karambit": {
+        "5": {
+            "Autotronic": {
+                "type": "dynamic",
+                "min_price": "1.352,18 €",
+                "max_price": "1.959,95 €"
+            },
+            "Black Laminate": {
+                "type": "dynamic",
+                "min_price": "1.147,02 €",
+                "max_price": "1.493,82 €"
+            },
+            "Bright Water": {
+                "type": "dynamic",
+                "min_price": "695,00 €",
+                "max_price": "1.340,17 €"
+            },
+            "Freehand": {
+                "type": "dynamic",
+                "min_price": "663,58 €",
+                "max_price": "1.174,08 €"
+            },
+            "Gamma Doppler": {
+                "type": "dynamic",
+                "min_price": "0,00 €",
+                "max_price": "0,00 €"
+            },
+            "Lore": {
+                "type": "dynamic",
+                "min_price": "972,04 €",
+                "max_price": "1.725,00 €"
+            },
+            "Damascus Steel": {
+                "type": "dynamic",
+                "min_price": "944,79 €",
+                "max_price": "1.312,38 €"
+            },
+            "Doppler": {
+                "type": "dynamic",
+                "min_price": "0,00 €",
+                "max_price": "0,00 €"
+            },
+            "Marble Fade": {
+                "type": "dynamic",
+                "min_price": "1.721,08 €",
+                "max_price": "1.799,75 €"
+            },
+            "Rust Coat": {
+                "type": "dynamic",
+                "min_price": "850,23 €",
+                "max_price": "1.002,42 €"
+            },
+            "Tiger Tooth": {
+                "type": "dynamic",
+                "min_price": "1.331,24 €",
+                "max_price": "1.790,99 €"
+            },
+            "Ultraviolet": {
+                "type": "dynamic",
+                "min_price": "943,63 €",
+                "max_price": "1.498,17 €"
+            },
+            "Blue Steel": {
+                "type": "dynamic",
+                "min_price": "1.136,84 €",
+                "max_price": "1.599,99 €"
+            },
+            "Boreal Forest": {
+                "type": "dynamic",
+                "min_price": "725,31 €",
+                "max_price": "903,72 €"
+            },
+            "Case Hardened": {
+                "type": "dynamic",
+                "min_price": "1.121,22 €",
+                "max_price": "1.687,17 €"
+            },
+            "Crimson Web": {
+                "type": "dynamic",
+                "min_price": "945,24 €",
+                "max_price": "1.800,00 €"
+            },
+            "Fade": {
+                "type": "dynamic",
+                "min_price": "1.548,24 €",
+                "max_price": "1.573,90 €"
+            },
+            "Forest DDPAT": {
+                "type": "dynamic",
+                "min_price": "700,00 €",
+                "max_price": "899,24 €"
+            },
+            "Night": {
+                "type": "dynamic",
+                "min_price": "828,00 €",
+                "max_price": "1.526,65 €"
+            },
+            "Safari Mesh": {
+                "type": "dynamic",
+                "min_price": "638,75 €",
+                "max_price": "843,63 €"
+            },
+            "Scorched": {
+                "type": "dynamic",
+                "min_price": "740,55 €",
+                "max_price": "1.354,60 €"
+            },
+            "Slaughter": {
+                "type": "dynamic",
+                "min_price": "1.581,19 €",
+                "max_price": "1.884,07 €"
+            },
+            "Stained": {
+                "type": "dynamic",
+                "min_price": "992,20 €",
+                "max_price": "1.938,37 €"
+            },
+            "Urban Masked": {
+                "type": "dynamic",
+                "min_price": "767,08 €",
+                "max_price": "900,00 €"
+            }
+        }
+    },
+    "★ M9 Bayonet": {
+        "5": {
+            "Autotronic": {
+                "type": "dynamic",
+                "min_price": "1.200,00 €",
+                "max_price": "1.500,58 €"
+            },
+            "Black Laminate": {
+                "type": "dynamic",
+                "min_price": "669,65 €",
+                "max_price": "1.239,61 €"
+            },
+            "Bright Water": {
+                "type": "dynamic",
+                "min_price": "622,19 €",
+                "max_price": "1.021,24 €"
+            },
+            "Freehand": {
+                "type": "dynamic",
+                "min_price": "604,17 €",
+                "max_price": "1.013,76 €"
+            },
+            "Gamma Doppler": {
+                "type": "dynamic",
+                "min_price": "0,00 €",
+                "max_price": "0,00 €"
+            },
+            "Lore": {
+                "type": "dynamic",
+                "min_price": "884,50 €",
+                "max_price": "1.835,20 €"
+            },
+            "Damascus Steel": {
+                "type": "dynamic",
+                "min_price": "743,96 €",
+                "max_price": "1.059,58 €"
+            },
+            "Doppler": {
+                "type": "dynamic",
+                "min_price": "0,00 €",
+                "max_price": "0,00 €"
+            },
+            "Marble Fade": {
+                "type": "dynamic",
+                "min_price": "1.056,72 €",
+                "max_price": "1.830,43 €"
+            },
+            "Rust Coat": {
+                "type": "dynamic",
+                "min_price": "800,01 €",
+                "max_price": "974,56 €"
+            },
+            "Tiger Tooth": {
+                "type": "dynamic",
+                "min_price": "1.042,02 €",
+                "max_price": "1.384,26 €"
+            },
+            "Ultraviolet": {
+                "type": "dynamic",
+                "min_price": "389,62 €",
+                "max_price": "1.480,00 €"
+            },
+            "Blue Steel": {
+                "type": "dynamic",
+                "min_price": "487,12 €",
+                "max_price": "1.288,00 €"
+            },
+            "Boreal Forest": {
+                "type": "dynamic",
+                "min_price": "567,43 €",
+                "max_price": "744,19 €"
+            },
+            "Case Hardened": {
+                "type": "dynamic",
+                "min_price": "974,75 €",
+                "max_price": "1.318,93 €"
+            },
+            "Crimson Web": {
+                "type": "dynamic",
+                "min_price": "361,79 €",
+                "max_price": "1.560,01 €"
+            },
+            "Fade": {
+                "type": "dynamic",
+                "min_price": "1.882,69 €",
+                "max_price": "1.982,28 €"
+            },
+            "Forest DDPAT": {
+                "type": "dynamic",
+                "min_price": "531,02 €",
+                "max_price": "1.066,31 €"
+            },
+            "Night": {
+                "type": "dynamic",
+                "min_price": "709,25 €",
+                "max_price": "954,84 €"
+            },
+            "Safari Mesh": {
+                "type": "dynamic",
+                "min_price": "392,27 €",
+                "max_price": "750,01 €"
+            },
+            "Scorched": {
+                "type": "dynamic",
+                "min_price": "564,00 €",
+                "max_price": "1.143,84 €"
+            },
+            "Slaughter": {
+                "type": "dynamic",
+                "min_price": "1.200,00 €",
+                "max_price": "1.948,46 €"
+            },
+            "Stained": {
+                "type": "dynamic",
+                "min_price": "700,76 €",
+                "max_price": "950,82 €"
+            },
+            "Urban Masked": {
+                "type": "dynamic",
+                "min_price": "574,37 €",
+                "max_price": "1.143,38 €"
+            }
+        }
+    }
+}
