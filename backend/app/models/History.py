@@ -7,7 +7,6 @@ from .. global_config import history_config
 from . import BaseModel
 from hashlib import sha256
 from .enumtypes.HistoryStatus import HistoryStatus
-from .enumtypes.HistoryType import HistoryType
 
 def generate_transaction_hash(
     sender_hash: str,
@@ -38,14 +37,14 @@ class History(BaseModel):
     
     __tablename__ = 'history'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     sender_address = Column(String(64), nullable=False)
     receiver_address = Column(String(64), nullable=False)
     amount = Column(Integer, nullable=False)
     timestamp = Column(String(24), default=get_current_time(), nullable=False)
     transaction_hash = Column(String(64), nullable=False, unique=True)
     message = Column(String(128), nullable=True)    # message from sender to receiver
-    status = Column(String(16), nullable=False)
+    status = Column(String(6), nullable=False, default=HistoryStatus.PENDING)
     transaction_type = Column(String(16), nullable=False)
 
     def __init__(self, sender_address, receiver_address, amount, timestamp, message, status, transaction_type):
