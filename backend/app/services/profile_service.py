@@ -120,7 +120,7 @@ class ProfileService:
             profile.full_name = new_profile.get('full_name', profile.full_name)
             profile.bio = new_profile.get('bio', profile.bio)
             profile.location = new_profile.get('location', profile.location)
-            profile.birthdate = new_profile.get('birthdate', profile.birthdate)
+            profile.birthdate = new_profile.get('birthdate', profile.birthdate) 
 
             session.commit()
             info(f"Profile updated for user {user_id}.", __name__)

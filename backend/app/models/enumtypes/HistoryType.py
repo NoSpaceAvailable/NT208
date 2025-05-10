@@ -1,3 +1,5 @@
-class HistoryType:
-    TRANSFER = "transfer"
-    TOPUP = "topup"
+from enum import Enum
+
+class HistoryType(Enum):
+    TRANSFER    =   "transfer"
+    TOPUP       =   "topup"
