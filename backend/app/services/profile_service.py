@@ -74,7 +74,6 @@ class ProfileService:
         ).scalar_one_or_none()
         if not profile:
             error(f"Profile for user {user_id} not found.", __name__)
-            return None
         return profile
     
     @staticmethod

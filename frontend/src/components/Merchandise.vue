@@ -1,153 +1,219 @@
 <template>
-    <div style="display: contents">
-        <div
-            class="container mx-auto p-6 bg-[url(/src/images/shop_wallpaper.png)] bg-cover bg-center text-white flex-grow min-h-screen z-10 max-w-full">
-            <!-- Header & Search Bar -->
-            <div class="relative">
-                <div class="absolute inset-0 bg-[#000000] opacity-80 rounded-lg"></div>
-                <div class="relative flex items-center justify-between p-4">
-                    <h1 class="text-xl font-bold">Skin Storage</h1>
-                    <div class="flex space-x-2">
-                        <input v-model="searchQuery" @keyup="applyFilters" placeholder="Searching skin..."
-                            class="p-2 rounded bg-gray-700 text-white" />
-                        <button @click="showFilter = !showFilter" class="p-2 bg-blue-500 text-white rounded">Choose
-                            filter</button>
+    <div class="min-h-screen p-4 md:p-8 bg-[url('/src/images/shop_wallpaper.png')] bg-cover bg-center">
+        <!-- Header & Search Bar -->
+        <div class="max-w-7xl mx-auto mb-6">
+            <div class="bg-[#111111]/80 rounded-xl shadow-xl p-4 md:p-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <h1 class="text-2xl font-bold text-[#8FC773]">Skin Marketplace</h1>
+                    <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                        <div class="relative flex-1">
+                            <input v-model="searchQuery" @keyup="applyFilters" placeholder="Search skins..."
+                                class="w-full p-2 pl-10 bg-[#131313] rounded-lg border border-gray-600 text-white focus:outline-none focus:ring-1 focus:ring-[#8FC773]" />
+                            <svg class="absolute left-3 top-2.5 h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </div>
+                        <button @click="showFilter = !showFilter"
+                            class="px-4 py-2 bg-[#8FC773] text-black font-medium rounded-lg hover:bg-[#7BBF5A] transition-colors">
+                            Filters
+                        </button>
                     </div>
                 </div>
-            </div>
 
-            <!-- Filters -->
-            <div v-if="showFilter" class="mt-4 relative">
-                <div class="absolute inset-0 bg-[#000000] opacity-80 rounded-lg"></div>
-                <div class="relative p-4">
-                    <div class="flex items-center space-x-4">
+                <!-- Filters -->
+                <div v-if="showFilter" class="mt-4 pt-4 border-t border-gray-700">
+                    <div class="flex flex-col md:flex-row md:items-center gap-4">
                         <!-- Gun Filter -->
-                        <div>
-                            <label class="block text-white">Type:</label>
+                        <div class="flex-1">
+                            <label class="block text-sm text-[#8FC773] mb-1">Weapon Type</label>
                             <select @change="addFilter('weaponType', $event.target.value)"
-                                class="p-2 rounded bg-gray-700 text-white inline-block whitespace-nowrap">
-                                <option value="All">All</option>
-                                <option v-for="weapon in weaponTypes" :key="weapon" :value="weapon" v-html="formatWeaponType(weapon)"></option>
+                                class="w-full p-2 bg-[#131313] rounded-lg border border-gray-600 text-white focus:outline-none focus:ring-1 focus:ring-[#8FC773]">
+                                <option value="All">All Weapons</option>
+                                <option v-for="weapon in weaponTypes" :key="weapon" :value="weapon"
+                                    v-html="formatWeaponType(weapon)"></option>
                             </select>
                         </div>
 
                         <!-- Rarity Filter -->
-                        <div>
-                            <label class="block text-white">Rarity:</label>
+                        <div class="flex-1">
+                            <label class="block text-sm text-[#8FC773] mb-1">Rarity</label>
                             <select @change="addFilter('rarity', $event.target.value)"
-                                class="p-2 rounded bg-gray-700 text-white inline-block whitespace-nowrap">
-                                <option value="All">All</option>
-                                <option v-for="rarity in rarities" :key="rarity" :value="rarity" :style="{ color: rarityColors[rarity] }">
+                                class="w-full p-2 bg-[#131313] rounded-lg border border-gray-600 text-white focus:outline-none focus:ring-1 focus:ring-[#8FC773]">
+                                <option value="All">All Rarities</option>
+                                <option v-for="rarity in rarities" :key="rarity" :value="rarity"
+                                    :style="{ color: rarityColors[rarity] }">
                                     {{ rarityString[rarity] }}
                                 </option>
                             </select>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Display Selected Filters -->
-            <div v-if="filter.weaponType.length || filter.rarity.length" class="mt-4 relative">
-                <div class="absolute inset-0 bg-[#000000] opacity-80 rounded-lg"></div>
-                <div class="relative p-2">
-                    <h3 class="text-white">Selected Filters:</h3>
-                    <div class="flex flex-wrap gap-2 rounded-lg">
+                <!-- Display Selected Filters -->
+                <div v-if="filter.weaponType.length || filter.rarity.length" class="mt-4 pt-4 border-t border-gray-700">
+                    <h3 class="text-sm text-white mb-2">Active Filters:</h3>
+                    <div class="flex flex-wrap gap-2">
                         <!-- Selected Weapons -->
                         <span v-for="weapon in filter.weaponType" :key="weapon"
-                            class="bg-blue-600 p-2 flex rounded-lg items-center space-x-2">
+                            class="px-3 py-1.5 bg-[#8FC773] rounded-full flex items-center space-x-1 text-sm">
                             <span v-html="formatWeaponType(weapon)"></span>
-                            <button @click="removeFilter('weaponType', weapon)" class="text-white">✕</button>
+                            <button @click="removeFilter('weaponType', weapon)" class="text-[#131313] hover:text-white">
+                                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
                         </span>
 
                         <!-- Selected Rarities -->
                         <span v-for="rarity in filter.rarity" :key="rarity"
-                            class="p-2 flex rounded-lg items-center space-x-2"
-                            :style="{ backgroundColor: rarityColors[rarity] }">
+                            class="px-3 py-1.5 rounded-full flex items-center space-x-1 text-sm"
+                            :style="{ backgroundColor: rarityBgColors[rarity], color: rarityTextColors[rarity] }">
                             <span>{{ rarityString[rarity] }}</span>
-                            <button @click="removeFilter('rarity', rarity)" class="text-white">✕</button>
+                            <button @click="removeFilter('rarity', rarity)" class="hover:text-white">
+                                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
                         </span>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Main Content: Responsive Layout -->
-            <div class="flex flex-col md:flex-row gap-4 mt-4">
-                <!-- Left Section: Skins List & Pagination -->
-                <div class="w-full md:w-2/5 relative">
-                    <div class="absolute inset-0 bg-[#000000] opacity-80 rounded-lg"></div>
-                    <div class="relative p-4 flex flex-col">
-                        <div class="flex flex-col gap-4 flex-grow">
-                            <div v-for="(skin) in paginatedSkins" :key="skin.name" @click="selectSkin(skin)"
-                                class="cursor-pointer bg-gray-700 p-4 rounded-lg flex items-center space-x-4 hover:bg-gray-600 relative"
-                                :class="{ 'border-2 border-green-400': selectedSkin && selectedSkin.name === skin.name && selectedSkin.weapon === skin.weapon }">
-                                <div class="absolute left-0 top-0 h-full w-5 rounded-l"
+        <!-- Main Content -->
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col lg:flex-row gap-6">
+                <!-- Left Section: Skins List -->
+                <div class="w-full lg:w-2/5">
+                    <div class="bg-[#111111]/80 rounded-xl shadow-xl p-4 md:p-6">
+                        <!-- Skin List -->
+                        <div class="space-y-3">
+                            <div v-for="skin in paginatedSkins" :key="skin.name" @click="selectSkin(skin)"
+                                class="cursor-pointer bg-[#131313] p-3 rounded-lg flex items-center space-x-4 hover:bg-[#1A1A1A] transition-colors border border-transparent"
+                                :class="{ 'border-[#8FC773]': selectedSkin && selectedSkin.name === skin.name && selectedSkin.weapon === skin.weapon }">
+                                <div class="w-3 h-12 rounded"
                                     :style="{ backgroundColor: rarityColors[skin.rarity] || '#6B7280' }"></div>
                                 <img :src="`/src/images/gun/${skin.weapon.replace(/ /g, '_')}/${skin.rarity}/${skin.name.replace(/ /g, '_')}.png`"
-                                    :alt="skin.name" class="w-14 h-10" />
-                                <div class="flex-1">
-                                    <h2 class="text-lg font-semibold">{{ skin.name }}</h2>
-                                    <p class="text-gray-400" v-html="formatWeaponType(skin.weapon)"></p>
+                                    :alt="skin.name" class="w-16 h-12 object-contain" />
+                                <div class="flex-1 min-w-0">
+                                    <h2 class="text-md font-semibold text-white truncate">{{ skin.name }}</h2>
+                                    <p class="text-gray-400 text-sm" v-html="formatWeaponType(skin.weapon)"></p>
                                 </div>
-                                <div class="ml-auto">
-                                    <p class="text-green-400 text-lg font-bold">avg. price: {{ skin.avg_price }}</p>
+                                <div class="ml-auto text-right">
+                                    <p class="text-[#8FC773] font-bold">{{ skin.avg_price }}</p>
+                                    <p class="text-xs text-gray-400">avg. price</p>
                                 </div>
                             </div>
 
-                            <!-- Empty Placeholder Items -->
-                            <div v-for="index in (5 - paginatedSkins.length)" :key="'empty-' + index"
-                                class="bg-gray-700 p-4 rounded-lg min-h-[60px] opacity-50"></div>
-                        </div>
+                            <!-- Empty State -->
+                            <div v-if="filteredSkins.length === 0" class="bg-[#131313] p-6 rounded-lg text-center">
+                                <svg class="mx-auto h-10 w-10 text-gray-500" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <h3 class="mt-2 text-sm font-medium text-white">No skins found</h3>
+                                <p class="mt-1 text-sm text-gray-400">
+                                    Try adjusting your search or filters
+                                </p>
+                            </div>
 
-                        <!-- Pagination Controls -->
-                        <div class="flex justify-center space-x-4 mt-4">
-                            <button @click="prevPage" :disabled="currentPage === 1"
-                                class="p-2 bg-gray-600 text-white rounded disabled:opacity-50">Previous</button>
-                            <span class="text-white">{{ currentPage }} / {{ totalPages }}</span>
-                            <button @click="nextPage" :disabled="currentPage === totalPages"
-                                class="p-2 bg-gray-600 text-white rounded disabled:opacity-50">Next</button>
+                            <!-- Pagination -->
+                            <div v-if="filteredSkins.length > 0"
+                                class="flex justify-between items-center mt-4 pt-4 border-t border-gray-700">
+                                <button @click="prevPage" :disabled="currentPage === 1"
+                                    class="px-4 py-2 bg-[#131313] text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#1A1A1A] transition-colors">
+                                    Previous
+                                </button>
+                                <span class="text-sm text-white">Page {{ currentPage }} of {{ totalPages }}</span>
+                                <button @click="nextPage" :disabled="currentPage === totalPages"
+                                    class="px-4 py-2 bg-[#131313] text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#1A1A1A] transition-colors">
+                                    Next
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Right Section: Skin Details -->
-                <div class="w-full md:w-3/5 relative">
-                    <div class="absolute inset-0 bg-[#000000] opacity-80 rounded-lg"></div>
-                    <div class="relative p-4 flex flex-col items-center">
+                <div class="w-full lg:w-3/5">
+                    <div class="bg-[#111111]/80 rounded-xl shadow-xl p-4 md:p-6 h-full">
                         <template v-if="selectedSkin">
-                            <h2 class="text-xl font-bold">{{ selectedSkin.name }}</h2>
-                            <img :src="`/src/images/gun/${selectedSkin.weapon.replace(/ /g, '_')}/${selectedSkin.rarity}/${selectedSkin.name.replace(/ /g, '_')}.png`"
-                                :alt="selectedSkin.name" class="w-64 h-48" />
-                            <p class="text-white"><strong>Type:</strong> <span v-html="formatWeaponType(selectedSkin.weapon)"></span></p>
-                            <p :style="{ color: rarityColors[selectedSkin.rarity] || '#6B7280' }"><strong
-                                    class="text-white">Rarity:</strong> <strong>{{ rarityToString(selectedSkin.rarity)
-                                    }}</strong></p>
+                            <div class="flex flex-col items-center">
+                                <h2 class="text-2xl font-bold text-[#8FC773] mb-2">{{ selectedSkin.name }}</h2>
+                                <div
+                                    class="relative w-full max-w-md aspect-video bg-[#131313] rounded-lg mb-4 flex items-center justify-center">
+                                    <img :src="`/src/images/gun/${selectedSkin.weapon.replace(/ /g, '_')}/${selectedSkin.rarity}/${selectedSkin.name.replace(/ /g, '_')}.png`"
+                                        :alt="selectedSkin.name" class="max-h-64 object-contain" />
+                                    <div class="absolute bottom-2 left-2">
+                                        <span class="px-2 py-1 rounded text-xs font-medium"
+                                            :style="{ backgroundColor: rarityBgColors[selectedSkin.rarity], color: rarityTextColors[selectedSkin.rarity] }">
+                                            {{ rarityToString(selectedSkin.rarity) }}
+                                        </span>
+                                    </div>
+                                </div>
 
-                            <!-- Price Selection -->
-                            <div class="mt-4 w-full flex flex-col items-center">
-                                <p class="text-white"><strong>Price range:</strong> {{ selectedSkin.min_price }} - {{
-                                    selectedSkin.max_price }}</p>
-                                <input type="number" v-model="selectedPrice" @keyup="validatePrice"
-                                    class="p-2 rounded bg-gray-700 text-white" />
-                                <p class="text-red-400 mt-2">{{ priceError }}</p>
-                                <p class="text-green-400 text-lg font-bold mt-2">{{ selectedPrice }} {{ currency }}</p>
-                            </div>
+                                <div class="w-full max-w-md grid grid-cols-2 gap-4 mb-6">
+                                    <div class="bg-[#131313] p-3 rounded-lg">
+                                        <p class="text-sm text-gray-400">Type</p>
+                                        <p class="text-white" v-html="formatWeaponType(selectedSkin.weapon)"></p>
+                                    </div>
+                                    <div class="bg-[#131313] p-3 rounded-lg">
+                                        <p class="text-sm text-gray-400">Price Range</p>
+                                        <p class="text-white">{{ selectedSkin.min_price }} - {{ selectedSkin.max_price
+                                            }}</p>
+                                    </div>
+                                </div>
 
-                            <!-- Buy & Sell Buttons -->
-                            <div class="flex mt-4 gap-4">
-                                <button
-                                    class="px-4 py-2 bg-green-600 text-white rounded disabled:bg-gray-500 disabled:cursor-not-allowed"
-                                    @click="buyItem" :disabled="priceError !== ''">
-                                    Buy
-                                </button>
+                                <!-- Price Selection -->
+                                <div class="w-full max-w-md space-y-4">
+                                    <div>
+                                        <label class="block text-sm text-[#8FC773] mb-1">Set Your Price</label>
+                                        <div class="relative">
+                                            <span class="absolute left-3 top-2.5 text-white">{{ currency }}</span>
+                                            <input type="number" v-model="selectedPrice" @keyup="validatePrice"
+                                                class="w-full p-2 pl-10 bg-[#131313] rounded-lg border border-gray-600 text-white focus:outline-none focus:ring-1 focus:ring-[#8FC773]" />
+                                        </div>
+                                        <p v-if="priceError" class="text-red-400 text-sm mt-1">{{ priceError }}</p>
+                                        <p v-else class="text-[#8FC773] text-sm mt-1">
+                                            Must be between {{ parsePrice(selectedSkin.min_price).toFixed(2) }} and {{
+                                            parsePrice(selectedSkin.max_price).toFixed(2) }}
+                                        </p>
+                                    </div>
 
-                                <button
-                                    class="px-4 py-2 bg-blue-600 text-white rounded disabled:bg-gray-500 disabled:cursor-not-allowed"
-                                    @click="sellItem" :disabled="priceError !== ''">
-                                    Sell
-                                </button>
+                                    <!-- Action Buttons -->
+                                    <div class="flex gap-3">
+                                        <button @click="buyItem" :disabled="priceError !== ''"
+                                            :class="{ 'bg-[#8FC773] hover:bg-[#7BBF5A] text-black': priceError === '', 'bg-gray-600 text-gray-400 cursor-not-allowed': priceError !== '' }"
+                                            class="flex-1 py-3 rounded-lg font-bold transition-colors">
+                                            Buy
+                                        </button>
+                                        <button @click="sellItem" :disabled="priceError !== ''"
+                                            :class="{ 'bg-white/10 text-white hover:text-[#8FC773]': priceError === '', 'bg-gray-600 text-gray-400 cursor-not-allowed': priceError !== '' }"
+                                            class="flex-1 py-3 rounded-lg font-bold transition-colors">
+                                            Sell
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </template>
-                        <p v-else class="text-gray-500 text-lg">Select a skin to view details.</p>
+                        <template v-else>
+                            <div class="flex flex-col items-center justify-center h-full py-12">
+                                <svg class="h-16 w-16 text-gray-500" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
+                                </svg>
+                                <h3 class="mt-4 text-lg font-medium text-white">Select a skin</h3>
+                                <p class="mt-1 text-gray-400 text-center max-w-md">
+                                    Choose a skin from the list to view details and trading options
+                                </p>
+                            </div>
+                        </template>
                     </div>
                 </div>
             </div>
@@ -156,8 +222,14 @@
 </template>
 
 <script>
+import { useNotification } from '../services/notificationService';
 
 export default {
+    name: 'MerchandisePage',
+    setup() {
+        const { showNotification } = useNotification();
+        return { showNotification };
+    },
     data() {
         return {
             currency: "€",
@@ -169,6 +241,20 @@ export default {
                 rarity: []
             },
             rarityColors: {
+                "1": "#4B69FF",
+                "2": "#8847FF",
+                "3": "#D32CE6",
+                "4": "#EB4B4B",
+                "5": "#FFD700"
+            },
+            rarityBgColors: {
+                "1": "rgba(75, 105, 255, 0.2)",
+                "2": "rgba(136, 71, 255, 0.2)",
+                "3": "rgba(211, 44, 230, 0.2)",
+                "4": "rgba(235, 75, 75, 0.2)",
+                "5": "rgba(255, 215, 0, 0.2)"
+            },
+            rarityTextColors: {
                 "1": "#4B69FF",
                 "2": "#8847FF",
                 "3": "#D32CE6",
@@ -251,37 +337,57 @@ export default {
         },
         selectSkin(skin) {
             this.selectedSkin = skin;
+            this.selectedPrice = this.parsePrice(skin.avg_price.replace(this.currency, '').trim());
+            this.priceError = "";
+        },
+        parsePrice(price) {
+            if (!price) return 0;
+            return parseFloat(price.toString().replace(/[^0-9.,]/g, "").replace(",", ".").trim());
         },
         validatePrice() {
-            let min = this.parsePrice(this.selectedSkin.min_price);
-            let max = this.parsePrice(this.selectedSkin.max_price);
-            let price = parseFloat(this.selectedPrice);
+            if (!this.selectedSkin) return;
 
-            if (isNaN(price) || price < min || price > max) {
-                this.priceError = `Price must be between ${min.toFixed(2)} ${this.currency} and ${max.toFixed(2)} ${this.currency}`;
+            const min = this.parsePrice(this.selectedSkin.min_price);
+            const max = this.parsePrice(this.selectedSkin.max_price);
+            const price = this.parsePrice(this.selectedPrice);
+
+            if (isNaN(price)) {
+                this.priceError = "Please enter a valid price";
+            } else if (price < min) {
+                this.priceError = `Price must be at least ${min.toFixed(2)} ${this.currency}`;
+            } else if (price > max) {
+                this.priceError = `Price cannot exceed ${max.toFixed(2)} ${this.currency}`;
             } else {
                 this.priceError = "";
             }
         },
-        buySkin(skin, price) {
+        buyItem() {
             if (this.priceError) {
-                alert("Invalid price!");
+                this.showNotification('Invalid price', {
+                    type: 'error',
+                    description: this.priceError
+                });
                 return;
             }
-            alert(`Buying ${skin.name} for ${price.toFixed(2)} ${this.currency}`);
+            this.showNotification(`Purchase confirmed`, {
+                type: 'success',
+                description: `You bought ${this.selectedSkin.name} for ${this.selectedPrice.toFixed(2)} ${this.currency}`
+            });
         },
-        sellSkin(skin, price) {
+        sellItem() {
             if (this.priceError) {
-                alert("Invalid price!");
+                this.showNotification('Invalid price', {
+                    type: 'error',
+                    description: this.priceError
+                });
                 return;
             }
-            alert(`Selling ${skin.name} for ${price.toFixed(2)} ${this.currency}`);
+            this.showNotification(`Sale confirmed`, {
+                type: 'success',
+                description: `You listed ${this.selectedSkin.name} for ${this.selectedPrice.toFixed(2)} ${this.currency}`
+            });
         },
         async loadSkins() {
-            function parsePrice(price) {
-                if (!price) return NaN;
-                return parseFloat(price.replace(/[^0-9.,]/g, "").replace(",", ".").trim());
-            }
             try {
                 const response = await fetch('/api/product/list', {
                     method: 'GET',
@@ -300,9 +406,11 @@ export default {
                                 weapon,
                                 rarity,
                                 name: skinName,
-                                min_price: skinData.min_price || "N/A",
-                                max_price: skinData.max_price || "N/A",
-                                avg_price: skinData.min_price && skinData.max_price ? (((parsePrice(skinData.min_price) + parsePrice(skinData.max_price))) / 2).toFixed(2) + " " + this.currency : skinData.price
+                                min_price: skinData.min_price ? `${this.parsePrice(skinData.min_price).toFixed(2)} ${this.currency}` : "N/A",
+                                max_price: skinData.max_price ? `${this.parsePrice(skinData.max_price).toFixed(2)} ${this.currency}` : "N/A",
+                                avg_price: skinData.min_price && skinData.max_price
+                                    ? `${((this.parsePrice(skinData.min_price) + this.parsePrice(skinData.max_price)) / 2).toFixed(2)} ${this.currency}`
+                                    : skinData.price || "N/A"
                             });
                             weaponTypesSet.add(weapon);
                             raritiesSet.add(rarity);
@@ -315,6 +423,10 @@ export default {
                 this.rarities = Array.from(raritiesSet);
             } catch (error) {
                 console.error("Error loading skins:", error);
+                this.showNotification('Failed to load skins', {
+                    type: 'error',
+                    description: 'Please try again later'
+                });
             }
         }
     },
@@ -323,3 +435,25 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1A1A1A;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #8FC773;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #7BBF5A;
+}
+</style>
