@@ -1,15 +1,7 @@
 <template>
     <div style="display: contents">
-        <!-- Video Background -->
-        <div class="absolute left-0 w-full h-full overflow-hidden z-0">
-            <video autoplay muted loop class="w-full h-full object-cover">
-                <source src="/src/videos/auth_wallpaper.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
-        </div>
-
         <!-- Content Overlay -->
-        <div class="flex flex-grow items-center justify-center relative z-10">
+        <div class="flex flex-grow items-center justify-center relative z-10 bg-[url('/src/images/profile_wallpaper.png')] bg-cover bg-center">
             <div class="flex flex-col w-full max-w-lg mx-auto p-8 bg-[#1A1A1A]/90 rounded-xl shadow-xl">
                 <div class="text-center pb-6">
                     <h1 class="text-3xl font-extrabold text-[#8FC773]">About our CSGO skin shop</h1>

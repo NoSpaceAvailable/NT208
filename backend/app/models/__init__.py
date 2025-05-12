@@ -1,5 +1,7 @@
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import text
 from .Database import Database
+import time
 
 db = Database()
 engine = db._engine
@@ -23,3 +25,10 @@ User.__table__.drop(engine, checkfirst=True)
 
         
 BaseModel.metadata.create_all(engine)
+
+conn = engine.raw_connection()
+cursor = conn.cursor()
+init = open('/app/app/misc/init.sql').read()
+cursor.execute(init)
+conn.commit()
+conn.close()
