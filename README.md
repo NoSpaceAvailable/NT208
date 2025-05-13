@@ -1,6 +1,8 @@
 Project structure
 =================
 
+**Note for dev: Dev frontend thì nếu chạy build.sh trực tiếp, docker sẽ báo vite not found. Lí do là vì docker-compose.yml đang thực hiện volumn ./frontend:/app/frontend. Vì vậy khi dev frontend cần install dependencies trong package.json của frontend trước rồi mới ./build.sh**
+
 ```text
 .
 ├── README.md                       # Overview of the virtual asset marketplace platform and setup guide
