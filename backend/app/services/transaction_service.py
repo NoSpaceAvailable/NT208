@@ -78,7 +78,7 @@ class TransactionService:
         
     @staticmethod
     def safe_transaction(session: Session, sender_id: int, receiver_address: str, amount: int) -> bool:
-
+        """Transfer an amount of money from sender to receiver"""
         if amount <= 0:
             error("Amount must be positive", __name__)
             return False
@@ -95,7 +95,7 @@ class TransactionService:
         try:
             TransactionService.safe_sub(session, sender_address, amount)
             TransactionService.safe_add(session, receiver_address, amount)
-            session.commit()
+            session.flush()
             info(f"Transferred {amount} from {sender_address} to {receiver_address}", __name__)
             return True
         except Exception as e:

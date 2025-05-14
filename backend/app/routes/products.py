@@ -47,12 +47,12 @@ def sell():
     """simply put an item to for sale state"""
     user_id = get_uid()
     if not user_created_profile(user_id=user_id):
-        return {'status': 'please create a wallet and profile first'}, 400
+        return {'status': 'failed', 'msg': 'please create a wallet and profile first'}, 400
     data = request.json
     item_id = data['item_id']
     if not ProductService.item_is_belong_to(session=db_session, user_item_id=item_id, user_id=user_id):
-        return {'status': 'you does not own this item'}, 400
+        return {'status': 'failed', 'msg': 'you does not own this item'}, 400
     if not ProductService.update_sale_status(session=db_session, user_item_id=item_id, new_sale_status=True):
-        return {'status': 'something went wrong'}, 400
-    return {'status': 'the item has been put to sale state, now it\'s visible on marketplace'}
+        return {'status': 'failed', 'msg': 'something went wrong'}, 400
+    return {'status': 'success', 'msg': 'the item has been put to sale state, now it\'s visible on marketplace'}
 

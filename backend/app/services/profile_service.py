@@ -62,19 +62,23 @@ class ProfileService:
         except ValueError:
             error("Invalid date format", __name__)
             return False
-
         return True
 
     @staticmethod
     def safe_get_profile(session: Session, user_id: int) -> UserProfile | None:
-        profile = session.execute(
-            select(UserProfile)
-            .filter(UserProfile.user_id == user_id)
-            .with_for_update()
-        ).scalar_one_or_none()
-        if not profile:
-            error(f"Profile for user {user_id} not found.", __name__)
-        return profile
+        try:
+            profile = session.execute(
+                select(UserProfile)
+                .filter(UserProfile.user_id == user_id)
+                .with_for_update()
+            ).scalar_one_or_none()
+            if not profile:
+                error(f"Profile for user {user_id} not found.", __name__)
+            return profile
+        except Exception as e:
+            error(f"Error while fetching profile: {e}")
+            session.rollback()
+            return None
     
     @staticmethod
     def safe_create_profile(session: Session, user_id: int, profile: dict) -> bool:

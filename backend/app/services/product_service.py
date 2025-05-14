@@ -1,24 +1,27 @@
 from sqlalchemy import select, and_, update
 from sqlalchemy.orm import Session
-from .. models import Items, UserItems
+from .. models import UserItems
 from .. models.enumtypes import ItemRarity
 from .. utils.logging import info, error
 
 class ProductService:
 
     @staticmethod
-    def get_product_item(session: Session, item_type: str, rarity: str, item_name: str):
-        item = session.execute(
-            select(Items)
-            .filter(and_(
-                Items.item_type == item_type,
-                Items.rarity == rarity,
-                Items.item_name == item_name
-            ))
-        ).scalar_one_or_none()
-        if not item:
-            error(f"Not found for search: {item_type}, {rarity}, {item_name}", __name__)
-        return item
+    def get_product_item(session: Session, user_item_id):
+        try:
+            user_item = session.execute(
+                select(UserItems)
+                .filter(
+                    UserItems.id == user_item_id
+                )
+            ).scalar_one_or_none()
+            if not user_item:
+                error(f"User item id {user_item_id} not found!", __name__)
+            return user_item
+        except Exception as e:
+            error(f"Error while getting item's data: {e}")
+            session.rollback()
+            return None
     
     @staticmethod
     def get_inventory(session: Session, user_id: int):
