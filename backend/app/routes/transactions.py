@@ -88,6 +88,10 @@ def pay():
         return {"status": "ok"}
     return {"status": "failed"}, 500
 
+@bp.route('/trade', methods=['POST'])
+def trade_item():
+    pass
+
 @bp.route('/history', methods=['GET'])
 def get_history():
     _session = request.cookies.get('session')
