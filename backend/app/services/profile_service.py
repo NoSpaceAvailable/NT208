@@ -70,7 +70,6 @@ class ProfileService:
             profile = session.execute(
                 select(UserProfile)
                 .filter(UserProfile.user_id == user_id)
-                .with_for_update()
             ).scalar_one_or_none()
             if not profile:
                 error(f"Profile for user {user_id} not found.", __name__)

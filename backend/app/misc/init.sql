@@ -1095,3 +1095,5 @@ INSERT INTO items (item_kind, item_name, item_type, rarity, price) VALUES
 	('★ M9 Bayonet', 'Slaughter', 'knife', '5', 1948.46),
 	('★ M9 Bayonet', 'Stained', 'knife', '5', 950.82),
 	('★ M9 Bayonet', 'Urban Masked', 'knife', '5', 1143.38);
+
+UPDATE items SET price = price * 30000;	-- convert all to VND

@@ -176,7 +176,7 @@
                                         <div class="relative">
                                             <span class="absolute left-3 top-2.5 text-white">{{ currency }}</span>
                                             <input type="number" v-model="selectedPrice" @keyup="validatePrice"
-                                                class="w-full p-2 pl-10 bg-[#131313] rounded-lg border border-gray-600 text-white focus:outline-none focus:ring-1 focus:ring-[#8FC773]" />
+                                                class=" w-full p-2 pl-14 bg-[#131313] rounded-lg border border-gray-600 text-white focus:outline-none focus:ring-1 focus:ring-[#8FC773]" />
                                         </div>
                                         <p v-if="priceError" class="text-red-400 text-sm mt-1">{{ priceError }}</p>
                                         <p v-else class="text-[#8FC773] text-sm mt-1">
@@ -232,7 +232,7 @@ export default {
     },
     data() {
         return {
-            currency: "€",
+            currency: "VND",
             searchQuery: "",
             priceError: "",
             showFilter: false,

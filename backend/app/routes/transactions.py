@@ -113,15 +113,23 @@ def trade_item():
             if not seller_user_item.for_sale:
                 return {'status': 'failed'}, 400
             
+            # then check if the buyer id is the same as owner id
+            if seller_user_item.user_id == buyer_id:
+                return {'status': 'failed'}, 400
+            
             # then check if the user has sufficient balance
             balance = TransactionService.safe_get_balance(session=session, username=buyer_username)
-            item_price = float(seller_user_item.to_dict().get('price')) 
+            item_info = seller_user_item.to_dict()
+            item_price = item_info.get('item').get('price')
             if balance < item_price:
                 return {'status': 'failed', 'msg': 'insufficient balance'}, 400
             
             # if all check are ok, process the transaction
             # first, try to transfer money from buyer to seller
-            seller_address = ProfileService.safe_get_profile(session=session, user_id=seller_user_item.user_id).wallet_address
+            print("Begin transaction")
+            profile = ProfileService.safe_get_profile(session=session, user_id=seller_user_item.user_id)
+            seller_address = profile.wallet_address
+            print(seller_address)
             if not TransactionService.safe_transaction(
                 session=session,
                 sender_id=buyer_id,
@@ -129,7 +137,7 @@ def trade_item():
                 amount=item_price
             ):
                 return {'status': 'failed', 'msg': 'something went wrong'}, 500
-            
+            print("Transaction ended")
             # then change the ownership of the user item
             seller_user_item.user_id = buyer_id
 
@@ -137,7 +145,7 @@ def trade_item():
         return {'status': 'success'}
     
     except Exception as e:
-        error(f"Error while changing user item ownership: {e}", __name__)
+        error(f"Error while trading: {e}", __name__)
         return {'status': 'failed', 'msg': 'something went wrong'}, 500
 
 @bp.route('/history', methods=['GET'])
