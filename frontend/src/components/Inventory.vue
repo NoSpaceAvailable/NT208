@@ -546,7 +546,7 @@ export default {
         },
         async fetchProfile() {
             try {
-                const response = await fetch('/api/profile/fetch', {
+                const response = await fetch('/api/profile/fetch/me', {
                     method: 'GET',
                     credentials: 'include'
                 });
