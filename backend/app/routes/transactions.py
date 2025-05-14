@@ -186,8 +186,8 @@ def confirm():
                     amount=int(amount),
                     timestamp=b64decode(timestamp_base64).decode('utf-8'),
                     message="To: " + target_wallet,
-                    status=HistoryStatus.COMPLETED,
-                    transaction_type=HistoryType.TOPUP
+                    status=HistoryStatus.COMPLETED.value,
+                    transaction_type=HistoryType.TOPUP.value
                 )
                 return redirect('/add')
             else:
