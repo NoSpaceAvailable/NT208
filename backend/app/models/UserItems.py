@@ -28,13 +28,16 @@ class UserItems(BaseModel):
     item_stattrak   = Column(Boolean, nullable=False, default=False)
     item_collection = Column(String(64), nullable=True, default='No collection')
 
-    def __init__(self, user_id, item_id):
+    for_sale        = Column(Boolean, nullable=False, default=False)
+
+    def __init__(self, user_id, item_id, for_sale=False):
         random_set = random_collection()
         self.user_id = user_id
         self.item_id = item_id
         self.item_exterior = random_set[0]
         self.item_stattrak = random_set[1]
         self.item_collection = random_set[2]
+        self.for_sale=for_sale
 
     def to_dict(self):
         item_record = session.execute(
@@ -49,7 +52,8 @@ class UserItems(BaseModel):
                 'properties': {
                     'exterior': self.item_exterior,
                     'stattrak': self.item_stattrak,
-                    'collection': self.item_collection
+                    'collection': self.item_collection,
+                    'for_sale': self.for_sale,
                 }
             }
         else:
