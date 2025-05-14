@@ -36,7 +36,7 @@
                         :alt="user.name + ' avatar'"
                         class="w-24 h-24 rounded-full object-cover mb-4 border-4 border-[#2D2D2D] group-hover:border-[#8FC773]/50 transition-colors"
                     />
-                    <h3 class="text-xl font-semibold text-white">
+                    <h3 class="text-sm font-bold text-white truncate">
                         {{ user.name }}
                     </h3>
                     <p class="text-sm text-[#8FC773]/80 mt-1">
