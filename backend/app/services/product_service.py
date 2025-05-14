@@ -22,14 +22,19 @@ class ProductService:
     
     @staticmethod
     def get_inventory(session: Session, user_id: int):
-        user_items = session.execute(
-            select(UserItems)
-            .filter(
-                UserItems.user_id == user_id
-            )
-        ).all()
-        inventory = [user_item[0].to_dict() for user_item in user_items]
-        return inventory
+        try:
+            user_items = session.execute(
+                select(UserItems)
+                .filter(
+                    UserItems.user_id == user_id
+                )
+            ).all()
+            inventory = [user_item[0].to_dict() for user_item in user_items]
+            return inventory
+        except Exception as e:
+            error(f"Error while fetching user items: {e}", __name__)
+            session.rollback()
+            return []
     
     @staticmethod
     def item_is_belong_to(session: Session, user_item_id: int, user_id: int):

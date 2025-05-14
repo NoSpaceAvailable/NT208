@@ -570,7 +570,7 @@ export default {
         async fetchInventory() {
             this.isLoading = true;
             try {
-                const response = await fetch('/api/product/inventory', {
+                const response = await fetch('/api/product/inventory/me', {
                     method: 'GET',
                     credentials: 'include'
                 });
