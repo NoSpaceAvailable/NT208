@@ -31,10 +31,21 @@ def auth_required(f):
         return f(*args, **kwargs)
     return check_auth
 
-@bp.route('/inventory', methods=['GET'])
+# @bp.route('/inventory', methods=['GET'])
+# @auth_required
+# def get_item_data():
+#     """See my items"""
+#     user_id = get_uid()
+#     return ProductService.get_inventory(session=db_session, user_id=user_id)
+
+@bp.route('/inventory/<uid>', methods=['GET'])
 @auth_required
-def get_item_data():
-    user_id = get_uid()
+def show_user_inventory(uid):
+    """Also let people see other's items, like Steam do"""
+    if uid == 'me':
+        user_id = get_uid()
+    else:
+        user_id = uid
     return ProductService.get_inventory(session=db_session, user_id=user_id)
 
 @bp.route('/sell', methods=['POST'])
@@ -52,4 +63,3 @@ def sell():
         return {'status': 'something went wrong'}, 400
     return {'status': 'the item has been put to sale state, now it\'s visible on marketplace'}
 
-    
