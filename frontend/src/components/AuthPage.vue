@@ -135,6 +135,7 @@
 </template>
 
 <script>
+import { GoogleLogin, decodeCredential } from 'vue3-google-login';
 import VerifyPage from './VerifyPage.vue';
 import GoogleButton from './buttons/GoogleButton.vue';
 
