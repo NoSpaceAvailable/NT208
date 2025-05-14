@@ -13,6 +13,7 @@ import Inventory from '@/components/Inventory.vue';
 import Payment from '@/components/PaymentPage.vue';
 import HistoryPage from '@/components/HistoryPage.vue';
 import AddMoneyPage from '@/components/AddMoneyPage.vue';
+import NotificationPage from '@/components/NotificationPage.vue';
 
 const routes = [
     { path: '/', component: MainPage },
@@ -28,6 +29,7 @@ const routes = [
     { path: '/community', component: Community },
     { path: '/inventory', component: Inventory },
     { path: '/merchandise', component: Merchandise },
+    { path: '/notification', component: NotificationPage },
     { path: '/:pathMatch(.*)', component: NotFound },
 ];
 

@@ -2,6 +2,7 @@ from flask import Blueprint, request
 from .. services.product_service import ProductService
 from .. models.Database import Database
 from .. utils.cookie import verify_token
+from .. services.profile_service import ProfileService
 from functools import wraps
 import json, jwt
 
@@ -11,6 +12,10 @@ db_session = Database.get_session()
 def get_uid():
     session = request.cookies.get('session')
     return jwt.decode(session, options={"verify_signature": False}).get('user_id')
+
+def user_created_profile(user_id) -> bool:
+    user_id = get_uid()
+    return ProfileService.safe_get_profile(db_session, user_id) is not None
 
 @bp.route('/list', methods=['GET'])
 def register():
@@ -32,17 +37,19 @@ def get_item_data():
     user_id = get_uid()
     return ProductService.get_inventory(session=db_session, user_id=user_id)
 
-@bp.route('/getitem', methods=['POST'])
-def getitem():
-    item_type = request.json['type']
-    rarity = request.json['rarity']
-    item_name = request.json['name']
-
-    item = None
-
-    return {'status': 'ok', 'item': item}, 200
-
 @bp.route('/sell', methods=['POST'])
+@auth_required
 def sell():
-    return {'status': 'under construction'}
+    """simply put an item to for sale state"""
+    user_id = get_uid()
+    if not user_created_profile(user_id=user_id):
+        return {'status': 'please create a wallet and profile first'}, 400
+    data = request.json
+    item_id = data['item_id']
+    if not ProductService.item_is_belong_to(session=db_session, user_item_id=item_id, user_id=user_id):
+        return {'status': 'you does not own this item'}, 400
+    if not ProductService.update_sale_status(session=db_session, user_item_id=item_id, new_sale_status=True):
+        return {'status': 'something went wrong'}, 400
+    return {'status': 'the item has been put to sale state, now it\'s visible on marketplace'}
+
     

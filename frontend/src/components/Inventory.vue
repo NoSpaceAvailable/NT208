@@ -204,6 +204,9 @@
                                     <p class="text-sm text-white/80">StatTrak™</p>
                                     <p class="text-[#CF6A32]"><strong>Yes</strong></p>
                                 </div>
+                                <div v-if="selectedItem.for_sale">
+                                    <p class="text-sm text-[#8FC773]"><strong>This item is for sale</strong></p>
+                                </div>
                             </div>
                         </div>
 
@@ -445,7 +448,6 @@ export default {
             withdrawTradeUrl: '',
             isLoading: false,
             rarities: [ '1', '2', '3', '4', '5' ],
-            // Rarity colors matching Merchandise.vue
             rarityColors: {
                 '1': { background: '#4B69FF', text: '#FFFFFF' }, // Industrial
                 '2': { background: '#8847FF', text: '#FFFFFF' }, // Mil-Spec
@@ -507,8 +509,8 @@ export default {
     methods: {
         getItemImage(item) {
             const parts = item.name.split(' | ')
-            const kind = parts[0];
-            const name = parts[1];
+            const kind = parts[0].replace(' ', '_');
+            const name = parts[1].replace(' ', '_');
             return `/src/images/gun/${kind}/${item.rarity}/${name}.png`;
         },
         getRarityStyle(rarity) {
@@ -542,6 +544,29 @@ export default {
             this.showNotification('Trade URL copied to clipboard', { type: 'success' });
             this.showDepositModal = false;
         },
+        async fetchProfile() {
+            try {
+                const response = await fetch('/api/profile/fetch', {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+
+                if (response.status === 401) {
+                    this.$router.push('/auth#login');
+                    return;
+                }
+
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data) {
+                        this.profile = data.profile;
+                        this.wallet_address = this.profile.wallet_address;
+                    }
+                }
+            } catch (err) {
+                console.error('Error fetching profile:', err);
+            }
+        },
         async fetchInventory() {
             this.isLoading = true;
             try {
@@ -569,6 +594,7 @@ export default {
                             exterior: properties.exterior,
                             stattrak: properties.stattrak,
                             collection: properties.collection,
+                            for_sale: properties.for_sale,
                         }
                     );
                 });
@@ -700,6 +726,7 @@ export default {
         }
     },
     async mounted() {
+        await this.fetchProfile();
         await this.fetchInventory();
     }
 }
