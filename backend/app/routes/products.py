@@ -31,13 +31,6 @@ def auth_required(f):
         return f(*args, **kwargs)
     return check_auth
 
-# @bp.route('/inventory', methods=['GET'])
-# @auth_required
-# def get_item_data():
-#     """See my items"""
-#     user_id = get_uid()
-#     return ProductService.get_inventory(session=db_session, user_id=user_id)
-
 @bp.route('/inventory/<uid>', methods=['GET'])
 @auth_required
 def show_user_inventory(uid):
