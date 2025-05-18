@@ -155,7 +155,6 @@ export default {
             sortOrder: 'desc',
             currentPage: 1,
             usersPerPage: 12,
-            isLoading : true,
             fetchError: null, 
             demoUsers: [
                 { id: 1, name: 'John Doe', role: 'Developer', transactions: 5, rating: 8.5, avatarUrl: 'https://via.placeholder.com/150' },
