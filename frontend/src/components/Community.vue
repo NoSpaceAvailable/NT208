@@ -1,23 +1,52 @@
 <template>
-    <div class="min-h-screen p-4 md:p-8 bg-[#111111]">
-        <!-- Search bar -->
-        <form class="max-w-md mx-auto" @submit.prevent>
-            <label for="default-search" class="mb-2 text-sm font-medium text-gray-300 sr-only">Search</label>
-            <div class="relative">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg class="w-4 h-4 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                    </svg>
+    <div class="min-h-screen p-4 md:p-8 bg-[url('/src/images/community_wallpaper.png')] bg-cover bg-center">
+        <!-- Controls: Search and Sort -->
+        <div class="max-w-2xl mx-auto mb-10">
+            <!-- Search bar -->
+            <form class="mb-6" @submit.prevent>
+                <label for="default-search" class="mb-2 text-sm font-medium text-gray-300 sr-only">Search</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                        </svg>
+                    </div>
+                    <input
+                        type="search"
+                        id="default-search"
+                        v-model="searchQuery"
+                        class="block w-full p-4 ps-10 text-sm text-white border border-[#2D2D2D] rounded-lg bg-[#1A1A1A] focus:ring-[#8FC773]/50 focus:border-[#8FC773] placeholder-gray-500"
+                        placeholder="Search Users by Name or Role..."
+                    />
                 </div>
-                <input
-                    type="search"
-                    id="default-search"
-                    v-model="searchQuery"
-                    class="block w-full p-4 ps-10 text-sm text-white border border-[#2D2D2D] rounded-lg bg-[#1A1A1A] focus:ring-[#8FC773]/50 focus:border-[#8FC773] placeholder-gray-500"
-                    placeholder="Search Users by Name..."
-                />
+            </form>
+
+            <!-- Sort Controls -->
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div class="flex items-center space-x-2">
+                    <label for="sort-by" class="text-sm text-gray-300">Sort by:</label>
+                    <select
+                        id="sort-by"
+                        v-model="sortBy"
+                        class="bg-[#1A1A1A] text-white border border-[#2D2D2D] rounded-md py-2 px-3 text-sm focus:ring-[#8FC773]/50 focus:border-[#8FC773] appearance-none"
+                        style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23BBB%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 0.5rem center; background-size: 0.65em auto; padding-right: 2rem;"
+                    >
+                        <option value="default">Default</option>
+                        <option value="rating">Rating</option>
+                        <option value="transactions">Transactions</option>
+                        <option value="name">Name</option>
+                    </select>
+                </div>
+                <button
+                    @click="toggleSortOrder"
+                    class="flex items-center space-x-1 px-3 py-2 text-sm font-medium text-gray-300 bg-[#1A1A1A] border border-[#3A3A3A] rounded-md hover:bg-[#2D2D2D] hover:text-[#8FC773] transition-colors"
+                >
+                    <svg v-if="sortOrder === 'asc'" class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M14.707 10.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 12.586V5a1 1 0 012 0v7.586l2.293-2.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                    <svg v-else class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                    <span>{{ sortOrder === 'asc' ? 'Ascending' : 'Descending' }}</span>
+                </button>
             </div>
-        </form>
+        </div>
 
         <!-- Community section -->
         <div class="mt-12 max-w-6xl mx-auto">
@@ -115,138 +144,184 @@
     </div>
 </template>
 
-<script setup>
-import { ref, computed, watch } from 'vue';
+<script>
+export default {
+    name: 'CommunityPage',
+    data() {
+        return {
+            allUsers: [],
+            searchQuery: '',
+            sortBy: 'default',
+            sortOrder: 'desc',
+            currentPage: 1,
+            usersPerPage: 12,
+            fetchError: null, 
+            demoUsers: [
+                { id: 1, name: 'John Doe', role: 'Developer', transactions: 5, rating: 8.5, avatarUrl: 'https://via.placeholder.com/150' },
+                { id: 2, name: 'Jane Smith', role: 'Designer', transactions: 10, rating: 9.0, avatarUrl: 'https://via.placeholder.com/150' },
+                // Add more demo users as needed
+            ]
+        };
+    },
+    computed: {
+        filteredUsers() {
+            if(!this.searchQuery) {
+                return this.allUsers;
+            }
 
-// Dummy user data - Added 'rating' property
-const allUsers = ref([
-    { id: 1, name: 'Alice Wonderland', role: 'Community Lead', avatarUrl: 'https://i.pravatar.cc/150?u=alice', transactions: 10, rating: 9.2 },
-    { id: 2, name: 'Bob The Builder', role: 'Top Contributor', avatarUrl: 'https://i.pravatar.cc/150?u=bob', transactions: 23, rating: 8.5 },
-    { id: 3, name: 'Charlie Brown', role: 'Moderator', avatarUrl: 'https://i.pravatar.cc/150?u=charlie', transactions: 23, rating: 7.0 },
-    { id: 4, name: 'Diana Prince', role: 'Active Member', avatarUrl: 'https://i.pravatar.cc/150?u=diana', transactions: 2, rating: 6.5 },
-    { id: 5, name: 'Edward Scissorhands', role: 'New Member', avatarUrl: 'https://i.pravatar.cc/150?u=edward', transactions: 12, rating: 4.2 },
-    { id: 6, name: 'Fiona Gallagher', role: 'Mentor', avatarUrl: 'https://i.pravatar.cc/150?u=fiona', transactions: 1, rating: 9.8 },
-    { id: 7, name: 'George Costanza', role: 'Event Organizer', avatarUrl: 'https://i.pravatar.cc/150?u=george', transactions: 45, rating: 3.1 },
-    { id: 8, name: 'Harry Potter', role: 'Wizarding Enthusiast', avatarUrl: 'https://i.pravatar.cc/150?u=harry', transactions: 55, rating: 7.7 },
-    { id: 9, name: 'Ivy Gardener', role: 'Botanist', avatarUrl: 'https://i.pravatar.cc/150?u=ivy', transactions: 234, rating: 8.0 },
-    { id: 10, name: 'Jack Sparrow', role: 'Captain', avatarUrl: 'https://i.pravatar.cc/150?u=jack', transactions: 22, rating: 2.5 },
-    { id: 11, name: 'Kyle Broflovski', role: 'Student', avatarUrl: 'https://i.pravatar.cc/150?u=kyle', transactions: 31, rating: 5.5 },
-    { id: 12, name: 'Laura Palmer', role: 'Mystery', avatarUrl: 'https://i.pravatar.cc/150?u=laura', transactions: 22, rating: 6.9 },
-    { id: 13, name: 'Michael Scott', role: 'Manager', avatarUrl: 'https://i.pravatar.cc/150?u=michael', transactions: 13, rating: 1.5 },
-    { id: 14, name: 'Nancy Drew', role: 'Detective', avatarUrl: 'https://i.pravatar.cc/150?u=nancy', transactions: 13, rating: 8.8 },
-    { id: 15, name: 'Oliver Twist', role: 'Orphan', avatarUrl: 'https://i.pravatar.cc/150?u=oliver', transactions: 45, rating: 4.9 },
-    { id: 16, name: 'Peter Pan', role: 'Lost Boy', avatarUrl: 'https://i.pravatar.cc/150?u=peter', transactions: 55, rating: 7.2 },
-    { id: 17, name: 'Quinn Fabray', role: 'Cheerleader', avatarUrl: 'https://i.pravatar.cc/150?u=quinn', transactions: 556, rating: 9.0 },
-]);
+            return this.allUsers.filter(user => {
+                const searchLower = this.searchQuery.toLowerCase();
+                const nameMatch = user.name && user.name.toLowerCase().includes(searchLower);
+                const roleMatch = user.role && user.role.toLowerCase().includes(searchLower);
+                return nameMatch || roleMatch;
+            });
+        },
 
-const searchQuery = ref('');
-const currentPage = ref(1);
-const usersPerPage = ref(8);
+        sortedAndFilteredUsers() {
+            let users = this.filteredUsers.slice();
 
-const filteredUsers = computed(() => {
-    if (!searchQuery.value) {
-        return allUsers.value;
-    }
-    return allUsers.value.filter(user =>
-        user.name.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
-        user.role.toLowerCase().includes(searchQuery.value.toLowerCase())
-    );
-});
+            if (this.sortBy === 'rating') {
+                users.sort((a, b) => this.sortOrder === 'asc' ? a.rating - b.rating : b.rating - a.rating);
+            } else if (this.sortBy === 'transactions') {
+                users.sort((a, b) => this.sortOrder === 'asc' ? a.transactions - b.transactions : b.transactions - a.transactions);
+            } else if (this.sortBy === 'name') {
+                users.sort((a, b) => this.sortOrder === 'asc' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name));
+            }
 
-const totalPages = computed(() => {
-    if (filteredUsers.value.length === 0) return 0;
-    return Math.ceil(filteredUsers.value.length / usersPerPage.value);
-});
+            return users;
+        },
 
-const paginatedUsers = computed(() => {
-    const start = (currentPage.value - 1) * usersPerPage.value;
-    const end = start + usersPerPage.value;
-    return filteredUsers.value.slice(start, end);
-});
+        totalPages() {
+            if (this.sortedAndFilteredUsers.length === 0) {
+                return 0;
+            }
+            return Math.ceil(this.sortedAndFilteredUsers.length / this.usersPerPage);
+        },
 
-watch(searchQuery, () => {
-    currentPage.value = 1;
-});
+        paginatedUsers() {
+            const start = (this.currentPage - 1) * this.usersPerPage;
+            const end = start + this.usersPerPage;
+            return this.sortedAndFilteredUsers.slice(start, end);
+        },
+        pageNumbersToShow() {
+            const totalPages = this.totalPages;
+            const pages = [];
+            const maxPagesToShow = 5;
 
-watch(totalPages, (newTotalPages) => {
-    if (currentPage.value > newTotalPages && newTotalPages > 0) {
-        currentPage.value = newTotalPages;
-    } else if (newTotalPages === 0 && filteredUsers.value.length > 0) {
-        currentPage.value = 1;
-    } else if (newTotalPages === 0) {
-        currentPage.value = 1;
-    }
-});
+            if (totalPages <= maxPagesToShow) {
+                for (let i = 1; i <= totalPages; i++) {
+                    pages.push(i);
+                }
+            } else {
+                if (this.currentPage > 3) {
+                    pages.push(1);
+                    if (this.currentPage > 4) pages.push('...');
+                }
+                for (let i = Math.max(1, this.currentPage - 1); i <= Math.min(totalPages, this.currentPage + 1); i++) {
+                    pages.push(i);
+                }
+                if (this.currentPage < totalPages - 2) {
+                    if (this.currentPage < totalPages - 3) pages.push('...');
+                    pages.push(totalPages);
+                }
+            }
 
-
-function nextPage() {
-    if (currentPage.value < totalPages.value) {
-        currentPage.value++;
-    }
-}
-
-function prevPage() {
-    if (currentPage.value > 1) {
-        currentPage.value--;
-    }
-}
-
-function goToPage(pageNumber) {
-    if (typeof pageNumber === 'number' && pageNumber >= 1 && pageNumber <= totalPages.value) {
-        currentPage.value = pageNumber;
-    }
-}
-
-const pageNumbersToShow = computed(() => {
-    const pages = [];
-    if (totalPages.value === 0) return pages;
-    const maxPagesToShow = 5;
-    const current = currentPage.value;
-    const total = totalPages.value;
-
-    if (total <= maxPagesToShow + 2) {
-        for (let i = 1; i <= total; i++) pages.push(i);
-    } else {
-        pages.push(1);
-        let startPage, endPage;
-        if (current <= maxPagesToShow - 2) {
-            startPage = 2;
-            endPage = maxPagesToShow - 1;
-            for (let i = startPage; i <= endPage; i++) pages.push(i);
-            if (endPage < total -1) pages.push('...');
-        } else if (current >= total - (maxPagesToShow - 3)) {
-            pages.push('...');
-            startPage = total - (maxPagesToShow - 2);
-            for (let i = startPage; i < total; i++) pages.push(i);
-        } else {
-            pages.push('...');
-            startPage = current - Math.floor((maxPagesToShow - 3) / 2); 
-            endPage = current + Math.floor((maxPagesToShow - 3) / 2);
-            for (let i = startPage; i <= endPage; i++) pages.push(i);
-            pages.push('...');
+            return pages;
         }
-        pages.push(total);
-    }
-    const finalPages = pages.reduce((acc, curr, idx, src) => {
-        if (!(curr === '...' && src[idx - 1] === '...')) acc.push(curr);
-        return acc;
-    }, []);
-    if (finalPages.length > 2 && finalPages[0] === 1 && finalPages[1] === '...' && finalPages[2] === 2) finalPages.splice(1, 1);
-    if (finalPages.length > 2 && finalPages[finalPages.length - 1] === total && finalPages[finalPages.length - 2] === '...' && finalPages[finalPages.length - 3] === total - 1) finalPages.splice(finalPages.length - 2, 1);
-    return finalPages;
-});
 
-// Helper function for rating color
-function getRatingColorClass(rating) {
-    if (rating <= 3.3) {
-        return 'bg-red-600'; // Low rating - Red
-    } else if (rating <= 6.6) {
-        return 'bg-yellow-500'; // Medium rating - Yellow
-    } else {
-        return 'bg-[#8FC773]'; // High rating - Green (using your theme's green)
-    }
-}
+    },
+    watch: {
+        searchQuery() {
+            this.currentPage = 1; // Reset to first page on search
+        },
+        sortBy() {
+            this.currentPage = 1; // Reset to first page on sort change
+        },
+        sortOrder() {
+            this.currentPage = 1; // Reset to first page on sort order change
+        },
+        totalPages(newTotalPages) {
+            if (this.currentPage > newTotalPages && newTotalPages > 0) {
+                this.currentPage = newTotalPages; // Adjust current page if it exceeds total pages
+            }
+            else if (this.currentPage > newTotalPages && newTotalPages === 0) {
+                this.currentPage = 1; // Reset to first page if no users are found
+            }
+        }
+    },
+    methods: {
+        nextPage() {
+            if (this.currentPage < this.totalPages) {
+                this.currentPage++;
+            }
+        },
+        prevPage() {
+            if (this.currentPage > 1) {
+                this.currentPage--;
+            }
+        },
+        goToPage(page) {
+            if (typeof page === 'number' && page > 0 && page <= this.totalPages) {
+                this.currentPage = page;
+            }
+        },
+        toggleSortOrder() {
+            this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
+        },
+        getRatingColorClass(rating) {
+            if (rating <= 3.3) return 'bg-red-600';
+            else if (rating <= 6.6) return 'bg-yellow-500';
+            else return 'bg-[#8FC773]';
+        },
+        async fetchedUsers() {
+            console.log('Fetching users...');
+            this.fetchError = null; 
+            try {
+                const response = await fetch('/api/profile/fetch/all', {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+                if (!response.ok) {
+                    console.error('Network response was not ok:', response.statusText);
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                console.log('Fetched data:', data);
 
+                let rawUsers = data['profile'];
+                console.log('Raw users:', rawUsers);
+
+                // for (const user of rawUsers) {
+                //     console.log('User:', user);
+                //     // append to allUsers
+                //     this.allUsers.push(user);
+                // }
+
+                //TODO: complete the data fetching logic
+                this.allUsers = rawUsers.map((user, index) => {
+                    return {
+                        id: index + 1, 
+                        name: user.profile_name || 'Unknown Name', // Fallback name if not available
+                        role: 'Unknown Role',
+                        avatarUrl: 'https://via.placeholder.com/150', // Fallback avatar URL
+                        transactions: Math.floor(Math.random() * 20) + 1, // Random number of transactions for demo
+                        rating: parseFloat((Math.random() * 7 + 3).toFixed(1)), // Random rating for demo
+                        // joinedDate: 'Unknown Date',
+                    };
+                });
+                console.log('Fetched users success:', this.allUsers);
+
+                this.fetchError = null;
+            }
+            catch (error) {
+                this.fetchError = 'Failed to fetch users. Please try again later.';
+            }
+        },
+    },
+    mounted() {
+        this.fetchedUsers();
+    }
+};
 </script>
 
 <style scoped>

@@ -14,7 +14,7 @@ class Items(BaseModel):
     item_name   = Column(String(32), nullable=False)
     item_type   = Column(String(32), nullable=False)
     rarity      = Column(String(1), nullable=False)      # describe the rarity of a product
-    price       = Column(Numeric(20, 2), nullable=False)  
+    price       = Column(Integer, nullable=False)  
 
     def __init__(self, item_kind, item_name, item_type, rarity, price):
         self.item_kind  = item_kind

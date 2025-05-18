@@ -41,10 +41,18 @@ def create():
         return { "status": "ok" }, 200
     return { "status": "error", "msg": "please submit enough and valid infomation!" }, 500
     
-@bp.route('/fetch', methods=['GET'])
-def profile():
-    """Fetch the profile for the current user."""
-    user_id = get_uid()
+@bp.route('/fetch/<uid>', methods=['GET'])
+def profile(uid):
+    """Fetch the user profile. This is publicly available for everyone to view"""
+    if uid == 'me':
+        user_id = get_uid()
+    elif uid == 'all':
+        user_id = -1
+    else:
+        try:
+            user_id = int(uid)
+        except:
+           return { "status": "error" }, 404
     profile = ProfileService.get_profile_for_display(session, user_id)
     if not profile:
         return { "status": "error" }, 404

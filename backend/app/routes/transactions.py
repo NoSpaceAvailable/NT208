@@ -2,6 +2,8 @@ from flask import Blueprint, request, redirect
 from .. services.transaction_service import *
 from .. services.transaction_service import TransactionService
 from .. services.history_service import HistoryService
+from .. services.product_service import ProductService
+from .. services.profile_service import ProfileService
 from .. utils.cookie import verify_token
 from .. models.Database import Database
 from .. models.enumtypes.HistoryStatus import HistoryStatus
@@ -13,11 +15,16 @@ bp = Blueprint('transactions', __name__, url_prefix='/api/transaction')
 session = Database.get_session()
 momo = Momo()
 
+# legacy code
 def get_payload(token: str):
     return jwt.decode(
         jwt=token,
         options={"verify_signature": False}
     )
+
+def get_uid():
+    session = request.cookies.get('session')
+    return jwt.decode(session, options={"verify_signature": False}).get('user_id')
 
 @bp.before_request
 def check_auth():
@@ -88,6 +95,59 @@ def pay():
         return {"status": "ok"}
     return {"status": "failed"}, 500
 
+@bp.route('/trade', methods=['POST'])
+def trade_item():
+    # take the data
+    data = request.json
+    item_id = data['item_id']
+    buyer_id = get_uid()
+
+    _session = request.cookies.get('session')
+    payload = get_payload(_session)
+    buyer_username = payload.get('username')
+
+    try:
+        with session.begin():
+            # first, check if the item is for sale
+            seller_user_item = ProductService.get_product_item(session=session, user_item_id=item_id)
+            if not seller_user_item.for_sale:
+                return {'status': 'failed'}, 400
+            
+            # then check if the buyer id is the same as owner id
+            if seller_user_item.user_id == buyer_id:
+                return {'status': 'failed'}, 400
+            
+            # then check if the user has sufficient balance
+            balance = TransactionService.safe_get_balance(session=session, username=buyer_username)
+            item_info = seller_user_item.to_dict()
+            item_price = item_info.get('item').get('price')
+            if balance < item_price:
+                return {'status': 'failed', 'msg': 'insufficient balance'}, 400
+            
+            # if all check are ok, process the transaction
+            # first, try to transfer money from buyer to seller
+            print("Begin transaction")
+            profile = ProfileService.safe_get_profile(session=session, user_id=seller_user_item.user_id)
+            seller_address = profile.wallet_address
+            print(seller_address)
+            if not TransactionService.safe_transaction(
+                session=session,
+                sender_id=buyer_id,
+                receiver_address=seller_address,
+                amount=item_price
+            ):
+                return {'status': 'failed', 'msg': 'something went wrong'}, 500
+            print("Transaction ended")
+            # then change the ownership of the user item
+            seller_user_item.user_id = buyer_id
+
+            # return status
+        return {'status': 'success'}
+    
+    except Exception as e:
+        error(f"Error while trading: {e}", __name__)
+        return {'status': 'failed', 'msg': 'something went wrong'}, 500
+
 @bp.route('/history', methods=['GET'])
 def get_history():
     _session = request.cookies.get('session')
@@ -134,8 +194,8 @@ def confirm():
                     amount=int(amount),
                     timestamp=b64decode(timestamp_base64).decode('utf-8'),
                     message="To: " + target_wallet,
-                    status=HistoryStatus.COMPLETED,
-                    transaction_type=HistoryType.TOPUP
+                    status=HistoryStatus.COMPLETED.value,
+                    transaction_type=HistoryType.TOPUP.value
                 )
                 return redirect('/add')
             else:

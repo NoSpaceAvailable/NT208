@@ -1,7 +1,5 @@
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import text
 from .Database import Database
-import time
 
 db = Database()
 engine = db._engine
