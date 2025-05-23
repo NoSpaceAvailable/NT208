@@ -30,9 +30,10 @@ def auth_required(f):
 @auth_required
 def show_user_notification():
     user_id = get_uid()
-    return NotificationService.get_notifications(session=db_session, user_id=user_id)
+    ret = NotificationService.get_notifications(session=db_session, user_id=user_id)
+    return ret
 
-@bp.route('/add', methods=['POST']) #Test only
+@bp.route('/add', methods=['POST'])
 @auth_required
 def add():
     user_id = get_uid()
@@ -49,4 +50,6 @@ def add():
 def mark(notid):
     user_id = get_uid()
     noti_id = notid
-    NotificationService.update_seen(session=db_session, user_id=user_id, id=noti_id, seen=True)
+    if not NotificationService.update_seen(session=db_session, user_id=user_id, id=noti_id, new_seen=True):
+        return {'status': 'something went wrong'}, 400
+    return {'status': 'notification marked successfully'}

@@ -62,20 +62,18 @@ export default {
   methods: {
     async fetchNotifications() {
         try {
-            await fetch('/api/notification/add', {
-                method: 'POST',
-                credentials: 'include',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    message: 'You bought AWP | Dragon Lore'
-                })
-            }); // Test only
             const response = await fetch('/api/notification/read', {
                         method: 'GET',
                         credentials: 'include'
-                    });
-            console.log('Fetched notifications:', response);
-            this.notifications = response.data;
+                    }); 
+            const data = await response.json();
+            console.log('Fetched notifications:', data);   
+            this.notifications = data.map(n => ({
+                id: n.id.toString(),
+                message: n.message,
+                timestamp: n.timestamp,
+                seen: n.seen
+                }));
         } catch (error) {
             console.error('Error fetching notifications:', error);
         }
@@ -87,7 +85,7 @@ export default {
         if (notification.seen) return;
         notification.seen = true;
         try {
-            result = await fetch(`/api/notification/mark/${notification.id}`, {
+            const result = await fetch(`/api/notification/mark/${notification.id}`, {
                 method: 'GET',
                 credentials: 'include'
             });
@@ -105,6 +103,14 @@ export default {
     },
   },
   mounted() {
+        fetch('/api/notification/add', {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: 'You bought AWP | Dragon Lore'
+                    })
+                });
         this.fetchNotifications();
   },
 };

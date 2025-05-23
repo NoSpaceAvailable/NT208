@@ -15,7 +15,7 @@ class NotificationService:
                     Notifications.user_id == user_id
                 )
             ).all()
-            notifications = [notice.to_dict() for notice in notices]
+            notifications = [notice[0].to_dict() for notice in notices]
             return notifications
         except Exception as e:
             error(f"Error while fetching user notifications: {e}", __name__)
@@ -43,7 +43,8 @@ class NotificationService:
         try:
             session.execute(
                 update(Notifications)
-                .where(Notifications.user_id == user_id and Notifications.id == id)
+                .where(Notifications.user_id == user_id)
+                .where(Notifications.id == id)
                 .values(seen = new_seen)
             )
             session.flush()
