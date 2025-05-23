@@ -34,18 +34,6 @@ export default {
   data() {
     return {
       notifications: [
-            {
-                "id": "1",
-                "message": "You received 100 USD",
-                "timestamp": "12:12:12 25-01-2025 foo bar",
-                "seen": true
-            },
-            {
-                "id": "2",
-                "message": "You sold AK-47 | Vulcan for 350 USD",
-                "timestamp": "13:13:13 27-01-2025 foo bar",
-                "seen": false
-            } // Test only
       ],
     };
   },
@@ -67,7 +55,7 @@ export default {
                         credentials: 'include'
                     }); 
             const data = await response.json();
-            console.log('Fetched notifications:', data);   
+            this.notifications.length = 0;
             this.notifications = data.map(n => ({
                 id: n.id.toString(),
                 message: n.message,
