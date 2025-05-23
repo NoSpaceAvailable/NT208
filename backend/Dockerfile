@@ -13,6 +13,7 @@ ENV FLASK_ENV production
 ENV SECRET_KEY lmao_hahaha
 
 COPY . /app
+RUN python -m pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 RUN chmod 755 /app/app/services/mail_service.py

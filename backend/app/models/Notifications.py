@@ -13,8 +13,7 @@ class Notifications(BaseModel):
     timestamp   = Column(String(64), nullable=False)
     seen        = Column(Boolean, default=False, nullable=False)
 
-    def __init__(self, id, user_id, message, timestamp=None, seen=False):
-        self.id = id
+    def __init__(self, user_id, message, timestamp=None, seen=False):
         self.user_id = user_id
         self.message = message
         self.timestamp = timestamp or func.now()

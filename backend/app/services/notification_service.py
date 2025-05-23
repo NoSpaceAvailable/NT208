@@ -24,21 +24,13 @@ class NotificationService:
     
     def add_notification(session: Session, user_id: int, message: str, timestamp: str, seen: bool = False):
         try:
-            max_id = session.query(func.max(Notifications.id)).scalar()
-            next_id = (max_id or 0) + 1
-
             new_notification = Notifications(
-                id=next_id,
                 user_id=user_id,
                 message=message,
                 timestamp=timestamp,
                 seen=seen
             )
-            session.execute(
-                insert(Notifications)
-                .values(new_notification)
-                .on_conflict_do_nothing(index_elements=['id'])
-            )
+            session.add(new_notification)
             session.flush()
             return True
         except Exception as e:
@@ -48,7 +40,6 @@ class NotificationService:
         
     @staticmethod
     def update_seen(session: Session, user_id: int, id: int, new_seen: bool):
-        """Must be used after item_is_belong_to()"""
         try:
             session.execute(
                 update(Notifications)
