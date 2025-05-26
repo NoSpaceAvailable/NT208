@@ -81,7 +81,7 @@ class ProfileService:
     
     @staticmethod
     def safe_create_profile(session: Session, user_id: int, profile: dict) -> bool:
-        for attr in ['profile_name', 'full_name', 'bio', 'country', 'city', 'birthdate']:
+        for attr in ['profile_name', 'full_name', 'bio', 'country', 'city', 'birthdate', 'rating', 'avatarUrl']:
             if attr not in profile:
                 error(f"Missing {attr} in profile creation.", __name__)
                 return False
@@ -101,7 +101,9 @@ class ProfileService:
                 bio=profile['bio'].strip() if 'bio' in profile else '',
                 location=profile['city'].strip() + ', ' + profile['country'].strip(),
                 birthdate=profile['birthdate'].strip(),
-                wallet_address=address
+                wallet_address=address,
+                rating=profile['rating'] if 'rating' in profile else 0.0,
+                avatarUrl=profile['avatarUrl'].strip() if 'avatarUrl' in profile else None
             )
             session.add(new_profile)
             session.commit()
@@ -159,7 +161,9 @@ class ProfileService:
                     'location': profile.location,
                     'birthdate': profile.birthdate,
                     'joined_at': profile.joined_at,
-                    'wallet_address': profile.wallet_address
+                    'wallet_address': profile.wallet_address,
+                    'rating': profile.rating,
+                    'avatarUrl': profile.avatarUrl
                 }
             elif user_id < 0:
                 profiles = ProfileService.get_all_profile(session)
@@ -173,7 +177,9 @@ class ProfileService:
                     'location': profile[0].location,
                     'birthdate': profile[0].birthdate,
                     'joined_at': profile[0].joined_at,
-                    'wallet_address': profile[0].wallet_address
+                    'wallet_address': profile[0].wallet_address,
+                    'rating': profile[0].rating,
+                    'avatarUrl': profile[0].avatarUrl
                 } for profile in profiles]
                 return result
             else:

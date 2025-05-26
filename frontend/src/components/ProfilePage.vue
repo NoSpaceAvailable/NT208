@@ -193,7 +193,9 @@ export default {
                 bio: '',
                 country: '',
                 city: '',
-                birthdate: ''
+                birthdate: '',
+                rating: 0,
+                avatarUrl: 'https://robohash.org/mail@ashallendesign.co.uk' // Placeholder avatar URL
             }
         }
     },

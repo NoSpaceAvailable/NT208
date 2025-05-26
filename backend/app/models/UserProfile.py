@@ -27,12 +27,12 @@ class UserProfile(BaseModel):
     birthdate = Column(String(24), nullable=False)
     joined_at = Column(String(24), default=datetime.now().strftime("%d-%m-%Y"), nullable=False)
     wallet_address = Column(String(64), ForeignKey('wallets.wallet_address'), unique=True)
-    rating = Column(Float, default=0.0)
+    rating = Column(Float, default=0)
     avatarUrl = Column(String(256), nullable=True)
 
     user = relationship("User", back_populates="profile", foreign_keys=user_id)
 
-    def __init__(self, user_id, username, profile_name, full_name, bio, location, birthdate, wallet_address, rating, avatarUrl):
+    def __init__(self, user_id, username, profile_name, full_name, bio, location, birthdate, wallet_address, rating=0, avatarUrl=None):
         self.user_id = user_id
         self.username = username
         self.profile_name = profile_name
