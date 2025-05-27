@@ -90,9 +90,9 @@
                                 </div>
                                 <div class="p-3">
                                     <p class="text-sm font-medium text-white truncate">{{ item.name }}</p>
-                                    <p class="text-xs text-[#8FC773]/80 mt-1">{{ item.description }}</p>
+                                    <p class="text-xs text-[#8FC773]/80 mt-1">{{ item.collection }}</p>
                                     <div class="flex justify-between items-center mt-2">
-                                        <p class="text-sm text-[#8FC773] font-bold">${{ item.price.toFixed(2) }}</p>
+                                        <p class="text-sm text-[#8FC773] font-bold">{{ item.price.toFixed(2) }} {{ currency }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -110,6 +110,7 @@ export default {
     data() {
         return {
             currentIndex: 0,
+            currency: 'VND',
             carouselItems: [
                 { image: '/src/images/banner1.png', alt: 'Banner 1' },
                 { image: '/src/images/banner2.png', alt: 'Banner 2' },
@@ -130,78 +131,7 @@ export default {
                     link: 'https://www.counter-strike.net/newsentry/520830071182721028'
                 }
             ],
-            items: [
-                {
-                    image: '/src/images/items/gun_14.webp',
-                    name: "AWP | Asiimov",
-                    description: "Field-Tested",
-                    price: 299.99,
-                    rarity: "4"
-                },
-                {
-                    image: '/src/images/items/gun_15.webp',
-                    name: "AK-47 | Vulcan",
-                    description: "Minimal Wear",
-                    price: 349.99,
-                    rarity: "4"
-                },
-                {
-                    image: '/src/images/items/gun_16.webp',
-                    name: "M4A4 | Howl",
-                    description: "Factory New",
-                    price: 399.99,
-                    rarity: "5"
-                },
-                {
-                    image: '/src/images/items/gun_17.webp',
-                    name: "Desert Eagle | Blaze",
-                    description: "Factory New",
-                    price: 249.99,
-                    rarity: "3"
-                },
-                {
-                    image: '/src/images/items/gun_18.webp',
-                    name: "AWP | Dragon Lore",
-                    description: "Minimal Wear",
-                    price: 449.99,
-                    rarity: "5"
-                },
-                {
-                    image: '/src/images/items/knife_gloves_65.webp',
-                    name: "Sport Gloves | Pandora's Box",
-                    description: "Field-Tested",
-                    price: 199.99,
-                    rarity: "5"
-                },
-                {
-                    image: '/src/images/items/knife_gloves_67.webp',
-                    name: "Karambit | Doppler",
-                    description: "Factory New",
-                    price: 179.99,
-                    rarity: "5"
-                },
-                {
-                    image: '/src/images/items/knife_gloves_68.webp',
-                    name: "M9 Bayonet | Crimson Web",
-                    description: "Minimal Wear",
-                    price: 219.99,
-                    rarity: "4"
-                },
-                {
-                    image: '/src/images/items/knife_gloves_69.webp',
-                    name: "Butterfly Knife | Fade",
-                    description: "Factory New",
-                    price: 239.99,
-                    rarity: "5"
-                },
-                {
-                    image: '/src/images/items/knife_gloves_70.webp',
-                    name: "Driver Gloves | Lunar Weave",
-                    description: "Minimal Wear",
-                    price: 259.99,
-                    rarity: "4"
-                }
-            ],
+            items: [],
             autoSlideInterval: null
         };
     },
@@ -212,6 +142,36 @@ export default {
         this.stopAutoSlide();
     },
     methods: {
+        constructItemName(item_kind, item_name) {
+            return item_kind + ' | ' + item_name;
+        },
+        getItemImage(_name, rarity) {
+            const parts = _name.split(' | ')
+            const kind = parts[0].replaceAll(' ', '_');
+            const skin_name = parts[1].replaceAll(' ', '_');
+            return `/src/images/gun/${kind}/${rarity}/${skin_name}.png`;
+        },
+        async fetchTopTen() {
+            try {
+                const response = await fetch('/api/product/list?featured=1');
+
+                if (response.ok) {
+                    const data = await response.json();
+                    data.forEach(item => {
+                        const _name = this.constructItemName(item.kind, item.name)
+                        this.items.push({
+                            "name": _name,
+                            "collection": item.collection,
+                            "price": parseInt(item.price),
+                            "rarity": item.rarity,
+                            "image": this.getItemImage(_name, item.rarity)
+                        })
+                    });
+                }
+            } catch (err) {
+                console.log(`Error while fetching top 10 items: ${err}`);
+            }
+        },
         prevSlide() {
             this.currentIndex = (this.currentIndex - 1 + this.carouselItems.length) % this.carouselItems.length;
         },
@@ -228,6 +188,9 @@ export default {
                 clearInterval(this.autoSlideInterval);
             }
         }
+    },
+    async mounted() {
+        await this.fetchTopTen();
     }
 };
 </script>

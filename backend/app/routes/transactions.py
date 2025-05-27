@@ -73,28 +73,6 @@ def add():
         print(e, flush=True)
         return {"status": "failed"}, 500
 
-@bp.route('/pay', methods=['POST'])
-def pay():
-    data = request.json
-    _to = data.get('to')
-    _amount = data.get('amount')
-
-    if not _to or not _amount:
-        return {"status": "failed"}, 500
-    
-    _session = request.cookies.get('session')
-    payload = get_payload(_session)
-    sender_id = payload.get('user_id')
-    
-    if TransactionService.safe_transaction(
-        session=session,
-        sender_id=sender_id,
-        receiver_address=_to,
-        amount=_amount
-    ):
-        return {"status": "ok"}
-    return {"status": "failed"}, 500
-
 @bp.route('/trade', methods=['POST'])
 def trade_item():
     # take the data
@@ -126,10 +104,8 @@ def trade_item():
             
             # if all check are ok, process the transaction
             # first, try to transfer money from buyer to seller
-            print("Begin transaction")
             profile = ProfileService.safe_get_profile(session=session, user_id=seller_user_item.user_id)
             seller_address = profile.wallet_address
-            print(seller_address)
             if not TransactionService.safe_transaction(
                 session=session,
                 sender_id=buyer_id,
@@ -137,7 +113,6 @@ def trade_item():
                 amount=item_price
             ):
                 return {'status': 'failed', 'msg': 'something went wrong'}, 500
-            print("Transaction ended")
             # then change the ownership of the user item
             seller_user_item.user_id = buyer_id
 

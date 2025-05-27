@@ -5,6 +5,7 @@ import hashlib
 from base64 import b64encode
 from datetime import datetime, timezone
 from ...global_config import history_config, momo_config
+from ...utils.timing import *
 
 def generate_transaction_hash(
     sender_hash: str,
@@ -25,11 +26,6 @@ def generate_transaction_hash(
     transaction_string = f"{sender_hash}{receiver_hash}{amount}{timestamp}".encode("utf-8")
     
     return hashlib.sha256(transaction_string + salt).hexdigest()
-
-def get_current_time() -> str:
-    local_time = datetime.now()
-    utc_time = local_time.astimezone(timezone.utc)
-    return utc_time.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 class Momo:
     def __init__(self):

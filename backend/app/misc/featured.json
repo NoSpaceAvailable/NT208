@@ -1,0 +1,72 @@
+[
+    {
+        "kind": "AK-47",
+        "name": "Nightwish",
+        "collection": "The Radiant Collection",
+        "price": "5199300",
+        "rarity": "4"
+    },
+    {
+        "kind": "Desert Eagle",
+        "name": "Ocean Drive",
+        "collection": "The Safehouse Collection",
+        "price": "15079800",
+        "rarity": "4"
+    },
+    {
+        "kind": "P250",
+        "name": "Visions",
+        "collection": "The Boreal Collection",
+        "price": "801300",
+        "rarity": "3"
+    },
+    {
+        "kind": "\u2605 Karambit",
+        "name": "Doppler",
+        "collection": "The Radiant Collection",
+        "price": "68911774",
+        "rarity": "5"
+    },
+    {
+        "kind": "AWP",
+        "name": "Duality",
+        "collection": "The Dust 2 Collection",
+        "price": "1210500",
+        "rarity": "3"
+    },
+    {
+        "kind": "M4A1-S",
+        "name": "Hyper Beast",
+        "collection": "The Radiant Collection",
+        "price": "14187900",
+        "rarity": "4"
+    },
+    {
+        "kind": "\u2605 Falchion Knife",
+        "name": "Doppler",
+        "collection": "The 2018 Inferno Collection",
+        "price": "47670490",
+        "rarity": "5"
+    },
+    {
+        "kind": "USP-S",
+        "name": "The Traitor",
+        "collection": "The Radiant Collection",
+        "price": "2068799",
+        "rarity": "4"
+    },
+    {
+        "kind": "\u2605 Falchion Knife",
+        "name": "Marble Fade",
+        "collection": "The Radiant Collection",
+        "price": "14212200",
+        "rarity": "5"
+    },
+    {
+        "kind": "AK-47",
+        "name": "The Empress",
+        "collection": "The 2018 Nuke Collection",
+        "price": "14809200",
+        "rarity": "4"
+    }
+]

@@ -16,7 +16,7 @@
         <section class="grid grid-cols-1 md:grid-cols-2 gap-6 px-6 py-8 bg-[#111111] w-full">
             <!-- Quick Links -->
             <div class="text-center md:text-left">
-                <h5 class="text-lg font-semibold mb-3 text-[#ededed]">Quick Links</h5>
+                <h5 class="text-lg font-semibold mb-3 text-[#ededed]">Quick links</h5>
                 <ul class="space-y-2">
                     <li v-for="(link, index) in links" :key="index">
                         <a href="#" class="text-[#8FC773] hover:text-white">{{ link.text }}</a>
@@ -26,7 +26,7 @@
 
             <!-- Newsletter -->
             <div class="text-center md:text-left">
-                <h5 class="text-lg font-semibold mb-3 text-[#ededed]">Subscribe to Our Newsletter</h5>
+                <h5 class="text-lg font-semibold mb-3 text-[#ededed]">Subscribe to receive updates</h5>
                 <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
                     <form class="flex justify-center md:justify-start" id="notification-email">
                         <input type="email"

@@ -1,7 +1,6 @@
 from sqlalchemy import select, and_, update
 from sqlalchemy.orm import Session
-from .. models import UserItems
-from .. models.enumtypes import ItemRarity
+from .. models import UserItems, Items, User
 from .. utils.logging import info, error
 
 class ProductService:
@@ -81,3 +80,30 @@ class ProductService:
             error(f"Error while changing sale status: {e}", __name__)
             session.rollback()
             return False
+        
+    @staticmethod
+    def get_seller_list(session: Session, kind: str = None, name: str = None):
+        """Get list of sellers who have items for sale matching the given type and name"""
+        try:
+            query = select(UserItems.user_id).filter(
+                UserItems.for_sale == True
+            ).join(
+                Items, UserItems.item_id == Items.id
+            ).filter(
+                and_(
+                    Items.item_kind == kind, Items.item_name == name
+                )
+            )
+            
+            results = session.execute(query).all()
+            
+            seller_list = []
+            for seller_id in results:
+                seller_list.append(seller_id[0])
+
+            # only need sellers' id, the profile displaying is handled by the frontend
+            return seller_list
+        except Exception as e:
+            error(f"Error while fetching seller list: {e}", __name__)
+            session.rollback()
+            return []

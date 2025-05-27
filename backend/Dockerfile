@@ -1,7 +1,5 @@
 FROM python:3.10.2-slim
 
-RUN apt update && apt upgrade -y
-
 # set working directory
 WORKDIR /app
 

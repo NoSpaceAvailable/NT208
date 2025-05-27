@@ -147,7 +147,11 @@
   },
   "USP-S": {
     "1": {
-      "27": { "type": "dynamic", "min_price": "4800", "max_price": "31500" },
+      "27": { 
+        "type": "dynamic", 
+        "min_price": "4800", 
+        "max_price": "31500" 
+      },
       "Black Lotus": {
         "type": "dynamic",
         "min_price": "48000",
@@ -4060,7 +4064,11 @@
         "min_price": "5250600",
         "max_price": "8378700"
       },
-      "Doppler": { "type": "dynamic", "min_price": "0", "max_price": "0" },
+      "Doppler": { 
+        "type": "dynamic", 
+        "min_price": "12159449", 
+        "max_price": "47670490" 
+      },
       "Marble Fade": {
         "type": "dynamic",
         "min_price": "13338600",
@@ -5580,7 +5588,11 @@
         "min_price": "28343700",
         "max_price": "39371400"
       },
-      "Doppler": { "type": "dynamic", "min_price": "0", "max_price": "0" },
+      "Doppler": { 
+        "type": "dynamic", 
+        "max_price": "68911774", 
+        "mix_price": "67692963" 
+      },
       "Marble Fade": {
         "type": "dynamic",
         "min_price": "51632400",

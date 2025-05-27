@@ -196,7 +196,7 @@ export default {
             DropdownItems: {
                 Marketplace: [
                     { label: "Merchandise",         url: "/merchandise" },
-                    { label: "Sell my items",       url: "/sell" }
+                    { label: "Sell my items",       url: "/inventory" }     // user sell item directly from inventory
                 ],
                 Account: [
                     { label: "Profile",             url: "/profile" },

@@ -165,38 +165,76 @@
                                     <div class="bg-[#131313] p-3 rounded-lg">
                                         <p class="text-sm text-gray-400">Price Range</p>
                                         <p class="text-white">{{ selectedSkin.min_price }} - {{ selectedSkin.max_price
-                                            }}</p>
+                                        }}</p>
                                     </div>
                                 </div>
 
-                                <!-- Price Selection -->
+                                <!-- Action Buttons -->
                                 <div class="w-full max-w-md space-y-4">
-                                    <div>
-                                        <label class="block text-sm text-[#8FC773] mb-1">Set Your Price</label>
-                                        <div class="relative">
-                                            <span class="absolute left-3 top-2.5 text-white">{{ currency }}</span>
-                                            <input type="number" v-model="selectedPrice" @keyup="validatePrice"
-                                                class=" w-full p-2 pl-14 bg-[#131313] rounded-lg border border-gray-600 text-white focus:outline-none focus:ring-1 focus:ring-[#8FC773]" />
-                                        </div>
-                                        <p v-if="priceError" class="text-red-400 text-sm mt-1">{{ priceError }}</p>
-                                        <p v-else class="text-[#8FC773] text-sm mt-1">
-                                            Must be between {{ parsePrice(selectedSkin.min_price).toFixed(2) }} and {{
-                                            parsePrice(selectedSkin.max_price).toFixed(2) }}
-                                        </p>
-                                    </div>
-
-                                    <!-- Action Buttons -->
                                     <div class="flex gap-3">
-                                        <button @click="buyItem" :disabled="priceError !== ''"
-                                            :class="{ 'bg-[#8FC773] hover:bg-[#7BBF5A] text-black': priceError === '', 'bg-gray-600 text-gray-400 cursor-not-allowed': priceError !== '' }"
-                                            class="flex-1 py-3 rounded-lg font-bold transition-colors">
-                                            Buy
+                                        <button @click="findSellers" :disabled="loadingSellers"
+                                            class="flex-1 py-3 bg-[#8FC773] text-black font-bold rounded-lg hover:bg-[#7BBF5A] transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                                            <span v-if="!loadingSellers">Find sellers</span>
+                                            <span v-else class="flex items-center justify-center">
+                                                <div
+                                                    class="animate-spin rounded-full h-4 w-4 border-b-2 border-black mr-2">
+                                                </div>
+                                                Loading...
+                                            </span>
                                         </button>
-                                        <button @click="sellItem" :disabled="priceError !== ''"
-                                            :class="{ 'bg-white/10 text-white hover:text-[#8FC773]': priceError === '', 'bg-gray-600 text-gray-400 cursor-not-allowed': priceError !== '' }"
-                                            class="flex-1 py-3 rounded-lg font-bold transition-colors">
+                                        <button @click="sellItem"
+                                            class="flex-1 py-3 bg-white/10 text-white font-bold rounded-lg hover:text-[#8FC773] transition-colors">
                                             Sell
                                         </button>
+                                    </div>
+                                </div>
+
+                                <!-- Seller List Section -->
+                                <div v-if="sellers.length > 0" class="w-full mt-6 pt-6 border-t border-gray-700">
+                                    <h3 class="text-lg font-semibold text-[#8FC773] mb-4">Available sellers</h3>
+                                    <!-- Horizontal scrollable seller list -->
+                                    <div class="flex gap-4 overflow-x-auto pb-2 seller-scroll">
+                                        <div v-for="seller in sellers" :key="seller.id"
+                                            class="flex-shrink-0 bg-[#131313] p-4 rounded-lg hover:bg-[#1A1A1A] transition-colors min-w-[200px]">
+                                            <div class="flex flex-col items-center space-y-3">
+                                                <!-- Profile Avatar -->
+                                                <div
+                                                    class="w-12 h-12 bg-[#8FC773] rounded-full flex items-center justify-center">
+                                                    <svg class="w-6 h-6 text-black" fill="currentColor"
+                                                        viewBox="0 0 20 20">
+                                                        <path fill-rule="evenodd"
+                                                            d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                                            clip-rule="evenodd" />
+                                                    </svg>
+                                                </div>
+
+                                                <!-- Profile Name -->
+                                                <div class="text-center">
+                                                    <p class="text-white font-medium text-sm">{{ seller.profile_name ||
+                                                        'Loading...' }}</p>
+                                                    <p class="text-gray-400 text-xs">ID: {{ seller.id }}</p>
+                                                </div>
+
+                                                <!-- Action Buttons -->
+                                                <div class="flex flex-col gap-2 w-full">
+                                                    <button @click="redirectToProfile(seller.id)"
+                                                        class="px-3 py-2 bg-[#8FC773] text-black text-sm rounded hover:bg-[#7BBF5A] transition-colors font-medium">
+                                                        View profile
+                                                    </button>
+                                                    <button @click="redirectToInventory(seller.id)"
+                                                        class="px-3 py-2 bg-blue-500 text-white text-sm rounded hover:bg-blue-600 transition-colors font-medium">
+                                                        View inventory
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Loading State for Sellers -->
+                                    <div v-if="loadingSellers" class="flex justify-center items-center py-8">
+                                        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-[#8FC773]">
+                                        </div>
+                                        <span class="ml-3 text-gray-400">Loading sellers...</span>
                                     </div>
                                 </div>
                             </div>
@@ -234,7 +272,6 @@ export default {
         return {
             currency: "VND",
             searchQuery: "",
-            priceError: "",
             showFilter: false,
             filter: {
                 weaponType: [],
@@ -272,9 +309,10 @@ export default {
             rarities: [],
             skins: [],
             selectedSkin: null,
-            selectedPrice: 0,
             currentPage: 1,
-            skinsPerPage: 5
+            skinsPerPage: 5,
+            sellers: [],
+            loadingSellers: false
         };
     },
     computed: {
@@ -315,6 +353,7 @@ export default {
         applyFilters() {
             this.currentPage = 1;
             this.selectedSkin = null;
+            this.sellers = []; // Clear sellers when filters change
         },
         addFilter(type, value) {
             if (value === "All") {
@@ -337,54 +376,100 @@ export default {
         },
         selectSkin(skin) {
             this.selectedSkin = skin;
-            this.selectedPrice = this.parsePrice(skin.avg_price.replace(this.currency, '').trim());
-            this.priceError = "";
+            this.sellers = []; // Clear sellers when selecting new skin
         },
         parsePrice(price) {
             if (!price) return 0;
             return parseFloat(price.toString().replace(/[^0-9.,]/g, "").replace(",", ".").trim());
         },
-        validatePrice() {
-            if (!this.selectedSkin) return;
-
-            const min = this.parsePrice(this.selectedSkin.min_price);
-            const max = this.parsePrice(this.selectedSkin.max_price);
-            const price = this.parsePrice(this.selectedPrice);
-
-            if (isNaN(price)) {
-                this.priceError = "Please enter a valid price";
-            } else if (price < min) {
-                this.priceError = `Price must be at least ${min.toFixed(2)} ${this.currency}`;
-            } else if (price > max) {
-                this.priceError = `Price cannot exceed ${max.toFixed(2)} ${this.currency}`;
-            } else {
-                this.priceError = "";
+        async fetchProfileName(userId) {
+            try {
+                const response = await fetch(`/api/profile/fetch/${userId}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                return data.profile?.profile_name || `User ${userId}`;
+            } catch (error) {
+                console.error(`Error fetching profile for user ${userId}:`, error);
+                return `User ${userId}`;
             }
         },
-        buyItem() {
-            if (this.priceError) {
-                this.showNotification('Invalid price', {
+        async findSellers() {
+            if (!this.selectedSkin) {
+                this.showNotification('No skin selected', {
                     type: 'error',
-                    description: this.priceError
+                    description: 'Please select a skin first'
                 });
                 return;
             }
-            this.showNotification(`Purchase confirmed`, {
-                type: 'success',
-                description: `You bought ${this.selectedSkin.name} for ${this.selectedPrice.toFixed(2)} ${this.currency}`
-            });
+
+            this.loadingSellers = true;
+            this.sellers = [];
+
+            try {
+                const kind = encodeURIComponent(this.selectedSkin.weapon);
+                const name = encodeURIComponent(this.selectedSkin.name);
+                const response = await fetch(`/api/product/seller?kind=${kind}&name=${name}`);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const sellerIds = await response.json();
+
+                if (Array.isArray(sellerIds) && sellerIds.length > 0) {
+                    // Initialize sellers array with IDs
+                    this.sellers = sellerIds.map(id => ({
+                        id: id,
+                        profile_name: null // Will be loaded asynchronously
+                    }));
+
+                    // Fetch profile names for each seller
+                    const profilePromises = sellerIds.map(async (id) => {
+                        const profileName = await this.fetchProfileName(id);
+                        // Update the seller object with the fetched profile name
+                        const seller = this.sellers.find(s => s.id === id);
+                        if (seller) {
+                            seller.profile_name = profileName;
+                        }
+                    });
+
+                    // Wait for all profile fetches to complete
+                    await Promise.all(profilePromises);
+
+                    this.showNotification(`Found ${this.sellers.length} sellers`, {
+                        type: 'success',
+                        description: `Available sellers for ${this.selectedSkin.name}`
+                    });
+                } else {
+                    this.sellers = [];
+                    this.showNotification('No sellers found', {
+                        type: 'info',
+                        description: 'No sellers are currently offering this item'
+                    });
+                }
+            } catch (error) {
+                console.error("Error fetching sellers:", error);
+                this.showNotification('Failed to load sellers', {
+                    type: 'error',
+                    description: 'Please try again later'
+                });
+                this.sellers = [];
+            } finally {
+                this.loadingSellers = false;
+            }
+        },
+        redirectToProfile(userId) {
+            window.location.href = `/profile?id=${userId}`;
+        },
+        redirectToInventory(userId) {
+            window.location.href = `/inventory?id=${userId}`;
         },
         sellItem() {
-            if (this.priceError) {
-                this.showNotification('Invalid price', {
-                    type: 'error',
-                    description: this.priceError
-                });
-                return;
-            }
-            this.showNotification(`Sale confirmed`, {
+            this.showNotification(`List item for sale`, {
                 type: 'success',
-                description: `You listed ${this.selectedSkin.name} for ${this.selectedPrice.toFixed(2)} ${this.currency}`
+                description: `${this.selectedSkin.name} has been listed for sale`
             });
         },
         async loadSkins() {
@@ -454,6 +539,30 @@ export default {
 }
 
 ::-webkit-scrollbar-thumb:hover {
+    background: #7BBF5A;
+}
+
+/* Seller scroll container */
+.seller-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #8FC773 #1A1A1A;
+}
+
+.seller-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.seller-scroll::-webkit-scrollbar-track {
+    background: #1A1A1A;
+    border-radius: 4px;
+}
+
+.seller-scroll::-webkit-scrollbar-thumb {
+    background: #8FC773;
+    border-radius: 4px;
+}
+
+.seller-scroll::-webkit-scrollbar-thumb:hover {
     background: #7BBF5A;
 }
 </style>

@@ -5,6 +5,7 @@ from .. utils.cookie import verify_token
 from .. services.profile_service import ProfileService
 from functools import wraps
 import json, jwt
+from itertools import islice
 
 bp = Blueprint('products', __name__, url_prefix='/api/product')
 db_session = Database.get_session()
@@ -18,7 +19,10 @@ def user_created_profile(user_id) -> bool:
     return ProfileService.safe_get_profile(db_session, user_id) is not None
 
 @bp.route('/list', methods=['GET'])
-def register():
+def list_items():
+    if request.args.get('featured'):
+        featured_data = open('/app/app/misc/featured.json').read()
+        return json.loads(featured_data)
     json_data = open('/app/app/misc/skin_data.json').read()
     return json.loads(json_data)
 
@@ -51,8 +55,18 @@ def sell():
     data = request.json
     item_id = data['item_id']
     if not ProductService.item_is_belong_to(session=db_session, user_item_id=item_id, user_id=user_id):
+        print("CANT SELL")
         return {'status': 'failed', 'msg': 'you does not own this item'}, 400
     if not ProductService.update_sale_status(session=db_session, user_item_id=item_id, new_sale_status=True):
         return {'status': 'failed', 'msg': 'something went wrong'}, 400
     return {'status': 'success', 'msg': 'the item has been put to sale state, now it\'s visible on marketplace'}
+
+@bp.route('/seller', methods=['GET'])
+@auth_required
+def get_seller():
+    kind = request.args.get('kind')
+    name = request.args.get('name')
+    if not kind or not name:
+        return []
+    return ProductService.get_seller_list(session=db_session, kind=kind, name=name)
 
