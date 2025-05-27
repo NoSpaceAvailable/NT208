@@ -112,63 +112,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Right Column -->
-                <div class="flex-1 space-y-6">
-                    <!-- Inventory Card -->
-                    <div class="bg-[#131313] rounded-xl shadow-sm p-6">
-                        <div class="flex justify-between items-center mb-4">
-                            <h2 class="text-xl font-semibold text-[#8FC773]">Pinned Items</h2>
-                        </div>
-                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                            <div v-for="i in 4" :key="i"
-                                class="aspect-square bg-gray-800 rounded-lg flex items-center justify-center hover:scale-110 duration-300">
-                                <span class="text-white">Item {{ i }}</span>
-                            </div>
-                            <div
-                                class="aspect-square bg-gray-800 border-2 border-dashed border-gray-200 rounded-lg flex items-center justify-center hover:scale-110 duration-300">
-                                <span class="text-white">+ Add</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Ratings Card -->
-                    <div class="bg-[#131313] rounded-xl shadow-sm p-6">
-                        <h2 class="text-xl font-semibold text-[#8FC773] mb-4">Seller Rating</h2>
-                        <div class="flex items-center space-x-2 mb-3">
-                            <div class="flex">
-                                <span v-for="i in 5" :key="i" class="text-yellow-400">★</span>
-                            </div>
-                            <span class="font-medium text-[#8FC773]">4.8</span>
-                            <span class="text-sm text-white">(128 reviews)</span>
-                        </div>
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between">
-                                <span class="text-sm text-white">5 stars</span>
-                                <div class="w-3/4 h-2 bg-gray-200 rounded-full overflow-hidden">
-                                    <div class="h-full bg-yellow-400" style="width: 85%"></div>
-                                </div>
-                                <span class="text-sm text-white">85%</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-sm text-white">4 stars</span>
-                                <div class="w-3/4 h-2 bg-gray-200 rounded-full overflow-hidden">
-                                    <div class="h-full bg-yellow-400" style="width: 10%"></div>
-                                </div>
-                                <span class="text-sm text-white">10%</span>
-                            </div>
-                            <div class="pt-3 border-t border-gray-100">
-                                <p class="text-sm italic text-white">"Don't buy! I lost 2000$ for this fkin bastard !!!"
-                                </p>
-                                <p class="text-xs text-[#8FC773] mt-1">- Sarah M., 2 days ago</p>
-                            </div>
-                            <div class="pt-3">
-                                <p class="text-sm italic text-white">"DON'T BELIEVE IN SARAH !! SHE IS CRAYZY AS F"</p>
-                                <p class="text-xs text-[#8FC773] mt-1">- Alex (shop owner), 2 days ago</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

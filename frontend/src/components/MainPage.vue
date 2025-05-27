@@ -14,8 +14,7 @@
             <div class="absolute bottom-5 left-1/2 z-30 flex -translate-x-1/2 space-x-3">
                 <button v-for="(item, index) in carouselItems" :key="'indicator-' + index" @click="currentIndex = index"
                     :class="['h-3 w-3 rounded-full transition-colors',
-                        currentIndex === index ? 'bg-[#8FC773]' : 'bg-white/50']"
-                    :aria-label="'Slide ' + (index + 1)">
+                        currentIndex === index ? 'bg-[#8FC773]' : 'bg-white/50']" :aria-label="'Slide ' + (index + 1)">
                 </button>
             </div>
 
@@ -38,6 +37,61 @@
                     </svg>
                 </div>
             </button>
+        </div>
+
+        <!-- Item Detail Modal -->
+        <div v-if="selectedItem" class="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
+            <div class="bg-[#131313] rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <div class="p-6">
+                    <div class="flex justify-between items-start">
+                        <h3 class="text-xl font-bold text-[#8FC773]">{{ selectedItem.name }}</h3>
+                        <button @click="selectedItem = null" class="text-white/70 hover:text-white">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div
+                            class="bg-gradient-to-br from-[#1A1A1A] to-[#111111] rounded-lg p-6 flex items-center justify-center">
+                            <img :src="getItemImage(selectedItem.name, selectedItem.rarity)" :alt="selectedItem.name"
+                                class="max-h-64 object-contain">
+                        </div>
+
+                        <div class="space-y-4">
+                            <div>
+                                <p class="text-sm text-white/80">Type</p>
+                                <p class="text-white capitalize">{{ selectedItem.type }}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-white/80">Rarity</p>
+                                <p :style="getRarityStyle(selectedItem.rarity)"
+                                    class="inline-block px-2 py-1 rounded text-sm">
+                                    {{ getRarityName(selectedItem.rarity) }}
+                                </p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-white/80">Current price</p>
+                                <p class="text-[#8FC773] font-bold">{{ selectedItem.price.toFixed(2) }} {{ currency }}
+                                </p>
+                            </div>
+                            <div v-if="selectedItem.collection">
+                                <p class="text-sm text-white/80">Collection</p>
+                                <p class="text-white">{{ selectedItem.collection }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-6 border-t border-gray-700 flex space-x-3">
+                        <button @click="this.$router.push('/merchandise')"
+                            class="flex-1 py-2 bg-[#8FC773] text-black rounded-lg font-medium hover:bg-[#7BBF5A]">
+                            Find on market
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Main Content -->
@@ -73,26 +127,18 @@
 
                         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                             <div v-for="(item, index) in items" :key="index"
-                                class="bg-[#131313] rounded-xl overflow-hidden hover:shadow-lg hover:shadow-[#8FC773]/20 transition-all duration-300 group">
+                                class="bg-[#131313] rounded-xl overflow-hidden hover:shadow-lg hover:shadow-[#8FC773]/20 transition-all duration-300 group"
+                                @click="selectItem(item)">
                                 <div
                                     class="relative aspect-square bg-gradient-to-br from-[#1A1A1A] to-[#111111] flex items-center justify-center">
                                     <img :src="item.image" class="w-full h-full object-contain p-4" :alt="item.name" />
-                                    <div
-                                        class="absolute bottom-2 left-2 right-2 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity">
-                                        <button class="text-xs bg-[#8FC773] text-black px-2 py-1 rounded">
-                                            Details
-                                        </button>
-                                        <button
-                                            class="text-xs bg-white/10 text-white px-2 py-1 rounded hover:bg-[#8FC773] hover:text-black transition-colors">
-                                            Add to Cart
-                                        </button>
-                                    </div>
                                 </div>
                                 <div class="p-3">
                                     <p class="text-sm font-medium text-white truncate">{{ item.name }}</p>
                                     <p class="text-xs text-[#8FC773]/80 mt-1">{{ item.collection }}</p>
                                     <div class="flex justify-between items-center mt-2">
-                                        <p class="text-sm text-[#8FC773] font-bold">{{ item.price.toFixed(2) }} {{ currency }}</p>
+                                        <p class="text-sm text-[#8FC773] font-bold">{{ item.price.toFixed(2) }} {{
+                                            currency }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -109,6 +155,21 @@ export default {
     name: 'MainPage',
     data() {
         return {
+            selectedItem: null,
+            rarityColors: {
+                '1': { background: '#4B69FF', text: '#FFFFFF' }, // Industrial
+                '2': { background: '#8847FF', text: '#FFFFFF' }, // Mil-Spec
+                '3': { background: '#D32CE6', text: '#FFFFFF' }, // Restricted
+                '4': { background: '#EB4B4B', text: '#FFFFFF' }, // Classified
+                '5': { background: '#FFD700', text: '#000000' }, // Covert
+            },
+            rarityNames: {
+                '1': 'Industrial',
+                '2': 'Mil-Spec',
+                '3': 'Restricted',
+                '4': 'Classified',
+                '5': 'Covert'
+            },
             currentIndex: 0,
             currency: 'VND',
             carouselItems: [
@@ -144,6 +205,20 @@ export default {
     methods: {
         constructItemName(item_kind, item_name) {
             return item_kind + ' | ' + item_name;
+        },
+        getRarityName(rarity) {
+            return this.rarityNames[rarity] || 'Unknown';
+        },
+        getRarityStyle(rarity) {
+            const style = this.rarityColors[rarity] || { background: '#CCCCCC', text: '#000000' };
+            return {
+                backgroundColor: style.background,
+                color: style.text
+            };
+        },
+        selectItem(item) {
+            console.log(item);  
+            this.selectedItem = item;
         },
         getItemImage(_name, rarity) {
             const parts = _name.split(' | ')

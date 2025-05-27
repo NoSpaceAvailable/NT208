@@ -44,7 +44,7 @@ class History(BaseModel):
     timestamp = Column(String(24), default=get_current_time(), nullable=False)
     transaction_hash = Column(String(64), nullable=False, unique=True)
     message = Column(String(128), nullable=True)    # message from sender to receiver
-    status = Column(String(6), nullable=False, default=HistoryStatus.PENDING)
+    status = Column(String(6), nullable=False, default=HistoryStatus.PENDING.value)
     transaction_type = Column(String(16), nullable=False)
 
     def __init__(self, sender_address, receiver_address, amount, timestamp, message, status, transaction_type):

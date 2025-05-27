@@ -80,7 +80,8 @@
             <!-- Inventory Grid -->
             <div v-if="filteredItems.length > 0" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                 <div v-for="item in filteredItems" :key="item.id"
-                    class="bg-[#131313] rounded-xl overflow-hidden hover:shadow-lg hover:shadow-[#8FC773]/20 transition-all duration-300 group">
+                    class="bg-[#131313] rounded-xl overflow-hidden hover:shadow-lg hover:shadow-[#8FC773]/20 transition-all duration-300 group"
+                    @click="selectItem(item)">
                     <div class="relative aspect-square bg-gradient-to-br from-[#1A1A1A] to-[#111111] flex items-center justify-center">
                         <img :src="getItemImage(item)" :alt="item.name" class="w-full h-full object-contain p-4">
                         <div class="absolute top-2 right-2 flex items-center space-x-1">
@@ -88,11 +89,6 @@
                             <span :style="getRarityStyle(item.rarity)" class="text-xs px-1.5 py-0.5 rounded">
                                 {{ getRarityName(item.rarity) }}
                             </span>
-                        </div>
-                        <div class="absolute bottom-2 left-2 right-2 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity">
-                            <button @click="selectItem(item)" class="text-xs bg-[#8FC773] text-black px-2 py-1 rounded">
-                                Details
-                            </button>
                         </div>
                     </div>
                     <div class="p-3">

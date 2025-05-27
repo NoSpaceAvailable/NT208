@@ -7,7 +7,7 @@ import secrets
 from concurrent.futures import ThreadPoolExecutor
 from cachetools import TTLCache
 from .. import limiter
-from .. global_config import oauth2_config
+from .. global_config import oauth2_config, site_url
 import httpx
 
 bp = Blueprint("auth", __name__, url_prefix="/api/auth")
