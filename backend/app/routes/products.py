@@ -56,7 +56,10 @@ def show_user_inventory(uid):
             user_id = get_uid()
         else:
             user_id = uid
-        return ProductService.get_inventory(session=session, user_id=user_id)
+        return ProductService.get_inventory(
+            session=session, 
+            user_id=user_id
+        )
     finally:
         session.close()
 
@@ -71,12 +74,20 @@ def sell():
             return {'status': 'failed', 'msg': 'please create a wallet and profile first'}, 400
         data = request.json
         item_id = data['item_id']
-        if not ProductService.item_is_belong_to(session=session, user_item_id=item_id, user_id=user_id):
+        if not ProductService.item_is_belong_to(
+            session=session, 
+            user_item_id=item_id, 
+            user_id=user_id
+        ):
             return {'status': 'failed', 'msg': 'you does not own this item'}, 400
         sale_status = True
         if data.get('rollback_sell_state') == True:
             sale_status = False
-        if not ProductService.update_sale_status(session=session, user_item_id=item_id, new_sale_status=sale_status):
+        if not ProductService.update_sale_status(
+            session=session, 
+            user_item_id=item_id, 
+            new_sale_status=sale_status
+        ):
             return {'status': 'failed', 'msg': 'something went wrong'}, 400
         session.commit()
         return {'status': 'success', 'msg': 'done'}

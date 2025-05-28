@@ -74,6 +74,7 @@ def verify():
 @bp.route("/login", methods=["POST"])
 @limiter.limit("10 per minute")
 def login():
+    session = get_session()
     try:
         username = request.json["username"]
         password = request.json["password"]

@@ -40,10 +40,11 @@ class ProductService:
     
     @staticmethod
     def item_is_belong_to(session: Session, user_item_id: int, user_id: int):
+        print(user_item_id, user_id)
         record = session.execute(
             select(UserItems)
             .filter(and_(
-                UserItems.id == user_item_id,
+             ems.id == user_item_id   UserIt,
                 UserItems.user_id == user_id
             ))
         ).scalar_one_or_none()

@@ -165,7 +165,7 @@
                         </div>
 
                         <div v-if="own_inventory" class="mt-6 pt-6 border-t border-gray-700 flex space-x-3">
-                            <button @click="showSellModal = true; selectedItemToSell = selectedItem; selectedItem = null"
+                            <button @click="showSellModal = true; selectedItemToSell = selectedItem;"
                                 class="flex-1 py-2 bg-[#8FC773] text-black rounded-lg font-medium hover:bg-[#7BBF5A]">
                                 {{ currentItemSellState ? "Revert sell state" : "Sell this item" }}
                             </button>

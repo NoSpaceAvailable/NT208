@@ -467,10 +467,7 @@ export default {
             window.location.href = `/inventory?id=${userId}`;
         },
         sellItem() {
-            this.showNotification(`List item for sale`, {
-                type: 'success',
-                description: `${this.selectedSkin.name} has been listed for sale`
-            });
+            this.$router.push('/inventory');
         },
         async loadSkins() {
             try {
