@@ -44,7 +44,7 @@ class ProductService:
         record = session.execute(
             select(UserItems)
             .filter(and_(
-             ems.id == user_item_id   UserIt,
+                UserItems.id == user_item_id,
                 UserItems.user_id == user_id
             ))
         ).scalar_one_or_none()
