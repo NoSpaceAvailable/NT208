@@ -1,7 +1,7 @@
 <template>
     <div class="min-h-screen p-4 md:p-8 bg-[url('/src/images/profile_wallpaper.png')] bg-cover bg-center">
         <!-- Wallet Creation Step -->
-        <div v-if="!wallet_address" class="flex flex-grow items-center justify-center relative z-20">
+        <div v-if="!wallet_address && own_profile" class="flex flex-grow items-center justify-center relative z-20">
             <div class="w-full max-w-xl p-6 md:p-8 bg-[#111111]/80 rounded-xl shadow-xl text-center">
                 <h2 class="text-2xl font-semibold text-[#8FC773] mb-4">Create your wallet</h2>
                 <p class="text-sm text-white mb-6">You need a wallet address before creating your profile</p>
@@ -14,7 +14,7 @@
         </div>
 
         <!-- Profile Creation Step -->
-        <div v-else-if="!profile" class="flex flex-grow items-center justify-center relative z-20">
+        <div v-else-if="!profile && own_profile" class="flex flex-grow items-center justify-center relative z-20">
             <div class="w-full max-w-xl p-6 md:p-8 bg-[#111111]/80 rounded-xl shadow-xl">
                 <h2 class="text-2xl font-semibold text-[#8FC773] mb-4 text-center">Create Your Profile</h2>
                 <p class="text-sm text-white mb-4 text-center">Fill in the details below to create your profile</p>
@@ -67,7 +67,8 @@
                 <div class="flex-1 space-y-6">
                     <!-- Basic Info Card -->
                     <div class="bg-[#131313] rounded-xl shadow-sm p-6">
-                        <h2 class="text-xl font-semibold text-[#8FC773] mb-4">Basic Information</h2>
+                        <h2 v-if="own_profile" class="text-xl font-semibold text-[#8FC773] mb-4">Your profile</h2>
+                        <h2 v-else class="text-xl font-semibold text-[#8FC773] mb-4">Profile of {{ profile.profile_name }}</h2>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <p class="text-sm text-white">Username</p>
@@ -96,7 +97,7 @@
 
                     <!-- Wallet/Account Card -->
                     <div class="bg-[#131313] rounded-xl shadow-sm p-6">
-                        <h2 class="text-xl font-semibold text-[#8FC773] mb-4">Account Details</h2>
+                        <h2 class="text-xl font-semibold text-[#8FC773] mb-4">Account details</h2>
                         <div class="space-y-4">
                             <div>
                                 <p class="text-sm text-white">Wallet address</p>
@@ -107,63 +108,6 @@
                             <div>
                                 <p class="text-sm text-white">Member since</p>
                                 <p class="font-medium text-[#8FC773]">{{ profile.joined_at }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Column -->
-                <div class="flex-1 space-y-6">
-                    <!-- Inventory Card -->
-                    <div class="bg-[#131313] rounded-xl shadow-sm p-6">
-                        <div class="flex justify-between items-center mb-4">
-                            <h2 class="text-xl font-semibold text-[#8FC773]">Pinned Items</h2>
-                        </div>
-                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                            <div v-for="i in 4" :key="i"
-                                class="aspect-square bg-gray-800 rounded-lg flex items-center justify-center hover:scale-110 duration-300">
-                                <span class="text-white">Item {{ i }}</span>
-                            </div>
-                            <div
-                                class="aspect-square bg-gray-800 border-2 border-dashed border-gray-200 rounded-lg flex items-center justify-center hover:scale-110 duration-300">
-                                <span class="text-white">+ Add</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Ratings Card -->
-                    <div class="bg-[#131313] rounded-xl shadow-sm p-6">
-                        <h2 class="text-xl font-semibold text-[#8FC773] mb-4">Seller Rating</h2>
-                        <div class="flex items-center space-x-2 mb-3">
-                            <div class="flex">
-                                <span v-for="i in 5" :key="i" class="text-yellow-400">★</span>
-                            </div>
-                            <span class="font-medium text-[#8FC773]">4.8</span>
-                            <span class="text-sm text-white">(128 reviews)</span>
-                        </div>
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between">
-                                <span class="text-sm text-white">5 stars</span>
-                                <div class="w-3/4 h-2 bg-gray-200 rounded-full overflow-hidden">
-                                    <div class="h-full bg-yellow-400" style="width: 85%"></div>
-                                </div>
-                                <span class="text-sm text-white">85%</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-sm text-white">4 stars</span>
-                                <div class="w-3/4 h-2 bg-gray-200 rounded-full overflow-hidden">
-                                    <div class="h-full bg-yellow-400" style="width: 10%"></div>
-                                </div>
-                                <span class="text-sm text-white">10%</span>
-                            </div>
-                            <div class="pt-3 border-t border-gray-100">
-                                <p class="text-sm italic text-white">"Don't buy! I lost 2000$ for this fkin bastard !!!"
-                                </p>
-                                <p class="text-xs text-[#8FC773] mt-1">- Sarah M., 2 days ago</p>
-                            </div>
-                            <div class="pt-3">
-                                <p class="text-sm italic text-white">"DON'T BELIEVE IN SARAH !! SHE IS CRAYZY AS F"</p>
-                                <p class="text-xs text-[#8FC773] mt-1">- Alex (shop owner), 2 days ago</p>
                             </div>
                         </div>
                     </div>
@@ -184,6 +128,7 @@ export default {
     },
     data() {
         return {
+            own_profile: true,
             wallet_address: null,
             wallet_error: null,
             profile: null,
@@ -226,11 +171,26 @@ export default {
         },
 
         async fetchProfile() {
+            const param = new URLSearchParams(window.location.search);
+            if (param.has('id')) {
+                const uid = param.get('id');
+                this.own_profile = false;
+                const response = await fetch(`/api/profile/fetch/${uid}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data) {
+                        this.profile = data.profile;
+                        this.wallet_address = this.profile.wallet_address || '(this user has not created a wallet yet)';
+                    }
+                } else {
+                    this.$router.push('/404');
+                }
+                return;
+            }
+
+            this.own_profile = true;
             try {
-                const response = await fetch('/api/profile/fetch', {
-                    method: 'GET',
-                    credentials: 'include'
-                });
+                const response = await fetch(`/api/profile/fetch/me`);
 
                 if (response.status === 401) {
                     this.$router.push('/auth#login');

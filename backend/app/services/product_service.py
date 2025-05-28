@@ -1,24 +1,26 @@
 from sqlalchemy import select, and_, update
 from sqlalchemy.orm import Session
-from .. models import Items, UserItems
-from .. models.enumtypes import ItemRarity
+from .. models import UserItems, Items, User
 from .. utils.logging import info, error
 
 class ProductService:
 
     @staticmethod
-    def get_product_item(session: Session, item_type: str, rarity: str, item_name: str):
-        item = session.execute(
-            select(Items)
-            .filter(and_(
-                Items.item_type == item_type,
-                Items.rarity == rarity,
-                Items.item_name == item_name
-            ))
-        ).scalar_one_or_none()
-        if not item:
-            error(f"Not found for search: {item_type}, {rarity}, {item_name}", __name__)
-        return item
+    def get_product_item(session: Session, user_item_id):
+        try:
+            user_item = session.execute(
+                select(UserItems)
+                .filter(
+                    UserItems.id == user_item_id
+                )
+            ).scalar_one_or_none()
+            if not user_item:
+                error(f"User item id {user_item_id} not found!", __name__)
+            return user_item
+        except Exception as e:
+            error(f"Error while getting item's data: {e}")
+            session.rollback()
+            return None
     
     @staticmethod
     def get_inventory(session: Session, user_id: int):
@@ -38,6 +40,7 @@ class ProductService:
     
     @staticmethod
     def item_is_belong_to(session: Session, user_item_id: int, user_id: int):
+        print(user_item_id, user_id)
         record = session.execute(
             select(UserItems)
             .filter(and_(
@@ -78,3 +81,30 @@ class ProductService:
             error(f"Error while changing sale status: {e}", __name__)
             session.rollback()
             return False
+        
+    @staticmethod
+    def get_seller_list(session: Session, kind: str = None, name: str = None):
+        """Get list of sellers who have items for sale matching the given type and name"""
+        try:
+            query = select(UserItems.user_id).filter(
+                UserItems.for_sale == True
+            ).join(
+                Items, UserItems.item_id == Items.id
+            ).filter(
+                and_(
+                    Items.item_kind == kind, Items.item_name == name
+                )
+            )
+            
+            results = session.execute(query).all()
+            
+            seller_list = []
+            for seller_id in results:
+                seller_list.append(seller_id[0])
+
+            # only need sellers' id, the profile displaying is handled by the frontend
+            return seller_list
+        except Exception as e:
+            error(f"Error while fetching seller list: {e}", __name__)
+            session.rollback()
+            return []

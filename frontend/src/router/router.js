@@ -6,7 +6,6 @@ import Community from '@/components/Community.vue';
 import About from '@/components/About.vue';
 import Support from '@/components/Support.vue';
 import Merchandise from '@/components/Merchandise.vue';
-import SellItem from '@/components/SellItem.vue';
 import VerifyPage from '@/components/VerifyPage.vue';
 import ProfilePage from '@/components/ProfilePage.vue';
 import Inventory from '@/components/Inventory.vue';
@@ -19,7 +18,6 @@ const routes = [
     { path: '/', component: MainPage },
     { path: '/about', component: About },
     { path: '/auth', component: AuthPage },
-    { path: '/sell', component: SellItem },
     { path: '/support', component: Support },
     { path: '/payment', component: Payment },
     { path: '/add', component: AddMoneyPage },
@@ -29,8 +27,8 @@ const routes = [
     { path: '/community', component: Community },
     { path: '/inventory', component: Inventory },
     { path: '/merchandise', component: Merchandise },
-    { path: '/notification', component: NotificationPage },
     { path: '/:pathMatch(.*)', component: NotFound },
+    { path: '/notification', component: NotificationPage },
 ];
 
 const router = createRouter({

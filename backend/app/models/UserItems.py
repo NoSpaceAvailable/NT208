@@ -48,6 +48,7 @@ class UserItems(BaseModel):
         ).scalar_one_or_none()
         if item_record:
             return {
+                'id': self.id,
                 'item': item_record.to_dict(),
                 'properties': {
                     'exterior': self.item_exterior,

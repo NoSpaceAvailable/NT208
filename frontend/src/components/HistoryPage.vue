@@ -278,7 +278,7 @@ export default {
             })
         },
         getWalletAddress() {
-            fetch('/api/profile/fetch', {
+            fetch('/api/profile/fetch/me', {
                 method: 'GET',
                 credentials: 'include'
             }).then((data) => {

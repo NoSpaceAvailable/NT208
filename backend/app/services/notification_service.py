@@ -1,8 +1,8 @@
 from sqlalchemy import select, and_, update, insert, func
 from sqlalchemy.orm import Session
 from .. models import Notifications
-from ..models.Database import Database
 from .. utils.logging import info, error
+from ..utils.timing import *
 
 class NotificationService:
 
@@ -22,7 +22,8 @@ class NotificationService:
             session.rollback()
             return []
     
-    def add_notification(session: Session, user_id: int, message: str, timestamp: str, seen: bool = False):
+    @staticmethod
+    def add_notification(session: Session, user_id: int, message: str, timestamp: str = get_current_time(), seen: bool = False):
         try:
             new_notification = Notifications(
                 user_id=user_id,
@@ -31,7 +32,7 @@ class NotificationService:
                 seen=seen
             )
             session.add(new_notification)
-            session.flush()
+            session.commit()
             return True
         except Exception as e:
             error(f"Error while adding notification: {e}", __name__)

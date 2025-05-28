@@ -8,6 +8,7 @@ from . import BaseModel
 class Notifications(BaseModel):
     """Store user notifications"""
     __tablename__ = 'notifications'
+    
     id          = Column(Integer, primary_key=True, autoincrement=True)
     user_id     = Column(Integer, ForeignKey('users.id'), nullable=False)
     message     = Column(String(256), nullable=False)
@@ -24,6 +25,6 @@ class Notifications(BaseModel):
         return {
             'id': self.id,
             'message': self.message,
-            'timestamp': datetime.strptime(self.timestamp, "%Y-%m-%d %H:%M:%S").strftime("%Y-%m-%d %H:%M:%S foo bar"),
+            'timestamp': self.timestamp,
             'seen': self.seen
         }

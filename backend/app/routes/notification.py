@@ -7,15 +7,21 @@ from functools import wraps
 import json, jwt
 
 bp = Blueprint('notifications', __name__, url_prefix='/api/notification')
-db_session = Database.get_session()
+
+def get_session():
+    return Database.get_session()
 
 def get_uid():
     session = request.cookies.get('session')
     return jwt.decode(session, options={"verify_signature": False}).get('user_id')
 
 def user_created_profile(user_id) -> bool:
-    user_id = get_uid()
-    return ProfileService.safe_get_profile(db_session, user_id) is not None
+    session = get_session()
+    try:
+        user_id = get_uid()
+        return ProfileService.safe_get_profile(session, user_id) is not None
+    finally:
+        session.close()
 
 def auth_required(f):
     @wraps(f)
@@ -30,26 +36,26 @@ def auth_required(f):
 @auth_required
 def show_user_notification():
     user_id = get_uid()
-    ret = NotificationService.get_notifications(session=db_session, user_id=user_id)
-    return ret
-
-@bp.route('/add', methods=['POST'])
-@auth_required
-def add():
-    user_id = get_uid()
-    data = request.json
-    message = data['message']
-    timestamp = None
-    seen = False
-    if not NotificationService.add_notification(session=db_session, user_id=user_id, message=message, timestamp=timestamp, seen=seen):
-        return {'status': 'something went wrong'}, 400
-    return {'status': 'notification added successfully'}
+    session = get_session()
+    try:
+        ret = NotificationService.get_notifications(session=session, user_id=user_id)
+        return ret
+    finally:
+        session.close()
 
 @bp.route('/mark/<notid>', methods=['GET'])
 @auth_required
 def mark(notid):
     user_id = get_uid()
-    noti_id = notid
-    if not NotificationService.update_seen(session=db_session, user_id=user_id, id=noti_id, new_seen=True):
-        return {'status': 'something went wrong'}, 400
-    return {'status': 'notification marked successfully'}
+    session = get_session()
+    try:
+        noti_id = notid
+        if not NotificationService.update_seen(session=session, user_id=user_id, id=noti_id, new_seen=True):
+            return {'status': 'something went wrong'}, 400
+        session.commit()
+        return {'status': 'notification marked successfully'}
+    except Exception:
+        session.rollback()
+        raise
+    finally:
+        session.close()

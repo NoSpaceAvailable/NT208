@@ -1,6 +1,13 @@
 import os
 import random
 
+
+port = 8088
+schema = 'http' if port != 443 else 'https'
+host = '127.0.0.1'
+site_url = f'{schema}://{host}:{port}' if port != 80 and port != 443 else f'{schema}://{host}'
+
+
 jwt_config = {
     'JWT_SECRET': os.getenv('JWT_SECRET', os.urandom(16).hex()),
     'JWT_ALG': os.getenv('JWT_ALG', 'HS256'),
@@ -25,7 +32,7 @@ db_config = {
     'pgport': os.getenv('DB_PORT', '5432'),
     'pgdb': os.getenv('DB_NAME', 'shop'),
     'poolsize': 50,
-    'debug': False
+    'debug': True
 }
 
 app_config = {
@@ -43,7 +50,7 @@ gemini_config = {
 }
 
 momo_config = {
-    "redirect_url": os.getenv('MOMO_REDIRECT_URL', 'http://localhost:8088/api/transaction/confirm'),
-    "ipn_url": os.getenv('MOMO_IPN_URL', 'http://localhost:8088/api/transaction/confirm'),
+    "redirect_url": os.getenv('MOMO_REDIRECT_URL', f'http://0.tcp.ap.ngrok.io:19013/api/transaction/confirm'),
+    "ipn_url": os.getenv('MOMO_IPN_URL', f'http://0.tcp.ap.ngrok.io:19013/api/transaction/confirm'),
     "endpoint": os.getenv('MOMO_ENDPOINT', 'https://test-payment.momo.vn/v2/gateway/api/create'),
 }

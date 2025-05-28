@@ -1,8 +1,5 @@
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import text
 from .Database import Database
-import time
-
 db = Database()
 engine = db._engine
 BaseModel = declarative_base()
@@ -14,16 +11,14 @@ from .History import History
 from .UserItems import UserItems
 from .Items import Items
 from .Notifications import Notifications
-from .TransactionManager import TransactionManager
 
-TransactionManager.__table__.drop(engine, checkfirst=True)
-History.__table__.drop(engine, checkfirst=True)
 UserProfile.__table__.drop(engine, checkfirst=True)
 Wallet.__table__.drop(engine, checkfirst=True)
 UserItems.__table__.drop(engine, checkfirst=True)
 Items.__table__.drop(engine, checkfirst=True)
 Notifications.__table__.drop(engine, checkfirst=True)
 User.__table__.drop(engine, checkfirst=True)
+History.__table__.drop(engine, checkfirst=True)
         
 BaseModel.metadata.create_all(engine)
 
