@@ -167,11 +167,11 @@
                         <div v-if="own_inventory" class="mt-6 pt-6 border-t border-gray-700 flex space-x-3">
                             <button @click="showSellModal = true; selectedItemToSell = selectedItem; selectedItem = null"
                                 class="flex-1 py-2 bg-[#8FC773] text-black rounded-lg font-medium hover:bg-[#7BBF5A]">
-                                Sell this item
+                                {{ currentItemSellState ? "Revert sell state" : "Sell this item" }}
                             </button>
                         </div>
                         <div v-else class="mt-6 pt-6 border-t border-gray-700 flex space-x-3">
-                            <button @click="showTradeUpModal = true" :disabled="!selectedItem.for_sale"
+                            <button @click="buyItem(selectedItem)" :disabled="!selectedItem.for_sale"
                                 :class="{'flex-1 py-2 bg-[#8FC773] text-black rounded-lg font-medium hover:bg-[#7BBF5A]': selectedItem.for_sale, 
                                 'flex-1 py-2 bg-gray-400 rounded-lg': !selectedItem.for_sale}">
                                 {{ selectedItem.for_sale ? 'Buy this item' : 'This item is not for sale' }}
@@ -202,7 +202,7 @@
                 <div class="bg-[#131313] rounded-xl max-w-md w-full">
                     <div class="p-6">
                         <div class="flex justify-between items-start">
-                            <h3 class="text-xl font-bold text-[#8FC773]">Sell items</h3>
+                            <h3 class="text-xl font-bold text-[#8FC773]">{{ currentItemSellState ? "Revert sell state" : "Sell items" }}</h3>
                             <button @click="closeSellModal" class="text-white/70 hover:text-white">
                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -212,7 +212,7 @@
                         <div class="mt-6 space-y-4">
                             <div v-if="itemsToDisplayInSellModal.length > 0">
                                 <p class="text-sm text-white/80 mb-2">
-                                    {{ itemsToDisplayInSellModal.length > 1 ? `Selected items (${itemsToDisplayInSellModal.length})` : 'This item will be marked as for sale on public market' }}
+                                    {{ currentItemSellState ? 'Unmark this item as for sale' : 'This item will be marked as for sale on public market' }}
                                 </p>
                                 <div class="bg-[#1A1A1A] rounded-lg p-3 max-h-40 overflow-y-auto">
                                     <div v-for="item in itemsToDisplayInSellModal" :key="item.id" class="flex items-center justify-between py-1">
@@ -226,7 +226,7 @@
                                 </div>
                             </div>
                             <div v-else>
-                                <p class="text-sm text-white/80">No items selected for sale</p>
+                                <p class="text-sm text-white/80">No items selected</p>
                             </div>
 
                             <div class="pt-4 border-t border-gray-700 flex space-x-3">
@@ -234,10 +234,10 @@
                                     class="flex-1 py-2 bg-transparent border border-gray-600 text-white rounded-lg font-medium hover:bg-white/10">
                                     Cancel
                                 </button>
-                                <button @click="confirmSell" :disabled="itemsToDisplayInSellModal.length === 0"
+                                <button @click="confirmSell(selectedItemToSell.for_sale)" :disabled="itemsToDisplayInSellModal.length === 0"
                                     :class="{'bg-[#8FC773] hover:bg-[#7BBF5A] text-black': itemsToDisplayInSellModal.length > 0, 'bg-gray-600 text-white/50 cursor-not-allowed': itemsToDisplayInSellModal.length === 0}"
                                     class="flex-1 py-2 rounded-lg font-medium">
-                                    Mark as for sale
+                                    Confirm action
                                 </button>
                             </div>
                         </div>
@@ -260,6 +260,7 @@ export default {
     data() {
         return {
             own_inventory: true,
+            currentItemSellState: false,
             currency: 'VND',
             items: [],
             selectedItems: [],
@@ -328,10 +329,33 @@ export default {
         }
     },
     methods: {
+        async buyItem(item) {
+            const result = await fetch('/api/product/buy', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify({
+                    item_id: item.id
+                })
+            });
+
+            if (result.ok) {
+                this.showNotification('Transaction completed', { type: 'success' });
+            } else {
+                const data = await result.json();
+                this.showNotification(`Failed to buy items: ${data.msg}`, { type: 'error' });
+            }
+
+            setTimeout(() => {
+                this.$router.push('/inventory');
+            });
+        },
         getItemImage(item) {
             const parts = item.name.split(' | ')
-            const kind = parts[0].replace(' ', '_');
-            const name = parts[1].replace(' ', '_');
+            const kind = parts[0].replaceAll(' ', '_');
+            const name = parts[1].replaceAll(' ', '_');
             return `/src/images/gun/${kind}/${item.rarity}/${name}.png`;
         },
         getRarityStyle(rarity) {
@@ -347,6 +371,7 @@ export default {
         selectItem(item) {
             this.selectedItem = item;
             this.selectedItemToSell = null;
+            this.currentItemSellState = item.for_sale;
         },
         closeSellModal() {
             this.showSellModal = false;
@@ -362,14 +387,14 @@ export default {
                 if (response.status === 401) {
                     this.$router.push('/auth#login');
                     return;
+                } else if (response.status === 404) {
+                    this.$router.push('/profile');
+                    return;
                 }
-
-                if (response.ok) {
-                    const data = await response.json();
-                    if (data) {
-                        this.profile = data.profile;
-                        this.wallet_address = this.profile.wallet_address;
-                    }
+                const data = await response.json();
+                if (data) {
+                    this.profile = data.profile;
+                    this.wallet_address = this.profile.wallet_address;
                 }
             } catch (err) {
                 console.error('Error fetching profile:', err);
@@ -422,14 +447,7 @@ export default {
         constructItemName(item_kind, item_name) {
             return item_kind + ' | ' + item_name;
         },
-        async confirmSell() {
-            if (this.selectedItemToSell.for_sale) {
-                this.showNotification('This item is already for sale', {
-                    type: 'error',
-                    description: 'Please select another item to sell'
-                });
-                return;
-            }
+        async confirmSell(true_or_false) {
             const result = await fetch('/api/product/sell', {
                 method: 'POST',
                 headers: {
@@ -437,12 +455,13 @@ export default {
                 },
                 credentials: 'include',
                 body: JSON.stringify({
-                    item_id: this.selectedItemToSell.id
+                    item_id: this.selectedItemToSell.id,
+                    rollback_sell_state: true_or_false
                 })
             });
             const data = await result.json();
             if (data.status === 'success') {
-                this.showNotification('Items sold successfully', {
+                this.showNotification('Action completed', {
                     type: 'success',
                     description: `${data.msg}`
                 });

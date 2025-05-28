@@ -101,8 +101,8 @@
                 <!-- News Section (Left Column) -->
                 <div class="w-full lg:w-1/4">
                     <div class="bg-[#111111]/80 rounded-xl shadow-xl p-2">
-                        <h1 class="text-2xl font-bold text-[#8FC773] mb-2 text-center">Latest News</h1>
-                        <p class="text-sm text-[#8FC773]/80 mb-6 text-center">Stay updated with CS:GO news and updates
+                        <h1 class="text-2xl font-bold text-[#8FC773] mb-2 text-center">Latest news</h1>
+                        <p class="text-sm text-[#8FC773]/80 mb-6 text-center">Stay updated with CS:GO news
                         </p>
 
                         <div class="space-y-6">
@@ -123,7 +123,7 @@
                 <!-- Items Section (Right Column) -->
                 <div class="w-full">
                     <div class="bg-[#111111]/80 rounded-xl shadow-xl p-2 h-full">
-                        <h1 class="text-2xl font-bold text-[#8FC773] mb-6">Featured Items</h1>
+                        <h1 class="text-2xl font-bold text-[#8FC773] mb-6">Featured items</h1>
 
                         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                             <div v-for="(item, index) in items" :key="index"

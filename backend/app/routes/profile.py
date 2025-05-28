@@ -38,6 +38,7 @@ def create():
         return { "status": "error" }, 404
     profile = request.json
     if ProfileService.safe_create_profile(session, user_id, profile):
+        session.commit()
         return { "status": "ok" }, 200
     return { "status": "error", "msg": "please submit enough and valid infomation!" }, 500
     

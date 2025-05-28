@@ -40,6 +40,7 @@ def create():
     username = payload.get('username')
     
     if address := TransactionService.safe_create_wallet(session, user_id, username):
+        session.commit()
         return {"status": "ok", "address": address}
     return {"status": "failed"}, 500
 
@@ -117,6 +118,7 @@ def trade_item():
             seller_user_item.user_id = buyer_id
 
             # return status
+        session.commit()
         return {'status': 'success'}
     
     except Exception as e:
@@ -172,6 +174,7 @@ def confirm():
                     status=HistoryStatus.COMPLETED.value,
                     transaction_type=HistoryType.TOPUP.value
                 )
+                session.commit()
                 return redirect('/add')
             else:
                 return {"status": "failed"}, 500

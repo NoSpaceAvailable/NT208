@@ -40,4 +40,5 @@ def mark(notid):
     noti_id = notid
     if not NotificationService.update_seen(session=db_session, user_id=user_id, id=noti_id, new_seen=True):
         return {'status': 'something went wrong'}, 400
+    db_session.commit()
     return {'status': 'notification marked successfully'}

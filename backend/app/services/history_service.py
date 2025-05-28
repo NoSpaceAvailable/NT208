@@ -58,7 +58,7 @@ class HistoryService:
             info(f"Creating transaction history: {transaction}")
             session.add(transaction)
             info(f"Transaction history added")
-            session.commit()
+            session.flush()
             return True
         except Exception as e:
             session.rollback()

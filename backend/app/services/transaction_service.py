@@ -22,7 +22,7 @@ class TransactionService:
                 wallet_address=address
             )
             session.add(wallet)
-            session.commit()
+            session.flush()
             info(f"Wallet {address} created for user {username}.", __name__)
             return address
         except SQLAlchemyError as e:

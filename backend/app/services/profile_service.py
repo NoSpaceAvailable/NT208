@@ -104,7 +104,7 @@ class ProfileService:
                 wallet_address=address
             )
             session.add(new_profile)
-            session.commit()
+            session.flush()
             info(f"Profile created for user {user_id}.", __name__)
             return True
         except Exception as e:
@@ -124,7 +124,7 @@ class ProfileService:
             profile.location = new_profile.get('location', profile.location)
             profile.birthdate = new_profile.get('birthdate', profile.birthdate) 
 
-            session.commit()
+            session.flush()
             info(f"Profile updated for user {user_id}.", __name__)
             return True
         except Exception as e:

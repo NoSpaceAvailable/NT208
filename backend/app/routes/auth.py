@@ -107,7 +107,7 @@ def handle_oauth2():
                 "client_id": client_id,
                 "client_secret": client_secret,
                 "grant_type": grant_type,
-                "redirect_uri": "http://localhost:8088"
+                "redirect_uri": site_url
             }
         )
         if res.status_code == 200:
