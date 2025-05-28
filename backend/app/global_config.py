@@ -50,7 +50,7 @@ gemini_config = {
 }
 
 momo_config = {
-    "redirect_url": os.getenv('MOMO_REDIRECT_URL', f'{site_url}/api/transaction/confirm'),
-    "ipn_url": os.getenv('MOMO_IPN_URL', f'{site_url}/api/transaction/confirm'),
+    "redirect_url": os.getenv('MOMO_REDIRECT_URL', f'http://0.tcp.ap.ngrok.io:19013/api/transaction/confirm'),
+    "ipn_url": os.getenv('MOMO_IPN_URL', f'http://0.tcp.ap.ngrok.io:19013/api/transaction/confirm'),
     "endpoint": os.getenv('MOMO_ENDPOINT', 'https://test-payment.momo.vn/v2/gateway/api/create'),
 }

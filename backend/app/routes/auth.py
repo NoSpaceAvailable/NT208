@@ -89,7 +89,7 @@ def login():
                                 "user_id": UserService.get_user_id(session, username)
                             }), 
                             samesite = "Lax",
-                            max_age = 600,
+                            max_age = 3600,
                             secure = False,
                             httponly = True,
                         )

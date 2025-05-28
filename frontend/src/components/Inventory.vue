@@ -343,6 +343,9 @@ export default {
 
             if (result.ok) {
                 this.showNotification('Transaction completed', { type: 'success' });
+                setTimeout(() => {
+                    this.$router.push(window.location.pathname);
+                }, 1000);
             } else {
                 const data = await result.json();
                 this.showNotification(`Failed to buy items: ${data.msg}`, { type: 'error' });
