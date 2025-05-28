@@ -425,7 +425,7 @@ export default {
                     const properties = e.properties;
                     this.items.push(
                         {
-                            id: this.items.length + 1,
+                            id: e.id,
                             name: this.constructItemName(item.item_kind, item.item_name),
                             type: item.item_type,
                             rarity: item.rarity,
