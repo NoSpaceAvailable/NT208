@@ -48,6 +48,35 @@
                                 </option>
                             </select>
                         </div>
+
+                        <!-- Price Filter -->
+                        <div class="flex-1">
+                            <label class="block text-sm text-[#8FC773] mb-1">Price Filter</label>
+                            <div class="flex gap-2">
+                                <select v-model="priceFilter.direction"
+                                    class="w-1/2 p-2 bg-[#131313] rounded-lg border border-gray-600 text-white focus:outline-none focus:ring-1 focus:ring-[#8FC773]">
+                                    <option value="none">None</option>
+                                    <option value="lower">Lower than</option>
+                                    <option value="higher">Higher than</option>
+                                </select>
+                                <input v-model="priceFilter.value" type="number" min="0"
+                                    class="w-1/2 p-2 bg-[#131313] rounded-lg border border-gray-600 text-white focus:outline-none focus:ring-1 focus:ring-[#8FC773]"
+                                    placeholder="Enter price" />
+                            </div>
+                        </div>
+                        
+                        <!-- Sort Option -->
+                        <div class="flex-1 min-w-[200px]">
+                            <label class="block text-sm text-[#8FC773] mb-1">Sort By</label>
+                            <select v-model="sortOption"
+                                class="w-full p-2 bg-[#131313] rounded-lg border border-gray-600 text-white focus:outline-none focus:ring-1 focus:ring-[#8FC773]">
+                                <option value="">None</option>
+                                <option value="priceAsc">Price: Low to High</option>
+                                <option value="priceDesc">Price: High to Low</option>
+                                <option value="rarityAsc">Rarity: Low to High</option>
+                                <option value="rarityDesc">Rarity: High to Low</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
@@ -79,6 +108,7 @@
                                 </svg>
                             </button>
                         </span>
+                        
                     </div>
                 </div>
             </div>
@@ -277,6 +307,11 @@ export default {
                 weaponType: [],
                 rarity: []
             },
+            priceFilter: {
+                direction: "none",
+                value: ""
+            },
+            sortOption: "",
             rarityColors: {
                 "1": "#4B69FF",
                 "2": "#8847FF",
@@ -317,14 +352,39 @@ export default {
     },
     computed: {
         filteredSkins() {
-            return this.skins.filter(skin => {
+            let result = this.skins.filter(skin => {
                 const matchesWeaponType = this.filter.weaponType.length === 0 || this.filter.weaponType.includes(skin.weapon);
                 const matchesRarity = this.filter.rarity.length === 0 || this.filter.rarity.includes(skin.rarity);
                 const matchesSearchQuery = !this.searchQuery.trim() ||
                     skin.name.toLowerCase().includes(this.searchQuery.toLowerCase().trim());
 
-                return matchesWeaponType && matchesRarity && matchesSearchQuery;
+                const avgPrice = parseFloat(skin.avg_price.replace(/[^\d.]/g, ""));
+                let matchesPrice = true;
+                if (this.priceFilter.direction === "lower") {
+                    matchesPrice = avgPrice <= parseFloat(this.priceFilter.value || 0);
+                } else if (this.priceFilter.direction === "higher") {
+                    matchesPrice = avgPrice >= parseFloat(this.priceFilter.value || 0);
+                }
+
+                return matchesWeaponType && matchesRarity && matchesSearchQuery && matchesPrice;
             });
+
+            switch (this.sortOption) {
+                case "priceAsc":
+                    result.sort((a, b) => parseFloat(a.avg_price.replace(/[^\d.]/g, "")) - parseFloat(b.avg_price.replace(/[^\d.]/g, "")));
+                    break;
+                case "priceDesc":
+                    result.sort((a, b) => parseFloat(b.avg_price.replace(/[^\d.]/g, "")) - parseFloat(a.avg_price.replace(/[^\d.]/g, "")));
+                    break;
+                case "rarityAsc":
+                    result.sort((a, b) => parseInt(a.rarity) - parseInt(b.rarity));
+                    break;
+                case "rarityDesc":
+                    result.sort((a, b) => parseInt(b.rarity) - parseInt(a.rarity));
+                    break;
+            }
+
+            return result;
         },
         totalPages() {
             return Math.ceil(this.filteredSkins.length / this.skinsPerPage);
