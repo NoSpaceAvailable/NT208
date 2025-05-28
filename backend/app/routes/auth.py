@@ -9,6 +9,7 @@ from cachetools import TTLCache
 from .. import limiter
 from .. global_config import oauth2_config, site_url
 import httpx
+from .. models.Database import Database
 
 bp = Blueprint("auth", __name__, url_prefix="/api/auth")
 cache = TTLCache(maxsize=30, ttl=180)
@@ -16,6 +17,9 @@ executor = ThreadPoolExecutor(max_workers=5)
 
 VERIFICATION_CODE_MAX_UPBOUND = 1000000
 general_msg = "If your email is available, a 6-digit code will be sent to your email. The code will expire in 3 minutes."
+
+def get_session():
+    return Database.get_session()
 
 @bp.route("/register", methods=["POST"])
 @limiter.limit("5 per 3 minute")
@@ -100,6 +104,7 @@ def handle_oauth2():
         client_id = oauth2_config["client_id"]
         client_secret = oauth2_config["client_secret"]
         grant_type = oauth2_config["grant_type"]
+        session = get_session()
         res = httpx.post(
             "https://oauth2.googleapis.com/token",
             data = {
