@@ -2,10 +2,10 @@ from sqlalchemy import BigInteger, Boolean, Column, \
                         Date, DateTime, Enum, Float, ForeignKey, \
                         Integer, String, Text, Time, UniqueConstraint, func, and_, or_, select
 from sqlalchemy.orm import relationship
-from . import BaseModel
-from . Database import Database
-from . Items import Items
-from . enumtypes import ItemCollection, ItemExterior
+from app.models import BaseModel
+from app.models.Database import Database    
+from app.models.Items import Items
+from app.models.enumtypes import ItemCollection, ItemExterior
 import random
 
 session = Database.get_session()

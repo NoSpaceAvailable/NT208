@@ -129,6 +129,7 @@ export default {
     data() {
         return {
             own_profile: true,
+            authenticated: false,
             wallet_address: null,
             wallet_error: null,
             profile: null,
@@ -144,6 +145,12 @@ export default {
     },
     methods: {
         async createWallet() {
+            if (!this.authenticated) {
+                this.showNotification('Please login to create a wallet', { type: 'error' });
+                this.$router.push('/auth#login');
+                return;
+            }
+
             try {
                 this.wallet_error = null;
                 const response = await fetch('/api/transaction/create-wallet', {
@@ -210,6 +217,12 @@ export default {
         },
 
         async createProfile() {
+            if (!this.authenticated) {
+                this.showNotification('Please login to create a profile', { type: 'error' });
+                this.$router.push('/auth#login');
+                return;
+            }
+
             try {
                 // Combine location fields
                 const profileData = {
@@ -237,9 +250,22 @@ export default {
                 console.error('Error creating profile:', err);
                 this.showNotification('An error occurred while creating profile', { type: 'error' });
             }
+        },
+        async checkAuth() {
+            try {
+                const response = await fetch("/api/auth/check", {
+                    method: "GET",
+                    credentials: "include"
+                });
+                const data = await response.json();
+                this.authenticated = data.status === "ok";
+            } catch (error) {
+                console.error("Error checking authentication status:", error);
+            }
         }
     },
     async mounted() {
+        await this.checkAuth();
         await this.fetchProfile();
     }
 }

@@ -3,7 +3,7 @@ from sqlalchemy import BigInteger, Boolean, Column, \
                         Integer, String, Text, Time, UniqueConstraint, and_, or_
 from sqlalchemy.orm import relationship
 from datetime import datetime
-from . import BaseModel
+from app.models import BaseModel
 
 def reformat_date(date_str: str) -> str:
     """Reformat date string from yyyy-mm-dd to dd-mm-yyyy."""

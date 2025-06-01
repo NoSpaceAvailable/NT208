@@ -1,8 +1,8 @@
 from sqlalchemy import select
 from sqlalchemy.orm import Session
-from .. models import UserProfile
-from .. utils.logging import info, error
-from .. services.user_service import UserService
+from app.models import UserProfile
+from app.utils.logging import info, error
+from app.services.user_service import UserService
 from hashlib import sha256
 
 class ProfileService:

@@ -55,12 +55,12 @@
 
             <!-- Error State -->
             <div v-else-if="fetchError"
-                class="text-center bg-[#1A1A1A]/90 border-2 border-red-500/50 p-8 rounded-lg shadow-xl"> </div>
+                class="text-center text-[#ffffff] bg-[#1A1A1A]/90 border-2 border-red-500/50 p-8 rounded-lg shadow-xl">{{ fetchError }}</div>
 
             <!-- Content -->
             <template v-else>
                 <div v-if="paginatedUsers.length > 0" class="space-y-6">
-                    <div v-for="user in paginatedUsers" :key="user.id"
+                    <div v-for="user in paginatedUsers" :key="(user ? user.id : 'not_found')"
                         class="bg-[#101010]/90 rounded-lg shadow-2xl overflow-hidden border-[#2D2D2D] transition-all duration-300 group relative">
                         <div
                             class="absolute top-0 left-0 transition-all ease-out rounded-tr-md rounded-bl-md">
@@ -132,6 +132,7 @@ export default {
             usersPerPage: 6,
             isLoading: true,
             fetchError: null,
+            authenticated: false,
         };
     },
     computed: {
@@ -234,18 +235,34 @@ export default {
                         name: apiProfile.profile_name || `User ${profileId}`,
                         joinedDate: apiProfile.joined_at
                     };
-                });
+                }).filter(user => user !== null);
             } catch (error) {
-                console.error("Error fetching community roster:", error);
-                this.fetchError = error.message || 'Failed to load user data.';
+                if (this.authenticated) {
+                    this.fetchError = 'No one are selling anything.';
+                } else {
+                    this.fetchError = 'Please login to see this page.';
+                }
                 this.allUsers = [];
             } finally {
                 this.isLoading = false;
             }
         },
+        async checkAuth() {
+            try {
+                const response = await fetch("/api/auth/check", {
+                    method: "GET",
+                    credentials: "include"
+                });
+                const data = await response.json();
+                this.authenticated = data.status === "ok";
+            } catch (error) {
+                console.error("Error checking authentication status:", error);
+            }
+        }
     },
-    mounted() {
-        this.fetchUsersFromApi();
+    async mounted() {
+        await this.checkAuth();
+        await this.fetchUsersFromApi();
     }
 };
 </script>

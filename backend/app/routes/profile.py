@@ -1,9 +1,10 @@
 from flask import Blueprint, request
-from .. services.transaction_service import *
-from .. utils.cookie import verify_token
-from .. models.Database import Database
-from .. services.profile_service import ProfileService
+from app.services.transaction_service import *
+from app.utils.cookie import verify_token
+from app.models.Database import Database
+from app.services.profile_service import ProfileService
 import jwt
+from functools import wraps
 
 bp = Blueprint('profile', __name__, url_prefix='/api/profile')
 
@@ -22,13 +23,17 @@ def user_created_profile(user_id) -> bool:
     finally:
         session.close()
 
-@bp.before_request
-def check_auth():
-    session = request.cookies.get('session')
-    if not session or not verify_token(session):
-        return {"status": "unauthorized"}, 401
+def auth_required(f):
+    @wraps(f)
+    def check_auth(*args, **kwargs):
+        session = request.cookies.get('session')
+        if not session or not verify_token(session):
+            return {'status': 'unauthorized'}, 401
+        return f(*args, **kwargs)
+    return check_auth
     
 @bp.route('/exist', methods=['GET'])
+@auth_required
 def exists():
     """Check if a profile exists for the current user."""
     user_id = get_uid()
@@ -41,6 +46,7 @@ def exists():
         session.close()
 
 @bp.route('/create', methods=['POST'])
+@auth_required
 def create():
     """Create a profile for the current user."""
     user_id = get_uid()

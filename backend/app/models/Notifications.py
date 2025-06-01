@@ -3,7 +3,7 @@ from sqlalchemy import BigInteger, Boolean, Column, \
                         Integer, String, Text, Time, UniqueConstraint, and_, or_, Numeric
 from sqlalchemy.orm import relationship
 from datetime import datetime
-from . import BaseModel
+from app.models import BaseModel
 
 class Notifications(BaseModel):
     """Store user notifications"""

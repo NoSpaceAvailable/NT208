@@ -1,8 +1,8 @@
 from sqlalchemy import BigInteger, Boolean, Column, \
                         Date, DateTime, Enum, Float, ForeignKey, \
                         Integer, String, Text, Time, UniqueConstraint, func, and_, or_, Numeric
-from sqlalchemy.orm import relationship
-from . import BaseModel
+from sqlalchemy.orm import relationship 
+from app.models import BaseModel
 
 
 class Items(BaseModel):

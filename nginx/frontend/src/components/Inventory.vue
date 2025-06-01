@@ -388,7 +388,7 @@ export default {
                     credentials: 'include'
                 });
 
-                if (response.status === 401) {
+                if (response.status === 401 || response.status === 500) {
                     this.$router.push('/auth#login');
                     return;
                 } else if (response.status === 404) {

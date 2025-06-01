@@ -1,11 +1,15 @@
 from flask import Blueprint, request
-from .. services.product_service import ProductService
-from .. models.Database import Database
-from .. utils.cookie import verify_token
-from .. services.profile_service import ProfileService
-from .. services.transaction_service import TransactionService
-from .. services.user_service import UserService
+from app.services.product_service import ProductService
+from app.models.Database import Database
+from app.utils.cookie import verify_token
+from app.services.profile_service import ProfileService
+from app.services.transaction_service import TransactionService
+from app.services.user_service import UserService
+from app.services.history_service import HistoryService
+from app.models.enumtypes.HistoryType import HistoryType
+from app.models.enumtypes.HistoryStatus import HistoryStatus
 from functools import wraps
+from datetime import datetime, timezone
 import json, jwt
 
 bp = Blueprint('products', __name__, url_prefix='/api/product')
@@ -28,6 +32,11 @@ def user_created_profile(user_id) -> bool:
         return ProfileService.safe_get_profile(session, user_id) is not None
     finally:
         session.close()
+
+def get_current_time() -> str:
+    local_time = datetime.now()
+    utc_time = local_time.astimezone(timezone.utc)
+    return utc_time.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 @bp.route('/list', methods=['GET'])
 def list_items():
@@ -91,6 +100,23 @@ def sell():
             return {'status': 'failed', 'msg': 'something went wrong'}, 400
         if not ProductService.update_total_items_for_sale(session=session, user_id=user_id, new_sale_status=sale_status):
             return {'status': 'failed', 'msg': 'something went wrong'}, 400
+        
+        # Record transaction history for listing item
+        item = ProductService.get_product_item(session=session, user_item_id=item_id)
+        if item:
+            seller_address = UserService.get_wallet_address(session=session, user_id=user_id)
+            if seller_address:
+                HistoryService.safe_create_transaction_history(
+                    session=session,
+                    sender_address=seller_address,
+                    receiver_address=seller_address,  # Same address since it's just listing
+                    amount=item.to_dict()['item']['price'],
+                    timestamp=get_current_time(),
+                    message=f"Listed item {item.to_dict()['item']['item_name']} for sale",
+                    status=HistoryStatus.COMPLETED.value,
+                    transaction_type=HistoryType.ITEM_PURCHASE.value
+                )
+        
         session.commit()
         return {'status': 'success', 'msg': 'done'}
     except Exception:
@@ -127,6 +153,10 @@ def buy():
         if not receiver_address:
             return {'status': 'failed', 'msg': 'seller wallet address not found'}, 400
         
+        sender_address = UserService.get_wallet_address(session=session, user_id=user_id)
+        if not sender_address:
+            return {'status': 'failed', 'msg': 'buyer wallet address not found'}, 400
+        
         if not TransactionService.safe_transaction(
                 session=session, 
                 sender_id=user_id, 
@@ -135,11 +165,27 @@ def buy():
             ):
             return {'status': 'failed', 'msg': 'something went wrong'}, 400
         
+        # update total items for sale for seller
+        if not ProductService.update_total_items_for_sale(session=session, user_id=item.user_id, new_sale_status=False):
+            return {'status': 'failed', 'msg': 'something went wrong'}, 400
+
         if not ProductService.transfer_ownership_to(session=session, user_item_id=item_id, new_user_id=user_id):
             return {'status': 'failed', 'msg': 'something went wrong'}, 400
         
         if not ProductService.update_sale_status(session=session, user_item_id=item_id, new_sale_status=False):
             return {'status': 'failed', 'msg': 'something went wrong'}, 400
+        
+        # Record transaction history for purchase
+        HistoryService.safe_create_transaction_history(
+            session=session,
+            sender_address=sender_address,
+            receiver_address=receiver_address,
+            amount=verbose_data['item']['price'],
+            timestamp=get_current_time(),
+            message=f"Purchased {verbose_data['item']['item_name']}",
+            status=HistoryStatus.COMPLETED.value,
+            transaction_type=HistoryType.ITEM_PURCHASE.value
+        )
         
         session.commit()
         return {'status': 'success', 'msg': 'done'}
@@ -150,7 +196,6 @@ def buy():
         session.close()
 
 @bp.route('/seller', methods=['GET'])
-@auth_required
 def get_seller():
     kind = request.args.get('kind')
     name = request.args.get('name')

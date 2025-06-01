@@ -7,5 +7,5 @@ psycopg2-binary
 pyjwt
 bcrypt
 cachetools
-google-genai
-httpx
+requests
+gunicorn

@@ -1,8 +1,8 @@
 from sqlalchemy import select, and_, update, insert, func
 from sqlalchemy.orm import Session
-from .. models import Notifications
-from .. utils.logging import info, error
-from ..utils.timing import *
+from app.models import Notifications
+from app.utils.logging import info, error
+from app.utils.timing import *
 
 class NotificationService:
 

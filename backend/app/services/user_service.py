@@ -1,7 +1,7 @@
 from sqlalchemy import select
 from sqlalchemy.orm import Session
-from .. models import UserProfile, Wallet, User
-from .. utils.logging import info, error
+from app.models import UserProfile, Wallet, User
+from app.utils.logging import info, error
 
 class UserService:
     @staticmethod

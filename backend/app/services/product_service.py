@@ -1,7 +1,7 @@
 from sqlalchemy import select, and_, update
 from sqlalchemy.orm import Session
-from .. models import UserItems, Items, UserProfile
-from .. utils.logging import info, error
+from app.models import UserItems, Items, UserProfile
+from app.utils.logging import info, error
 
 class ProductService:
 

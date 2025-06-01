@@ -1,10 +1,10 @@
 from flask import Blueprint, request
-from ..services.notification_service import NotificationService
-from ..models.Database import Database
-from ..utils.cookie import verify_token
-from ..services.profile_service import ProfileService
+from app.services.notification_service import NotificationService
+from app.models.Database import Database
+from app.utils.cookie import verify_token
+from app.services.profile_service import ProfileService
 from functools import wraps
-import json, jwt
+import jwt
 
 bp = Blueprint('notifications', __name__, url_prefix='/api/notification')
 

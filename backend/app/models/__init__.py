@@ -1,5 +1,5 @@
 from sqlalchemy.ext.declarative import declarative_base
-from .Database import Database
+from app.models.Database import Database
 db = Database()
 engine = db._engine
 BaseModel = declarative_base()

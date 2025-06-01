@@ -2,7 +2,7 @@ from sqlalchemy import BigInteger, Boolean, Column, \
                         Date, DateTime, Enum, Float, ForeignKey, \
                         Integer, String, Text, Time, UniqueConstraint, func, and_, or_
 from sqlalchemy.orm import relationship
-from . import BaseModel
+from app.models import BaseModel
 import bcrypt
 
 class User(BaseModel):

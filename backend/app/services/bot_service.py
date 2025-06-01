@@ -1,4 +1,4 @@
-from ..models.Chatbot import AlmaBot
+from app.models.Chatbot import AlmaBot
 
 bot = None
 
@@ -8,6 +8,3 @@ def init_bot():
 
 def ask(question: str) -> str:
     return bot.generate_answer(question)
-
-def bot_alive() -> bool:
-    return bot.health_check()

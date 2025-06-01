@@ -1,12 +1,12 @@
 from sqlalchemy import select, or_
 from sqlalchemy.orm import Session
-from .. models.History import History
-from ..models.Wallet import Wallet
-from ..models.User import User
-from .. utils.logging import info, error
-from .. global_config import history_config
-from ..models.enumtypes.HistoryStatus import HistoryStatus
-from ..models.enumtypes.HistoryType import HistoryType
+from app.models.History import History
+from app.models.Wallet import Wallet
+from app.models.User import User
+from app.utils.logging import info, error
+from app.global_config import history_config
+from app.models.enumtypes.HistoryStatus import HistoryStatus
+from app.models.enumtypes.HistoryType import HistoryType
 from hashlib import sha256
 
 def generate_transaction_hash(

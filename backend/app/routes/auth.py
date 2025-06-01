@@ -1,15 +1,15 @@
 from flask import Blueprint, request, make_response, redirect, jsonify
-from ..services.auth_service import *
-from .. services.user_service import UserService
-from ..utils.cookie import *
-from ..services.mail_service import EmailService
+from app.services.auth_service import *
+from app.services.user_service import UserService
+from app.utils.cookie import *
+from app.services.mail_service import EmailService
 import secrets
 from concurrent.futures import ThreadPoolExecutor
 from cachetools import TTLCache
-from .. import limiter
-from .. global_config import oauth2_config, site_url
-import httpx
-from .. models.Database import Database
+from app import limiter
+from app.global_config import oauth2_config, site_url
+import requests
+from app.models.Database import Database
 
 bp = Blueprint("auth", __name__, url_prefix="/api/auth")
 cache = TTLCache(maxsize=30, ttl=180)
@@ -106,7 +106,7 @@ def handle_oauth2():
         client_secret = oauth2_config["client_secret"]
         grant_type = oauth2_config["grant_type"]
         session = get_session()
-        res = httpx.post(
+        res = requests.post(
             "https://oauth2.googleapis.com/token",
             data = {
                 "code": code,
@@ -118,7 +118,7 @@ def handle_oauth2():
         )
         if res.status_code == 200:
             access_token = res.json().get("access_token")
-            user_info = httpx.get(
+            user_info = requests.get(
                 "https://www.googleapis.com/oauth2/v2/userinfo",
                 headers = {
                     "Authorization": f"Bearer {access_token}"

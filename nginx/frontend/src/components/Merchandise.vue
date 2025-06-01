@@ -4,7 +4,7 @@
         <div class="max-w-7xl mx-auto mb-6">
             <div class="bg-[#111111]/80 rounded-xl shadow-xl p-4 md:p-6">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                    <h1 class="text-2xl font-bold text-[#8FC773]">Skin Marketplace</h1>
+                    <h1 class="text-2xl font-bold text-[#8FC773]">Skin marketplace</h1>
                     <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
                         <div class="relative flex-1">
                             <input v-model="searchQuery" @keyup="applyFilters" placeholder="Search skins..."

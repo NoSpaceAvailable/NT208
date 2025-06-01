@@ -3,8 +3,8 @@
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from utils.logging import warn, error
-from global_config import mail_service_config
+from app.utils.logging import warn, error
+from app.global_config import mail_service_config
 
 class EmailService:
     

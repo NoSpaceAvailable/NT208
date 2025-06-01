@@ -1,8 +1,8 @@
 from sqlalchemy import or_
 import os
 import random
-from .. models.User import User
-from ..models.Database import Database
+from app.models.User import User
+from app.models.Database import Database
 
 JWT_SECRET = os.getenv('JWT_SECRET', random.randbytes(32).hex())
 JWT_ALGORITHM = os.getenv('JWT_ALGORITHM', 'HS256')

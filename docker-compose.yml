@@ -1,14 +1,5 @@
 version: '3.8'
 services:
-  frontend:
-    build: ./frontend
-    depends_on:
-      - backend
-    volumes:
-      - ./frontend:/app/frontend
-    networks:
-      - shop
-
   backend:
     build: ./backend
     environment:
@@ -29,7 +20,7 @@ services:
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=shop
     volumes:
-      - ./db/data:/var/lib/postgresql/data  # TODO: fix could not change permission of ...
+      - ./db/data:/var/lib/postgresql/data
     ports: 
       - "5432:5432" # debug only
     networks:
@@ -38,9 +29,8 @@ services:
   nginx:
     build: ./nginx
     ports:
-      - "8088:80" 
+      - "80:80" 
     depends_on:
-      - frontend
       - backend
     networks:
       - shop
