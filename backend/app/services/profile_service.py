@@ -153,27 +153,30 @@ class ProfileService:
                 if not profile:
                     return None
                 return {
+                    'id': profile.id,
                     'profile_name': profile.profile_name,
                     'full_name': profile.full_name,
                     'bio': profile.bio,
                     'location': profile.location,
                     'birthdate': profile.birthdate,
                     'joined_at': profile.joined_at,
-                    'wallet_address': profile.wallet_address
+                    'wallet_address': profile.wallet_address,
+                    'total_items_for_sale': profile.total_items_for_sale
                 }
             elif user_id < 0:
                 profiles = ProfileService.get_all_profile(session)
-                print(profiles, flush=True)
                 if profiles == None:
                     return None
                 result = [{
+                    'id': profile[0].id,
                     'profile_name': profile[0].profile_name,
                     'full_name': profile[0].full_name,
                     'bio': profile[0].bio,
                     'location': profile[0].location,
                     'birthdate': profile[0].birthdate,
                     'joined_at': profile[0].joined_at,
-                    'wallet_address': profile[0].wallet_address
+                    'wallet_address': profile[0].wallet_address,
+                    'total_items_for_sale': profile[0].total_items_for_sale
                 } for profile in profiles]
                 return result
             else:

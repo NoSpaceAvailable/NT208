@@ -119,7 +119,7 @@
                     <div class="p-6">
                         <div class="flex justify-between items-start">
                             <h3 class="text-xl font-bold text-[#8FC773]">{{ selectedItem.name }}</h3>
-                            <button @click="selectedItem = null" class="text-white/70 hover:text-white">
+                            <button @click="selectedItem = null;" class="text-white/70 hover:text-white">
                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                                 </svg>
@@ -372,6 +372,7 @@ export default {
             return this.rarityNames[rarity] || 'Unknown';
         },
         selectItem(item) {
+            this.fetchInventory();
             this.selectedItem = item;
             this.selectedItemToSell = null;
             this.currentItemSellState = item.for_sale;
@@ -475,6 +476,8 @@ export default {
                 });
             }
             this.closeSellModal();
+            this.selectedItem = null;
+            this.fetchInventory();
         },
         getUpgradedRarity() {
             const rarities = ['1', '2', '3', '4', '5'];

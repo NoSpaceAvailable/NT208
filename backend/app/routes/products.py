@@ -89,6 +89,8 @@ def sell():
             new_sale_status=sale_status
         ):
             return {'status': 'failed', 'msg': 'something went wrong'}, 400
+        if not ProductService.update_total_items_for_sale(session=session, user_id=user_id, new_sale_status=sale_status):
+            return {'status': 'failed', 'msg': 'something went wrong'}, 400
         session.commit()
         return {'status': 'success', 'msg': 'done'}
     except Exception:

@@ -19,7 +19,7 @@
                     </div>
                     <input type="search" id="default-search" v-model="searchQuery"
                         class="block w-full p-4 ps-10 text-base text-white border-2 border-[#2D2D2D] rounded-lg bg-[#131313]/80 focus:ring-2 focus:ring-[#8FC773]/70 focus:border-[#8FC773] placeholder-gray-500 transition-colors duration-300"
-                        placeholder="Search User by Name..." />
+                        placeholder="Search seller by name" />
                 </div>
             </form>
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -28,10 +28,7 @@
                     <select id="sort-by" v-model="sortBy"
                         class="bg-[#131313]/80 text-white border-2 border-[#2D2D2D] rounded-md py-2 px-3 text-sm focus:ring-2 focus:ring-[#8FC773]/70 focus:border-[#8FC773] appearance-none transition-colors duration-300"
                         style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%238FC773%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 0.7rem center; background-size: 0.7em auto; padding-right: 2.5rem;">
-                        <option value="default">Relevance</option>
-                        <option value="rating">Reputation</option>
-                        <option value="transactions">Activity</option>
-                        <option value="name">User Name</option>
+                        <option value="name">User name</option>
                     </select>
                 </div>
                 <button @click="toggleSortOrder"
@@ -51,15 +48,6 @@
             </div>
         </div>
 
-        <!-- Community Section Title -->
-        <div class="max-w-4xl mx-auto text-center mb-10 relative z-10">
-            <h1 class="text-4xl md:text-5xl font-bold text-yellow-200 uppercase tracking-wider"
-                style="text-shadow: 0 0 5px #8FC773, 0 0 10px #8FC773, 0 0 15px #000;">
-                Community Roster
-            </h1>
-            <p class="text-lg text-gray-300 mt-2">Discover and connect with fellow gamers.</p>
-        </div>
-
         <!-- Loading/Error/Content Area -->
         <div class="max-w-4xl mx-auto">
             <!-- Loading State -->
@@ -73,59 +61,44 @@
             <template v-else>
                 <div v-if="paginatedUsers.length > 0" class="space-y-6">
                     <div v-for="user in paginatedUsers" :key="user.id"
-                        class="bg-gradient-to-br from-[#1a1a1a]/90 to-[#101010]/90 backdrop-blur-sm rounded-lg shadow-2xl overflow-hidden border-2 border-[#2D2D2D] hover:border-[#8FC773]/70 transition-all duration-300 group relative">
+                        class="bg-[#101010]/90 rounded-lg shadow-2xl overflow-hidden border-[#2D2D2D] transition-all duration-300 group relative">
                         <div
-                            class="absolute top-0 left-0 h-1.5 w-1/5 bg-[#8FC773] group-hover:w-full transition-all duration-500 ease-out rounded-tr-md rounded-bl-md">
+                            class="absolute top-0 left-0 transition-all ease-out rounded-tr-md rounded-bl-md">
                         </div>
 
                         <div class="flex flex-col sm:flex-row items-stretch">
                             <div
-                                class="flex-shrink-0 w-full sm:w-auto sm:min-w-[200px] md:min-w-[240px] bg-[#101010]/60 p-6 flex flex-col items-center justify-center text-center border-b-2 sm:border-b-0 sm:border-r-2 border-[#2D2D2D] group-hover:border-[#8FC773]/30 transition-colors">
-                                <img :src="user.avatarUrl" :alt="user.name + ' avatar'"
-                                    class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover border-4 border-[#4A4A4A] group-hover:border-[#8FC773] transition-colors duration-300 shadow-lg" />
+                                class="flex-shrink-0 w-full sm:w-auto sm:min-w-[200px] p-4 flex flex-col items-center justify-center text-center border-[#2D2D2D]">
+                                <!-- Profile Avatar -->
+                                <div
+                                    class="w-12 h-12 bg-[#8FC773] rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-black" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
                                 <h3
-                                    class="mt-4 text-lg sm:text-xl font-bold text-white group-hover:text-[#8FC773] transition-colors duration-300 truncate w-full px-1">
+                                    class="mt-4 text-lg sm:text-xl text-white transition-colors duration-300 truncate w-full px-1">
                                     {{ user.name }}
                                 </h3>
-                                <p class="text-xs sm:text-sm text-gray-400 group-hover:text-gray-200 transition-colors">
-                                    {{ user.role }}</p>
                             </div>
 
                             <div class="flex-grow p-5 sm:p-6 flex flex-col justify-between">
                                 <div>
                                     <div class="grid grid-cols-2 gap-x-4 gap-y-2 text-xs sm:text-sm mb-4">
                                         <div class="text-left">
-                                            <strong class="block font-semibold text-gray-300">Joined:</strong>
+                                            <strong class="block font-semibold text-gray-300">Joined since:</strong>
                                             <span class="text-gray-400">{{ user.joinedDate }}</span>
                                         </div>
-                                        <div class="text-left">
-                                            <strong class="block font-semibold text-gray-300">Activity:</strong>
-                                            <span class="text-gray-400">{{ user.transactions.toLocaleString() }}
-                                                XP</span>
-                                        </div>
                                     </div>
-                                    <p v-if="user.bio"
-                                        class="text-xs text-gray-400 mb-4 leading-relaxed max-h-16 overflow-hidden text-ellipsis">
-                                        {{ user.bio.substring(0, 150) }}{{ user.bio.length > 150 ? '...' : '' }}
-                                    </p>
                                 </div>
 
                                 <div class="mt-auto pt-2">
-                                    <div class="w-full mb-4">
-                                        <div class="flex justify-between text-xs text-gray-300 mb-1 font-medium">
-                                            <span>Reputation</span>
-                                            <span>{{ user.rating.toFixed(1) }}/10</span>
-                                        </div>
-                                        <div
-                                            class="w-full bg-[#2D2D2D] rounded-full h-3 overflow-hidden border border-[#3A3A3A]">
-                                            <div :class="['h-full rounded-full transition-all duration-700 ease-out', getRatingColorClass(user.rating)]"
-                                                :style="{ width: (user.rating / 10 * 100) + '%' }"></div>
-                                        </div>
-                                    </div>
-
-                                    <a :href="user.profileLink || '#'" target="_blank" rel="noopener noreferrer"
+                                    <a :href="'/inventory?id=' + user.id" target="_blank" rel="noopener noreferrer"
                                         class="block w-full sm:w-auto sm:float-right px-5 py-2.5 text-sm font-bold bg-gradient-to-r from-[#8FC773] to-[#76B35B] text-black rounded-md hover:from-[#A0D987] hover:to-[#8FC773] transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#8FC773] focus:ring-offset-2 focus:ring-offset-[#101010]">
-                                        View Dossier
+                                        View inventory
                                     </a>
                                 </div>
                             </div>
@@ -237,11 +210,6 @@ export default {
             if (typeof page === 'number' && page > 0 && page <= this.totalPages) this.currentPage = page;
         },
         toggleSortOrder() { this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc'; },
-        getRatingColorClass(rating) {
-            if (rating <= 3.3) return 'bg-red-600';
-            if (rating <= 6.6) return 'bg-yellow-500';
-            return 'bg-gradient-to-r from-[#8FC773] to-[#6aaa4f]'; // Gaming gradient for high rating
-        },
         async fetchUsersFromApi() {
             this.isLoading = true; this.fetchError = null;
             try {
@@ -253,33 +221,23 @@ export default {
                 const data = await response.json();
                 let rawUsers = data['profile'];
                 if (!Array.isArray(rawUsers)) {
-                    console.error("Fetched data's 'profile' key is not an array:", rawUsers);
                     rawUsers = [];
                 }
 
                 this.allUsers = rawUsers.map((apiProfile, index) => {
-                    let formattedJoinedDate = 'N/A';
-                    if (apiProfile.joined_at) {
-                        try {
-                            formattedJoinedDate = new Date(apiProfile.joined_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
-                        } catch (e) { formattedJoinedDate = apiProfile.joined_at; }
+                    if (apiProfile.total_items_for_sale < 1) {
+                        return null;
                     }
-                    const profileId = apiProfile.user_id || apiProfile.wallet_address || `user-${index + 1}`;
+                    const profileId = apiProfile.id || 'not_found';
                     return {
                         id: profileId,
-                        name: apiProfile.profile_name || `User ${index + 1}`,
-                        role: apiProfile.role || 'Adventurer',
-                        avatarUrl: apiProfile.avatar_url || `https://robohash.org/mail@ashallendesign.co.uk`,
-                        transactions: parseInt(apiProfile.transactions) || Math.floor(Math.random() * 100) + 5,
-                        rating: parseFloat(apiProfile.rating) || parseFloat((Math.random() * 7 + 3).toFixed(1)),
-                        joinedDate: formattedJoinedDate,
-                        bio: apiProfile.bio || '',
-                        profileLink: apiProfile.profile_link || `https://example.com/profile/${profileId}`
+                        name: apiProfile.profile_name || `User ${profileId}`,
+                        joinedDate: apiProfile.joined_at
                     };
                 });
             } catch (error) {
                 console.error("Error fetching community roster:", error);
-                this.fetchError = error.message || 'Failed to load user data. The server might be down.';
+                this.fetchError = error.message || 'Failed to load user data.';
                 this.allUsers = [];
             } finally {
                 this.isLoading = false;

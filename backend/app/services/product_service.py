@@ -1,6 +1,6 @@
 from sqlalchemy import select, and_, update
 from sqlalchemy.orm import Session
-from .. models import UserItems, Items, User
+from .. models import UserItems, Items, UserProfile
 from .. utils.logging import info, error
 
 class ProductService:
@@ -65,18 +65,55 @@ class ProductService:
             error(f"Error while tranfering ownership: {e}", __name__)
             session.rollback()
             return False
+
+    @staticmethod
+    def get_total_item_for_sale(session: Session, user_id: int):
+        """Get total items is currentlly being sold by a user"""
+        try:
+            total_item = session.execute(
+                select(UserProfile.total_items_for_sale)
+                .where(UserProfile.user_id == user_id)
+            ).scalar_one_or_none()
+            return total_item
+        except Exception as e:
+            error(f"Error while fetching total items for sale: {e}", __name__)
+            session.rollback()
+            return 0
+        
+    @staticmethod
+    def update_total_items_for_sale(session: Session, user_id: int, new_sale_status: bool):
+        """Must be used after item_is_belong_to()"""
+        try:
+            session.execute(
+                update(UserProfile)
+                .where(UserProfile.user_id == user_id)
+                .values(total_items_for_sale = (UserProfile.total_items_for_sale + 1) if new_sale_status else (UserProfile.total_items_for_sale - 1))
+            )
+            session.flush()
+            return True
+        except Exception as e:
+            error(f"Error while updating total items for sale: {e}", __name__)
+            session.rollback()
+            return False
         
     @staticmethod
     def update_sale_status(session: Session, user_item_id: int, new_sale_status: bool):
         """Must be used after item_is_belong_to()"""
         try:
-            session.execute(
+            result = session.execute(
                 update(UserItems)
-                .where(UserItems.id == user_item_id)
-                .values(for_sale=new_sale_status)
+                .where(
+                    and_(
+                        UserItems.id == user_item_id,
+                        UserItems.for_sale == (not new_sale_status)
+                    )
+                )
+                .values(
+                    for_sale=new_sale_status
+                )
             )
             session.flush()
-            return True
+            return result.rowcount > 0
         except Exception as e:
             error(f"Error while changing sale status: {e}", __name__)
             session.rollback()

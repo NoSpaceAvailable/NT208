@@ -31,4 +31,4 @@ class AlmaBot:
         return response
     
     def health_check(self) -> bool:
-        return true
+        return True

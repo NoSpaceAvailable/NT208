@@ -17,16 +17,17 @@ class UserProfile(BaseModel):
     """Stores additional profile information for users."""
     __tablename__ = 'user_profiles'
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    user_id = Column(Integer, ForeignKey('users.id'), nullable=False, unique=True)
-    username = Column(String(32), ForeignKey('users.username'), nullable=False, unique=True)
-    profile_name = Column(String(64), nullable=False, unique=True)
-    full_name = Column(String(64), nullable=True, unique=False)
-    bio = Column(String(256), nullable=True)
-    location = Column(String(128), nullable=True)
-    birthdate = Column(String(24), nullable=False)
-    joined_at = Column(String(24), default=datetime.now().strftime("%d-%m-%Y"), nullable=False)
-    wallet_address = Column(String(64), ForeignKey('wallets.wallet_address'), unique=True)
+    id                  = Column(Integer, primary_key=True, autoincrement=True)
+    user_id             = Column(Integer, ForeignKey('users.id'), nullable=False, unique=True)
+    username            = Column(String(32), ForeignKey('users.username'), nullable=False, unique=True)
+    profile_name        = Column(String(64), nullable=False, unique=True)
+    full_name           = Column(String(64), nullable=True, unique=False)
+    bio                 = Column(String(256), nullable=True)
+    location            = Column(String(128), nullable=True)
+    birthdate           = Column(String(24), nullable=False)
+    joined_at           = Column(String(24), default=datetime.now().strftime("%d-%m-%Y"), nullable=False)
+    wallet_address      = Column(String(64), ForeignKey('wallets.wallet_address'), unique=True)
+    total_items_for_sale = Column(Integer, default=0, nullable=False)
 
     user = relationship("User", back_populates="profile", foreign_keys=user_id)
 
