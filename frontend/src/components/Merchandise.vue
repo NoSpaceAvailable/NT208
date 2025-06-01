@@ -65,17 +65,21 @@
                             </div>
                         </div>
                         
-                        <!-- Sort Option -->
+                        <!-- Simplified Sort -->
                         <div class="flex-1 min-w-[200px]">
-                            <label class="block text-sm text-[#8FC773] mb-1">Sort By</label>
-                            <select v-model="sortOption"
-                                class="w-full p-2 bg-[#131313] rounded-lg border border-gray-600 text-white focus:outline-none focus:ring-1 focus:ring-[#8FC773]">
-                                <option value="">None</option>
-                                <option value="priceAsc">Price: Low to High</option>
-                                <option value="priceDesc">Price: High to Low</option>
-                                <option value="rarityAsc">Rarity: Low to High</option>
-                                <option value="rarityDesc">Rarity: High to Low</option>
-                            </select>
+                        <label class="block text-sm text-[#8FC773] mb-1">Sort By</label>
+                            <div class="flex gap-2">
+                                <select v-model="sortBy"
+                                class="w-1/2 p-2 bg-[#131313] rounded-lg border border-gray-600 text-white focus:outline-none focus:ring-1 focus:ring-[#8FC773]">
+                                <option value="rarity">Rarity</option>
+                                <option value="price">Price</option>
+                                </select>
+
+                                <button @click="toggleSortDirection"
+                                class="w-1/2 p-2 bg-[#8FC773] text-black rounded-lg font-medium hover:bg-[#7BBF5A] transition-colors">
+                                {{ sortDirection === 'desc' ? 'High to Low' : 'Low to High' }}
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -347,7 +351,9 @@ export default {
             currentPage: 1,
             skinsPerPage: 5,
             sellers: [],
-            loadingSellers: false
+            loadingSellers: false,
+            sortBy: "rarity",
+            sortDirection: "desc", 
         };
     },
     computed: {
@@ -369,19 +375,18 @@ export default {
                 return matchesWeaponType && matchesRarity && matchesSearchQuery && matchesPrice;
             });
 
-            switch (this.sortOption) {
-                case "priceAsc":
-                    result.sort((a, b) => parseFloat(a.avg_price.replace(/[^\d.]/g, "")) - parseFloat(b.avg_price.replace(/[^\d.]/g, "")));
-                    break;
-                case "priceDesc":
-                    result.sort((a, b) => parseFloat(b.avg_price.replace(/[^\d.]/g, "")) - parseFloat(a.avg_price.replace(/[^\d.]/g, "")));
-                    break;
-                case "rarityAsc":
-                    result.sort((a, b) => parseInt(a.rarity) - parseInt(b.rarity));
-                    break;
-                case "rarityDesc":
-                    result.sort((a, b) => parseInt(b.rarity) - parseInt(a.rarity));
-                    break;
+            if (this.sortBy === "price") {
+                result.sort((a, b) => {
+                    const priceA = parseFloat(a.avg_price.replace(/[^\d.]/g, ""));
+                    const priceB = parseFloat(b.avg_price.replace(/[^\d.]/g, ""));
+                    return this.sortDirection === "asc" ? priceA - priceB : priceB - priceA;
+                });
+            } else if (this.sortBy === "rarity") {
+                result.sort((a, b) => {
+                    const rarityA = parseInt(a.rarity);
+                    const rarityB = parseInt(b.rarity);
+                    return this.sortDirection === "asc" ? rarityA - rarityB : rarityB - rarityA;
+                });
             }
 
             return result;
@@ -406,6 +411,9 @@ export default {
     methods: {
         formatWeaponType(weapon) {
             return weapon.replace('★', '<span style="color: #FFD700">★</span>');
+        },
+        toggleSortDirection() {
+            this.sortDirection = this.sortDirection === "desc" ? "asc" : "desc";
         },
         rarityToString(rarity) {
             return this.rarityString[rarity];
