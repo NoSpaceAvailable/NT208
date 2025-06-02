@@ -38,7 +38,8 @@ db_config = {
 app_config = {
     'JSONIFY_PRETTYPRINT_REGULAR': False,
     'JSON_SORT_KEYS': False,
-    'DEBUG': False
+    'DEBUG': False,
+    'SERVER_NAME': site_url
 }
 
 history_config = {
