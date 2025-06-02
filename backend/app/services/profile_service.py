@@ -153,7 +153,7 @@ class ProfileService:
                 if not profile:
                     return None
                 return {
-                    'id': profile.id,
+                    'id': profile.user_id,
                     'profile_name': profile.profile_name,
                     'full_name': profile.full_name,
                     'bio': profile.bio,
@@ -168,7 +168,7 @@ class ProfileService:
                 if profiles == None:
                     return None
                 result = [{
-                    'id': profile[0].id,
+                    'id': profile[0].user_id,
                     'profile_name': profile[0].profile_name,
                     'full_name': profile[0].full_name,
                     'bio': profile[0].bio,
