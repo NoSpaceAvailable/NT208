@@ -9,7 +9,7 @@ site_url = f'{schema}://{host}:{port}' if port != 80 and port != 443 else f'{sch
 
 
 jwt_config = {
-    'JWT_SECRET': os.getenv('JWT_SECRET', os.urandom(16).hex()),
+    'JWT_SECRET': os.getenv('JWT_SECRET', 'bd9e3a221ef62eb15f9ce75cf2c2c20e'),
     'JWT_ALG': os.getenv('JWT_ALG', 'HS256'),
     "JWT_EXP_DELTA_SECONDS": 3600
 }
