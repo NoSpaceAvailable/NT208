@@ -8,7 +8,6 @@ JWT_SECRET = os.getenv('JWT_SECRET', random.randbytes(32).hex())
 JWT_ALGORITHM = os.getenv('JWT_ALGORITHM', 'HS256')
 
 def create_user(username, email, password, is_oauth2 = False):
-    from ..models.Database import Database
     session = Database.get_session()
     try:
         new_user = User(username=username, email=email, password=password, is_oauth2=is_oauth2)
@@ -22,7 +21,6 @@ def create_user(username, email, password, is_oauth2 = False):
         session.close()
 
 def check_user(username, password):
-    from ..models.Database import Database
     session = Database.get_session()
     try:
         user = session.query(User).filter(User.username == username).first()
@@ -33,9 +31,34 @@ def check_user(username, password):
         session.close()
     
 def user_exist(username, email):
-    from ..models.Database import Database
     session = Database.get_session()
     try:
-        return session.query(User).filter(or_(User.username == username, User.email == email)).all()
+        return session.query(User).filter(
+            or_(
+                User.username == username, 
+                User.email == email
+            )
+        ).first() is not None
+    finally:
+        session.close()
+
+def email_exist(email):
+    session = Database.get_session()
+    try:
+        return session.query(User).filter(User.email == email).first() is not None
+    finally:
+        session.close()
+
+def username_exist(username):
+    session = Database.get_session()
+    try:
+        return session.query(User).filter(User.username == username).first() is not None
+    finally:
+        session.close()
+
+def get_username_by_email(email):
+    session = Database.get_session()
+    try:
+        return session.query(User).filter(User.email == email).first().username
     finally:
         session.close()

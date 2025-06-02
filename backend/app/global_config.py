@@ -46,8 +46,8 @@ history_config = {
 }
 
 bot_config = {
-    'AYD_API_KEY': os.getenv('AYD_API_KEY', '2340192752971870818e633fbafd6139faa4bea34357e376d5a2113c45311685'),
-    'AYD_CHATBOT_ID': os.getenv('AYD_CHATBOT_ID', 'b82b045ee911f0ae5e16ce4ae9bd4256'),
+    'AYD_API_KEY': os.getenv('AYD_API_KEY', '512b0bf383d5d5fa5797f568ddb0de1d0f599bbab966cb95fd2f4c75bb5e3507'),
+    'AYD_CHATBOT_ID': os.getenv('AYD_CHATBOT_ID', '5ba9648462758e680ac221b9fc1c9b84'),
     'AYD_SESSION_INIT_URL': os.getenv('AYD_SESSION_INIT_URL', 'https://www.askyourdatabase.com/api/chatbot/v2/session'),
     'AYD_ASK_URL': os.getenv('AYD_ASK_URL', 'https://www.askyourdatabase.com/api/ask?debug=false')
 }

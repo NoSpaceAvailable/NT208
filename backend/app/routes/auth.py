@@ -10,6 +10,7 @@ from app import limiter
 from app.global_config import oauth2_config, site_url
 import requests
 from app.models.Database import Database
+from random import randbytes
 
 bp = Blueprint("auth", __name__, url_prefix="/api/auth")
 cache = TTLCache(maxsize=30, ttl=180)
@@ -130,6 +131,12 @@ def handle_oauth2():
                 username = user_info.get("name")
                 if not user_exist(username=username, email=email):
                     create_user(username=username, password=None, email=email, is_oauth2=True)
+                elif not email_exist(email):
+                    if username_exist(username):
+                        username = f"{username}_{randbytes(4).hex()}"
+                    create_user(username=username, password=None, email=email, is_oauth2=True)
+                else:
+                    username = get_username_by_email(email)
                 response = make_response({"status": "ok"})
                 response.set_cookie("session", 
                                     sign_token({

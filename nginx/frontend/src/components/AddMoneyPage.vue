@@ -77,8 +77,8 @@ export default {
             }
         },
         addMoney() {
-            if (!this.amount || this.amount <= 0) {
-                alert('Please enter a valid amount!');
+            if (!this.amount || this.amount <= 1000 || this.amount > 20000000) {
+                alert('Please enter a valid amount! Minimum 1000 VND, maximum 20000000 VND');
                 return;
             }
 
@@ -102,6 +102,7 @@ export default {
                 if (data.status === 'ok' && data.pay_url) {
                     // Open payment URL in new window
                     window.open(data.pay_url, '_blank');
+                    location.reload()
                 } else {
                     alert('Failed to create payment link');
                 }

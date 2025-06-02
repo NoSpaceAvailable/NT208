@@ -2,7 +2,7 @@ from app.global_config import bot_config
 import time
 import requests
 import json
-
+from random import randbytes
 
 class AlmaBot:
     def __init__(self):
@@ -25,10 +25,11 @@ class AlmaBot:
             raise ValueError("AYD_API_KEY and AYD_CHATBOT_ID must be set in the environment variables.")
 
         try:
+            rand = randbytes(4).hex()
             session_init_payload = {
                 "chatbotid": self.ayd_chatbot_id,
-                "name": "Alma",
-                "email": "alma@example.com"
+                "name": f"Alma_{rand}",
+                "email": f"alma_{rand}@example.com"
             }
             headers_inti = {
                 'Accept': 'application/json, text/plain, */*',
