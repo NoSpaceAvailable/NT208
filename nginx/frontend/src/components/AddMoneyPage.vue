@@ -99,12 +99,15 @@ export default {
                     throw new Error('Failed to create payment');
                 }
             }).then((data) => {
-                if (data.status === 'ok' && data.pay_url) {
+                if (data.status === 'ok' && data.pay_url !== null) {
                     // Open payment URL in new window
-                    window.open(data.pay_url, '_blank');
-                    location.reload()
+                    location.href = data.pay_url;
                 } else {
-                    alert('Failed to create payment link');
+                    if (!data.pay_url) {
+                        alert('Failed to create payment link, please refresh the page and try again');
+                    } else {
+                        alert('Failed to create payment link');
+                    }
                 }
             }).catch((error) => {
                 console.error('Error creating payment:', error);

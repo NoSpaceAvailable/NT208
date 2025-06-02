@@ -179,7 +179,7 @@ export default {
 
         async fetchProfile() {
             const param = new URLSearchParams(window.location.search);
-            if (!window.location.search) {
+            if (!window.location.search && !this.authenticated) {
                 this.$router.push('/auth#login');
                 return;
             }

@@ -11,6 +11,7 @@ from app.models.enumtypes.HistoryType import HistoryType
 from app.utils.momo.momo import Momo, generate_transaction_hash
 from base64 import b64decode
 import jwt
+from datetime import datetime, timezone
 
 bp = Blueprint('transactions', __name__, url_prefix='/api/transaction')
 momo = Momo()
@@ -25,6 +26,11 @@ def get_payload(token: str):
 def get_uid():
     session = request.cookies.get('session')
     return jwt.decode(session, options={"verify_signature": False}).get('user_id')
+
+def get_current_time() -> str:
+    local_time = datetime.now()
+    utc_time = local_time.astimezone(timezone.utc)
+    return utc_time.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 @bp.before_request
 def check_auth():
@@ -188,3 +194,41 @@ def confirm():
         return {"status": "failed"}, 500
     finally:
         session.close()
+
+@bp.route('/pay', methods=['POST'])
+def pay():
+    session = get_session()
+    data = request.json
+    _to = data.get('to')
+    _amount = data.get('amount')
+
+    if not _to or not _amount:
+        return {"status": "failed"}, 400
+    
+    _session = request.cookies.get('session')
+    payload = get_payload(_session)
+    sender_username = payload.get('username')
+    sender_id = UserService.get_user_id(session, sender_username)
+    
+    if TransactionService.safe_transaction(
+        session=session,
+        sender_id=sender_id,
+        receiver_address=_to,
+        amount=_amount
+    ) == True:
+        sender_address = UserService.get_wallet_address(session=session, user_id=sender_id)
+        if HistoryService.safe_create_transaction_history(
+            session=session,
+            sender_address=sender_address,
+            receiver_address=_to,
+            amount=_amount,
+            timestamp=get_current_time(),
+            message="To: " + _to,
+            status=HistoryStatus.COMPLETED.value,
+            transaction_type=HistoryType.TRANSFER.value
+        ) == True:
+            session.commit()
+            return {"status": "ok"}
+        session.rollback()
+        return {"status": "failed"}, 400
+    return {"status": "failed"}, 400
