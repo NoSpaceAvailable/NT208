@@ -13,17 +13,15 @@ class User(BaseModel):
     username = Column(String(32), unique=True, nullable=False)
     email = Column(String(128), unique=True, nullable=False)
     password_hash = Column(String(128), nullable=False)
-    reputation = Column(Integer, default=0)
     is_oauth2 = Column(Boolean, default=False)
 
     wallet = relationship("Wallet", uselist=False, back_populates="owner")
     profile = relationship("UserProfile", uselist=False, back_populates="user", foreign_keys="UserProfile.user_id")
 
-    def __init__(self, username, email, password, reputation=0, is_oauth2=False):
+    def __init__(self, username, email, password, is_oauth2=False):
         self.username = username
         self.email = email
         self.set_password(password, is_oauth2=is_oauth2)
-        self.reputation = reputation
         self.is_oauth2 = is_oauth2
 
     def set_password(self, password, is_oauth2=False):
@@ -43,4 +41,4 @@ class User(BaseModel):
         return f"<User(id={self.id}, \
             username='{self.username}', \
             email='{self.email}', \
-            reputation={self.reputation})>"
+            is_oauth2={self.is_oauth2})>"
