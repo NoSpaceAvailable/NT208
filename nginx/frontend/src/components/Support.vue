@@ -140,31 +140,31 @@
         <div>
             <!-- Chat Window: Rendered when showChat is true -->
             <div v-if="showChat"
-                class="fixed bottom-16 right-4 z-50 bg-[#111111] rounded-xl shadow-lg w-80 h-96 flex flex-col">
-                <div class="bg-[#111111]/90 text-[#8FC773] px-4 py-2 rounded-t-xl flex justify-between items-center">
-                    <span class="font-bold text-lg">Online support</span>
-                    <button @click="closeChat" class="text-[#8FC773] font-bold text-xl">X</button>
+                class="fixed bottom-20 right-8 z-50 bg-[#111111] rounded-xl shadow-lg w-[30rem] h-[36rem] flex flex-col">
+                <div class="bg-[#111111]/90 text-[#8FC773] px-6 py-3 rounded-t-xl flex justify-between items-center">
+                    <span class="font-bold text-xl">Online support</span>
+                    <button @click="closeChat" class="text-[#8FC773] font-bold text-2xl">X</button>
                 </div>
-                <div id="chatbox" class="flex-1 p-4 overflow-y-auto">
+                <div id="chatbox" class="flex-1 p-6 overflow-y-auto">
                     <!-- Chat Messages -->
-                    <div v-for="(msg, index) in messages" :key="index" class="mb-4">
+                    <div v-for="(msg, index) in messages" :key="index" class="mb-5">
                         <!-- User Message -->
                         <div v-if="msg.sender === 'user'" class="flex justify-end">
-                            <div class="bg-[#8FC773] text-white rounded-lg p-2 max-w-[70%]">
+                            <div class="bg-[#8FC773] text-white rounded-lg p-3 max-w-[75%] text-base">
                                 {{ msg.text }}
                             </div>
                         </div>
                         <!-- Bot Message -->
                         <div v-else class="flex justify-start">
-                            <div class="bg-[#313131] text-gray-200 rounded-lg p-2 max-w-[70%]">
-                                {{ msg.text }}
+                            <div class="bg-[#313131] text-gray-200 rounded-lg p-3 max-w-[75%] text-base" 
+                                v-html="renderMarkdown(msg.text)">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="px-4 py-2">
+                <div class="px-6 py-3">
                     <input type="text" v-model="message" @keyup.enter="sendMessage"
-                        class="w-full bg-gray-50 text-gray-600 border border-gray-300 rounded-md py-2 pl-4 pr-10 focus:outline-none focus:border-[#8FC773] focus:ring-1 focus:ring-[#8FC773]"
+                        class="w-full bg-gray-50 text-gray-600 border border-gray-300 rounded-md py-3 pl-5 pr-12 focus:outline-none focus:border-[#8FC773] focus:ring-1 focus:ring-[#8FC773] text-base"
                         placeholder="Type your message..." />
                 </div>
             </div>
@@ -182,6 +182,18 @@
 </template>
 
 <script>
+import { marked } from 'marked';
+import DOMPurify from 'dompurify';
+
+marked.setOptions({
+    breaks: true,
+    gfm: true,
+    headerIds: false,
+    mangle: false,
+    sanitize: true,
+    sanitizer: (html) => DOMPurify.sanitize(html)
+});
+
 export default {
     name: "SupportPage",
     data() {
@@ -208,7 +220,7 @@ export default {
             });
             if (!response.ok) {
                 return {
-                    "status": "error", 
+                    "status": "error",
                     "bot_answer": "Sorry, I am unable to process your request at the moment."
                 };
             }
@@ -231,6 +243,12 @@ export default {
                 });
                 this.message = "";
             }
+        },
+        renderMarkdown(text) {
+            if (typeof text !== "string") {
+                return '';
+            }
+            return marked(text);
         }
     },
     mounted() {
