@@ -2,6 +2,12 @@
 
 Almacenar is an online marketplace designed for trading virtual assets, with a focus on items like CS:GO skins. The platform also supports merchandise sales and skin auctions. It utilizes Docker for a containerized environment, making setup and deployment more manageable.
 
+## Project builders
+Group 10:
+- 23520197: Lê Quốc Cường
+- 23521789: Hoàng Xuân Vinh
+- 23521134: Ngô Trần Anh Ninh
+
 ## Workflow
 
 ![a](https://github.com/user-attachments/assets/5f5deed6-0884-4a9b-bf7e-a53edf5c33c0)
