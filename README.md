@@ -174,3 +174,9 @@ To stop the running containers:
 ```bash
 docker compose down
 ```
+
+## Test account for Momo
+Card number:          9704 0000 0000 0018
+Name:                 NGUYEN VAN A
+Expiration date:      09/99
+Phone:                0999999999
